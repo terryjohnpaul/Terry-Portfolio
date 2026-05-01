@@ -2706,11 +2706,15 @@
         /* Click — move pill + smooth-scroll to matching section */
         var sectionMap = {
           work:    'klt-section',
-writing: null            /* no section yet */
+          writing: null
         };
 
         items.forEach(function (item) {
           item.addEventListener('click', function () {
+            if (item.dataset.section === 'about') {
+              window.location.href = 'about.html';
+              return;
+            }
             items.forEach(function (i) { i.classList.toggle('active', i === item); });
             movePill(item, true);
             var targetId = sectionMap[item.dataset.section];
@@ -2747,7 +2751,11 @@ writing: null            /* no section yet */
             hamburger.classList.remove('open');
             menu.setAttribute('aria-hidden', 'true');
             /* Scroll to section */
-            var sectionMap = { work: 'klt-section', about: 'about', writing: 'writing' };
+            if (item.dataset.section === 'about') {
+              window.location.href = 'about.html';
+              return;
+            }
+            var sectionMap = { work: 'klt-section', writing: 'writing' };
             var targetId = sectionMap[item.dataset.section];
             if (targetId) {
               var target = document.getElementById(targetId);

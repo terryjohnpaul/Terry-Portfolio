@@ -2712,7 +2712,7 @@
         items.forEach(function (item) {
           item.addEventListener('click', function () {
             if (item.dataset.section === 'about') {
-              window.location.href = 'about.html';
+              window.location.href = '/about';
               return;
             }
             items.forEach(function (i) { i.classList.toggle('active', i === item); });
@@ -2752,7 +2752,7 @@
             menu.setAttribute('aria-hidden', 'true');
             /* Scroll to section */
             if (item.dataset.section === 'about') {
-              window.location.href = 'about.html';
+              window.location.href = '/about';
               return;
             }
             var sectionMap = { work: 'klt-section', writing: 'writing' };

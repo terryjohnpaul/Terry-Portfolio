@@ -101,6 +101,15 @@ document.querySelectorAll('video').forEach(function(v) {
   v.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 });
 
+/* ── Tab title — away message ── */
+(function() {
+  var defaultTitle = 'Terry John — Directing the Machine';
+  var awayTitle = 'Please come back ! \u{1F44B}';
+  document.addEventListener('visibilitychange', function() {
+    document.title = document.hidden ? awayTitle : defaultTitle;
+  });
+})();
+
 /* ── Custom Cursor ── */
 (function() {
   var cur = document.getElementById('cursor');

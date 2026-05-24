@@ -34,7 +34,7 @@
 
 /* ── Design Tokens ── */
 :root {
-  --bg:       #0d0d0d;
+  --bg:       #000000;
   --text:     #f4f5f2;
   --mid:      #404040;
   --border:   #2b2b2b;

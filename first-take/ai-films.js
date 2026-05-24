@@ -100,3 +100,26 @@ document.querySelectorAll('.visual-grid video').forEach(function(v) {
 document.querySelectorAll('video').forEach(function(v) {
   v.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 });
+
+/* ── Custom Cursor ── */
+(function() {
+  var cur = document.getElementById('cursor');
+  if (!cur || window.matchMedia('(hover: none)').matches) return;
+
+  document.addEventListener('mousemove', function(e) {
+    cur.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px) translate(-50%,-50%)';
+    cur.classList.add('visible');
+  }, { passive: true });
+  document.addEventListener('mouseleave', function() { cur.classList.remove('visible'); });
+
+  function addState(selector, cls) {
+    document.querySelectorAll(selector).forEach(function(el) {
+      el.addEventListener('mouseenter', function() { cur.classList.add(cls); });
+      el.addEventListener('mouseleave', function() { cur.classList.remove(cls); });
+    });
+  }
+
+  addState('.intro__title', 'on-text');
+  addState('img, video', 'on-big');
+  addState('.footer-cta-btn, .top-nav-item, .top-nav-link, .mute-btn, a', 'on-big');
+})();

@@ -101,6 +101,14 @@ document.querySelectorAll('video').forEach(function(v) {
   v.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 });
 
+/* ── Force mailto link to open mail app ── */
+document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = a.href;
+  });
+});
+
 /* ── Tab title — away message ── */
 (function() {
   var defaultTitle = 'Terry John — Directing the Machine';

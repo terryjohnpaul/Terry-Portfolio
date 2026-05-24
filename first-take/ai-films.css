@@ -45,6 +45,7 @@
 
 /* ── Custom Cursor ── */
 *, *::before, *::after { cursor: none !important; }
+a, button, [role="button"] { cursor: none !important; pointer-events: auto; }
 @media (hover: none), (max-width: 580px) {
   *, *::before, *::after { cursor: auto !important; }
   #cursor { display: none; }

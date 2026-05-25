@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terry John Paul · Senior Product Designer | UX Engineer · Open to UK Roles</title>
+    <meta name="description"
+        content="Senior Product Designer and UX Engineer. I design, build, and ship AI-powered SaaS products end-to-end — design, code, and AI systems as one. Open to senior roles at UK startups. Visa sponsorship considered.">
+    <meta property="og:title" content="Terry John Paul · Senior Product Designer | UX Engineer">
+    <meta property="og:description"
+        content="Senior Product Designer and UX Engineer. I design, build, and ship AI-powered SaaS products end-to-end. Open to senior roles at UK startups.">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- ── PRECONNECT ─────────────────────────────────────────────────
+         Establish TCP + TLS early for every font origin.
+         crossorigin required — font fetches are CORS requests.
+    ──────────────────────────────────────────────────────────────── -->
+    <link rel="preconnect" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev" crossorigin>
+    <link rel="dns-prefetch" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev">
+
+    <!-- DatoCMS CDN — all service/project/carousel images -->
+    <link rel="preconnect" href="https://www.datocms-assets.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.datocms-assets.com">
+
+    <!-- Framerusercontent — hosts the 2 Redaction woff2 files -->
+    <link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+    <link rel="dns-prefetch" href="https://framerusercontent.com">
+
+    <!-- ── FONT PRELOADS ──────────────────────────────────────────────
+         Tell the browser about critical fonts before CSS is parsed.
+         Only preload weights actually used above the fold:
+           · Regular 400  — all body text, nav, richtext
+           · Medium  500  — nav, headings, strong text
+           · Redaction 10 & 50 — text-breaker heading (first visible section)
+         Light 300 + Bold 700 are non-critical (optional in @font-face).
+    ──────────────────────────────────────────────────────────────── -->
+    <!-- ── IMAGE PRELOADS ────────────────────────────────────────────
+         Only the first carousel image is above the fold on load.
+         Preloading it in <head> starts the fetch before body is parsed,
+         ~300ms earlier than the <img> tag alone.
+         Items 4-6 are off-screen — no preload, set lazy in HTML below.
+    ──────────────────────────────────────────────────────────────── -->
+    <link rel="preload" as="image" fetchpriority="high"
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone.webp">
+
+    <link rel="preload" as="font" type="font/truetype" crossorigin
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf">
+    <link rel="preload" as="font" type="font/truetype" crossorigin
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://framerusercontent.com/assets/qf6DB7WGDdEjcTvrw5e5SlRp4w.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://framerusercontent.com/assets/kqyAfMmZA5vP4G3u2iu7WJdY.woff2">
+
+
+    <link rel="stylesheet" href="about/about.css">
+</head>
+
+<!-- body.dark-mode is toggled dynamically via IntersectionObserver on scroll -->
+
+<body>
+
+    <svg aria-hidden="true" style="display:none">
+        <symbol id="arrow-icon" viewBox="0 0 7 6" fill="none">
+            <path fill="currentColor" fill-rule="evenodd" d="m3.05 5.4.57.57L6.6 2.99 3.62 0l-.57.57 1.02 1.01c.17.17.35.34.53.51s.36.34.54.5c-.13 0-.27-.01-.41-.01H0v.82h4.73l.41-.02c-.18.16-.36.33-.55.51-.18.17-.36.34-.53.51L3.05 5.42z" clip-rule="evenodd"/>
+        </symbol>
+    </svg>
+
+    <!-- Top-left wordmark -->
+    <div id="site-wordmark">Terry John</div>
+
+    <!-- Top-right cluster: timezone + music -->
+    <div id="top-right-cluster">
+        <div id="site-timezone"></div>
+        <button id="music-btn" aria-label="Toggle music">
+            <video id="site-video"
+                src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/horse.mp4"
+                loop playsinline muted preload="metadata">
+            </video>
+        </button>
+    </div>
+
+    <!-- Background audio track -->
+    <audio id="site-audio" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/website_song.mp3" loop preload="none"></audio>
+
+    <!-- Top nav pill -->
+    <nav class="top-nav" id="top-nav">
+        <div class="top-nav-pill" id="top-nav-pill"></div>
+        <button class="top-nav-item" data-section="work"><span>Portfolio</span></button>
+        <button class="top-nav-item active" data-section="about"><span>About</span></button>
+        <a class="top-nav-item" href="/first-take/"><span>First Take</span></a>
+        <div class="top-nav-divider"></div>
+        <a class="top-nav-item top-nav-link" href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener"><span>LinkedIn ↗</span></a>
+        <a class="top-nav-item top-nav-link" href="https://drive.google.com/file/d/1XU9UV_ZmV6aI-rapMqnlHzWepyLrmMuj/view?usp=sharing" target="_blank" rel="noopener"><span>Resume ↗</span></a>
+    </nav>
+
+    <!-- Mobile nav bar (≤768px only) -->
+    <div id="mobile-nav-bar">
+        <div id="mobile-wordmark">Terry John</div>
+        <div id="mobile-nav-right">
+            <button id="mobile-music-btn" aria-label="Toggle music">
+                <!-- NOTE: duplicate of #site-video; preload="none" prevents double-download -->
+                <video id="mobile-site-video"
+                    src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/horse.mp4"
+                    loop playsinline muted preload="none">
+                </video>
+            </button>
+            <button id="mobile-hamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" aria-hidden="true">
+        <div id="mobile-menu-inner">
+            <a class="mobile-menu-item mobile-menu-link" href="https://terryjohn.me">Portfolio</a>
+            <button class="mobile-menu-item active" data-section="about">About</button>
+            <a class="mobile-menu-item" href="/first-take/">First Take</a>
+            <div class="mobile-menu-divider"></div>
+            <a class="mobile-menu-item mobile-menu-link" href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="mobile-menu-item mobile-menu-link" href="https://drive.google.com/file/d/1XU9UV_ZmV6aI-rapMqnlHzWepyLrmMuj/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         PAGE LOADER
+    ============================================================ -->
+    <div id="page-loader" aria-hidden="true">
+        <div id="loader-name">Terry John</div>
+        <div id="loader-track"><div id="loader-fill"></div></div>
+    </div>
+
+
+
+
+    <!-- ============================================================
+     P3 · HERO CAROUSEL
+     6 media items: 4 images + 2 videos.
+     Drag horizontally. Videos: autoplay muted loop playsinline.
+     ============================================================ -->
+    <main>
+        <div class="dynamic-bg" id="dynamic-bg">
+
+            <!-- TEXT BREAKER -->
+            <div class="light-section container" data-bg="#ffffff">
+                <section class="text-breaker reveal">
+                    <h2 class="text-breaker-text">
+                        <span class="h-reg">One person. Zero handoffs. </span><em class="h-ital">Shipped.</em>
+                    </h2>
+                </section>
+            </div>
+
+            <!-- P3 · HERO CAROUSEL -->
+            <section aria-label="Featured work" style="overflow-x: hidden; background: transparent;">
+                <ul class="carousel" id="carousel" role="list">
+
+                    <!-- 1 · Hipp scheduling UI (portrait) — eager + high priority, visible on load -->
+                    <li class="carousel-item" style="aspect-ratio: 92 / 87;">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone.webp"
+                            alt="Hipp scheduling UI" width="920" height="870" loading="eager" fetchpriority="high" decoding="async" draggable="false">
+                    </li>
+
+                    <!-- 2 · Im Collective — motion reel (video, square) -->
+                    <li class="carousel-item carousel-item--square">
+                        <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/jio-fynd-preview.mp4" autoplay
+                            muted loop playsinline aria-label="Motion reel" preload="metadata">
+                        </video>
+                    </li>
+
+                    <!-- 3 · Owner website (landscape) -->
+                    <li class="carousel-item carousel-item--landscape">
+                        <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/download.mp4" autoplay muted
+                            loop playsinline draggable="false" preload="metadata"></video>
+                    </li>
+
+                    <!-- 5 · Owner ordering app — iPhone mockup (portrait) — off-screen, lazy -->
+                    <li class="carousel-item" style="aspect-ratio: 2138 / 3249;">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin-about.webp"
+                            alt="Pixelbin app mockup" width="2138" height="3249" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+                    </li>
+
+                    <!-- 6 · Fulfil order creation modal interaction (image, landscape) — off-screen, lazy -->
+                    <li class="carousel-item carousel-item--widescreen">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Swadesh-about.webp"
+                            alt="Swadesh app mockup" width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+                    </li>
+
+                </ul>
+            </section>
+
+            <!-- ============================================================
+       P4 · LIGHT SECTION
+       data-bg="#ffffff" triggers bg swap when 50% visible.
+       ============================================================ -->
+            <div class="light-section container" data-bg="#ffffff" id="light-section">
+            </div><!-- /.light-section -->
+
+            <!-- ============================================================
+       P5 · TEXT CONTENT + SERVICES + PROJECTS
+       Same light section background. max-width 53.5rem wrapper.
+       ============================================================ -->
+            <section class="text-content" id="text-content">
+                <div class="text-content-wrapper">
+
+                    <!-- RICHTEXT PROSE — block 1 -->
+                    <div class="richtext reveal">
+                        <p>I&#8217;m <strong>Terry John</strong>. Six years shipping products end-to-end, as a designer who codes and builds AI systems. Six years building the kind of products that usually need three people. Someone who does both at the level where they meet, taking full ownership from concept to production. Based in India. <strong>Open to UK roles with visa sponsorship.</strong></p>
+                    </div>
+
+                    <!-- INTERACTIVE SERVICES LIST -->
+                    <div class="interactive-list" id="services-list">
+                        <!-- Injected by JS -->
+                    </div>
+
+                    <!-- RICHTEXT PROSE — block 2 -->
+                    <div class="richtext reveal">
+                        <p>Most designers stop at the handoff. I stay until it ships. That means writing the frontend, integrating the APIs, tuning the AI layer. Every decision gets made with the product&#8217;s outcome in mind, not just the spec.</p>
+                    </div>
+
+                    <!-- RICHTEXT PROSE — block 3 -->
+                    <div class="richtext reveal">
+                        <p>Process follows the problem. I don&#8217;t bring a methodology. I bring judgment. When speed matters, I compress the cycle. When precision matters, I slow down exactly where it counts. What comes out is always the same: something that works, looks right, and holds up past the launch.</p>
+                    </div>
+
+                    <!-- RICHTEXT PROSE — block 4: proof -->
+                    <div class="richtext richtext-proof reveal">
+                        <span class="proof-label">What shipped</span>
+                        <ul>
+                            <li>A full product built from scratch in under three weeks</li>
+                            <li>Replaced a 3-person design&#8202;+&#8202;dev workflow on a fintech product</li>
+                            <li>Delivered the lowest drop-off rate on any payment flow at Fynd</li>
+                            <li>Built the design system powering Jio Commerce Platform</li>
+                            <li>Led Pixelbin&#8217;s end-to-end UX embedded with ML engineers</li>
+                        </ul>
+                    </div>
+
+                    <!-- RICHTEXT PROSE — block 5: client context -->
+                    <div class="richtext reveal">
+                        <p>I work best with <strong>founders and product leads</strong> who need to move fast and can&#8217;t afford the gap between design and engineering. If you need someone to think at product level, execute at craft level, and actually cares whether it works after launch. That&#8217;s the engagement I&#8217;m built for.</p>
+                    </div>
+
+                </div>
+            </section>
+
+    </main>
+
+
+    <!-- ============================================================
+     P6 · DARK SECTION — TESTIMONIALS + CTA
+     data-bg="#0a0a0a" triggers background swap.
+     ============================================================ -->
+    <div class="dark-section" id="dark-section" data-bg="#0a0a0a">
+
+        <section class="testimonials-slider" id="testimonials-slider" aria-label="Testimonials">
+
+            <!-- Quote area -->
+            <div class="testimonial-container">
+                <div class="testimonial-content" id="testimonial-content">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+
+            <!-- Author block -->
+            <div class="author-info" id="author-info">
+                <!-- Injected by JS -->
+            </div>
+
+            <!-- Dot navigation -->
+            <nav class="testimonial-nav" id="testimonial-nav" aria-label="Testimonial navigation">
+                <!-- Injected by JS -->
+            </nav>
+
+        </section>
+
+        <!-- GET IN TOUCH CTA -->
+        <section class="contact-cta-section">
+            <p class="cta-eyebrow">Available for projects and open to senior roles in the UK.</p>
+            <button class="footer-cta-btn" id="cta-btn">
+                <span class="btn-mail-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+                        <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                Get in touch
+            </button>
+        </section>
+
+    </div><!-- /.dark-section -->
+
+
+    <!-- ============================================================
+     P5 · WORK DETAIL MODAL
+     ============================================================ -->
+    <article class="work-modal" id="work-modal" role="dialog" aria-modal="true" aria-label="Work detail">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-inner">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none">
+                    <path fill="#D9D9D9" fill-opacity=".3" fill-rule="evenodd"
+                        d="M18 36c9.941 0 18-8.059 18-18S27.941 0 18 0 0 8.059 0 18s8.059 18 18 18m5.707-23.707a1 1 0 0 0-1.414 0L18 16.586l-4.293-4.293a1 1 0 0 0-1.414 1.414L16.586 18l-4.293 4.293a1 1 0 0 0 1.414 1.414L18 19.414l4.293 4.293a1 1 0 0 0 1.414-1.414L19.414 18l4.293-4.293a1 1 0 0 0 0-1.414"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div class="modal-card">
+                <div class="modal-scroll">
+                    <div class="modal-body" id="modal-body">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+    <!-- ============================================================
+     P7 · CONTACT MODAL
+     max-height 63.8rem. Frosted dark card.
+     Eyebrow "Book a call" → title "Drop us a line"
+     → subtitle → hr → email link.
+     ============================================================ -->
+    <article class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-label="Contact">
+        <div class="contact-modal-backdrop" id="contact-modal-backdrop"></div>
+        <div class="contact-modal-inner">
+            <button class="contact-close-btn" id="contact-close-btn" aria-label="Close contact">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none">
+                    <path fill="#D9D9D9" fill-opacity=".3" fill-rule="evenodd"
+                        d="M18 36c9.941 0 18-8.059 18-18S27.941 0 18 0 0 8.059 0 18s8.059 18 18 18m5.707-23.707a1 1 0 0 0-1.414 0L18 16.586l-4.293-4.293a1 1 0 0 0-1.414 1.414L16.586 18l-4.293 4.293a1 1 0 0 0 1.414 1.414L18 19.414l4.293 4.293a1 1 0 0 0 1.414-1.414L19.414 18l4.293-4.293a1 1 0 0 0 0-1.414"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div class="contact-modal-card">
+                <div class="contact-modal-scroll">
+                    <div class="contact-modal-body">
+                        <div class="contact-eyebrow">Open to the right problem</div>
+                        <div class="contact-title">Building something that needs to actually work?</div>
+                        <div class="contact-subtitle">Not looking for brand exercises or spec decks. If you&#8217;re building something real, and you need one person who can design it, build it, and ship it. Let&#8217;s talk.
+
+                            Based in India. Open to UK visa sponsorship and relocation.</div>
+                        <hr class="contact-hr">
+                        <div>
+                            <span class="contact-label">Enquiries and collaborations</span>
+                            <a href="mailto:terryjohnpaul20@gmail.com"
+                                class="contact-link">terryjohnpaul20@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+
+    <footer id="site-footer">
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <span>terryjohnpaul20@gmail.com</span>
+                <span>Designed and built by me — no templates, no theme · © 2026 Terry John Paul</span>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                <a href="https://drive.google.com/file/d/1XU9UV_ZmV6aI-rapMqnlHzWepyLrmMuj/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
+                <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener">Instagram ↗</a>
+                <a href="https://x.com/UXZeldman" target="_blank" rel="noopener">Twitter ↗</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Custom cursor -->
+    <div class="custom-cursor" id="customCursor">
+        <div class="custom-cursor-pill">VIEW CASE STUDY &nbsp;→</div>
+    </div>
+
+    <!-- Custom cursor -->
+    <div id="cursor" aria-hidden="true"><span id="cursor-label">View work</span></div>
+
+    <script src="about/about.js"></script>
+</body>
+
+</html>
+
+

@@ -1409,20 +1409,42 @@
     }
 
     /* Dither photo — 3:4 portrait, centered above copy */
-    .cta-dither-img {
+    .cta-dither-wrap {
+      position: relative;
       display: block;
       width: 100%;
       max-width: 280px;
       aspect-ratio: 3 / 4;
-      object-fit: cover;
       border-radius: 12px;
       margin: 0 auto 64px;
+      overflow: hidden;
       opacity: 0;
       will-change: opacity, transform;
+      cursor: none;
+    }
+    .cta-dither-img,
+    .cta-real-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .cta-dither-img { z-index: 1; }
+    .cta-real-img {
+      z-index: 2;
+      opacity: 0;
     }
 
     @media (max-width: 768px) {
-      .cta-dither-img { max-width: 200px; margin-bottom: 48px; }
+      .cta-dither-wrap { max-width: 200px; margin-bottom: 48px; }
+    }
+
+    @media (hover: none) {
+      .cta-real-img { display: none; }
+      .cta-dither-wrap { cursor: auto; }
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -2365,7 +2387,10 @@
     </h2>
 
     <div class="cta-inner">
-      <img class="cta-dither-img" src="/assets/footer_profile.webp" alt="">
+      <div class="cta-dither-wrap" id="dither-wrap">
+        <img class="cta-dither-img" src="/assets/footer_profile.webp" alt="Terry John Paul — illustration">
+        <img class="cta-real-img" id="real-img" src="/assets/footer_profile_real.webp" alt="Terry John Paul — photo">
+      </div>
       <p class="cta-body">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer who works with founders building products that need to scale. AI tools. Commerce platforms. Fintech at speed. I think in systems, design end-to-end, and ship without losing the craft. If you're pre-launch or mid-scale and need design that moves — that's exactly where I do my best work. Also open to the right senior full-time role in the UK. Remote or in-office. Ready to relocate. Sponsorship is not an issue.</p>
       <p class="cta-eyebrow">Available for projects · Open to senior UK roles · Visa sponsorship welcome</p>
       <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
@@ -3262,7 +3287,7 @@
       if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
       var heading  = document.querySelector('.cta-section-heading');
-      var ditherImg = document.querySelector('.cta-dither-img');
+      var ditherWrap = document.querySelector('.cta-dither-wrap');
       var ctaSect  = document.getElementById('cta-section');
 
       if (!ctaSect) return;
@@ -3278,14 +3303,107 @@
               { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }
             );
           }
-          if (ditherImg) {
-            gsap.fromTo(ditherImg,
+          if (ditherWrap) {
+            gsap.fromTo(ditherWrap,
               { opacity: 0, y: 16 },
               { opacity: 1, y: 0, duration: 1, delay: 0.15, ease: 'power2.out' }
             );
           }
         }
       });
+
+      /* ── Cursor reveal: real photo with smooth lerp + soft mask ── */
+      var realImg = document.getElementById('real-img');
+      var wrap = document.getElementById('dither-wrap');
+      if (wrap && realImg && window.matchMedia('(hover: hover)').matches) {
+        var canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;border-radius:12px;';
+        wrap.appendChild(canvas);
+        var ctx = canvas.getContext('2d');
+        var imgReal = new Image();
+        imgReal.crossOrigin = 'anonymous';
+        imgReal.src = '/assets/footer_profile_real.webp';
+
+        var mouseX = -999, mouseY = -999;
+        var lerpX = -999, lerpY = -999;
+        var isHovering = false;
+        var currentRadius = 0;
+        var targetRadius = 80;
+        var ease = 0.12;
+        var raf;
+
+        function resizeCanvas() {
+          var rect = wrap.getBoundingClientRect();
+          canvas.width = rect.width * window.devicePixelRatio;
+          canvas.height = rect.height * window.devicePixelRatio;
+          ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        function draw() {
+          var rect = wrap.getBoundingClientRect();
+          var w = rect.width;
+          var h = rect.height;
+
+          lerpX += (mouseX - lerpX) * ease;
+          lerpY += (mouseY - lerpY) * ease;
+
+          var radiusTarget = isHovering ? targetRadius : 0;
+          currentRadius += (radiusTarget - currentRadius) * ease;
+
+          ctx.clearRect(0, 0, w, h);
+
+          if (currentRadius > 0.5 && imgReal.complete) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(lerpX, lerpY, currentRadius * 1.8, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+
+            var gradient = ctx.createRadialGradient(lerpX, lerpY, 0, lerpX, lerpY, currentRadius * 1.8);
+            gradient.addColorStop(0, 'rgba(0,0,0,1)');
+            gradient.addColorStop(0.5, 'rgba(0,0,0,0.8)');
+            gradient.addColorStop(0.75, 'rgba(0,0,0,0.3)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.drawImage(imgReal, 0, 0, w, h);
+
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, w, h);
+
+            ctx.restore();
+          }
+
+          if (currentRadius > 0.5 || isHovering) {
+            raf = requestAnimationFrame(draw);
+          }
+        }
+
+        imgReal.onload = function () { resizeCanvas(); };
+        window.addEventListener('resize', resizeCanvas);
+
+        wrap.addEventListener('mouseenter', function () {
+          isHovering = true;
+          resizeCanvas();
+          draw();
+        });
+        wrap.addEventListener('mousemove', function (e) {
+          var rect = wrap.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+          if (!isHovering) {
+            isHovering = true;
+            lerpX = mouseX;
+            lerpY = mouseY;
+            resizeCanvas();
+            draw();
+          }
+        });
+        wrap.addEventListener('mouseleave', function () {
+          isHovering = false;
+        });
+      }
     })();
   </script>
 

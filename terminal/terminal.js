@@ -95,6 +95,8 @@
       },
     };
 
+    var TERRY = window.TERRY || null;
+
     var reducedMotion =
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -105,6 +107,7 @@
     // ── State ───────────────────────────────────────────────────────
     var state = {
       isOpen: false,
+      booting: false,
       history: [],
       historyIndex: -1,
       outputHTML: '',
@@ -539,6 +542,7 @@
     // ── Boot Sequence ───────────────────────────────────────────────
     async function bootSequence() {
       state.firstVisit = false;
+      state.booting = true;
       var skipped = false;
 
       function onSkip(e) {
@@ -559,53 +563,57 @@
         scrollToBottom();
       }
 
-      // ── Phase 1: Kernel messages (instant per line, 30-80ms gaps) ──
-      var kernelLines = [
-        '<span style="color:#555">[    0.000]</span> TerryOS kernel v2.4.1',
-        '<span style="color:#555">[    0.012]</span> CPU: Creative Engine @ ∞ GHz',
-        '<span style="color:#555">[    0.034]</span> Memory: 16384 MB .............. <span style="color:#48d597">OK</span>',
-        '<span style="color:#555">[    0.089]</span> Loading modules ............... <span style="color:#48d597">OK</span>',
-        '<span style="color:#555">[    0.204]</span> Mounting /dev/portfolio ....... <span style="color:#48d597">OK</span>',
-        '<span style="color:#555">[    0.312]</span> NET: Established connection',
-      ];
+      try {
+        // ── Phase 1: Kernel messages (instant per line, 30-80ms gaps) ──
+        var kernelLines = [
+          '<span style="color:#555">[    0.000]</span> TerryOS kernel v2.4.1',
+          '<span style="color:#555">[    0.012]</span> CPU: Creative Engine @ ∞ GHz',
+          '<span style="color:#555">[    0.034]</span> Memory: 16384 MB .............. <span style="color:#48d597">OK</span>',
+          '<span style="color:#555">[    0.089]</span> Loading modules ............... <span style="color:#48d597">OK</span>',
+          '<span style="color:#555">[    0.204]</span> Mounting /dev/portfolio ....... <span style="color:#48d597">OK</span>',
+          '<span style="color:#555">[    0.312]</span> NET: Established connection',
+        ];
 
-      for (var i = 0; i < kernelLines.length; i++) {
-        if (skipped) break;
-        addBootLine(kernelLines[i]);
-        await bootDelay(30 + Math.random() * 50);
-      }
-
-      if (!skipped) addBootLine('');
-      await bootDelay(150);
-
-      // ── Phase 2: Service startup (100-200ms gaps) ──
-      var serviceLines = [
-        { text: 'Started Portfolio Engine.', status: 'ok' },
-        { text: 'Started Design System.', status: 'ok' },
-        { text: 'Started Creative Engine.', status: 'ok' },
-        { text: 'Connected to Reality.', status: 'fail' },
-        { text: 'Retried with Coffee.', status: 'ok' },
-        { text: 'Reached target Ready.', status: 'ok' },
-      ];
-
-      for (var j = 0; j < serviceLines.length; j++) {
-        if (skipped) break;
-        var s = serviceLines[j];
-        if (s.status === 'ok') {
-          addBootLine('  <span style="color:#48d597">[  OK  ]</span> ' + escapeHTML(s.text));
-        } else {
-          addBootLine('  <span style="color:#f85149">[ FAIL ]</span> ' + escapeHTML(s.text));
+        for (var i = 0; i < kernelLines.length; i++) {
+          if (skipped) break;
+          addBootLine(kernelLines[i]);
+          await bootDelay(30 + Math.random() * 50);
         }
-        await bootDelay(100 + Math.random() * 100);
+
+        if (!skipped) addBootLine('');
+        await bootDelay(150);
+
+        // ── Phase 2: Service startup (100-200ms gaps) ──
+        var serviceLines = [
+          { text: 'Started Portfolio Engine.', status: 'ok' },
+          { text: 'Started Design System.', status: 'ok' },
+          { text: 'Started Creative Engine.', status: 'ok' },
+          { text: 'Connected to Reality.', status: 'fail' },
+          { text: 'Retried with Coffee.', status: 'ok' },
+          { text: 'Reached target Ready.', status: 'ok' },
+        ];
+
+        for (var j = 0; j < serviceLines.length; j++) {
+          if (skipped) break;
+          var s = serviceLines[j];
+          if (s.status === 'ok') {
+            addBootLine('  <span style="color:#48d597">[  OK  ]</span> ' + escapeHTML(s.text));
+          } else {
+            addBootLine('  <span style="color:#f85149">[ FAIL ]</span> ' + escapeHTML(s.text));
+          }
+          await bootDelay(100 + Math.random() * 100);
+        }
+
+        // ── Phase 3: Clear boot, show banner ──
+        await bootDelay(300);
+        document.removeEventListener('keydown', onSkip);
+
+        outputEl.innerHTML = '';
+        showBanner();
+        localStorage.setItem('tw-booted', 'true');
+      } finally {
+        state.booting = false;
       }
-
-      // ── Phase 3: Clear boot, show banner ──
-      await bootDelay(300);
-      document.removeEventListener('keydown', onSkip);
-
-      outputEl.innerHTML = '';
-      showBanner();
-      localStorage.setItem('tw-booted', 'true');
     }
 
     // ── Context Greetings ───────────────────────────────────────────
@@ -1845,7 +1853,9 @@
       echoCommand(cmd);
       inputEl.value = '';
       inputEl.focus();
-      await executeCommand(cmd);
+      try {
+        await executeCommand(cmd);
+      } catch (_) {}
       saveState();
     }
 
@@ -1872,15 +1882,17 @@
 
     // ── Input Handling ──────────────────────────────────────────────
     function setupInput() {
-      inputEl.addEventListener('keydown', function (e) {
+      inputEl.addEventListener('keydown', async function (e) {
         if (e.key === 'Enter') {
           var val = inputEl.value.trim();
           if (!val) return;
           state.history.push(val);
           state.historyIndex = -1;
           echoCommand(val);
-          executeCommand(val);
           inputEl.value = '';
+          try {
+            await executeCommand(val);
+          } catch (_) {}
           saveState();
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
@@ -1933,8 +1945,8 @@
           e.preventDefault();
           toggleWidget();
         }
-        // Escape to close
-        if (e.key === 'Escape' && state.isOpen) {
+        // Escape to close (suppressed during boot so it only skips the animation)
+        if (e.key === 'Escape' && state.isOpen && !state.booting) {
           closeWidget();
         }
         // Ctrl+L to clear

@@ -5,9 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terry John | Product Designer</title>
+  <meta name="description" content="Senior Product Designer. AI, commerce, and fintech — end-to-end, from first principles to final pixel. Open to senior roles in the UK.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://terryjohn.me/">
+  <meta property="og:title" content="Terry John | Product Designer">
+  <meta property="og:description" content="Senior Product Designer. AI, commerce, and fintech — end-to-end, from first principles to final pixel.">
+  <meta property="og:image" content="https://terryjohn.me/assets/Pixelbin_cover.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terry John | Product Designer">
+  <meta name="twitter:description" content="Senior Product Designer. AI, commerce, and fintech — end-to-end, from first principles to final pixel.">
+  <meta name="twitter:image" content="https://terryjohn.me/assets/Pixelbin_cover.webp">
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Preconnect + DNS-prefetch for R2 CDN -->
+  <link rel="preconnect" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev" crossorigin>
+  <link rel="dns-prefetch" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev">
+
+  <!-- Font preloads — critical weights only -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2">
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
@@ -34,6 +54,34 @@
 
     @media (hover: none), (max-width: 580px) {
       *, *::before, *::after { cursor: auto !important; }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 999999;
+      padding: 12px 24px;
+      background: #111;
+      color: #fff;
+      font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 0 0 8px 8px;
+      cursor: pointer !important;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     html {
@@ -93,7 +141,7 @@
       box-shadow: none;
       overflow: hidden;
       /* Promote to composite layer for smooth GPU animation */
-      will-change: transform, width, height, border-radius, box-shadow;
+      will-change: transform;
       user-select: none;
       -webkit-user-select: none;
     }
@@ -145,7 +193,7 @@
       font-weight: 400;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(26,25,25,0.28);
+      color: rgba(26,25,25,0.55);
       margin-bottom: 56px;
     }
 
@@ -186,7 +234,7 @@
       font-family: var(--font-display);
       font-size: 1rem;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.25);
+      color: rgba(0, 0, 0, 0.55);
       margin-bottom: 24px;
     }
 
@@ -204,7 +252,7 @@
       font-size: 1.4rem;
       font-weight: 300;
       line-height: 1.65;
-      color: rgba(0, 0, 0, 0.48);
+      color: rgba(0, 0, 0, 0.58);
     }
 
     @media (max-width: 768px) {
@@ -244,7 +292,7 @@
       font-weight: 400;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(26,25,25,0.28);
+      color: rgba(26,25,25,0.55);
       margin-bottom: 20px;
     }
 
@@ -444,21 +492,14 @@
        FONT FACES
     ============================================================ */
 
-    @font-face {
-      font-family: 'PP Editorial New';
-      src: url('PPEditorialNew-Ultralight.otf') format('opentype');
-      font-weight: 200;
-      font-style: normal;
-      font-display: swap;
-    }
-
     /* ============================================================
        FONT FACES — Helvetica Now Display (CDN)
     ============================================================ */
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
+      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
+           url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
       font-weight: 300;
       font-style: normal;
       font-display: swap;
@@ -466,7 +507,8 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+           url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -474,7 +516,8 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
+      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+           url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
       font-weight: 500;
       font-style: normal;
       font-display: swap;
@@ -482,7 +525,8 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
+      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+           url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
       font-weight: 700;
       font-style: normal;
       font-display: swap;
@@ -597,7 +641,7 @@
       font-family: var(--font-display);
       font-size: 14px;
       font-weight: 400;
-      color: rgba(0,0,0,0.45);
+      color: rgba(0,0,0,0.58);
       letter-spacing: 0.01em;
       line-height: 1;
       pointer-events: none;
@@ -608,14 +652,14 @@
 
     /* ── Music toggle ───────────────────────────────────── */
     #music-btn {
-      width: 40px;
-      height: 24px;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: none;
       border: none;
-      padding: 0;
+      padding: 10px;
       cursor: pointer;
       border-radius: 4px;
       overflow: hidden;
@@ -733,7 +777,7 @@
       font-size: 1.1rem;
       font-weight: 400;
       letter-spacing: 0.08em;
-      color: rgba(26,25,25,0.28);
+      color: rgba(26,25,25,0.55);
       margin-bottom: 16px;
     }
 
@@ -1470,7 +1514,7 @@
       font-size: 1.2rem;
       font-weight: 400;
       letter-spacing: 0.03em;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.65);
       margin-bottom: 32px;
     }
     .cta-body {
@@ -1482,30 +1526,6 @@
       color: rgba(255,255,255,0.82);
       margin-bottom: 48px;
     }
-    .cta-price {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.28);
-      letter-spacing: 0.02em;
-      margin-bottom: 28px;
-    }
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px 48px;
-      background: #fff;
-      color: #000;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 400;
-      text-decoration: none;
-      border-radius: 4px;
-      min-width: 280px;
-      transition: background 0.2s ease;
-    }
-    .cta-btn:hover { background: rgba(255,255,255,0.88); }
 
     /* ═══════════════════════════════════════════════════════════
        FOOTER
@@ -1569,9 +1589,9 @@
     }
     .footer-left span {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.42);
+      color: rgba(255,255,255,0.6);
     }
     .footer-right {
       display: flex;
@@ -1581,7 +1601,7 @@
       font-family: var(--font-display);
       font-size: 1.2rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
       transition: color 0.2s ease;
     }
@@ -1685,8 +1705,6 @@
       .cta-inner      { padding: 0; }
       .cta-eyebrow    { font-size: 1.3rem; margin-bottom: 24px; }
       .cta-body       { font-size: 1.4rem; margin-bottom: 40px; }
-      .cta-price      { font-size: 1.2rem; }
-      .cta-btn        { min-width: unset; width: 100%; font-size: 1.4rem; padding: 16px 32px; }
       #site-footer    { padding: 60px 24px 40px; }
       .footer-bottom  { flex-direction: column; gap: 24px; align-items: flex-start; }
       .footer-cta-btn { font-size: 1.6rem; padding: 16px 40px; }
@@ -1773,12 +1791,12 @@
       display:         flex;
       align-items:     center;
       justify-content: center;
-      width:           40px;
-      height:          24px;
+      width:           44px;
+      height:          44px;
       border:          none;
       background:      transparent;
       cursor:          pointer;
-      padding:         0;
+      padding:         10px;
       border-radius:   6px;
       overflow:        hidden;
       opacity:         0.5;
@@ -1833,12 +1851,12 @@
       align-items:     center;
       justify-content: center;
       gap:             5px;
-      width:           36px;
-      height:          36px;
+      width:           44px;
+      height:          44px;
       border:          none;
       background:      transparent;
       cursor:          pointer;
-      padding:         0;
+      padding:         4px;
     }
 
     #mobile-hamburger span {
@@ -1944,15 +1962,18 @@
         bottom:     auto !important;
         transform:  none !important;
         width:      100%;
-        text-align: center;
+        padding:    0 !important;
+        text-align: left;
         margin-bottom: 32px;
+        overflow:   hidden;
       }
 
       .hero-headline {
         white-space:    normal;
-        font-size:      clamp(34px, 10vw, 50px);
-        letter-spacing: -1px;
+        font-size:      clamp(24px, 8.5vw, 50px);
+        letter-spacing: -0.5px;
         margin-bottom:  16px;
+        text-align:     left;
       }
 
       .hero-sub {
@@ -1962,7 +1983,7 @@
 
       .hero-cta {
         flex-direction: column;
-        align-items:    center;
+        align-items:    stretch;
         gap:            10px;
       }
 
@@ -1979,9 +2000,9 @@
         width:           100%;
         justify-content: center;
         max-width:       300px;
-        padding:         15px 24px;
+        padding:         16px 24px;
         font-size:       1.5rem;
-        min-height:      54px;
+        min-height:      56px;
       }
 
       /* Card sits below the text naturally in flex flow */
@@ -1994,6 +2015,10 @@
         transform:    none !important;
         flex-shrink:  0;
       }
+    }
+
+    @media (max-width: 390px) {
+      .hero-headline { font-size: 7.5vw; }
     }
 
     /* Preview popup — identical to index.html */
@@ -2051,6 +2076,8 @@
 
 <body>
 
+  <a href="#hero" class="skip-link">Skip to content</a>
+
   <!-- ============================================================
        PAGE LOADER
   ============================================================ -->
@@ -2100,7 +2127,7 @@
           loop playsinline muted preload="metadata">
         </video>
       </button>
-      <button id="mobile-hamburger" aria-label="Open menu">
+      <button id="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -2109,7 +2136,7 @@
   </div>
 
   <!-- ── Mobile menu overlay ───────────────────────────────── -->
-  <div id="mobile-menu" aria-hidden="true">
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
     <div id="mobile-menu-inner">
       <button class="mobile-menu-item" data-section="work">Portfolio</button>
       <button class="mobile-menu-item" data-section="about">About</button>
@@ -2156,8 +2183,8 @@
     </div>
 
     <div id="card">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero_Video_2.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23E8E4DE' width='100%25' height='100%25'/%3E%3C/svg%3E" aria-label="Product design showreel featuring interface animations and interaction details">
+        <source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero_Video_2_1080p.mp4" type="video/mp4" />
       </video>
 
     </div>
@@ -2179,7 +2206,7 @@
         <!-- 01 -->
         <div class="klt-tour" data-tour="0">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">AI Product Design</h3></div>
+            <div><h2 class="klt-tour__title">AI Product Design</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">AI/ML UX · Generative Interfaces · Prompt UX · Interaction Design · Workflow Design · Prototyping</p>
             </div>
@@ -2189,7 +2216,7 @@
         <!-- 02 -->
         <div class="klt-tour" data-tour="1">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">Design Systems at Scale</h3></div>
+            <div><h2 class="klt-tour__title">Design Systems at Scale</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">Figma · Component Architecture · Design Tokens · WCAG Accessibility · Developer Handoff · Documentation</p>
             </div>
@@ -2199,7 +2226,7 @@
         <!-- 03 -->
         <div class="klt-tour" data-tour="2">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">Product Strategy &amp; Research</h3></div>
+            <div><h2 class="klt-tour__title">Product Strategy &amp; Research</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">Discovery · User Research · Jobs-to-be-done · Information Architecture · UX Strategy · Usability Testing</p>
             </div>
@@ -2209,7 +2236,7 @@
         <!-- 04 -->
         <div class="klt-tour" data-tour="3">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">Platform &amp; Commerce Design</h3></div>
+            <div><h2 class="klt-tour__title">Platform &amp; Commerce Design</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">E-commerce UX · Checkout Flows · Merchant Tooling · Product Discovery · Responsive Design · 0→1 Execution</p>
             </div>
@@ -2219,7 +2246,7 @@
         <!-- 05 -->
         <div class="klt-tour" data-tour="4">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">Delivery &amp; Stakeholder Leadership</h3></div>
+            <div><h2 class="klt-tour__title">Delivery &amp; Stakeholder Leadership</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">Stakeholder Management · Agile · Sprint Delivery · Engineering Handoff · Async Documentation · Cross-functional Leadership</p>
             </div>
@@ -2229,7 +2256,7 @@
         <!-- 06 -->
         <div class="klt-tour" data-tour="5">
           <div class="klt-tour__summary">
-            <div><h3 class="klt-tour__title">Generative Content &amp; Film</h3></div>
+            <div><h2 class="klt-tour__title">Generative Content &amp; Film</h2></div>
             <div class="klt-tour__duration">
               <p class="klt-tour__duration-text">fal.ai · Generative Pipelines · AI Animation · Prompt Direction · Freepik Spaces · Ad Production · Creative Direction · Model Chaining</p>
             </div>
@@ -2263,7 +2290,7 @@
           <div class="overlay-wrap" style="--overlay-w: 240px; --overlay-h: 160px;">
             <video class="overlay-img"
                  src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin_hover.mp4"
-                 autoplay muted loop playsinline preload="none"
+                 muted loop playsinline preload="none"
                  aria-hidden="true"></video>
           </div>
         </div>
@@ -2279,38 +2306,38 @@
 
       <div class="spacer-grid"></div>
 
-      <!-- ROW 2: BNPL — cols 1–5 | Swadesh — cols 6–12 -->
-      <div class="project start-1 span-5" style="height:407.406px" data-project="bnpl">
+      <!-- ROW 2: Settle Club — cols 1–5 | Swadesh — cols 6–12 -->
+      <a class="project start-1 span-5" style="height:407.406px;text-decoration:none;color:inherit;" data-project="settle-club" href="/settle-club/">
         <div class="img-project-wrap">
           <img class="project-img"
                src="/assets/BNPL_at_scale.webp"
-               alt="BNPL at Scale" loading="lazy" decoding="async">
+               alt="Settle Club — Designing credit for India's first-time borrowers" loading="lazy" decoding="async">
           <div class="overlay-wrap" style="--overlay-w: 240px; --overlay-h: 160px;">
             <video class="overlay-img"
-                 src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle_hover.mp4"
-                 autoplay muted loop playsinline preload="none"
+                 src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle_hover_480p.mp4"
+                 muted loop playsinline preload="none"
                  aria-hidden="true"></video>
           </div>
         </div>
         <div class="project-info">
           <div class="project-text">
-            <h3 class="project-title">BNPL at Scale</h3>
-            <p class="project-metrics">0→1 shipped in under 4 months · Integrated across 5+ merchant flows</p>
-            <p class="project-tags">Fintech · Checkout UX · 0→1 Payment Design</p>
+            <h3 class="project-title">Settle Club</h3>
+            <p class="project-metrics">55% checkout completion · 68% KYC completion · 0→1 in 12 weeks</p>
+            <p class="project-tags">Fintech · BNPL · Checkout UX · 0→1 Payment Design</p>
           </div>
-          <span class="doc-status">Documentation in Progress</span>
+          <span class="btn-main"><span class="btn-label">Read case study</span></span>
         </div>
-      </div>
+      </a>
 
       <div class="project start-6 span-7" style="height:407.406px" data-project="swadesh">
         <div class="img-project-wrap">
           <img class="project-img"
-               src="/assets/swadesh-mockup.webp"
+               src="/assets/swadesh-mockup-opt.webp"
                alt="Swadesh Design System" loading="lazy" decoding="async">
           <div class="overlay-wrap" style="--overlay-w: 240px; --overlay-h: 160px;">
             <video class="overlay-img"
                  src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh_hover.mp4"
-                 autoplay muted loop playsinline preload="none"
+                 muted loop playsinline preload="none"
                  aria-hidden="true"></video>
           </div>
         </div>
@@ -2334,8 +2361,8 @@
                alt="Tip4Fit (Fitness App)" loading="lazy" decoding="async">
           <div class="overlay-wrap" style="--overlay-w: 240px; --overlay-h: 160px;">
             <video class="overlay-img"
-                 src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Tips%24Fit_hover.mp4"
-                 autoplay muted loop playsinline preload="none"
+                 src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Tips4Fit_hover_480p.mp4"
+                 muted loop playsinline preload="none"
                  aria-hidden="true"></video>
           </div>
         </div>
@@ -2357,7 +2384,7 @@
           <div class="overlay-wrap" style="--overlay-w: 240px; --overlay-h: 160px;">
             <img class="overlay-img"
                  src="/assets/fynd-website.webp"
-                 alt="" aria-hidden="true" decoding="async">
+                 alt="" aria-hidden="true" decoding="async" loading="lazy">
           </div>
         </div>
         <div class="project-info">
@@ -2388,8 +2415,8 @@
 
     <div class="cta-inner">
       <div class="cta-dither-wrap" id="dither-wrap">
-        <img class="cta-dither-img" src="/assets/footer_profile.webp" alt="Terry John Paul — illustration">
-        <img class="cta-real-img" id="real-img" src="/assets/footer_profile_real.webp" alt="Terry John Paul — photo">
+        <img class="cta-dither-img" src="/assets/footer_profile.webp" alt="Terry John Paul — illustration" loading="lazy">
+        <img class="cta-real-img" id="real-img" src="/assets/footer_profile_real.webp" alt="Terry John Paul — photo" loading="lazy">
       </div>
       <p class="cta-body">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer who works with founders building products that need to scale. AI tools. Commerce platforms. Fintech at speed. I think in systems, design end-to-end, and ship without losing the craft. If you're pre-launch or mid-scale and need design that moves — that's exactly where I do my best work. Also open to the right senior full-time role in the UK. Remote or in-office. Ready to relocate. Sponsorship is not an issue.</p>
       <p class="cta-eyebrow">Available for projects · Open to senior UK roles · Visa sponsorship welcome</p>
@@ -2425,12 +2452,12 @@
   <div class="klt-tours__frame" id="kltFrame">
     <div class="klt-tours__frame__border">
       <div class="klt-frame-strip" id="kltFrameStrip">
-        <img class="klt-frame-img" src="/assets/Strategy.webp" alt="Product Strategy" loading="eager">
-        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI%20product%20design.mp4" autoplay muted loop playsinline preload="none"></video>
-        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Design_system.mp4" autoplay muted loop playsinline preload="none"></video>
-        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Ecommerce_Swadesh.mp4" autoplay muted loop playsinline preload="none"></video>
-        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Stakeholder.mp4" autoplay muted loop playsinline preload="none"></video>
-        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film.mp4" autoplay muted loop playsinline preload="none"></video>
+        <img class="klt-frame-img" src="/assets/Strategy.webp" alt="Product Strategy" loading="lazy">
+        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI%20product%20design.mp4" muted loop playsinline preload="none" aria-label="AI product design work sample"></video>
+        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Design_system.mp4" muted loop playsinline preload="none" aria-label="Design system components in use"></video>
+        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Ecommerce_Swadesh.mp4" muted loop playsinline preload="none" aria-label="E-commerce platform interface walkthrough"></video>
+        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Stakeholder_720p.mp4" muted loop playsinline preload="none" aria-label="Stakeholder delivery and leadership process"></video>
+        <video class="klt-frame-img" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film_720p.mp4" muted loop playsinline preload="none" aria-label="AI-generated short film excerpt"></video>
       </div>
     </div>
   </div>
@@ -2485,9 +2512,13 @@
       const FROM_W = initRect.width;
       const FROM_H = initRect.height;
 
-      /* ── Skip all GSAP hero animation on mobile ──────────────── */
-      if (window.innerWidth <= 768) return;
+      /* ── Skip GSAP hero animation on mobile (parallax + expansion only) ── */
+      const isMobile = window.innerWidth <= 768;
 
+      if (!isMobile) {
+
+      var heroVid = card.querySelector('video');
+      if (heroVid) heroVid.preload = 'auto';
 
       /* ----------------------------------------------------------
          FEATURE DETECTION
@@ -2691,6 +2722,8 @@
       document.addEventListener('mousemove', onMouseMove, { passive: true });
       startRaf();
 
+      } /* end if (!isMobile) — GSAP hero animation */
+
 
       /* ----------------------------------------------------------
          TOP NAV — pill animation
@@ -2746,7 +2779,7 @@
         items.forEach(function (item) {
           item.addEventListener('click', function () {
             if (item.dataset.section === 'about') {
-              window.location.href = '/about';
+              window.location.href = '/about/';
               return;
             }
             items.forEach(function (i) { i.classList.toggle('active', i === item); });
@@ -2771,22 +2804,39 @@
         var siteVideo  = document.getElementById('site-video');
         if (!hamburger || !menu) return;
 
+        function closeMenu() {
+          menu.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open menu');
+          menu.setAttribute('aria-hidden', 'true');
+        }
+
         /* Toggle menu */
         hamburger.addEventListener('click', function () {
           var isOpen = menu.classList.toggle('open');
           hamburger.classList.toggle('open', isOpen);
+          hamburger.setAttribute('aria-expanded', String(isOpen));
+          hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
           menu.setAttribute('aria-hidden', String(!isOpen));
+          if (isOpen) menu.querySelector('.mobile-menu-item').focus();
+        });
+
+        /* Escape key closes menu */
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && menu.classList.contains('open')) {
+            closeMenu();
+            hamburger.focus();
+          }
         });
 
         /* Close menu when a nav item is clicked */
         menu.querySelectorAll('.mobile-menu-item[data-section]').forEach(function (item) {
           item.addEventListener('click', function () {
-            menu.classList.remove('open');
-            hamburger.classList.remove('open');
-            menu.setAttribute('aria-hidden', 'true');
+            closeMenu();
             /* Scroll to section */
             if (item.dataset.section === 'about') {
-              window.location.href = '/about';
+              window.location.href = '/about/';
               return;
             }
             var sectionMap = { work: 'klt-section', writing: 'writing' };
@@ -2878,6 +2928,18 @@
       if (!kltTours.length || !kltStrip || !kltFrame) return;
 
       let kltActive = 0;
+      var kltStripVids = kltStrip.querySelectorAll('video');
+      var kltVidsPlaying = false;
+      function kltPlayVids() {
+        if (kltVidsPlaying) return;
+        kltVidsPlaying = true;
+        kltStripVids.forEach(function(v) { v.play().catch(function(){}); });
+      }
+      function kltPauseVids() {
+        if (!kltVidsPlaying) return;
+        kltVidsPlaying = false;
+        kltStripVids.forEach(function(v) { v.pause(); });
+      }
 
       /* Dark section reference — used for RAF-driven frame exit */
       const darkSection = document.getElementById('dark-section');
@@ -2907,6 +2969,7 @@
           kltFrame.style.transform = '';
           kltFrame.classList.remove('is-visible');
           kltCurEl.classList.remove('cursor--visible');
+          kltPauseVids();
           return;
         }
 
@@ -2933,6 +2996,7 @@
         if (!inExitZone) {
           const frameOn = rect.top < midVH && rect.bottom >= midVH;
           kltFrame.classList.toggle('is-visible', frameOn);
+          if (frameOn) kltPlayVids(); else kltPauseVids();
           if (!frameOn) kltCurEl.classList.remove('cursor--visible');
         }
 
@@ -3027,9 +3091,9 @@
   <div id="flora-vig-r"></div>
   <div id="flora-fade-b"></div>
   <div id="flora-ui">
-    <h1 class="flora-heading">
+    <h2 class="flora-heading">
       <span class="h-reg">Visual </span><em class="h-ital">Experiments</em>
-    </h1>
+    </h2>
     <p class="flora-subtext">Pushing what interfaces can feel like —<br>motion, interaction, and the space between.</p>
   </div>
 
@@ -3053,7 +3117,7 @@
           src:'/assets/Abstract_Pill.webp',
           w:202, h:142,  left:13,   top:270,   delay:0.10 },
         { name:'Rain Walk',        sub:'', type:'video',
-          src:'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Yellow%20Raincoat.mp4',
+          src:'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Yellow_Raincoat_720p.mp4',
           w:248, h:441,  left:921,  top:-238,  delay:0.02 },
         { name:'Motion Study',     sub:'', type:'img',
           src:'/assets/Women_Running.webp',
@@ -3068,7 +3132,7 @@
           src:'https://media.flora.ai/0689246a-f313-496d-bd37-b5da8339c95e_BozS50Iyu4.png',
           w:171, h:177,  left:1359, top:807,   delay:0.15 },
         { name:'Powder Burst',     sub:'', type:'video',
-          src:'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Powder%20Explosion.mp4',
+          src:'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Powder_Explosion_480p.mp4',
           w:262, h:150,  left:1047, top:1054,  delay:0.25 },
         { name:'Stage Presence',   sub:'', type:'img',
           src:'/assets/Podium_Shot.webp',
@@ -3381,10 +3445,14 @@
         }
 
         imgReal.onload = function () { resizeCanvas(); };
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', function () {
+          if (!wrap.isConnected) return;
+          resizeCanvas();
+        });
 
         wrap.addEventListener('mouseenter', function () {
           isHovering = true;
+          if (raf) cancelAnimationFrame(raf);
           resizeCanvas();
           draw();
         });
@@ -3396,6 +3464,7 @@
             isHovering = true;
             lerpX = mouseX;
             lerpY = mouseY;
+            if (raf) cancelAnimationFrame(raf);
             resizeCanvas();
             draw();
           }
@@ -3516,10 +3585,12 @@
       }
 
       document.querySelectorAll('.project').forEach(function (card) {
+        if (!card.href && card.tagName !== 'A') return;
         var overlay = card.querySelector('.overlay-wrap');
         var wrap    = card.querySelector('.img-project-wrap');
         if (!overlay || !wrap) return;
 
+        var overlayVid = overlay.querySelector('video');
         var s = makeState();
 
         function tick() {
@@ -3542,6 +3613,7 @@
             'translate(' + (cx - OW / 2).toFixed(3) + 'px, ' +
                            (cy - OH / 2).toFixed(3) + 'px)';
           overlay.style.opacity = '1';
+          if (overlayVid) overlayVid.play().catch(function(){});
           if (s.rafId) cancelAnimationFrame(s.rafId);
           s.rafId = requestAnimationFrame(tick);
         });
@@ -3555,6 +3627,7 @@
         card.addEventListener('mouseleave', function () {
           s.active = false;
           overlay.style.opacity = '0';
+          if (overlayVid) overlayVid.pause();
           if (s.rafId) { cancelAnimationFrame(s.rafId); s.rafId = null; }
         });
       });
@@ -3652,17 +3725,9 @@
       }
 
       /* Hard fallback — never block the user beyond 10 s */
-      var fallback = setTimeout(dismiss, 10000);
+      var fallback = setTimeout(dismiss, 5000);
     })();
 
-    /* ── Tab title — away message ──────────────────────────────── */
-    (function () {
-      var defaultTitle = 'Terry John | Product Designer';
-      var awayTitle    = 'Please come back ! 👋';
-      document.addEventListener('visibilitychange', function () {
-        document.title = document.hidden ? awayTitle : defaultTitle;
-      });
-    })();
   </script>
 
   <!-- Terminal Widget -->

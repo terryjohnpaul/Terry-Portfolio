@@ -317,6 +317,7 @@ function initScrollCarousel() {
 
     function startAutoScroll() {
         if (isAutoScrolling) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         isAutoScrolling = true;
         autoScrollRAF = requestAnimationFrame(autoScrollStep);
     }
@@ -423,11 +424,11 @@ var PROJECTS = [
         ]
     },
     {
-        title: 'BNPL at Scale', subtitle: 'Buy Now Pay Later · Fynd Fintech',
+        title: 'Settle Club', subtitle: 'BNPL · Fynd Fintech',
         avatar: 'https://www.datocms-assets.com/143253/1736721026-component-17.svg',
         tags: ['Fintech', 'Payment UX', 'Checkout'],
         credits: 'Special thanks to Faaez, David, Aliaksei, MK, Taha, Fareeha.',
-        body: '<p>Led end-to-end design for Fynd&#39;s Buy Now Pay Later system — credit eligibility, installment selection, and payment tracking. Shipped on a platform where one unclear step directly costs a transaction. Stayed in frontend reviews through build. Delivered the lowest drop-off rate seen on any payment flow on the platform.</p>',
+        body: '<p>Led end-to-end design for Fynd&#39;s Buy Now Pay Later system — credit eligibility, installment selection, and payment tracking. Shipped on a platform where one unclear step directly costs a transaction. Stayed in frontend reviews through build. Delivered the lowest drop-off rate seen on any payment flow on the platform.</p><p><a href="/settle-club/" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Read the full case study →</a></p>',
         media: [
             { type: 'video', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/video_hipp.mp4', alt: 'BNPL scheduling' },
             { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/placard-v2.webp', alt: 'BNPL platform' },
@@ -602,13 +603,18 @@ function buildMediaHtml(media) {
     return '<div class="modal-media">' + inner + '</div>';
 }
 
+var _modalTrigger = null;
+
 function openModal(contentHtml) {
     var body = document.getElementById('modal-body');
     var modal = document.getElementById('work-modal');
     if (!body || !modal) return;
+    _modalTrigger = document.activeElement;
     body.innerHTML = contentHtml;
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    var closeBtn = document.getElementById('modal-close-btn');
+    if (closeBtn) closeBtn.focus();
 }
 
 function closeModal() {
@@ -616,12 +622,13 @@ function closeModal() {
     if (!modal) return;
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
-    /* Pause any videos inside */
     var videos = modal.querySelectorAll('video');
     for (var i = 0; i < videos.length; i++) {
         videos[i].pause();
         videos[i].currentTime = 0;
     }
+    if (_modalTrigger && _modalTrigger.focus) _modalTrigger.focus();
+    _modalTrigger = null;
 }
 
 
@@ -853,22 +860,28 @@ function initTestimonialDrag() {
    P7 · CONTACT MODAL — open / close
    Exposed as window-level function so CTA + header can call it.
 ---------------------------------------------------------- */
+var _contactTrigger = null;
+
 function openContactModal() {
     var modal = document.getElementById('contact-modal');
     if (!modal) return;
+    _contactTrigger = document.activeElement;
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    var closeBtn = document.getElementById('contact-close-btn');
+    if (closeBtn) closeBtn.focus();
 }
 
 function closeContactModal() {
     var modal = document.getElementById('contact-modal');
     if (!modal) return;
     modal.classList.remove('is-open');
-    /* Only restore scroll if work modal is also closed */
     var workModal = document.getElementById('work-modal');
     if (!workModal || !workModal.classList.contains('is-open')) {
         document.body.style.overflow = '';
     }
+    if (_contactTrigger && _contactTrigger.focus) _contactTrigger.focus();
+    _contactTrigger = null;
 }
 
 /* Expose globally so the CTA guard in P6 can call it */
@@ -994,7 +1007,7 @@ function initTopNav() {
     items.forEach(function (item) {
         item.addEventListener('click', function () {
             var section = item.getAttribute('data-section');
-            if (section === 'work') { window.location.href = 'https://terryjohn.me'; return; }
+            if (section === 'work') { window.location.href = '/'; return; }
             if (section === 'writing') scrollToSection('writing');
         });
     });
@@ -1037,20 +1050,36 @@ function initTopNav() {
     var mobileSiteVideo = document.getElementById('mobile-site-video');
     if (!hamburger || !menu) return;
 
+    function closeMenu() {
+        menu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+        menu.setAttribute('aria-hidden', 'true');
+    }
+
     /* Toggle menu open/close */
     hamburger.addEventListener('click', function () {
         var isOpen = menu.classList.toggle('open');
         hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
         menu.setAttribute('aria-hidden', String(!isOpen));
-        /* Dark mode class for body when menu is open */
+        if (isOpen) menu.querySelector('.mobile-menu-item').focus();
+    });
+
+    /* Escape key closes menu */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('open')) {
+            closeMenu();
+            hamburger.focus();
+        }
     });
 
     /* Close when a nav item is clicked */
     menu.querySelectorAll('button[data-section]').forEach(function (item) {
         item.addEventListener('click', function () {
-            menu.classList.remove('open');
-            hamburger.classList.remove('open');
-            menu.setAttribute('aria-hidden', 'true');
+            closeMenu();
             var section = item.getAttribute('data-section');
             if (section === 'about') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1251,16 +1280,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     cards.forEach(function (c) { observer.observe(c); });
-})();
-
-/* ==========================================================
-   VISIBILITY TITLE — tab away/back title swap
-   ========================================================== */
-(function () {
-    var originalTitle = document.title;
-    document.addEventListener('visibilitychange', function () {
-        document.title = document.hidden ? 'Please come back in!' : originalTitle;
-    });
 })();
 
 /* ==========================================================

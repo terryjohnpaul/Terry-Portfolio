@@ -8,10 +8,10 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Terry John — Directing the Machine">
   <meta property="og:description" content="Short films and visual experiments generated entirely through prompt-directed workflows. Generative cinema by Terry John.">
-  <meta property="og:image" content="">
+  <meta property="og:image" content="https://terryjohn.me/first-take/ai-films-hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Terry John — Directing the Machine">
-  <meta name="twitter:image" content="">
+  <meta name="twitter:image" content="https://terryjohn.me/first-take/ai-films-hero.webp">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -27,13 +27,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="preload" href="https://framerusercontent.com/assets/qf6DB7WGDdEjcTvrw5e5SlRp4w.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://framerusercontent.com/assets/kqyAfMmZA5vP4G3u2iu7WJdY.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="ai-films.css">
 </head>
 <body>
+
+  <a href="#intro" class="skip-link">Skip to content</a>
 
   <!-- ══ TOP NAV ══ -->
   <div id="site-wordmark">Terry John</div>
@@ -60,8 +62,38 @@
     <a class="top-nav-item top-nav-link" href="https://drive.google.com/file/d/1XU9UV_ZmV6aI-rapMqnlHzWepyLrmMuj/view?usp=sharing" target="_blank" rel="noopener"><span>Resume ↗</span></a>
   </nav>
 
+  <!-- ── Mobile nav bar (≤810px only) ─────────────────────── -->
+  <div id="mobile-nav-bar">
+    <div id="mobile-wordmark">Terry John</div>
+    <div id="mobile-nav-right">
+      <button id="mobile-music-btn" aria-label="Toggle music">
+        <video id="mobile-site-video"
+          src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/horse.mp4"
+          loop playsinline muted preload="none">
+        </video>
+      </button>
+      <button id="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Mobile menu overlay ───────────────────────────────── -->
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+    <div id="mobile-menu-inner">
+      <a class="mobile-menu-item" href="/">Portfolio</a>
+      <a class="mobile-menu-item" href="/about/">About</a>
+      <a class="mobile-menu-item active" href="/first-take/">First Take</a>
+      <div class="mobile-menu-divider"></div>
+      <a class="mobile-menu-item mobile-menu-link" href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="mobile-menu-item mobile-menu-link" href="https://drive.google.com/file/d/1XU9UV_ZmV6aI-rapMqnlHzWepyLrmMuj/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+  </div>
+
   <!-- ══ INTRO ══ -->
-  <section class="intro">
+  <section class="intro" id="intro">
     <div class="intro__title-wrap reveal">
       <h1 class="intro__title">The filmmaker who<br>actually <span class="h-ital">directs machines</span></h1>
     </div>
@@ -69,7 +101,7 @@
 
   <!-- ══ HERO IMAGE ══ -->
   <div class="hero-image reveal">
-    <img src="ai-films-hero.png" alt="Terry John — filmmaker sitting in front of a CRT television" loading="eager">
+    <img src="ai-films-hero.webp" alt="Terry John — filmmaker sitting in front of a CRT television" loading="eager" width="1214" height="1295">
   </div>
 
   <!-- ══ DESCRIPTION (2-column: H2 + meta | Body) ══ -->
@@ -106,77 +138,77 @@
 
     <!-- Row 1: span-2 landscape + span-1 portrait + span-2 landscape -->
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/final%20copy.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/final_copy_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated short film, cinematic landscape"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-1 video-wrap reveal" style="aspect-ratio:0.5625">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/delivery_pizar.mov" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/delivery_pizar.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated delivery scene, animated style"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.33">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/couple.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/couple_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated film, two figures in a liminal space"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 
     <!-- Row 2: span-5 ultrawide (macbeth) -->
     <div class="grid-cell span-5 video-wrap reveal" style="aspect-ratio:2.35">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/macbeth.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/macbeth_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated Macbeth scene, ultrawide cinematic"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 
     <!-- Row 3: span-3 + span-2 landscape -->
     <div class="grid-cell span-3 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/mariner.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/mariner_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated mariner scene, ocean and atmosphere"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/ww2_surgeon.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/ww2_surgeon_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated WW2 field surgeon scene"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 
     <!-- Row 4: equal 50/50 split (stranger things + anime) -->
     <div class="grid-row-equal">
       <div class="grid-cell video-wrap reveal" style="aspect-ratio:1.33">
-        <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/stranger_things.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+        <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/stranger_things_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated sci-fi scene, Stranger Things inspired"></video>
         <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
       </div>
       <div class="grid-cell video-wrap reveal" style="aspect-ratio:1.33">
-        <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/anime_fight.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+        <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/anime_fight_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated anime fight sequence"></video>
         <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
       </div>
     </div>
 
     <!-- Row 5: span-2 + span-1 portrait + span-2 (astronaut + pixar + ww2) -->
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/astronaut.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/astronaut_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated astronaut floating in space"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-1 video-wrap reveal" style="aspect-ratio:0.5625">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixar_fight.mov" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixar_fight.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated animated fight scene, Pixar style"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/ww2_russian.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/ww2_russian_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated WW2 Russian front scene"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 
     <!-- Row 6: span-3 (heist 16:9) + span-2 (pixelbin 4:3) -->
     <div class="grid-cell span-3 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/heist-20260511-233049.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/heist_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated heist film scene"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.27">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin_creative.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin_creative_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="Pixelbin creative visual experiment"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 
     <!-- Row 7: span-3 + span-2 landscape -->
     <div class="grid-cell span-3 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Yellow%20Raincoat.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Yellow_Raincoat_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated yellow raincoat scene, atmospheric"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
     <div class="grid-cell span-2 video-wrap reveal" style="aspect-ratio:1.78">
-      <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film.mp4" muted loop playsinline autoplay preload="metadata" controlslist="nodownload"></video>
+      <video data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film_720p.mp4" muted loop playsinline preload="none" controlslist="nodownload" aria-label="AI-generated short film compilation reel"></video>
       <button class="mute-btn" aria-label="Toggle audio"><svg class="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg><svg class="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>
     </div>
 

@@ -11,6 +11,8 @@
     <meta property="og:description"
         content="Senior Product Designer and UX Engineer. I design, build, and ship AI-powered SaaS products end-to-end. Open to senior roles at UK startups.">
     <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://terryjohn.me/assets/Pixelbin_cover.webp">
+    <meta name="twitter:image" content="https://terryjohn.me/assets/Pixelbin_cover.webp">
 
     <!-- ── PRECONNECT ─────────────────────────────────────────────────
          Establish TCP + TLS early for every font origin.
@@ -42,17 +44,21 @@
          Items 4-6 are off-screen — no preload, set lazy in HTML below.
     ──────────────────────────────────────────────────────────────── -->
     <link rel="preload" as="image" fetchpriority="high"
-          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone.webp">
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone-compressed.webp">
 
-    <link rel="preload" as="font" type="font/truetype" crossorigin
-          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf">
-    <link rel="preload" as="font" type="font/truetype" crossorigin
-          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="https://framerusercontent.com/assets/qf6DB7WGDdEjcTvrw5e5SlRp4w.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="https://framerusercontent.com/assets/kqyAfMmZA5vP4G3u2iu7WJdY.woff2">
 
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <link rel="stylesheet" href="/about/about.css">
 </head>
@@ -60,6 +66,8 @@
 <!-- body.dark-mode is toggled dynamically via IntersectionObserver on scroll -->
 
 <body>
+
+    <a href="#text-content" class="skip-link">Skip to content</a>
 
     <svg aria-hidden="true" style="display:none">
         <symbol id="arrow-icon" viewBox="0 0 7 6" fill="none">
@@ -106,7 +114,7 @@
                     loop playsinline muted preload="none">
                 </video>
             </button>
-            <button id="mobile-hamburger" aria-label="Open menu">
+            <button id="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -115,9 +123,9 @@
     </div>
 
     <!-- Mobile menu overlay -->
-    <div id="mobile-menu" aria-hidden="true">
+    <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
         <div id="mobile-menu-inner">
-            <a class="mobile-menu-item mobile-menu-link" href="https://terryjohn.me">Portfolio</a>
+            <a class="mobile-menu-item" href="/">Portfolio</a>
             <button class="mobile-menu-item active" data-section="about">About</button>
             <a class="mobile-menu-item" href="/first-take/">First Take</a>
             <div class="mobile-menu-divider"></div>
@@ -143,6 +151,7 @@
      Drag horizontally. Videos: autoplay muted loop playsinline.
      ============================================================ -->
     <main>
+        <h1 class="u-visually-hidden">About Terry John Paul</h1>
         <div class="dynamic-bg" id="dynamic-bg">
 
             <!-- TEXT BREAKER -->
@@ -159,9 +168,9 @@
                 <ul class="carousel" id="carousel" role="list">
 
                     <!-- 1 · Hipp scheduling UI (portrait) — eager + high priority, visible on load -->
-                    <li class="carousel-item" style="aspect-ratio: 92 / 87;">
-                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone.webp"
-                            alt="Hipp scheduling UI" width="920" height="870" loading="eager" fetchpriority="high" decoding="async" draggable="false">
+                    <li class="carousel-item" style="aspect-ratio: 1280 / 1492;">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hearhstone-compressed.webp"
+                            alt="Hipp scheduling UI" width="1280" height="1492" loading="eager" fetchpriority="high" decoding="async" draggable="false">
                     </li>
 
                     <!-- 2 · Im Collective — motion reel (video, square) -->
@@ -174,19 +183,19 @@
                     <!-- 3 · Owner website (landscape) -->
                     <li class="carousel-item carousel-item--landscape">
                         <video src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/download.mp4" autoplay muted
-                            loop playsinline draggable="false" preload="metadata"></video>
+                            loop playsinline draggable="false" preload="metadata" aria-label="Website interaction demo"></video>
                     </li>
 
                     <!-- 5 · Owner ordering app — iPhone mockup (portrait) — off-screen, lazy -->
-                    <li class="carousel-item" style="aspect-ratio: 2138 / 3249;">
-                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin-about.webp"
-                            alt="Pixelbin app mockup" width="2138" height="3249" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+                    <li class="carousel-item" style="aspect-ratio: 1280 / 1939;">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/pixelbin-about-compressed.webp"
+                            alt="Pixelbin app mockup" width="1280" height="1939" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
                     </li>
 
                     <!-- 6 · Fulfil order creation modal interaction (image, landscape) — off-screen, lazy -->
                     <li class="carousel-item carousel-item--widescreen">
-                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Swadesh-about.webp"
-                            alt="Swadesh app mockup" width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+                        <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Swadesh-about-compressed.webp"
+                            alt="Swadesh app mockup" width="1280" height="960" loading="lazy" fetchpriority="low" decoding="async" draggable="false">
                     </li>
 
                 </ul>
@@ -386,6 +395,7 @@
 
     <script src="/about/about.js"></script>
   <!-- Terminal Widget -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/terminal/terminal.css" media="print" onload="this.media='all'">
   <script src="/terminal/terminal-knowledge.js" defer></script>
   <script src="/terminal/terminal.js" defer></script>

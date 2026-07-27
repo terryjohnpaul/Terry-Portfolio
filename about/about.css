@@ -233,6 +233,23 @@ h6 {
     color: transparent;
 }
 
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 999999;
+    padding: 12px 24px;
+    background: #111;
+    color: #fff;
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+}
+.skip-link:focus { top: 0; }
+
 
 /* ============================================================
    P1 · HTML BASE
@@ -342,16 +359,18 @@ html {
 /* ── Light 300 — non-critical, skip on slow connections ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
-    font-display: optional; /* browser skips if not fast enough — zero layout shift */
+    font-display: optional;
 }
 
 /* ── Regular 400 — critical body text (preloaded above) ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: block;
@@ -359,16 +378,18 @@ html {
 
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
     font-weight: 400;
     font-style: italic;
-    font-display: fallback; /* italic — 100ms block, 3s swap window, then lock */
+    font-display: fallback;
 }
 
 /* ── Medium 500 — critical nav + strong text (preloaded above) ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: block;
@@ -376,7 +397,8 @@ html {
 
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
     font-display: fallback;
@@ -385,7 +407,8 @@ html {
 /* ── Bold 700 — non-critical, skip on slow connections ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
+    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: optional;
@@ -592,7 +615,7 @@ body {
   font-family: var(--font-display, 'Helvetica Now Display', Helvetica, Arial, sans-serif);
   font-size: 14px;
   font-weight: 400;
-  color: rgba(0,0,0,0.45);
+  color: rgba(0,0,0,0.58);
   letter-spacing: 0.01em;
   line-height: 1;
   pointer-events: none;
@@ -602,14 +625,14 @@ body {
 
 /* ── Music toggle ───────────────────────────────────── */
 #music-btn {
-  width: 40px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
   border: none;
-  padding: 0;
+  padding: 10px;
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
@@ -661,7 +684,7 @@ body.dark-mode #music-btn video {
   object-fit: cover;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #site-wordmark, #top-right-cluster { display: none; }
 }
 
@@ -713,12 +736,12 @@ body.dark-mode #music-btn video {
   display:         flex;
   align-items:     center;
   justify-content: center;
-  width:           40px;
-  height:          24px;
+  width:           44px;
+  height:          44px;
   border:          none;
   background:      transparent;
   cursor:          pointer;
-  padding:         0;
+  padding:         10px;
   border-radius:   6px;
   overflow:        hidden;
   opacity:         0.5;
@@ -767,12 +790,12 @@ body.dark-mode .mobile-menu-divider {
   align-items:     center;
   justify-content: center;
   gap:             5px;
-  width:           36px;
-  height:          36px;
+  width:           44px;
+  height:          44px;
   border:          none;
   background:      transparent;
   cursor:          pointer;
-  padding:         0;
+  padding:         4px;
 }
 
 #mobile-hamburger span {
@@ -1062,7 +1085,7 @@ body.dark-mode .mobile-menu-divider {
 }
 
 .text-breaker-text {
-    font-size: clamp(3.6rem, 6vw, 5.2rem);
+    font-size: clamp(2.4rem, 7vw, 5.2rem);
     line-height: 1.05;
     letter-spacing: -1.5px;
     color: #1a1919;
@@ -2108,9 +2131,18 @@ body.dark-mode .mobile-menu-divider {
     border: none;
     padding: 0;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     flex-shrink: 0;
+}
+.dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .dot.is-active {
@@ -2153,7 +2185,7 @@ body.dark-mode .mobile-menu-divider {
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 0.03em;
-    color: rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.65);
     margin-bottom: 32px;
 }
 
@@ -2460,9 +2492,9 @@ body.dark-mode .mobile-menu-divider {
 }
 .footer-left span {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.6);
 }
 .footer-right {
   display: flex;
@@ -2470,9 +2502,9 @@ body.dark-mode .mobile-menu-divider {
 }
 .footer-right a {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.65);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -3302,5 +3334,24 @@ body:not(:hover) .card-image-panel {
 
 @media (hover: none), (max-width: 580px) {
   #cursor { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+.top-nav-item:focus-visible,
+#music-btn:focus-visible,
+#mobile-music-btn:focus-visible,
+#mobile-hamburger:focus-visible,
+.footer-cta-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 

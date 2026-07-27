@@ -10,7 +10,7 @@
       el.textContent = abbr + ' ' + t;
     }
     tick();
-    setInterval(tick, 1000);
+    setInterval(tick, 10000);
   }
 })();
 
@@ -82,17 +82,19 @@ document.querySelectorAll('.mute-btn').forEach(function(btn) {
 /* ── Lazy video play/pause on scroll ── */
 var videoObserver = new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {
+    var v = entry.target;
     if (entry.isIntersecting) {
-      if (entry.target.preload === 'none') entry.target.preload = 'metadata';
-      entry.target.play().catch(function(){});
+      if (v.dataset.src && !v.hasAttribute('src')) {
+        v.src = v.dataset.src;
+        v.preload = 'auto';
+      }
+      v.play().catch(function(){});
     } else {
-      entry.target.pause();
+      v.pause();
     }
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.visual-grid video').forEach(function(v) {
-  v.pause();
-  v.removeAttribute('autoplay');
   videoObserver.observe(v);
 });
 
@@ -108,15 +110,6 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
     window.location.href = a.href;
   });
 });
-
-/* ── Tab title — away message ── */
-(function() {
-  var defaultTitle = 'Terry John — Directing the Machine';
-  var awayTitle = 'Please come back ! \u{1F44B}';
-  document.addEventListener('visibilitychange', function() {
-    document.title = document.hidden ? awayTitle : defaultTitle;
-  });
-})();
 
 /* ── Custom Cursor ── */
 (function() {
@@ -139,4 +132,55 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
   addState('.intro__title', 'on-text');
   addState('img, video', 'on-big');
   addState('.footer-cta-btn, .top-nav-item, .top-nav-link, .mute-btn, a', 'on-big');
+})();
+
+/* ── MOBILE NAV — hamburger + menu + music ───────────────── */
+(function () {
+  var hamburger = document.getElementById('mobile-hamburger');
+  var menu = document.getElementById('mobile-menu');
+  var mobileMusicBtn = document.getElementById('mobile-music-btn');
+  var audio = document.getElementById('site-audio');
+  var siteVideo = document.getElementById('site-video');
+  if (!hamburger || !menu) return;
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
+    menu.setAttribute('aria-hidden', 'true');
+  }
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = menu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', String(!isOpen));
+    if (isOpen) menu.querySelector('.mobile-menu-item').focus();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+
+  var mobileSiteVideo = document.getElementById('mobile-site-video');
+  if (mobileMusicBtn && audio) {
+    mobileMusicBtn.addEventListener('click', function () {
+      if (audio.paused) {
+        audio.play().catch(function () {});
+        if (siteVideo) siteVideo.play().catch(function () {});
+        if (mobileSiteVideo) mobileSiteVideo.play().catch(function () {});
+        mobileMusicBtn.classList.add('playing');
+      } else {
+        audio.pause();
+        if (siteVideo) siteVideo.pause();
+        if (mobileSiteVideo) mobileSiteVideo.pause();
+        mobileMusicBtn.classList.remove('playing');
+      }
+    });
+  }
 })();

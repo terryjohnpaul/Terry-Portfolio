@@ -576,7 +576,7 @@
       font-size: 1.3rem;
       font-weight: 400;
       letter-spacing: .01rem;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.58);
       background: transparent;
       border: none;
       cursor: pointer;
@@ -727,7 +727,7 @@
 
     .top-nav-link {
       font-size: 1.2rem;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.58);
       padding: 6px 12px;
     }
 
@@ -2183,7 +2183,7 @@
     </div>
 
     <div id="card">
-      <video autoplay muted loop playsinline preload="metadata" poster="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero-poster.webp" aria-label="Product design showreel featuring interface animations and interaction details">
+      <video muted loop playsinline preload="metadata" poster="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero-poster.webp" aria-label="Product design showreel featuring interface animations and interaction details">
         <source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero_Video_2_1080p.mp4" type="video/mp4" />
       </video>
 
@@ -2518,7 +2518,7 @@
       if (!isMobile) {
 
       var heroVid = card.querySelector('video');
-      if (heroVid) heroVid.preload = 'auto';
+      if (heroVid) { heroVid.preload = 'auto'; heroVid.autoplay = true; heroVid.play().catch(function(){}); }
 
       /* ----------------------------------------------------------
          FEATURE DETECTION
@@ -3706,19 +3706,20 @@
       }
 
       if (heroVideo) {
-        /* Already playing (cached return visit) */
-        if (!heroVideo.paused || heroVideo.readyState >= 4) {
-          dismiss();
+        if (heroVideo.autoplay || !heroVideo.paused || heroVideo.readyState >= 4) {
+          /* Desktop (autoplay set by JS) or cached visit — wait for playing */
+          if (!heroVideo.paused || heroVideo.readyState >= 4) {
+            dismiss();
+          } else {
+            heroVideo.addEventListener('playing', dismiss, { once: true });
+            heroVideo.addEventListener('canplaythrough', function () {
+              setTimeout(dismiss, 400);
+            }, { once: true });
+          }
         } else {
-          /* 'playing' fires when the first frame is rendered + playback starts —
-             this is the earliest moment the video is visually present */
-          heroVideo.addEventListener('playing', dismiss, { once: true });
-
-          /* Safety net: if autoplay is blocked and 'playing' never fires,
-             fall through to canplaythrough after a short grace period */
-          heroVideo.addEventListener('canplaythrough', function () {
-            setTimeout(dismiss, 400);
-          }, { once: true });
+          /* Mobile — no autoplay, dismiss immediately, play video after */
+          dismiss();
+          heroVideo.play().catch(function(){});
         }
       } else {
         setTimeout(dismiss, 800);

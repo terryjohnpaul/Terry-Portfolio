@@ -148,7 +148,7 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Open menu');
-    menu.setAttribute('aria-hidden', 'true');
+    menu.inert = true;
   }
 
   hamburger.addEventListener('click', function () {
@@ -156,7 +156,7 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(function(a) {
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    menu.setAttribute('aria-hidden', String(!isOpen));
+    menu.inert = !isOpen;
     if (isOpen) menu.querySelector('.mobile-menu-item').focus();
   });
 

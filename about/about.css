@@ -359,7 +359,7 @@ html {
 /* ── Light 300 — non-critical, skip on slow connections ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
@@ -369,7 +369,7 @@ html {
 /* ── Regular 400 — critical body text (preloaded above) ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
@@ -378,7 +378,7 @@ html {
 
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-RegIta.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
     font-weight: 400;
     font-style: italic;
@@ -388,7 +388,7 @@ html {
 /* ── Medium 500 — critical nav + strong text (preloaded above) ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
@@ -397,7 +397,7 @@ html {
 
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-MedIta.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
@@ -407,7 +407,7 @@ html {
 /* ── Bold 700 — non-critical, skip on slow connections ── */
 @font-face {
     font-family: 'Helvetica Now Display';
-    src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+    src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
          url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;

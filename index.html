@@ -25,9 +25,9 @@
 
   <!-- Font preloads — critical weights only -->
   <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2">
+        href="/fonts/HelveticaNowDisplay-Regular.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2">
+        href="/fonts/HelveticaNowDisplay-Medium.woff2">
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
@@ -498,7 +498,7 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
+      src: url('/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
            url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
       font-weight: 300;
       font-style: normal;
@@ -507,7 +507,7 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+      src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
            url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
@@ -516,7 +516,7 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
            url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
       font-weight: 500;
       font-style: normal;
@@ -525,7 +525,7 @@
 
     @font-face {
       font-family: 'Helvetica Now Display';
-      src: url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+      src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
            url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
       font-weight: 700;
       font-style: normal;
@@ -2136,7 +2136,7 @@
   </div>
 
   <!-- ── Mobile menu overlay ───────────────────────────────── -->
-  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" inert>
     <div id="mobile-menu-inner">
       <button class="mobile-menu-item" data-section="work">Portfolio</button>
       <button class="mobile-menu-item" data-section="about">About</button>
@@ -2148,6 +2148,7 @@
   </div>
 
 
+  <main>
   <!-- ============================================================
        HERO SECTION — pinned during scroll expansion
   ============================================================ -->
@@ -2431,6 +2432,8 @@
       </a>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer id="site-footer">
@@ -2809,7 +2812,7 @@
           hamburger.classList.remove('open');
           hamburger.setAttribute('aria-expanded', 'false');
           hamburger.setAttribute('aria-label', 'Open menu');
-          menu.setAttribute('aria-hidden', 'true');
+          menu.inert = true;
         }
 
         /* Toggle menu */
@@ -2818,7 +2821,7 @@
           hamburger.classList.toggle('open', isOpen);
           hamburger.setAttribute('aria-expanded', String(isOpen));
           hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-          menu.setAttribute('aria-hidden', String(!isOpen));
+          menu.inert = !isOpen;
           if (isOpen) menu.querySelector('.mobile-menu-item').focus();
         });
 

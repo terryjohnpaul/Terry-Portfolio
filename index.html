@@ -3719,8 +3719,10 @@
         } else {
           /* Mobile — poster is the visual; dismiss immediately */
           dismiss();
-          /* Delay video playback so poster stays as LCP element */
-          setTimeout(function() { heroVideo.play().catch(function(){}); }, 3000);
+          /* Play video on first scroll so poster remains as LCP */
+          window.addEventListener('scroll', function() {
+            heroVideo.play().catch(function(){});
+          }, { once: true, passive: true });
         }
       } else {
         setTimeout(dismiss, 800);

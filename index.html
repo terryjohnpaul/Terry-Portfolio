@@ -3717,9 +3717,10 @@
             }, { once: true });
           }
         } else {
-          /* Mobile — no autoplay, dismiss immediately, play video after */
+          /* Mobile — poster is the visual; dismiss immediately */
           dismiss();
-          heroVideo.play().catch(function(){});
+          /* Delay video playback so poster stays as LCP element */
+          setTimeout(function() { heroVideo.play().catch(function(){}); }, 3000);
         }
       } else {
         setTimeout(dismiss, 800);

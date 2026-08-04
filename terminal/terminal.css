@@ -34,7 +34,7 @@
   border-radius: 50%;
   background: #1c2333;
   border: 1px solid rgba(72, 213, 151, 0.2);
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
 }
 
 .tw-trigger:focus-visible {
-  outline: 2px solid #48d597;
+  outline: 2px solid var(--tw-accent, #48d597);
   outline-offset: 3px;
 }
 
@@ -88,7 +88,7 @@
   padding: 10px 16px;
   font-family: 'Geist Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
   font-size: 13px;
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
   max-width: 240px;
   white-space: nowrap;
   opacity: 0;
@@ -115,7 +115,7 @@
   max-width: calc(100vw - 32px);
   height: 480px;
   max-height: calc(100vh - 120px);
-  background: rgba(22, 27, 43, 0.98);
+  background: var(--tw-bg, rgba(22, 27, 43, 0.98));
   border: 1px solid rgba(72, 213, 151, 0.12);
   border-radius: 12px;
   overflow: hidden;
@@ -339,7 +339,7 @@
 }
 
 .tw-line-accent {
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
 }
 
 .tw-line-banner {
@@ -357,7 +357,7 @@
 }
 
 .tw-line a {
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer !important;
@@ -368,7 +368,7 @@
 }
 
 .tw-line a:focus-visible {
-  outline: 1px solid #48d597;
+  outline: 1px solid var(--tw-accent, #48d597);
   outline-offset: 2px;
 }
 
@@ -388,9 +388,9 @@
 .tw-chip {
   padding: 4px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(72, 213, 151, 0.2);
-  background: rgba(72, 213, 151, 0.06);
-  color: #48d597;
+  border: 1px solid var(--tw-chipBorder, rgba(72, 213, 151, 0.2));
+  background: var(--tw-chip, rgba(72, 213, 151, 0.06));
+  color: var(--tw-accent, #48d597);
   font-family: inherit;
   font-size: 11px;
   cursor: pointer !important;
@@ -403,7 +403,7 @@
 }
 
 .tw-chip:focus-visible {
-  outline: 2px solid #48d597;
+  outline: 2px solid var(--tw-accent, #48d597);
   outline-offset: 1px;
 }
 
@@ -421,7 +421,7 @@
 }
 
 .tw-prompt {
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
   margin-right: 2px;
   flex-shrink: 0;
 }
@@ -445,7 +445,7 @@
 }
 
 .tw-cursor {
-  color: #48d597;
+  color: var(--tw-accent, #48d597);
   animation: tw-blink 1s step-end infinite;
   margin-left: -1px;
 }

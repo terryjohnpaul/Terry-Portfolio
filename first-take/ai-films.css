@@ -629,7 +629,6 @@ img, video { display: block; max-width: 100%; }
   }
   .description__intro-col { order: 0; width: 100%; }
   .description__body-col  { order: 1; width: 55%; }
-  .description__preview-col { order: 2; }
   .description__intro { width: 100%; }
   .meta-bar { grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
 }
@@ -659,7 +658,6 @@ img, video { display: block; max-width: 100%; }
   }
   .description__intro-col { width: 100%; }
   .description__body-col  { width: 100%; }
-  .description__preview-col { width: 100%; }
   .description__intro { font-size: 16px; width: 100%; }
   .description__body { width: 100%; max-width: 100%; }
   .description__body p { font-size: 13px; }

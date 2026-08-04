@@ -411,43 +411,7 @@ var SERVICES = [
     }
 ];
 
-var PROJECTS = [
-    {
-        title: 'Pixelbin', subtitle: 'AI image & video platform · Fynd',
-        avatar: 'https://www.datocms-assets.com/143253/1760624084-owner-new-2.svg',
-        tags: ['AI/ML', 'Generative Tools', 'Enterprise'],
-        credits: 'Special thanks to Adam, Rob, Dean, David and collaborators.',
-        body: '<p>Leading design for Fynd&#39;s AI image and video platform. Own the full experience — research, design, and production handoff — for generative workflows used by enterprise and creative teams. Background removal, content enhancement, automated editing pipelines. Embedded with ML engineers; involved in capability decisions before they reach design.</p>',
-        media: [
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/281shots_so.webp', alt: 'Pixelbin website' },
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/iphone-mockup.webp', alt: 'Pixelbin app' }
-        ]
-    },
-    {
-        title: 'Settle Club', subtitle: 'BNPL · Fynd Fintech',
-        avatar: 'https://www.datocms-assets.com/143253/1736721026-component-17.svg',
-        tags: ['Fintech', 'Payment UX', 'Checkout'],
-        credits: 'Special thanks to Faaez, David, Aliaksei, MK, Taha, Fareeha.',
-        body: '<p>Led end-to-end design for Fynd&#39;s Buy Now Pay Later system — credit eligibility, installment selection, and payment tracking. Shipped on a platform where one unclear step directly costs a transaction. Stayed in frontend reviews through build. Delivered the lowest drop-off rate seen on any payment flow on the platform.</p><p><a href="/settle-club/" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">Read the full case study →</a></p>',
-        media: [
-            { type: 'video', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/video_hipp.mp4', alt: 'BNPL scheduling' },
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/placard-v2.webp', alt: 'BNPL platform' },
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/282shots_so.webp', alt: 'BNPL homepage' },
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/img-02.webp', alt: 'BNPL icon' }
-        ]
-    },
-    {
-        title: 'Swadesh Design system', subtitle: 'E-commerce design system · JCP',
-        avatar: 'https://www.datocms-assets.com/143253/1736721037-component-19.svg',
-        tags: ['Design System', 'E-commerce', 'Scale'],
-        credits: 'Special thanks to Sharoon, Ritu and collaborators, James.',
-        body: '<p>Architected the design system powering Jio Commerce Platform — used across large-scale e-commerce surfaces by multiple product teams. Owned UX for product discovery, cart, and merchant dashboards. Collaborated through engineering build, not just ahead of it.</p>',
-        media: [
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/296shots_so.webp', alt: 'JCP draft order' },
-            { type: 'image', url: 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/841shots_so.webp', alt: 'JCP search' }
-        ]
-    }
-];
+/* (Dead PROJECTS array removed — C3 cleanup) */
 
 
 
@@ -537,116 +501,11 @@ function buildServices() {
 }
 
 
-/* ----------------------------------------------------------
-   P5 · BUILD PROJECT LIST
----------------------------------------------------------- */
-function buildProjectList() {
-    var el = document.getElementById('project-list');
-    if (!el) return;
-
-    var html = '<div class="project-list-label">Latest projects</div>';
-
-    /* Active projects */
-    for (var i = 0; i < PROJECTS.length; i++) {
-        var p = PROJECTS[i];
-        var tagsHtml = '';
-        for (var t = 0; t < p.tags.length; t++) {
-            tagsHtml += '<span class="project-tag">' + p.tags[t] + '</span>';
-        }
-        html += '<button class="project-item" data-project="' + i + '">'
-            + '<div class="project-holder">'
-            + '<div class="project-avatar"><img src="' + p.avatar + '" alt="' + p.title + '" loading="lazy"></div>'
-            + '<div class="project-info">'
-            + '<div class="project-title">' + p.title + '</div>'
-            + '<div class="project-subtitle">' + p.subtitle + '</div>'
-            + (tagsHtml ? '<div class="project-tags">' + tagsHtml + '</div>' : '')
-            + '</div>'
-            + '</div>'
-            + '<div class="project-icon-wrap"><svg aria-hidden="true"><use href="#arrow-icon"></use></svg></div>'
-            + '</button>';
-    }
+/* (Dead buildProjectList removed — C3 cleanup) */
 
 
-
-
-    el.innerHTML = html;
-
-    /* Click handlers on active projects */
-    var items = el.querySelectorAll('.project-item');
-    for (var k = 0; k < items.length; k++) {
-        items[k].addEventListener('click', function () {
-            var idx = parseInt(this.getAttribute('data-project'), 10);
-            openProjectModal(idx);
-        });
-    }
-}
-
-
-/* ----------------------------------------------------------
-   P5 · MODAL HELPERS
----------------------------------------------------------- */
-function buildTagsHtml(tags) {
-    if (!tags || !tags.length) return '';
-    var h = '<div class="modal-tags">';
-    for (var i = 0; i < tags.length; i++) {
-        h += '<span class="modal-tag">' + tags[i] + '</span>';
-    }
-    h += '</div>';
-    return h;
-}
-
-function buildMediaHtml(media) {
-    if (!media) return '';
-    var inner = media.type === 'video'
-        ? '<video src="' + media.url + '" autoplay muted loop playsinline preload="none"></video>'
-        : '<img src="' + media.url + '" alt="' + media.alt + '" loading="lazy">';
-    return '<div class="modal-media">' + inner + '</div>';
-}
-
-var _modalTrigger = null;
-
-function openModal(contentHtml) {
-    var body = document.getElementById('modal-body');
-    var modal = document.getElementById('work-modal');
-    if (!body || !modal) return;
-    _modalTrigger = document.activeElement;
-    body.innerHTML = contentHtml;
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    var closeBtn = document.getElementById('modal-close-btn');
-    if (closeBtn) closeBtn.focus();
-}
-
-function closeModal() {
-    var modal = document.getElementById('work-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    var videos = modal.querySelectorAll('video');
-    for (var i = 0; i < videos.length; i++) {
-        videos[i].pause();
-        videos[i].currentTime = 0;
-    }
-    if (_modalTrigger && _modalTrigger.focus) _modalTrigger.focus();
-    _modalTrigger = null;
-}
-
-
-function openProjectModal(idx) {
-    var p = PROJECTS[idx];
-    if (!p) return;
-    var mediaHtml = '';
-    for (var i = 0; i < p.media.length; i++) {
-        mediaHtml += buildMediaHtml(p.media[i]);
-    }
-    var html = buildTagsHtml(p.tags)
-        + '<div><div class="modal-title">' + p.title + '</div>'
-        + '<div class="modal-subtitle">' + p.subtitle + '</div></div>'
-        + '<div class="modal-richtext">' + p.body + '</div>'
-        + mediaHtml
-        + (p.credits ? '<div class="modal-credits">' + p.credits + '</div>' : '');
-    openModal(html);
-}
+/* (Dead modal helpers removed — C3 cleanup:
+   buildTagsHtml, buildMediaHtml, openModal, closeModal, openProjectModal) */
 
 
 /* ----------------------------------------------------------
@@ -994,47 +853,13 @@ function initTopNav() {
         if (active) movePill(active, false);
     });
 
-    /* Scroll to target section with offset for the fixed nav */
-    function scrollToSection(targetId) {
-        var target = document.getElementById(targetId);
-        if (!target) return;
-        var navHeight = nav.getBoundingClientRect().bottom + 12;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-    }
-
     /* Click — scroll + move pill */
     items.forEach(function (item) {
         item.addEventListener('click', function () {
             var section = item.getAttribute('data-section');
             if (section === 'work') { window.location.href = '/'; return; }
-            if (section === 'writing') scrollToSection('writing');
         });
     });
-
-    /* Scroll-aware: Writing activates when its section is in view,
-       Portfolio re-activates when Writing scrolls out */
-    var writingSection = document.getElementById('writing');
-    var workBtn = nav.querySelector('[data-section="work"]');
-    var writingBtn = nav.querySelector('[data-section="writing"]');
-
-    if (writingSection && workBtn && writingBtn && window.IntersectionObserver) {
-        var sectionObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                items.forEach(function (i) { i.classList.remove('active'); });
-                if (entry.isIntersecting) {
-                    /* Writing section visible — activate Writing */
-                    writingBtn.classList.add('active');
-                    movePill(writingBtn, true);
-                } else {
-                    /* Writing section not visible — restore Portfolio as active */
-                    workBtn.classList.add('active');
-                    movePill(workBtn, true);
-                }
-            });
-        }, { threshold: 0.5 });
-        sectionObserver.observe(writingSection);
-    }
 }
 
 
@@ -1083,9 +908,6 @@ function initTopNav() {
             var section = item.getAttribute('data-section');
             if (section === 'about') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (section === 'writing') {
-                var target = document.getElementById('writing');
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
@@ -1129,15 +951,6 @@ document.addEventListener('DOMContentLoaded', function () {
         /* Tier 1: services accordion (may be near fold) */
         buildServices();
 
-        /* Tier 2: project list + modal wiring (below fold) */
-        buildProjectList();
-
-        /* Work modal — close button + backdrop + ESC */
-        var closeBtn = document.getElementById('modal-close-btn');
-        var backdrop = document.getElementById('modal-backdrop');
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (backdrop) backdrop.addEventListener('click', closeModal);
-
         /* Testimonials */
         buildTestimonials();
 
@@ -1147,15 +960,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (contactBackdrop) contactBackdrop.addEventListener('click', closeContactModal);
         if (contactCloseBtn) contactCloseBtn.addEventListener('click', closeContactModal);
 
-        /* Unified ESC handler for both modals */
+        /* ESC handler for contact modal */
         document.addEventListener('keydown', function (e) {
             if (e.key !== 'Escape') return;
             var contactModal = document.getElementById('contact-modal');
             if (contactModal && contactModal.classList.contains('is-open')) {
                 closeContactModal();
-                return;
             }
-            if (typeof closeModal === 'function') closeModal();
         });
 
         /* CTA button — wire to contact modal */
@@ -1169,118 +980,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* ==========================================================
-   CUSTOM CURSOR PILL — card image panels
-   ========================================================== */
-(function () {
-    const cursor = document.getElementById('customCursor');
-    const panels = document.querySelectorAll('.card-image-panel');
-    let raf = null;
-    let cx = 0, cy = 0;
+/* (Dead custom cursor pill for .card-image-panel removed — C3 cleanup) */
 
-    function moveCursor(e) {
-        cx = e.clientX;
-        cy = e.clientY;
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(function () {
-            cursor.style.transform = 'translate(calc(-50% + ' + cx + 'px), calc(-50% + ' + cy + 'px))';
-        });
-    }
+/* (Dead parallax code for .works-card-wrapper removed — C3/H8 cleanup) */
 
-    panels.forEach(function (panel) {
-        panel.addEventListener('mouseenter', function () {
-            cursor.classList.add('visible');
-            document.addEventListener('mousemove', moveCursor);
-        });
-        panel.addEventListener('mouseleave', function () {
-            cursor.classList.remove('visible');
-            document.removeEventListener('mousemove', moveCursor);
-        });
-    });
-})();
-
-/* ==========================================================
-   PARALLAX — card image depth effect
-   ========================================================== */
-(function () {
-    var cards = Array.prototype.slice.call(
-        document.querySelectorAll('.works-card-wrapper')
-    );
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    // Store each card's image and pre-computed offsetTop
-    var items = cards.map(function (card) {
-        return {
-            img: card.querySelector('.card-image-link img'),
-            card: card
-        };
-    });
-
-    var lastScrollY = -1;
-    var raf = null;
-
-    function render() {
-        raf = null;
-        var scrollY = window.pageYOffset;
-        var vh = window.innerHeight;
-
-        items.forEach(function (item) {
-            if (!item.img) return;
-
-            // Distance of card centre from viewport centre
-            var rect = item.card.getBoundingClientRect();
-            var cardCY = rect.top + rect.height * 0.5;
-            var vpCY = vh * 0.5;
-
-            // How far card centre is from screen centre, as fraction of screen height
-            // Range roughly -1 (card below) to +1 (card above)
-            var factor = (vpCY - cardCY) / vh;
-
-            // Parallax shift: image moves 20% as fast as scroll → visible depth
-            var shift = factor * 80;
-
-            item.img.style.transform = 'translateY(' + shift.toFixed(2) + 'px)';
-        });
-    }
-
-    function onScroll() {
-        if (!raf) raf = requestAnimationFrame(render);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-
-    // Kick off immediately
-    render();
-})();
-
-/* ==========================================================
-   CARD ENTRANCE ANIMATION — IntersectionObserver reveal
-   ========================================================== */
-(function () {
-    var cards = document.querySelectorAll('.works-card-wrapper');
-
-    if (!('IntersectionObserver' in window)) {
-        // Fallback: just show all cards immediately
-        cards.forEach(function (c) { c.classList.add('is-visible'); });
-        return;
-    }
-
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // fire once only
-            }
-        });
-    }, {
-        threshold: 0.06,
-        rootMargin: '0px 0px 0px 0px'
-    });
-
-    cards.forEach(function (c) { observer.observe(c); });
-})();
+/* (Dead card entrance animation for .works-card-wrapper removed — C3 cleanup) */
 
 /* ==========================================================
    TIMEZONE CLOCK (ported from hero.html)

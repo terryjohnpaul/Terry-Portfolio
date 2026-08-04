@@ -1545,7 +1545,7 @@
       }
 
       if (commands[cmd]) {
-        var noSpinnerCmds = ['clear','help','history','banner','theme','crt','go','echo'];
+        var noSpinnerCmds = ['clear','help','history','banner','theme','crt','go'];
         if (noSpinnerCmds.indexOf(cmd) === -1) {
           await showSpinner('Processing...', 250);
         }
@@ -1886,14 +1886,7 @@
         if (e.key === 'Enter') {
           var val = inputEl.value.trim();
           if (!val) return;
-          state.history.push(val);
-          state.historyIndex = -1;
-          echoCommand(val);
-          inputEl.value = '';
-          try {
-            await executeCommand(val);
-          } catch (_) {}
-          saveState();
+          await runCommand(val);
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
           if (state.history.length === 0) return;

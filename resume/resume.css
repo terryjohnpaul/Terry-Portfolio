@@ -1,0 +1,516 @@
+/* ============================================================
+   RESUME PAGE
+   ============================================================ */
+
+:root {
+  --font-display: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color-scheme: light;
+}
+
+a { text-decoration: none; color: inherit; }
+a:visited { color: inherit; }
+
+
+/* ============================================================
+   FONTS
+   ============================================================ */
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/fonts/HelveticaNowDisplay-RegIta.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/fonts/HelveticaNowDisplay-MedIta.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-MedIta.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+         url('https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: optional;
+}
+
+
+/* ============================================================
+   BODY
+   ============================================================ */
+
+body {
+    background: #ffffff;
+    color: #000000;
+    font: normal 400 14px/1.7 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    padding-bottom: 140px;
+}
+
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 999999;
+    padding: 12px 24px;
+    background: #111;
+    color: #fff;
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+}
+.skip-link:focus { top: 0; }
+
+
+/* ============================================================
+   BACK NAV
+   ============================================================ */
+
+.r-back-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.r-back-link {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #000;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    pointer-events: auto;
+}
+
+.r-back-link:hover {
+    opacity: 1;
+}
+
+.r-back-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+
+/* ============================================================
+   RESUME CONTAINER
+   Proportions matched to reference: ~17% left pad, 16% label,
+   6% gap, 48% content, 13% right pad at 893px width.
+   ============================================================ */
+
+#resume {
+    max-width: 893px;
+    margin: 0 auto;
+    padding: 136px 88px 80px 128px;
+    opacity: 0;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.r-header {
+    margin-bottom: 64px;
+}
+
+.r-row {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.r-name {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #000;
+    flex-shrink: 0;
+    width: 150px;
+}
+
+.r-contact {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #000;
+}
+
+.r-contact a {
+    color: #000;
+}
+
+.r-contact a:hover {
+    text-decoration: underline;
+}
+
+.r-contact-gap {
+    margin-top: 16px;
+}
+
+
+/* ============================================================
+   SECTIONS — label left, content right
+   ============================================================ */
+
+.r-section {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    padding: 48px 0;
+}
+
+.r-section--last {
+    padding-bottom: 96px;
+}
+
+.r-label {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    font-style: italic;
+    color: #999;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    flex-shrink: 0;
+    width: 150px;
+    padding-top: 4px;
+}
+
+.r-content {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ============================================================
+   ENTRIES
+   ============================================================ */
+
+.r-entry {
+    margin-bottom: 40px;
+}
+
+.r-entry:last-child {
+    margin-bottom: 0;
+}
+
+.r-entry-head {
+    margin-bottom: 8px;
+}
+
+.r-company {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -0.01em;
+}
+
+.r-role {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #888;
+    letter-spacing: -0.01em;
+    margin-left: 3px;
+}
+
+.r-desc {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.r-desc strong {
+    font-weight: 700;
+}
+
+.r-date {
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+    margin-top: 8px;
+    letter-spacing: 0.005em;
+}
+
+
+/* ============================================================
+   PORTFOLIO LINK
+   ============================================================ */
+
+.r-content > p > a {
+    font-size: 14px;
+    color: #000;
+}
+
+.r-content > p > a:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   PROGRESSIVE BLUR
+   ============================================================ */
+
+.r-blur {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 156px;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.r-blur-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   FIXED DOWNLOAD BUTTON
+   ============================================================ */
+
+.r-download {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 32px;
+    font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #111;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.r-download:hover {
+    background: #fafafa;
+    border-color: rgba(0, 0, 0, 0.18);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.r-download:active {
+    transform: translateX(-50%) scale(0.97);
+}
+
+.r-download:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 4px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 809px) {
+    #resume {
+        padding: 72px 32px 60px 32px;
+    }
+
+    .r-row,
+    .r-section {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .r-name {
+        width: auto;
+        font-size: 24px;
+    }
+
+    .r-label {
+        width: auto;
+        font-size: 17px;
+    }
+
+    .r-section {
+        padding: 28px 0;
+    }
+
+    .r-entry {
+        margin-bottom: 36px;
+    }
+
+    .r-company {
+        font-size: 16px;
+    }
+
+    .r-role {
+        font-size: 16px;
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+
+    .r-download {
+        bottom: 28px;
+        padding: 10px 28px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    #resume {
+        padding: 56px 20px 48px 20px;
+    }
+}
+
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+    .r-blur,
+    .r-download,
+    .skip-link {
+        display: none !important;
+    }
+
+    body {
+        padding-bottom: 0;
+        color: #000;
+        background: #fff;
+    }
+
+    #resume {
+        max-width: 100%;
+        padding: 40px 60px;
+    }
+
+    .r-section {
+        padding: 24px 0;
+    }
+}
+
+/* ============================================================
+   GSAP INITIAL STATES
+   Prevent flash of unstyled content before GSAP runs.
+   ============================================================ */
+
+.r-download {
+    opacity: 0;
+}
+
+[data-metric] {
+    display: inline-block;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+html.no-motion #resume,
+html.no-motion .r-download,
+html.no-motion .r-section,
+html.no-motion .r-entry,
+html.no-motion [data-metric] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #resume,
+    .r-download,
+    .r-section,
+    .r-entry,
+    [data-metric] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .r-download {
+        transition: none;
+    }
+}

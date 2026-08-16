@@ -316,7 +316,7 @@
   </div>
 </section>
 
-<div class="full-screen-asset k-a" style="height:140vh;height:140dvh">
+<div class="full-screen-asset" style="height:140vh;height:140dvh">
   <picture><source srcset="../assets/mc/mc-canvas-left.webp" type="image/webp"><img src="../assets/mc/mc-canvas-left.png" alt="Magic Canvas — AI creative studio workspace" width="2880" height="2640" style="object-fit:cover;object-position:center" loading="eager" fetchpriority="high"></picture>
 </div>
 
@@ -839,12 +839,12 @@
 
   document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
 
-  // Hero image — zoom-out reveal
+  // Hero image — zoom-out reveal (no opacity to preserve LCP)
   var heroAsset = document.querySelector('.full-screen-asset picture');
   if (heroAsset) {
     gsap.fromTo(heroAsset,
-      { scale: 1.08, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out', immediateRender: true,
+      { scale: 1.08 },
+      { scale: 1, duration: 1.2, ease: 'power2.out', immediateRender: true,
         scrollTrigger: { trigger: heroAsset, start: 'top 90%', once: true }
       }
     );

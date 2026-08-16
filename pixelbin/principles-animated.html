@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Principles — Animated Options</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+    body { background: #fff; }
+    .option-label {
+      text-align: center;
+      padding: 3em 0 1em;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-ghost);
+    }
+    .option-divider {
+      width: 60%;
+      margin: 0 auto;
+      height: 1px;
+      background: rgba(52,52,52,0.08);
+    }
+
+    /* ═══ OPTION A: Stat Strip ═══ */
+    .stat-strip {
+      display: flex;
+      justify-content: center;
+      max-width: 64em;
+      margin: 0 auto;
+      padding: 0 8%;
+    }
+    .stat-strip__col {
+      flex: 1;
+      text-align: center;
+      padding: 3em 2em;
+    }
+    .stat-strip__col + .stat-strip__col {
+      border-left: 1px solid rgba(52,52,52,0.08);
+    }
+    .stat-strip__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+    }
+    .stat-strip__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-top: 0.8em;
+    }
+    .stat-strip__desc {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      margin-top: 0.4em;
+      max-width: 16em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 768px) {
+      .stat-strip { flex-direction: column; }
+      .stat-strip__col + .stat-strip__col { border-left: none; border-top: 1px solid rgba(52,52,52,0.08); }
+    }
+
+    /* ═══ OPTION B: Centered Stack ═══ */
+    .stack-principles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+      padding: 0 8%;
+      max-width: 64em;
+      margin: 0 auto;
+    }
+    .stack-principles__item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2em;
+    }
+    .stack-principles__num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      flex-shrink: 0;
+    }
+    .stack-principles__text {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OPTION A: Stat Strip — Animated        -->
+<!-- ═══════════════════════════════════════ -->
+
+<p class="option-label">Option A — Stat Strip with Counter + Stagger</p>
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="stat-strip" id="statStripA">
+    <div class="stat-strip__col">
+      <p class="stat-strip__number" data-target="75" data-suffix="%">0%</p>
+      <p class="stat-strip__label">Thumb-Driven</p>
+      <p class="stat-strip__desc">Every tool in the bottom third of the screen</p>
+    </div>
+    <div class="stat-strip__col">
+      <p class="stat-strip__number" data-target="72" data-suffix="s">0s</p>
+      <p class="stat-strip__label">Session Length</p>
+      <p class="stat-strip__desc">Every workflow survives an interruption</p>
+    </div>
+    <div class="stat-strip__col">
+      <p class="stat-strip__number" data-target="1" data-suffix="">0</p>
+      <p class="stat-strip__label">Interaction Pattern</p>
+      <p class="stat-strip__desc">Bottom sheet for everything. Learn once.</p>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OPTION B: Centered Stack — Animated    -->
+<!-- ═══════════════════════════════════════ -->
+
+<p class="option-label">Option B — Centered Stack with Stagger Reveal</p>
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="stack-principles" id="stackB">
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">01</span>
+      <p class="stack-principles__text">Every tool in the thumb zone</p>
+    </div>
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">02</span>
+      <p class="stack-principles__text">Every workflow survives interruption</p>
+    </div>
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">03</span>
+      <p class="stack-principles__text">One interaction pattern for everything</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ═══ OPTION A: Counter animation + stagger ═══ */
+  var statCols = document.querySelectorAll('#statStripA .stat-strip__col');
+
+  statCols.forEach(function (col, i) {
+    var numEl = col.querySelector('.stat-strip__number');
+    var target = parseInt(numEl.getAttribute('data-target'));
+    var suffix = numEl.getAttribute('data-suffix');
+    var counter = { val: 0 };
+
+    gsap.from(col, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#statStripA',
+        start: 'top 75%',
+        once: true
+      }
+    });
+
+    gsap.to(counter, {
+      val: target,
+      duration: 1.5,
+      delay: i * 0.2 + 0.3,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '#statStripA',
+        start: 'top 75%',
+        once: true
+      },
+      onUpdate: function () {
+        numEl.textContent = Math.round(counter.val) + suffix;
+      }
+    });
+  });
+
+  /* ═══ Option A: Labels + desc fade in after counter ═══ */
+  gsap.from('#statStripA .stat-strip__label, #statStripA .stat-strip__desc', {
+    opacity: 0,
+    y: 10,
+    duration: 0.5,
+    stagger: 0.1,
+    delay: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '#statStripA',
+      start: 'top 75%',
+      once: true
+    }
+  });
+
+  /* ═══ OPTION B: Stagger reveal from left ═══ */
+  gsap.from('#stackB .stack-principles__item', {
+    x: -60,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.25,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#stackB',
+      start: 'top 75%',
+      once: true
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

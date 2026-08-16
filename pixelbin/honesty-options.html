@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Didn't Work — Layout Options</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+
+    .option-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.04em; color: #fff; background: var(--charcoal);
+      display: inline-block; padding: 0.4em 1em; margin: 0 8%;
+      position: relative; z-index: 10;
+    }
+    .option-divider { height: 1px; background: var(--charcoal); opacity: 0.08; }
+
+    /* ════════════════════════════════════════
+       OPTION A — STACKED FAULT CARDS
+       ════════════════════════════════════════ */
+
+    .fault-section { padding: 6em 8%; }
+    .fault-inner { max-width: 72em; margin: 0 auto; }
+    .fault-header { margin-bottom: 3em; }
+    .fault-cards { display: flex; flex-direction: column; }
+
+    .fault-card {
+      display: grid;
+      grid-template-columns: 3em 1fr;
+      gap: 1em;
+      padding: 1.8em 0;
+      border-top: 1px solid rgba(52,52,52,0.08);
+    }
+    .fault-card:last-child { border-bottom: 1px solid rgba(52,52,52,0.08); }
+
+    .fault-badge {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      border: 1px solid rgba(52,52,52,0.12);
+      padding: 0.15em 0.5em; height: fit-content;
+      text-align: center; line-height: 1.4;
+    }
+
+    .fault-content {}
+    .fault-headline {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.02em; color: var(--charcoal);
+      margin-bottom: 0.4em;
+    }
+    .fault-struck {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em; font-weight: 400; line-height: 1.45;
+      color: var(--text-ghost); text-decoration: line-through;
+      margin-bottom: 0.3em;
+    }
+    .fault-fix {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em; font-weight: 400; line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    /* ════════════════════════════════════════
+       OPTION B — TIMELINE
+       ════════════════════════════════════════ */
+
+    .timeline-section { padding: 6em 8%; }
+    .timeline-inner { max-width: 72em; margin: 0 auto; display: flex; gap: 4em; }
+    .timeline-left { width: 25%; flex-shrink: 0; }
+    .timeline-right { flex: 1; position: relative; padding-left: 3em; }
+    .timeline-right::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: rgba(52,52,52,0.12);
+    }
+
+    .timeline-node {
+      position: relative;
+      padding-bottom: 3em;
+    }
+    .timeline-node:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute; left: -3em; top: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--charcoal); color: var(--frost);
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.5em; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      transform: translateX(-13px);
+    }
+
+    .timeline-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.02em; color: var(--charcoal);
+      margin-bottom: 0.6em;
+    }
+    .timeline-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary); max-width: 32em;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-inner { flex-direction: column; gap: 2em; }
+      .timeline-left { width: 100%; }
+    }
+
+    /* ════════════════════════════════════════
+       OPTION C — THREE-COLUMN STAT BLOCKS
+       ════════════════════════════════════════ */
+
+    .statblock-section { padding: 6em 8%; }
+    .statblock-inner { max-width: 72em; margin: 0 auto; }
+    .statblock-header { margin-bottom: 3em; }
+
+    .statblock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2em;
+    }
+
+    .statblock-cell {
+      padding: 2em;
+      border: 1px solid rgba(52,52,52,0.08);
+    }
+
+    .statblock-badge {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      border: 1px solid rgba(52,52,52,0.12);
+      display: inline-block; padding: 0.15em 0.5em;
+      margin-bottom: 1.2em; line-height: 1.4;
+    }
+
+    .statblock-keyword {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800; line-height: 1;
+      letter-spacing: -0.04em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 0.4em;
+    }
+
+    .statblock-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.6em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-bottom: 1em;
+    }
+
+    .statblock-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .statblock-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
+       OPTION D — ACCORDION
+       ════════════════════════════════════════ */
+
+    .accordion-section { padding: 6em 8%; }
+    .accordion-inner { max-width: 72em; margin: 0 auto; display: flex; gap: 4em; }
+    .accordion-left { width: 25%; flex-shrink: 0; }
+    .accordion-right { flex: 1; }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(52,52,52,0.08);
+    }
+
+    .accordion-item summary {
+      display: flex; align-items: center; gap: 1em;
+      padding: 1.4em 0; cursor: pointer; list-style: none;
+      transition: opacity 0.2s ease;
+    }
+    .accordion-item summary:hover { opacity: 0.6; }
+    .accordion-item summary::-webkit-details-marker { display: none; }
+
+    .accordion-item summary::after {
+      content: '+'; margin-left: auto;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.2em; font-weight: 300; color: var(--text-ghost);
+      transition: transform 0.2s ease;
+    }
+    .accordion-item[open] summary::after {
+      content: '−';
+    }
+
+    .accordion-summary-badge {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      border: 1px solid rgba(52,52,52,0.12);
+      padding: 0.15em 0.5em; line-height: 1.4; flex-shrink: 0;
+    }
+
+    .accordion-summary-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.02em; color: var(--charcoal);
+    }
+
+    .accordion-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary); max-width: 36em;
+      padding-bottom: 1.8em; padding-left: 4em;
+    }
+
+    @media (max-width: 768px) {
+      .accordion-inner { flex-direction: column; gap: 2em; }
+      .accordion-left { width: 100%; }
+      .accordion-body { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<!-- ═══════════════════════════════════════════
+     OPTION A — STACKED FAULT CARDS
+     ═══════════════════════════════════════════ -->
+
+<p class="option-label">Option A — Fault Cards with Strikethrough</p>
+
+<section class="fault-section">
+  <div class="fault-inner">
+    <div class="fault-header">
+      <p class="mono-text" style="margin-bottom:0.6em">Honest Assessment</p>
+      <h3 class="heading4">What Didn't<br>Work</h3>
+    </div>
+    <div class="fault-cards">
+      <div class="fault-card">
+        <span class="fault-badge">V2</span>
+        <div class="fault-content">
+          <p class="fault-headline">Coin system confused users</p>
+          <p class="fault-struck">Credits as game mechanic — users abandoned at deduction moment</p>
+          <p class="fault-fix">V4 replaced coins with straightforward monthly and weekly plans</p>
+        </div>
+      </div>
+      <div class="fault-card">
+        <span class="fault-badge">V3</span>
+        <div class="fault-content">
+          <p class="fault-headline">Onboarding had too many steps</p>
+          <p class="fault-struck">Five carousel cards — users swiped past without reading by step 3</p>
+          <p class="fault-fix">V4 cut to 3 cards, each showing one capability with a single visual</p>
+        </div>
+      </div>
+      <div class="fault-card">
+        <span class="fault-badge">V4</span>
+        <div class="fault-content">
+          <p class="fault-headline">Prompt-first launched without suggestion pills</p>
+          <p class="fault-struck">Blank prompt bar — users who couldn't articulate what to type left</p>
+          <p class="fault-fix">Added pre-written suggestion pills as starting points for hesitant users</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     OPTION B — TIMELINE
+     ═══════════════════════════════════════════ -->
+
+<p class="option-label">Option B — Vertical Timeline</p>
+
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Honest Assessment</p>
+      <h3 class="heading4">What Didn't<br>Work</h3>
+    </div>
+    <div class="timeline-right">
+      <div class="timeline-node">
+        <div class="timeline-dot">V2</div>
+        <p class="timeline-title">Coin system confused users</p>
+        <p class="timeline-body">Credits felt like a game mechanic, not a payment model. Users completed edits but abandoned at the credit-deduction moment. V4 replaced it entirely with straightforward monthly and weekly plans.</p>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot">V3</div>
+        <p class="timeline-title">Onboarding had too many steps</p>
+        <p class="timeline-body">Five carousel cards. By step 3, users were swiping past without reading. V4 cut it to 3 cards, each showing one capability with a single visual. No text walls.</p>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot">V4</div>
+        <p class="timeline-title">Prompt-first launched without suggestion pills</p>
+        <p class="timeline-body">The prompt bar was the primary UI, but users who didn't know what to type stared at an empty input box. Adding pre-written suggestion pills gave hesitant users a starting point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     OPTION C — THREE-COLUMN STAT BLOCKS
+     ═══════════════════════════════════════════ -->
+
+<p class="option-label">Option C — Stat Blocks</p>
+
+<section class="statblock-section">
+  <div class="statblock-inner">
+    <div class="statblock-header">
+      <p class="mono-text" style="margin-bottom:0.6em">Honest Assessment</p>
+      <h3 class="heading4">What Didn't Work</h3>
+    </div>
+    <div class="statblock-grid">
+      <div class="statblock-cell">
+        <span class="statblock-badge">V2</span>
+        <p class="statblock-keyword">Coins</p>
+        <p class="statblock-label">Confused the payment model</p>
+        <p class="statblock-body">Credits felt like a game mechanic. Users completed edits but abandoned at the credit-deduction moment. They understood the tool but not the cost. V4 replaced it with straightforward monthly and weekly plans.</p>
+      </div>
+      <div class="statblock-cell">
+        <span class="statblock-badge">V3</span>
+        <p class="statblock-keyword">5 Steps</p>
+        <p class="statblock-label">Too many onboarding cards</p>
+        <p class="statblock-body">Five carousel cards. By step 3, users were swiping past without reading. The content was accurate but the format was wrong. V4 cut it to 3 cards, each showing one capability with a single visual.</p>
+      </div>
+      <div class="statblock-cell">
+        <span class="statblock-badge">V4</span>
+        <p class="statblock-keyword">Blank</p>
+        <p class="statblock-label">No suggestion pills on launch</p>
+        <p class="statblock-body">The prompt bar was the primary UI, but users who didn't know what to type stared at an empty input box. Adding pre-written suggestion pills gave hesitant users a starting point without cluttering the interface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     OPTION D — ACCORDION
+     ═══════════════════════════════════════════ -->
+
+<p class="option-label">Option D — Accordion Panels</p>
+
+<section class="accordion-section">
+  <div class="accordion-inner">
+    <div class="accordion-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Honest Assessment</p>
+      <h3 class="heading4">What Didn't<br>Work</h3>
+    </div>
+    <div class="accordion-right">
+      <details class="accordion-item" open>
+        <summary>
+          <span class="accordion-summary-badge">V2</span>
+          <span class="accordion-summary-title">Coin system confused users</span>
+        </summary>
+        <p class="accordion-body">Credits felt like a game mechanic, not a payment model. Users expected subscription pricing — they didn't understand why editing an image "cost" coins. The signal came from the usage data: users were completing edits but abandoning at the credit-deduction moment. V4 replaced it entirely with straightforward monthly and weekly plans.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-summary-badge">V3</span>
+          <span class="accordion-summary-title">Onboarding had too many steps</span>
+        </summary>
+        <p class="accordion-body">Five carousel cards. By step 3, users were swiping past without reading. The content was accurate but the format was wrong — nobody reads five screens of text before using an app. V4 cut it to 3 cards, each showing one capability with a single visual.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-summary-badge">V4</span>
+          <span class="accordion-summary-title">Prompt-first launched without suggestion pills</span>
+        </summary>
+        <p class="accordion-body">The prompt bar was the primary UI, but users who didn't know what to type stared at an empty input box. The blank prompt is the blank canvas problem all over again. Adding pre-written suggestion pills below the prompt gave hesitant users a starting point without cluttering the interface for power users.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</body>
+</html>

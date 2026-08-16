@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Canvas — Closing Option A2: Impact + Dev Handoff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1919;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .mono-text {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: rgba(52,52,52,0.55);
+    }
+    .heading4 {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 2em;
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #1a1919;
+    }
+    .body-copy {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(52,52,52,0.85);
+    }
+    .body-copy + .body-copy { margin-top: 1.2em; }
+
+    .content-section {
+      background: #ffffff;
+      color: #1a1919;
+      padding: 8em 8% 6em;
+    }
+    .content-row {
+      display: flex;
+      justify-content: center;
+      gap: 4em;
+      max-width: 72em;
+      margin: 0 auto;
+    }
+    .content-left {
+      width: 25%;
+      flex-shrink: 0;
+    }
+    .content-right {
+      width: 45%;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .content-section { padding: 5em 6% 4em; }
+      .content-row { flex-direction: column; gap: 2em; }
+      .content-left, .content-right { width: 100%; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── IMPACT / STATS ── -->
+<section class="content-section" style="padding-top:12em;padding-bottom:8em">
+  <div style="max-width:72em;margin:0 auto">
+    <p class="mono-text" style="margin-bottom:1.8em">The Scope</p>
+    <div class="stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(52,52,52,0.08)">
+      <div style="padding:2.4em 0;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">170</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Prototype frames</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">8</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Core flows designed</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">57</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Components built</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">1</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Sole designer on POC</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENGINEERING HANDOFF ── -->
+<section class="content-section" style="padding-top:4em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Engineering Handoff</p>
+      <h2 class="heading4">One Interface,<br>Three Model<br>Endpoints</h2>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">The user sees one prompt bar. Engineering builds nine variants of it. Each maps to a different API endpoint and model configuration across Image, Video, and Pixie modes. Video generation alone required three separate implementations — text-to-video, image-to-video, and motion control — each calling a different AI model. The Figma file was structured so any engineer could trace a variant back to its specific flow, state, and edge case without a walkthrough.</p>
+      <p class="body-copy">Constraints were documented as deliberately as features. The batch editing toolbar ships with 6 tools instead of 7 — prompt-based editing was excluded because it requires per-image intent and doesn't scale to batch operations. The AI Influencer's structured interview — 5 questions covering niche, demographic, purpose, aesthetic, and characteristics — was designed to map directly to API parameters, so engineering could build the persona endpoint from the design spec alone.</p>
+      <p class="body-copy">No intermediary between design and engineering. 170 frames organised by flow. Every frame annotated with its state, transitions, and edge cases. 57 components built for consistency across all 8 flows. The design stayed unified. The engineering became specific.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHIPPED STATUS ── -->
+<section class="content-section" style="padding-top:4em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Status</p>
+      <h3 class="heading4">Staged<br>Rollout</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">The core generation and editing flows are live and serving users. Image generation, video generation, upload-and-edit, and select-and-edit shipped in the first release.</p>
+      <p class="body-copy">Campaign planning, batch mode, and the AI influencer flow are shipping next. The design is complete and handed off — engineering is building against the same 170-frame prototype.</p>
+      <p class="body-copy">V1 explored 14 flows. V2 cut to 5. The dev handoff expanded to 8 — not because design added features, but because engineering needed video generation split into separate model endpoints. The design stayed unified. The engineering became specific.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DESIGN PRINCIPLE — full-screen pull-quote ── -->
+<section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%">
+  <div style="text-align:center">
+    <p class="mono-text" style="margin-bottom:1.2em">Design Principle</p>
+    <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,7vw,6rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:#1a1919;max-width:14em;margin:0 auto">AI that thinks<br>before it makes.</h2>
+  </div>
+</section>
+
+</body>
+</html>

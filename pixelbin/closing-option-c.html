@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closing Option C — Narrative Arc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1919;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .content-section {
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 6em 8%;
+    }
+
+    .content-row {
+      display: flex;
+      gap: 6em;
+      align-items: flex-start;
+    }
+
+    .content-left {
+      width: 25%;
+      flex-shrink: 0;
+    }
+
+    .content-right {
+      flex: 1;
+    }
+
+    .mono-text {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(52,52,52,0.55);
+    }
+
+    .heading4 {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #1a1919;
+    }
+
+    .body-copy {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+      color: #1a1919;
+      margin-bottom: 1.2em;
+    }
+
+    .body-copy:last-child { margin-bottom: 0; }
+
+    .pull-quote-section {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6em 8%;
+    }
+
+    .pull-quote {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 6rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #1a1919;
+      text-align: center;
+      max-width: 14em;
+      margin: 0 auto;
+    }
+
+    .pull-quote-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(52,52,52,0.55);
+      margin-bottom: 1.2em;
+    }
+
+    .option-label {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      font-family: 'Geist', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(52,52,52,0.35);
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .content-row {
+        flex-direction: column;
+        gap: 2em;
+      }
+      .content-left {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="option-label">Option C — Narrative Arc</div>
+
+<!-- ══════ BEAT 1: EXPLORED ══════ -->
+
+<section class="content-section">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Explored</p>
+      <h3 class="heading4">14 Flows,<br>170 Frames</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">V1 explored everything. AI Influencer, Script to Video, Batch Processing, Social Media Campaign, Upload and Chat Edit — fourteen flows mapped across 170 prototype frames. The canvas paradigm was the bet: what if every generated asset lived on a shared spatial workspace instead of disappearing into a download folder? The first version tested that bet in every direction at once.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BEAT 2: SHIPPED ══════ -->
+
+<section class="content-section">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Shipped</p>
+      <h3 class="heading4">8 Flows,<br>57 Components</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">V2 cut ruthlessly. Nine flows were removed. The surviving five mapped to the core creative loop: generate, edit, upload, batch, campaign. Engineering then expanded it to eight — not because design added features, but because video generation needed to split into three separate model endpoints. The design stayed unified. The engineering became specific. Core generation and editing flows are live. Campaign planning and batch mode are shipping next. I was the sole designer on the POC.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BEAT 3: LEARNED ══════ -->
+
+<section class="content-section">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Learned</p>
+      <h3 class="heading4">Orchestration<br>> Generation</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">The product bet paid off. The differentiator was never image quality — every model produces good images now. The differentiator was everything around it: the AI that analyses before the user asks, the campaign planner that coordinates seven assets from a single prompt, the batch processor that applies one edit across a catalogue. The future of AI creative tools isn't better generation. It's better orchestration. The AI proposes. The user approves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DESIGN PRINCIPLE ══════ -->
+
+<section class="pull-quote-section">
+  <div style="text-align:center">
+    <p class="pull-quote-label">Design Principle</p>
+    <p class="pull-quote">The best AI doesn't wait<br>for instructions.<br>It proposes a plan and<br>asks if you agree.</p>
+  </div>
+</section>
+
+</body>
+</html>

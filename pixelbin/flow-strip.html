@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flow Strip — 4 screens vs 8 screens</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+
+    .flow-card {
+      padding: 6em 8%;
+      border-top: 1px solid rgba(52,52,52,0.08);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+    }
+
+    .flow-inner {
+      display: flex;
+      gap: 4em;
+      max-width: 72em;
+      margin: 0 auto;
+      width: 100%;
+      align-items: flex-start;
+    }
+
+
+    .flow-left {
+      width: 23%;
+      flex-shrink: 0;
+      position: sticky;
+      top: 6em;
+      align-self: flex-start;
+    }
+
+    .flow-num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 4em;
+      font-weight: 800;
+      color: var(--charcoal);
+      opacity: 0.08;
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+
+    .flow-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.4em;
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.6em;
+    }
+
+    .flow-status {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+    }
+
+    .flow-right {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      padding-top: 5.2em;
+    }
+
+    .flow-problem {
+      max-width: 36em;
+      margin-bottom: 2em;
+    }
+
+    .flow-problem__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-bottom: 0.8em;
+      line-height: 1;
+    }
+
+    .flow-problem__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+
+    /* ── Horizontal strip ── */
+
+    .phone-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3.5em 2em;
+      padding: 1em 0 2em 0;
+    }
+
+    .phone-item {
+      flex: 0 0 calc((100% - 6em) / 4);
+      min-width: 140px;
+    }
+
+    .phone-item__frame img {
+      width: 100%;
+      height: auto;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03);
+    }
+
+    .phone-item__meta {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4em;
+      margin-top: 1.2em;
+    }
+
+    .phone-item__step {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.5em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      flex-shrink: 0;
+    }
+
+    .phone-item__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.5em;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-ghost);
+    }
+
+    .strip-wrap {
+      position: relative;
+    }
+
+    /* ── Decision section below ── */
+
+    .flow-decision {
+      max-width: 36em;
+      margin-top: 2.5em;
+    }
+
+    .flow-decision__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-bottom: 0.8em;
+    }
+
+    .flow-decision__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+
+    .flow-outcome {
+      margin-top: 2.4em;
+      padding-top: 1.6em;
+      border-top: 1px solid rgba(52,52,52,0.08);
+      display: flex;
+      align-items: baseline;
+      gap: 1.6em;
+    }
+
+    .flow-outcome__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .flow-outcome__metric {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 800;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 768px) {
+      .flow-card { padding: 4em 6%; min-height: auto; }
+      .flow-inner { flex-direction: column; gap: 2em; }
+      .flow-left { width: 100%; position: static; }
+      .flow-num { font-size: 3em; margin-bottom: 0.2em; }
+      .flow-title { font-size: 1.2em; }
+      .flow-right { padding-top: 0; }
+      .flow-problem { max-width: 100%; }
+      .flow-decision { max-width: 100%; }
+      .phone-strip { gap: 1em 1em; }
+      .phone-item { flex: 0 0 calc((100% - 1em) / 2); }
+      .phone-item__meta { gap: 0.3em; }
+      .phone-item__step { font-size: 0.45em; }
+      .phone-item__caption { font-size: 0.45em; }
+      .flow-outcome { flex-direction: column; gap: 0.6em; }
+    }
+
+    @media (max-width: 480px) {
+      .flow-card { padding: 3em 5%; }
+      .phone-strip { gap: 0.8em 0.8em; }
+      .phone-item { flex: 0 0 calc((100% - 0.8em) / 2); }
+      .flow-num { font-size: 2.4em; }
+      .flow-title { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">01</div>
+      <h3 class="flow-title">How Do You Explain<br>AI in 3 Swipes?</h3>
+      <span class="flow-status">Onboarding</span>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">The Problem</p>
+        <p class="flow-problem__body">Most users have never used an AI creative tool on mobile. They don't know what's possible. The onboarding has to communicate three capabilities — image generation, batch editing, and video creation — before the user even creates an account.</p>
+      </div>
+
+      <div class="strip-wrap">
+        <div class="phone-strip" id="phoneStrip1">
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-onboard-1.webp" type="image/webp"><img src="assets/app/app-onboard-1.png" alt="Splash screen with PixelBin logo" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Brand moment before the value prop</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-onboard-2.webp" type="image/webp"><img src="assets/app/app-onboard-2.png" alt="Generate and edit images using the latest AI models" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">First promise — AI image generation</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-onboard-3.webp" type="image/webp"><img src="assets/app/app-onboard-3.png" alt="Edit multiple images at the same time with batch mode" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Second promise — batch editing</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-onboard-4.webp" type="image/webp"><img src="assets/app/app-onboard-4.png" alt="Turn your images into videos in seconds" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Third promise — video creation</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">The Design Decision</p>
+        <p class="flow-decision__body">Three swipeable cards, each showing one capability with a single visual. No feature lists. No tutorials. Just three promises: "Generate images," "Batch edit," "Make videos." The user understands what the app does before signing up.</p>
+      </div>
+
+      <div class="flow-outcome">
+        <span class="flow-outcome__label">Outcome</span>
+        <span class="flow-outcome__metric">V4 onboarding: 3 cards → 40% faster sign-up completion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 04: AI IMAGE EDITOR — 8 screens ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">04</div>
+      <h3 class="flow-title">How Do You Fit<br>6 Editing Tools on<br>a 6-Inch Screen?</h3>
+      <span class="flow-status">AI Image Editor</span>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">The Problem</p>
+        <p class="flow-problem__body">The AI Image Editor has six distinct tools — Prompt editing, Smart Select, Brush Select, Upscale, Watermark Removal, and Adjust. On desktop, these live in a sidebar. On mobile, there's no sidebar. Every tool needs to be reachable with one thumb without hiding the image being edited.</p>
+      </div>
+
+      <div class="strip-wrap">
+        <div class="phone-strip" id="phoneStrip2">
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-prompt.webp" type="image/webp"><img src="assets/app/app-editor-prompt.png" alt="Editor entry: upload or prompt to start" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Upload an image or start from a prompt</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-generate.webp" type="image/webp"><img src="assets/app/app-editor-generate.png" alt="Prompt editing: describe changes" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Describe changes in natural language</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-smartselect.webp" type="image/webp"><img src="assets/app/app-editor-smartselect.png" alt="Smart Select: AI-powered region selection" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">AI detects and selects objects</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-brushselect.webp" type="image/webp"><img src="assets/app/app-editor-brushselect.png" alt="Brush Select: manual paint selection" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Paint over any area for manual control</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-upscale.webp" type="image/webp"><img src="assets/app/app-editor-upscale.png" alt="Upscale: 2x, 4x, 8x" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">05</span><span class="phone-item__caption">2x, 4x, 8x with dimensions shown</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-watermark.webp" type="image/webp"><img src="assets/app/app-editor-watermark.png" alt="Watermark removal: Auto or Manual" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">06</span><span class="phone-item__caption">Auto detection or manual brush removal</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-adjust.webp" type="image/webp"><img src="assets/app/app-editor-adjust.png" alt="Adjust: Brightness, Saturation, Contrast" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">07</span><span class="phone-item__caption">Brightness, saturation, contrast sliders</span></div>
+          </div>
+          <div class="phone-item">
+            <div class="phone-item__frame">
+              <picture><source srcset="assets/app/app-editor-resize.webp" type="image/webp"><img src="assets/app/app-editor-resize.png" alt="Resize: aspect ratio and platform presets" loading="lazy"></picture>
+            </div>
+            <div class="phone-item__meta"><span class="phone-item__step">08</span><span class="phone-item__caption">Social, marketplace, and custom presets</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">The Design Decision</p>
+        <p class="flow-decision__body">Every tool slides up as a bottom sheet — the mobile-native pattern for contextual panels. The image stays visible above. The tool controls sit in the thumb zone below. Six tools, one interaction pattern, zero learning curve between them.</p>
+      </div>
+
+      <div class="flow-outcome">
+        <span class="flow-outcome__label">Outcome</span>
+        <span class="flow-outcome__metric">0% rage clicks · 92% scroll depth · One pattern for all 6 tools</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  document.querySelectorAll('.phone-strip').forEach(function (strip) {
+    var isDown = false;
+    var startX, scrollLeft;
+
+    strip.addEventListener('mousedown', function (e) {
+      isDown = true;
+      strip.style.cursor = 'grabbing';
+      startX = e.pageX - strip.offsetLeft;
+      scrollLeft = strip.scrollLeft;
+    });
+
+    strip.addEventListener('mouseleave', function () { isDown = false; strip.style.cursor = 'grab'; });
+    strip.addEventListener('mouseup', function () { isDown = false; strip.style.cursor = 'grab'; });
+
+    strip.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - strip.offsetLeft;
+      strip.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    var wrap = strip.closest('.strip-wrap');
+    if (wrap) {
+      strip.addEventListener('scroll', function () {
+        var atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 10;
+        wrap.classList.toggle('is-scrolled-end', atEnd);
+      });
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

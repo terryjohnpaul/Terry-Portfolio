@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clarity Data — Zigzag Layout</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+
+    .zz-block {
+      display: flex;
+      align-items: center;
+      gap: 4em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 6em 8%;
+    }
+
+    .zz-block--reverse {
+      flex-direction: row-reverse;
+    }
+
+    .zz-text {
+      width: 40%;
+      flex-shrink: 0;
+    }
+
+    .zz-visual {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .zz-visual img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(52,52,52,0.06);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+
+    .zz-visual__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      margin-top: 0.8em;
+    }
+
+    .zz-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2em;
+      margin-bottom: 0.6em;
+    }
+
+    .zz-stat__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+    }
+
+    .zz-stat__unit {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-muted);
+    }
+
+    .zz-insight {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.1em;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 1em;
+    }
+
+    .zz-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .zz-body + .zz-body {
+      margin-top: 0.8em;
+    }
+
+    .zz-tag {
+      display: inline-block;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--charcoal);
+      border: 1px solid rgba(52,52,52,0.12);
+      padding: 0.2em 0.6em;
+      margin-bottom: 1.6em;
+    }
+
+    .zz-divider {
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0 8%;
+    }
+
+    .zz-divider__line {
+      height: 1px;
+      background: var(--charcoal);
+      opacity: 0.06;
+    }
+
+    @media (max-width: 768px) {
+      .zz-block,
+      .zz-block--reverse {
+        flex-direction: column;
+        gap: 2em;
+        padding: 4em 6%;
+      }
+      .zz-text { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<!-- ══════ ROW 1: Text left, Recording right ══════ -->
+
+<div class="zz-block" id="zzBlock1">
+  <div class="zz-text">
+    <span class="zz-tag">Session Recordings</span>
+    <div class="zz-stat">
+      <span class="zz-stat__number">50</span>
+      <span class="zz-stat__unit">sessions watched</span>
+    </div>
+    <p class="zz-insight">Users weren't comparing.<br>They were deciding.</p>
+    <p class="zz-body">We watched 50 session recordings in Microsoft Clarity. The pattern was immediate: users scroll through the entire Home screen, stop at the prompt bar, and either type or leave.</p>
+    <p class="zz-body">Nobody browsed tools first. Nobody opened settings. The prompt bar was the decision point — everything above it was context, everything below it was discovery.</p>
+  </div>
+  <div class="zz-visual">
+    <picture><source srcset="assets/app/app-clarity-recording.webp" type="image/webp"><img src="assets/app/app-clarity-recording.png" alt="Microsoft Clarity session recording showing real user interaction"></picture>
+    <p class="zz-visual__caption">Clarity · Session recordings · Real user behaviour</p>
+  </div>
+</div>
+
+<div class="zz-divider"><div class="zz-divider__line"></div></div>
+
+<!-- ══════ ROW 2: Dashboard right, Text left (reversed) ══════ -->
+
+<div class="zz-block zz-block--reverse" id="zzBlock2">
+  <div class="zz-text">
+    <span class="zz-tag">Dashboard</span>
+    <div class="zz-stat">
+      <span class="zz-stat__number">8,891</span>
+      <span class="zz-stat__unit">sessions</span>
+    </div>
+    <p class="zz-insight">The numbers confirmed<br>the design works.</p>
+    <p class="zz-body">92.94% scroll depth means users reach the bottom — the thumb zone layout holds attention. 0.60% rage clicks means the interaction model is clear. 0% excessive scrolling means the content density is right.</p>
+    <p class="zz-body">4.8 minutes average active time on a mobile app where the average session is 72 seconds. Users aren't just visiting — they're creating.</p>
+  </div>
+  <div class="zz-visual">
+    <picture><source srcset="assets/app/app-clarity-stats.webp" type="image/webp"><img src="assets/app/app-clarity-stats.png" alt="Microsoft Clarity dashboard showing 8,891 sessions with key metrics"></picture>
+    <p class="zz-visual__caption">Clarity · Dashboard · 8,891 sessions · Last 200 days</p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('.zz-block').forEach(function (block) {
+    var text = block.querySelector('.zz-text');
+    var visual = block.querySelector('.zz-visual');
+    var isReversed = block.classList.contains('zz-block--reverse');
+
+    gsap.from(text, {
+      x: isReversed ? 40 : -40,
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 75%', once: true }
+    });
+
+    gsap.from(visual, {
+      x: isReversed ? -40 : 40,
+      opacity: 0,
+      duration: 0.7,
+      delay: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 75%', once: true }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

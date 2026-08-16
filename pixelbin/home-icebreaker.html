@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ice Breaker — PixelBin App Home Screen | Terry John Paul</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+
+    /* ── Hero ── */
+    .ib-hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10em 8% 4em;
+      text-align: center;
+    }
+    .ib-hero__eyebrow {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      margin-bottom: 1.2em;
+    }
+    .ib-hero__title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      max-width: 14em;
+      margin-bottom: 1.6em;
+    }
+    .ib-hero__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      max-width: 32em;
+    }
+    .ib-hero__cite {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      margin-top: 1.2em;
+      font-style: italic;
+      max-width: 36em;
+    }
+
+    /* ── Annotation layout ── */
+    .ib-annotation {
+      max-width: 64em;
+      margin: 0 auto;
+      padding: 4em 4% 8em;
+      display: flex;
+      gap: 2.5em;
+      align-items: stretch;
+    }
+    .ib-cards {
+      width: 50%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .ib-screen {
+      width: 42%;
+      flex-shrink: 0;
+    }
+    .ib-screen__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      margin-bottom: 0.8em;
+    }
+    .ib-screen img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(52,52,52,0.06);
+    }
+
+    /* ── Annotation card ── */
+    .ib-card {
+      border: 1px dashed rgba(52,52,52,0.18);
+      padding: 1.2em 1.4em;
+      position: relative;
+    }
+    .ib-card + .ib-card {
+      margin-top: 1.4em;
+    }
+    .ib-card__header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6em;
+      margin-bottom: 0.6em;
+    }
+    .ib-card__title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.82em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+    .ib-card__tag {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.55em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--charcoal);
+      background: #f5e6d0;
+      padding: 0.2em 0.6em;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .ib-card__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+    .ib-card__cite {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      margin-top: 0.6em;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .ib-card__dot {
+      position: absolute;
+      right: -1em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      opacity: 0.2;
+    }
+    .ib-card__line {
+      position: absolute;
+      right: -2.5em;
+      width: 1.5em;
+      border-top: 1px dashed rgba(52,52,52,0.15);
+    }
+
+    /* ── Section labels (inside cards column) ── */
+    .ib-zone {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-ghost);
+      border: 1px dashed rgba(52,52,52,0.12);
+      display: inline-block;
+      padding: 0.3em 0.8em;
+      margin-bottom: 1.2em;
+    }
+
+    /* ── Spacers for alignment ── */
+    .ib-spacer-sm { height: 1em; }
+    .ib-spacer-md { height: 3em; }
+    .ib-spacer-lg { height: 5em; }
+
+    /* ── Closing ── */
+    .ib-closing {
+      text-align: center;
+      padding: 6em 8%;
+      max-width: 36em;
+      margin: 0 auto;
+    }
+    .ib-closing__title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 1.2em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .ib-annotation {
+        flex-direction: column-reverse;
+        gap: 2em;
+        padding: 3em 6% 4em;
+      }
+      .ib-cards, .ib-screen { width: 100%; }
+      .ib-screen img {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+      }
+      .ib-card__dot, .ib-card__line { display: none; }
+      .ib-hero { padding: 6em 6% 3em; }
+      .ib-spacer-sm, .ib-spacer-md, .ib-spacer-lg { height: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main id="main-content">
+
+<!-- ══════ HERO ══════ -->
+
+<section class="ib-hero">
+  <p class="ib-hero__eyebrow">The Ice Breaker</p>
+  <h1 class="ib-hero__title">What Happens When the<br>User Has No Prompt?</h1>
+  <p class="ib-hero__body">A prompt bar alone loses first-time users. They open the app, see a blinking cursor, and leave. The Home screen can't assume intent — it has to create it. Every section below exists to catch users the prompt bar misses.</p>
+  <p class="ib-hero__cite">"Half the population in rich countries is not articulate enough to get good results from current AI." — Jakob Nielsen, NN/g 2023</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ ANNOTATION SECTION ══════ -->
+
+<div class="ib-annotation">
+
+  <!-- LEFT: Annotation cards -->
+  <div class="ib-cards">
+
+    <p class="ib-zone">Annotations listed here ↓</p>
+
+    <!-- 1 — Top Bar + Intent Heading -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">"What will you make today?"</span>
+        <span class="ib-card__tag">Framing</span>
+      </div>
+      <p class="ib-card__body">Intent-first, not tool-first. The heading asks what the user wants — not which tool to use. Credits badge (🔥 3) and Go Pro sit in the top bar — monetisation visible but never blocking creation.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <!-- 2 — Prompt Bar -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">Prompt Bar</span>
+        <span class="ib-card__tag">Paradigm</span>
+      </div>
+      <p class="ib-card__body">Natural language as primary input. Users describe what they want instead of picking tools. The + button uploads images into the prompt context. The ✨ sparkle enhances vague prompts using AI.</p>
+      <p class="ib-card__cite">Progressive Disclosure — Nielsen, NN/g 2006: "People understand a system better when you help them prioritize features."</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <!-- 4 — Quick Action Carousel -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">Quick Action Carousel</span>
+        <span class="ib-card__tag">Discovery</span>
+      </div>
+      <p class="ib-card__body">Before/after thumbnails for users who know the task but can't describe it. They think "remove a background" — they don't think in prompts. Tap the transformation, skip the typing.</p>
+      <p class="ib-card__cite">Hick's Law — Hick &amp; Hyman, 1952: decision time grows with the number of choices. The carousel pre-filters infinity into a bounded set.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <!-- 5 — Hero Creation Cards -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">Hero Creation Cards</span>
+        <span class="ib-card__tag">Inspiration</span>
+      </div>
+      <p class="ib-card__body">Large visual cards showing AI outputs — a product photo, a batch edit. Not feature lists. Not tool names. Outputs. The user sees what's possible before deciding what to make. Content as invitation, not controls.</p>
+      <p class="ib-card__cite">Empty State Design — Kaplan, NN/g 2021: "Do not default to totally empty states."</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <div class="ib-spacer-lg"></div>
+
+    <!-- 6 — Just Type to Edit -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">"Just Type to Edit"</span>
+        <span class="ib-card__tag">Recovery</span>
+      </div>
+      <p class="ib-card__body">Pre-written prompt examples — "A field of daisies," "A girl walking around in Paris." Users learn the language of AI interaction by seeing real prompts. Also the fix for the V4 blank-canvas failure.</p>
+      <p class="ib-card__cite">Recognition Over Recall — Budiu, NN/g 2024: showing options is cognitively easier than asking users to generate from memory.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <div class="ib-spacer-md"></div>
+
+    <!-- 7 — Video Generation -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">Video Generation Promo</span>
+        <span class="ib-card__tag">Cross-Sell</span>
+      </div>
+      <p class="ib-card__body">Users who came for images discover video generation without navigating away. A preview card with "Generate videos using the latest models" and a direct "Try now" CTA. Cross-selling within context, not through a separate tab.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <div class="ib-spacer-md"></div>
+
+    <!-- 8 — AI Magic -->
+    <div class="ib-card">
+      <div class="ib-card__header">
+        <span class="ib-card__title">AI Magic</span>
+        <span class="ib-card__tag">Trending</span>
+      </div>
+      <p class="ib-card__body">Viral AI effects surfaced on the Home screen — Baby Face Generator, Ghibli Generator, Sticker Generator. These ride cultural trends and give first-time users a low-commitment entry point: "try this fun thing" before committing to a serious workflow.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <div class="ib-spacer-lg"></div>
+
+    <!-- 9 — Visuals That Make an Impact -->
+    <div class="ib-card" style="margin-top:6em">
+      <div class="ib-card__header">
+        <span class="ib-card__title">Visuals That Make an Impact</span>
+        <span class="ib-card__tag">Use Cases</span>
+      </div>
+      <p class="ib-card__body">Category-driven discovery — Product shots, Social media, Ad creatives, Brand kits. Users find their use case, not a tool. Each card shows a real output with a clear action: "Place your product in a different background," "Create a product unboxing video." Intent-based, not feature-based.</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <!-- 10 — Bottom Navigation -->
+    <div class="ib-card" style="margin-top:auto">
+      <div class="ib-card__header">
+        <span class="ib-card__title">✦ AI Button + Navigation</span>
+        <span class="ib-card__tag">Architecture</span>
+      </div>
+      <p class="ib-card__body">Five tabs map to five intents: make (Home), browse (AI Tools), create (✦), discover (Explore), review (Gallery). The floating ✦ button is visible on every tab — creation is a global action, not a destination. One tap from any context.</p>
+      <p class="ib-card__cite">Paradox of the Active User — Carroll &amp; Rosson, IBM 1987: "Users never read manuals but start using the software immediately."</p>
+      <span class="ib-card__dot" style="top:50%"></span>
+      <span class="ib-card__line" style="top:50%"></span>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Full Home screen -->
+  <div class="ib-screen">
+    <p class="ib-screen__label">The Home Screen · Full Scroll</p>
+    <picture>
+      <source srcset="assets/app/app-home-full.webp" type="image/webp">
+      <img src="assets/app/app-home-full.png" alt="PixelBin App complete Home screen — all engagement layers from top to bottom navigation" loading="lazy">
+    </picture>
+  </div>
+
+</div>
+
+<!-- ══════ THUMB ZONE HEATMAP ══════ -->
+
+<div class="divider"></div>
+
+<section class="content-section" style="padding-top:6em;padding-bottom:2em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Thumb Zone</p>
+      <h3 class="heading4">Where Do<br>Thumbs<br>Actually Go?</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">The average mobile session is 72 seconds. Users hold their phone with one hand — often while commuting, in a queue, between meetings. Every primary interaction on the Home screen sits in the bottom 40% of the display, inside the natural thumb arc.</p>
+      <p class="body-copy">Microsoft Clarity tracked 8,891 sessions across the PixelBin editor. The data confirms the design hypothesis: interactions concentrate on creation actions, not navigation. 92.94% scroll depth means users reach the bottom. 0.60% rage clicks means the UI is clear. 0% excessive scrolling means the content density is right.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:0 8% 4em;max-width:72em;margin:0 auto" class="k-a">
+  <div style="display:flex;gap:1.5em;align-items:flex-start">
+    <div style="width:50%">
+      <picture><source srcset="assets/app/app-clarity-recording.webp" type="image/webp"><img src="assets/app/app-clarity-recording.png" alt="Microsoft Clarity — session recording showing real user interaction with PixelBin editor" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.06)"></picture>
+      <p class="mono-text" style="margin-top:0.6em;font-size:0.6em">Session Recording · Real user interaction</p>
+    </div>
+    <div style="width:50%">
+      <picture><source srcset="assets/app/app-clarity-stats.webp" type="image/webp"><img src="assets/app/app-clarity-stats.png" alt="Microsoft Clarity dashboard — 8,891 sessions, 92.94% scroll depth, 0.60% rage clicks, 4.8 min active time" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.06)"></picture>
+      <p class="mono-text" style="margin-top:0.6em;font-size:0.6em">Dashboard · 8,891 sessions · Last 200 days</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hm-marker {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4A5CFF;
+    color: #fff;
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 1px 4px rgba(74,92,255,0.4);
+    pointer-events: none;
+  }
+  .hm-marker--hot {
+    background: #FF3D57;
+    box-shadow: 0 1px 6px rgba(255,61,87,0.5);
+  }
+  .hm-marker--warm {
+    background: #FF8C42;
+    box-shadow: 0 1px 4px rgba(255,140,66,0.4);
+  }
+  .hm-row {
+    display: flex;
+    gap: 2em;
+    align-items: flex-start;
+    margin-bottom: 3em;
+  }
+  .hm-panel {
+    width: 48%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .hm-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(52,52,52,0.06);
+  }
+  .hm-stats {
+    display: flex;
+    gap: 1.5em;
+    margin-top: 0.6em;
+    padding: 0.5em 0.8em;
+    background: #1a1a2e;
+    border-radius: 0 0 8px 8px;
+    width: fit-content;
+  }
+  .hm-stat {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 0.55em;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.02em;
+  }
+  .hm-stat strong {
+    color: #fff;
+    font-weight: 800;
+  }
+  .hm-label {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 0.65em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text-ghost);
+    margin-bottom: 0.8em;
+  }
+  @media (max-width: 768px) {
+    .hm-row { flex-direction: column; gap: 1.5em; }
+    .hm-panel { width: 100% !important; }
+  }
+</style>
+
+<div style="padding:0 8% 6em;max-width:64em;margin:0 auto">
+
+  <div style="display:flex;gap:1em;align-items:flex-start">
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">1 / 3 · Above the fold</p>
+      <picture><source srcset="assets/app/app-heatmap-top.webp" type="image/webp"><img src="assets/app/app-heatmap-top.png" alt="Microsoft Clarity heatmap — Home screen above the fold: prompt bar, quick actions, hero cards" style="width:100%;height:auto;border-radius:12px 12px 0 0"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">10</strong> click targets</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">70%</strong> in thumb zone</span>
+      </div>
+    </div>
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">2 / 3 · Mid-scroll</p>
+      <picture><source srcset="assets/app/app-heatmap-mid.webp" type="image/webp"><img src="assets/app/app-heatmap-mid.png" alt="Microsoft Clarity heatmap — mid-scroll: suggestion pills, video promo, AI Magic trending cards" style="width:100%;height:auto;border-radius:12px 12px 0 0"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">10</strong> click targets</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">60%</strong> in thumb zone</span>
+      </div>
+    </div>
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">3 / 3 · Bottom scroll</p>
+      <picture><source srcset="assets/app/app-heatmap-bottom.webp" type="image/webp"><img src="assets/app/app-heatmap-bottom.png" alt="Microsoft Clarity heatmap — bottom scroll: use-case grid, category tabs, product shots" style="width:100%;height:auto;border-radius:12px 12px 0 0"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">8</strong> click targets</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">75%</strong> in thumb zone</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="mono-text" style="margin-top:1.2em;color:var(--text-ghost)">Microsoft Clarity · Live interaction data · PixelBin Home Screen</p>
+
+</div>
+
+<!-- ══════ WHAT THE RECORDINGS SHOWED ══════ -->
+
+<div class="divider"></div>
+
+<section class="content-section" style="padding-top:6em;padding-bottom:2em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">What the Recordings Showed</p>
+      <h3 class="heading4">We Stopped<br>Designing for<br>Comparison</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">We watched 50 session recordings. Users weren't comparing plans. They were deciding whether to pay at all. The decision had already been made before they reached the pricing screen — during the creation flow. Users who had a successful first generation were ready to pay. Users who hadn't were going to leave regardless of how the plans were arranged.</p>
+      <p class="body-copy">The old screen treated pricing as a comparison problem — 5 options, feature matrices, checkmarks and crosses. But recordings showed two behaviours: scroll past everything and hit back, or tap the first option and continue. Nobody was weighing credits per dollar.</p>
+      <p class="body-copy">So we redesigned for conviction, not comparison. The hero image sets an emotional tone — this is premium, not a billing page. Two checkmarks confirm value without creating doubt. Monthly pre-selected gives users a decision instead of asking for one. "Auto-renews monthly. Cancel anytime." kills the last objection before they tap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Before / After -->
+<div style="padding:0 8% 2em;max-width:64em;margin:0 auto" class="k-a">
+  <div style="display:flex;gap:2em;align-items:flex-start">
+    <div style="width:50%">
+      <p class="mono-text" style="margin-bottom:0.8em">Before — Choose Your Plan</p>
+      <div style="background:#f5f5f5;border-radius:12px;padding:1.5em;display:flex;justify-content:center">
+        <picture><source srcset="assets/app/app-pricing-old.webp" type="image/webp"><img src="assets/app/app-pricing-old.png" alt="Old pricing screen — 5 options, feature matrices, Free Trial visible" style="width:auto;max-width:100%;max-height:580px;border-radius:8px"></picture>
+      </div>
+    </div>
+    <div style="width:50%">
+      <p class="mono-text" style="margin-bottom:0.8em">After — Get Pro</p>
+      <div style="background:#f5f5f5;border-radius:12px;padding:1.5em;display:flex;justify-content:center">
+        <picture><source srcset="assets/app/app-pricing-new.webp" type="image/webp"><img src="assets/app/app-pricing-new.png" alt="New pricing screen — 3 options, hero image, Monthly pre-selected, specific CTA" style="width:auto;max-width:100%;max-height:580px;border-radius:8px"></picture>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Changes list -->
+<div style="padding:0 8% 6em;max-width:64em;margin:0 auto">
+  <div style="display:flex;gap:2em;align-items:flex-start">
+    <div style="width:50%">
+      <div style="border:1px dashed rgba(52,52,52,0.18);padding:1.2em 1.4em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)"><strong style="font-weight:800;text-transform:uppercase;font-size:0.9em;letter-spacing:-0.02em;color:var(--charcoal)">5 choices</strong> with feature comparison. Free Trial shown as "Current Plan" — reminds users they can stay free. Generic "Continue" CTA. No visual hierarchy. Users scrolled, compared, hesitated, left.</p>
+      </div>
+    </div>
+    <div style="width:50%">
+      <div style="border:1px dashed rgba(52,52,52,0.18);padding:1.2em 1.4em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)"><strong style="font-weight:800;text-transform:uppercase;font-size:0.9em;letter-spacing:-0.02em;color:var(--charcoal)">3 choices</strong> with Monthly pre-selected. Free Trial removed. Hero image adds aspiration. "Continue with Monthly plan" — specific, transparent. Weekly ($6.99) exists as a safety net for the hesitant 10-15%.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CLOSING ══════ -->
+
+<div class="divider"></div>
+
+<div class="ib-closing">
+  <p class="ib-closing__title">From blank canvas to conviction.<br>Every layer serves a different<br>temperature of intent.</p>
+  <p class="body-copy" style="text-align:center">The Home screen builds intent. The creation flow builds trust. The pricing screen converts conviction. One loop — observed through 8,891 Clarity sessions.</p>
+</div>
+
+<!-- ══════ BRIDGE ══════ -->
+
+<section class="scene--bridge" style="padding-top:4em">
+  <div class="bridge__inner">
+    <div class="bridge__nav" role="navigation" aria-label="Back" style="padding-top:2em;border-top:1px solid rgba(52,52,52,0.08)">
+      <p><a href="/pixelbin/pixelbin-app/" style="color:var(--text-ghost);font-size:0.875em">← Back to PixelBin App case study</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script src="js/chapter1.js"></script>
+</body>
+</html>

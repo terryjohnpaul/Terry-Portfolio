@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Product Design Case Study — Magic Canvas | Terry John Paul</title>
+  <meta name="description" content="AI product design case study: Magic Canvas, PixelBin's generative AI creative studio. 8 shipped flows, AI agent UX, image and video generation, batch editing. Designed by Terry John Paul.">
+  <link rel="canonical" href="https://terryjohn.me/pixelbin/magic-canvas/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Product Design Case Study — Magic Canvas">
+  <meta property="og:description" content="AI product design case study: Magic Canvas, PixelBin's generative AI creative studio. 8 shipped flows, AI agent UX, image and video generation, batch editing.">
+  <meta property="og:url" content="https://terryjohn.me/pixelbin/magic-canvas/">
+  <meta property="og:image" content="https://terryjohn.me/pixelbin/assets/mc/mc-og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Magic Canvas AI product design case study by Terry John Paul">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Product Design Case Study — Magic Canvas">
+  <meta name="twitter:description" content="8 shipped flows for PixelBin's generative AI creative studio. Designed by Terry John Paul.">
+  <meta name="twitter:image" content="https://terryjohn.me/pixelbin/assets/mc/mc-og-card.jpg">
+  <meta name="twitter:image:alt" content="Magic Canvas AI product design case study by Terry John Paul">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": "https://terryjohn.me/pixelbin/magic-canvas/#creativework",
+    "name": "Magic Canvas — AI Product Design Case Study",
+    "description": "AI product design case study for Magic Canvas, PixelBin's generative AI creative studio.",
+    "url": "https://terryjohn.me/pixelbin/magic-canvas/",
+    "image": "https://terryjohn.me/pixelbin/assets/mc/mc-og-card.jpg",
+    "inLanguage": "en-GB",
+    "author": {
+      "@type": "Person",
+      "@id": "https://terryjohn.me/#person",
+      "name": "Terry John Paul",
+      "url": "https://terryjohn.me/",
+      "jobTitle": "Senior Product Designer"
+    },
+    "about": ["AI product design", "Generative AI", "AI UX", "AI creative tools"]
+  }
+  </script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x06tjk9wcc");
+  </script>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/chapter1.css">
+  <style>
+    /* ── Phase 1: Background + Monospace ── */
+    :root { --frost: #ffffff; }
+
+    .decision-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+    }
+
+    /* ── Phase 2: Flow card proportions (match app page) ── */
+    .decision-card {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+    }
+    .decision-inner {
+      gap: 10em;
+      align-items: flex-start;
+    }
+    .decision-left {
+      width: 23%;
+    }
+    .decision-right {
+      padding-top: 5.2em;
+    }
+    .decision-num {
+      margin-bottom: 0.3em;
+    }
+
+    /* ── Phase 4: Visual polish — shadows + border-radius consistency ── */
+    .slideshow__frame img {
+      border-radius: 8px;
+      border: none;
+    }
+    .slideshow__caption {
+      display: block;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      margin-top: 0.8em;
+    }
+    .decision-screen img {
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03);
+    }
+    .full-screen-asset img {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+
+    /* ── Phase 2: CTA + Footer ── */
+    .cta-heading {
+      font-size: 48px;
+      font-weight: 400;
+      color: rgb(238,238,238);
+      letter-spacing: -1.2px;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .cta-heading .h-reg { font-family: 'Helvetica Now Display', sans-serif; font-style: normal; }
+    .cta-heading .h-ital { font-family: 'Helvetica Now Display', sans-serif; font-style: italic; }
+    #cta {
+      background: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 160px 0 160px;
+      box-sizing: border-box;
+    }
+    .cta-content {
+      text-align: center;
+      max-width: 560px;
+      padding: 0 48px;
+    }
+    #cta, #site-footer { font-size: 16px; }
+    .cta-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+    }
+    .cta-description {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 48px;
+    }
+    .footer-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 18px 52px;
+      background: #fff;
+      color: #000;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.22s ease, gap 0.26s cubic-bezier(0.16,1,0.3,1);
+    }
+    .footer-cta-btn:hover {
+      background: rgba(255,255,255,0.88);
+      gap: 10px;
+      opacity: 1;
+    }
+    .footer-cta-btn .btn-mail-icon {
+      display: inline-flex;
+      align-items: center;
+      width: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.6) translateX(-4px);
+      transition: width 0.26s cubic-bezier(0.16,1,0.3,1),
+                  opacity 0.20s ease,
+                  transform 0.26s cubic-bezier(0.16,1,0.3,1);
+    }
+    .footer-cta-btn:hover .btn-mail-icon {
+      width: 18px;
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+    #site-footer {
+      background: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 60px 48px;
+      box-sizing: border-box;
+    }
+    .footer-bottom {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-left span {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-right a {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-right a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ── Phase 3: Bottom nav ── */
+    .cs-bottom-nav {
+      position: fixed; bottom: 1.8em; left: 50%; transform: translateX(-50%);
+      z-index: 500; display: flex; align-items: center; gap: 0.3em; padding: 0.4em;
+      background: rgba(52, 52, 52, 0.65); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px; box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      white-space: nowrap; opacity: 0; transform: translateX(-50%) translateY(1.5em);
+      transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
+    }
+    .cs-bottom-nav.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .cs-nav-pill {
+      position: absolute; top: 0.4em; left: 0; height: calc(100% - 0.8em);
+      border-radius: 100px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; z-index: 0;
+    }
+    .cs-nav-item {
+      display: flex; align-items: center; gap: 0.4em; padding: 0.55em 1.1em;
+      border-radius: 100px; font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.85); text-decoration: none; cursor: pointer;
+      transition: color 0.35s ease; user-select: none; position: relative; z-index: 1;
+    }
+    .cs-nav-item:hover { color: rgba(255,255,255,0.95); opacity: 1; }
+    .cs-nav-item.is-active { color: var(--charcoal); }
+    .cs-nav-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.35s ease; }
+    .cs-nav-item.is-active svg { opacity: 0.9; }
+    .cs-nav-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); flex-shrink: 0; position: relative; z-index: 1; }
+
+    /* ── Phase 2+3+4: Responsive overrides ── */
+    @media (max-width: 768px) {
+      .decision-card { min-height: auto; }
+      .decision-inner { gap: 2em; }
+      .decision-right { padding-top: 0; }
+      .cs-bottom-nav { bottom: 1.2em; gap: 0.15em; padding: 0.3em; }
+      .cs-nav-item { font-size: 0.75rem; padding: 0.7em 0.9em; gap: 0.35em; min-height: 44px; }
+      .cs-nav-item svg { width: 13px; height: 13px; }
+      .cs-nav-pill { top: 0.3em; height: calc(100% - 0.6em); }
+      .cta-heading { font-size: clamp(28px, 9vw, 44px); }
+      #cta { padding: 80px 24px 100px; }
+      .cta-content { padding: 0; }
+      .cta-label { font-size: 13px; margin-bottom: 24px; }
+      .cta-description { font-size: 14px; margin-bottom: 40px; }
+      #site-footer { padding: 60px 24px 40px; }
+      .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
+    }
+    @media (max-width: 520px) {
+      .cs-nav-item span { display: none; }
+      .cs-nav-item { padding: 0.55em 0.7em; }
+      .cs-nav-item svg { width: 15px; height: 15px; opacity: 0.6; }
+      .cs-nav-item.is-active svg { opacity: 1; }
+      .cs-nav-sep { display: none; }
+    }
+
+    /* ── Lenis ── */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
+
+<!-- ══════ HERO ══════ -->
+
+<section class="cs-hero-section">
+  <div class="cs-hero-inner">
+    <p class="mono-text cs-hero-eyebrow">/Work/Pixelbin/Magic Canvas</p>
+    <p class="cs-hero-product">Magic Canvas</p>
+    <h1 class="cs-hero-title">What If AI Could Plan<br>an Entire Campaign?</h1>
+    <div class="divider" style="margin-bottom:1.6em"></div>
+    <div class="cs-hero-meta">
+      <p class="mono-text" style="color:var(--text-muted)">Senior Product Designer · Sole designer</p>
+      <p class="mono-text" style="color:var(--text-muted)">8 flows · 57 components · 2 months to production</p>
+      <p class="mono-text" style="color:var(--text-muted)">Live on PixelBin Studio</p>
+    </div>
+  </div>
+</section>
+
+<div class="full-screen-asset k-a" style="height:140vh;height:140dvh">
+  <picture><source srcset="../assets/mc/mc-canvas-left.webp" type="image/webp"><img src="../assets/mc/mc-canvas-left.png" alt="Magic Canvas — AI creative studio workspace" width="2880" height="2640" style="object-fit:cover;object-position:center" loading="eager" fetchpriority="high"></picture>
+</div>
+
+<!-- ══════ THE QUESTION ══════ -->
+
+<section class="scene--question"><h2 class="heading2">An AI creative studio<br>built on PixelBin</h2></section>
+
+<!-- ══════ WHY THIS PRODUCT ══════ -->
+
+<section id="mc-context" class="content-section" style="padding-top:4em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Why This Product</p>
+      <h3 class="heading4">Why We Built<br>Magic Canvas</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">A marketing manager preparing a Diwali campaign needs 4 Instagram posts, a banner and 2 stories — all matching. In most tools, each asset is generated separately, downloaded, moved to a layout tool, and repeated. The generation itself works fine. That meant repeatedly moving between generation, editing and layout tools while trying to keep the campaign visually consistent.</p>
+      <p class="body-copy">PixelBin already had the editing infrastructure — background removal, upscaling, watermark removal, batch processing — serving e-commerce customers through API. Magic Canvas put those capabilities inside a single workspace with an AI assistant called Pixie. I designed Pixie to lead the process: it analyses uploads, proposes what to do, and waits for approval before acting. The idea came from Jor-El in Man of Steel — an assistant that stays present and steps in without needing a prompt every time. We had two months from the start of design to production, so the scope had to stay tight.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VISUAL BREAK ══════ -->
+
+<div class="full-screen-asset" style="height:100vh;overflow:hidden;margin:35vh 0">
+  <video muted loop playsinline autoplay preload="metadata" poster="../assets/mc/mc-video-poster.webp" src="../assets/mc/magic-canvas-frames.mp4" style="width:100%;height:100%;object-fit:cover;object-position:center" aria-label="Magic Canvas — full campaign view with Pixie generating coordinated assets on the spatial canvas"></video>
+</div>
+
+<!-- ══════ THE 8 FLOWS ══════ -->
+
+<section class="scene--silence" style="min-height:100vh"><p class="pull-quote">Eight core flows.<br>One creative studio.</p></section>
+
+<!-- ══════ FLOW 01: UPLOAD & AI ANALYSIS ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">01</div>
+      <h3 class="decision-title">What If the AI Saw<br>the Problem Before<br>You Did?</h3>
+      <span class="decision-status">Upload & AI Analysis</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">Why Change the Default</p>
+      <p class="decision-body">In most AI editing tools, an uploaded image sits idle until the user writes a prompt. The user diagnoses the image, picks the right tool, describes what they want. An uploaded image usually sits idle until the user decides what to do next.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Upload and AI analysis flow"><button class="slideshow__dot is-active" data-slide="0">Upload</button><button class="slideshow__dot" data-slide="1">AI Analysis</button><button class="slideshow__dot" data-slide="2">Action Taken</button><button class="slideshow__dot" data-slide="3">Final Output</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-ai-upload.webp" type="image/webp"><img src="../assets/mc/mc-ai-upload.png" alt="User uploads a product image to the Magic Canvas workspace" loading="lazy"><span class="slideshow__caption">Image lands on the canvas — Pixie starts analysing immediately</span></picture>
+            <picture><source srcset="../assets/mc/mc-ai-analysis.webp" type="image/webp"><img src="../assets/mc/mc-ai-analysis.png" alt="Pixie proactively analyses the image and surfaces actionable suggestions" loading="lazy"><span class="slideshow__caption">Pixie identifies issues and proposes specific actions unprompted</span></picture>
+            <picture><source srcset="../assets/mc/mc-ai-action.webp" type="image/webp"><img src="../assets/mc/mc-ai-action.png" alt="User approves a suggested action — Pixie applies the edit" loading="lazy"><span class="slideshow__caption">User approves — Pixie executes the edit on the canvas</span></picture>
+            <picture><source srcset="../assets/mc/mc-ai-final.webp" type="image/webp"><img src="../assets/mc/mc-ai-final.png" alt="Final output with AI-applied edits ready for export" loading="lazy"><span class="slideshow__caption">Clean output — no prompt was needed</span></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">How Pixie Responds</p>
+      <p class="decision-body">Pixie runs analysis the moment an image lands on the canvas. It surfaces what it finds — "I see many objects in the background. Clean background? Erase background?" — and the user taps to approve. No prompt needed. The user doesn't have to know what tools are available; Pixie tells them what it can see and offers to act on it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 02: CAMPAIGN ══════ -->
+
+<section id="mc-flows" class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">02</div>
+      <h3 class="decision-title">How Does One Prompt<br>Become a Full Campaign?</h3>
+      <span class="decision-status">Social Media Campaign</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">The Coordination Problem</p>
+      <p class="decision-body">A social media campaign needs several coordinated assets — posts, stories, reels — all on-brand. Generating each one separately means repeating the brand context in every prompt and manually checking consistency across outputs.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Campaign flow"><button class="slideshow__dot is-active" data-slide="0">Prompt</button><button class="slideshow__dot" data-slide="1">Planning</button><button class="slideshow__dot" data-slide="2">Generated</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-campaign-prompt.webp" type="image/webp"><img src="../assets/mc/mc-campaign-prompt.png" alt="User types: Design a social media campaign" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-campaign-plan.webp" type="image/webp"><img src="../assets/mc/mc-campaign-plan.png" alt="Pixie proposes: Lunea Night to Day Radiance — 2 posts, 2 stories, 2 reels" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-campaign-result.webp" type="image/webp"><img src="../assets/mc/mc-campaign-result.png" alt="7 campaign assets generated on canvas with feedback options" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">How Pixie Plans It</p>
+      <p class="decision-body">Pixie interprets a single intent into a multi-asset plan. The user approves the plan, provides brand context once, and Pixie generates all assets together. The canvas shows the full campaign at once — the user can compare outputs, swap individual pieces and refine the set before exporting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 03: IMAGE GEN + EDIT ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">03</div>
+      <h3 class="decision-title">Generation and Editing<br>in One Workspace</h3>
+      <span class="decision-status">Generate & Edit Images</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">What the Workspace Includes</p>
+      <p class="decision-body">Users generate images and then need to edit them — background removal, upscaling, watermark removal, adjustments, resize — without switching tools.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Image gen flow"><button class="slideshow__dot is-active" data-slide="0">Prompt</button><button class="slideshow__dot" data-slide="1">Transformation</button><button class="slideshow__dot" data-slide="2">Generated</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-imggen-prompt.webp" type="image/webp"><img src="../assets/mc/mc-imggen-prompt.png" alt="Image generation: user enters a prompt to generate images on the canvas" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-imggen-transform.webp" type="image/webp"><img src="../assets/mc/mc-imggen-transform.png" alt="Transformation: AI processing the prompt and generating image variations" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-imggen-generated.webp" type="image/webp"><img src="../assets/mc/mc-imggen-generated.png" alt="Generated: completed images on the canvas ready for editing and export" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">The Prompt Bar</p>
+      <p class="decision-body">The prompt bar has 9 variants across Image, Video, and Pixie modes. Users can generate multiple variations from one prompt. Clicking any output reveals the editing toolbar — prompt editing, background removal, upscaling, watermark removal, adjustments and resize — all within the canvas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 04: SELECT & EDIT ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">04</div>
+      <h3 class="decision-title">What If You Could Just<br>Point at What You<br>Want to Change?</h3>
+      <span class="decision-status">Select & Edit</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">The Limitation</p>
+      <p class="decision-body">Prompt-based editing applies to the entire image. If a user wants to change a dress colour, remove a single object, or adjust one element — they have to describe enough context for the AI to understand what to leave alone. Other tools solve this with mask layers, feathering controls, and lasso selections. Precision editing shouldn't require a Photoshop mental model.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Select and edit flow"><button class="slideshow__dot is-active" data-slide="0">Select</button><button class="slideshow__dot" data-slide="1">Apply</button><button class="slideshow__dot" data-slide="2">Generating</button><button class="slideshow__dot" data-slide="3">Generated</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-sel-brush.webp" type="image/webp"><img src="../assets/mc/mc-sel-brush.png" alt="Brush paints a purple selection mask over the element to edit" loading="lazy"><span class="slideshow__caption">Brush over the element to define the edit boundary</span></picture>
+            <picture><source srcset="../assets/mc/mc-sel-result.webp" type="image/webp"><img src="../assets/mc/mc-sel-result.png" alt="User types: Change the dress colour to red — Apply button activates" loading="lazy"><span class="slideshow__caption">Describe the change — prompt anchored to selection</span></picture>
+            <picture><source srcset="../assets/mc/mc-sel-generating.webp" type="image/webp"><img src="../assets/mc/mc-sel-generating.png" alt="AI generating the edited image on the canvas — original alongside the new version" loading="lazy"><span class="slideshow__caption">Original stays visible while the AI generates the edit</span></picture>
+            <picture><source srcset="../assets/mc/mc-sel-generated.webp" type="image/webp"><img src="../assets/mc/mc-sel-generated.png" alt="Generated result: edited image with the dress changed to red, editing toolbar available" loading="lazy"><span class="slideshow__caption">Edited image on canvas — full toolbar available for refinement</span></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">The Interaction</p>
+      <p class="decision-body">Four steps: brush, select, describe, apply. The brush creates a spatial mask directly on the image — no layers panel, no feathering controls, no mode switching. The prompt field appears inline, anchored to the selection itself, not in a separate panel. Multiple selections can be stacked before applying, each with its own instruction. That thing, change it to this.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SCENE WALKTHROUGH ══════ -->
+
+<div style="width:100%;margin:0 auto;padding:35vh 0;transform:scale(1.15);transform-origin:center center">
+  <lottie-player data-src="../assets/mc/mc-scene-lottie.json" background="transparent" speed="1" style="width:100%;aspect-ratio:4/3" loop autoplay></lottie-player>
+</div>
+
+<!-- ══════ FLOW 05: VIDEO GEN + EDIT ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">05</div>
+      <h3 class="decision-title">Can You Make a Video<br>Without a Camera?</h3>
+      <span class="decision-status">Generate & Edit Videos</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">Three Routes, One Interface</p>
+      <p class="decision-body">Video generation has three different entry points: text-to-video, image-to-video, and motion control. Each calls a different AI model, but the user shouldn't have to know that.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Video gen flow"><button class="slideshow__dot is-active" data-slide="0">Text to Video</button><button class="slideshow__dot" data-slide="1">Transformation</button><button class="slideshow__dot" data-slide="2">Trim Video</button><button class="slideshow__dot" data-slide="3">Add Audio</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-vid-texttovid.webp" type="image/webp"><img src="../assets/mc/mc-vid-texttovid.png" alt="Text to video: user describes a video and Pixie generates it with model selection and reference options" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-vid-transform.webp" type="image/webp"><img src="../assets/mc/mc-vid-transform.png" alt="Transformation: video being processed with AI-driven scene generation" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-vid-trim.webp" type="image/webp"><img src="../assets/mc/mc-vid-trim.png" alt="Trim video: timeline editor for cutting and adjusting generated video clips" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-vid-audio.webp" type="image/webp"><img src="../assets/mc/mc-vid-audio.png" alt="Add audio: audio track selection and mixing for the generated video" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">Implementation Detail</p>
+      <p class="decision-body">All three video types share one flow with mode switching. V2 added a dedicated Motion Control toggle for granular camera parameters. For engineering, video was split into three separate implementations — each maps to a different AI model endpoint — but the user-facing interface stays unified.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 06: SCRIPT TO VIDEO ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">06</div>
+      <h3 class="decision-title">What Happens When<br>You Give AI a Script?</h3>
+      <span class="decision-status">Script to Video</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">How It Works</p>
+      <p class="decision-body">Same planning pattern as campaigns: the user provides a script, Pixie proposes a scene-by-scene breakdown, and generates each scene as a video clip on the canvas. Individual scenes can be reordered, regenerated or adjusted independently.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Script to video flow"><button class="slideshow__dot is-active" data-slide="0">Script Input</button><button class="slideshow__dot" data-slide="1">Planning</button><button class="slideshow__dot" data-slide="2">Transformation</button><button class="slideshow__dot" data-slide="3">Post Transformation</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-s2v-script.webp" type="image/webp"><img src="../assets/mc/mc-s2v-script.png" alt="Script input: user provides a written script for Pixie to convert into video scenes" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-s2v-planning.webp" type="image/webp"><img src="../assets/mc/mc-s2v-planning.png" alt="Planning: Pixie analyses the script and proposes a scene-by-scene video breakdown" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-s2v-transform.webp" type="image/webp"><img src="../assets/mc/mc-s2v-transform.png" alt="Transformation: AI generating video scenes from the script on the canvas" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-s2v-result.webp" type="image/webp"><img src="../assets/mc/mc-s2v-result.png" alt="Post transformation: completed video scenes arranged on canvas for review and editing" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 07: BATCH EDITING ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">07</div>
+      <h3 class="decision-title">How Do You Edit<br>50 Images Without<br>Repeating Yourself?</h3>
+      <span class="decision-status">Batch Image Editing</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">Scale</p>
+      <p class="decision-body">E-commerce teams apply the same edits — background removal, upscale, style adjustment — across hundreds of product images. Repeating that per image doesn't scale.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="Batch editing flow"><button class="slideshow__dot is-active" data-slide="0">Upload Batch</button><button class="slideshow__dot" data-slide="1">Prompt</button><button class="slideshow__dot" data-slide="2">Transforming</button><button class="slideshow__dot" data-slide="3">Post Transform</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-batch-upload.webp" type="image/webp"><img src="../assets/mc/mc-batch-upload.png" alt="Upload batch: multiple images uploaded to canvas for simultaneous processing" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-batch-prompt.webp" type="image/webp"><img src="../assets/mc/mc-batch-prompt.png" alt="Prompt transformation: user describes edits to apply across the entire batch" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-batch-transforming.webp" type="image/webp"><img src="../assets/mc/mc-batch-transforming.png" alt="While transforming: AI processing all batch images simultaneously" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-batch-result.webp" type="image/webp"><img src="../assets/mc/mc-batch-result.png" alt="Post transformation: all batch images processed and ready for export" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">What I Left Out</p>
+      <p class="decision-body">The batch toolbar was designed as a subset of the single-image toolbar — 6 variants instead of 7. The missing tool is prompt-based editing, which requires per-image intent and doesn't scale to batch operations. The Template Builder extends this further: save an action sequence and reuse it across future batches.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 08: AI INFLUENCER ══════ -->
+
+<section class="decision-card">
+  <div class="decision-inner">
+    <div class="decision-left">
+      <div class="decision-num">08</div>
+      <h3 class="decision-title">What If You Could Create<br>a Brand Ambassador<br>That Never Existed?</h3>
+      <span class="decision-status">AI Influencer</span>
+    </div>
+    <div class="decision-right">
+      <p class="decision-label">Consistency</p>
+      <p class="decision-body">AI-generated influencers need to look consistent across poses, outfits and settings while maintaining a specific demographic and aesthetic.</p>
+
+      <div class="decision-screen k-a" style="margin-top:2em">
+        <div class="slideshow" data-interval="2500">
+          <nav class="slideshow__nav" aria-label="AI Influencer flow"><button class="slideshow__dot is-active" data-slide="0">Create</button><button class="slideshow__dot" data-slide="1">Define Persona</button><button class="slideshow__dot" data-slide="2">Transformation</button><button class="slideshow__dot" data-slide="3">Further Edits</button></nav>
+          <div class="slideshow__frame">
+            <picture class="is-active"><source srcset="../assets/mc/mc-infl-create.webp" type="image/webp"><img src="../assets/mc/mc-infl-create.png" alt="Create: user initiates AI influencer creation with Pixie" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-infl-persona.webp" type="image/webp"><img src="../assets/mc/mc-infl-persona.png" alt="Define persona: structured interview for niche, demographic, aesthetic, and characteristics" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-infl-transform.webp" type="image/webp"><img src="../assets/mc/mc-infl-transform.png" alt="Transformation: AI generating the influencer based on the defined persona" loading="lazy"></picture>
+            <picture><source srcset="../assets/mc/mc-infl-edits.webp" type="image/webp"><img src="../assets/mc/mc-infl-edits.png" alt="Further edits: refining the generated influencer with additional prompts and adjustments" loading="lazy"></picture>
+          </div>
+        </div>
+      </div>
+
+      <p class="decision-label" style="margin-top:2.4em">Structured Input</p>
+      <p class="decision-body">Instead of a freeform prompt, Pixie runs a structured interview — 5 questions covering niche, demographic, purpose, aesthetic and characteristics. The five inputs mapped directly to the parameters engineering needed for the persona endpoint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VISUAL BREAK ══════ -->
+
+<div style="width:100%;height:140vh;height:140dvh;overflow:hidden;position:relative;margin:35vh 0">
+  <picture style="display:block;height:100%"><source srcset="../assets/mc/mc-canvas-right.webp" type="image/webp"><img src="../assets/mc/mc-canvas-right.png" alt="Magic Canvas — creative studio workspace" width="2880" height="2160" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block" loading="lazy"></picture>
+  <p style="position:absolute;top:clamp(48px,8vh,120px);left:0;width:100%;text-align:center;font-family:'Helvetica Now Display',sans-serif;font-size:clamp(3rem,6vw,7rem);font-weight:500;letter-spacing:-0.03em;line-height:1;color:#1a1919;pointer-events:none">One Creative Studio</p>
+</div>
+
+<!-- ══════ IMPACT / STATS ══════ -->
+
+<section class="content-section" style="padding-top:12em;padding-bottom:8em">
+  <div style="max-width:72em;margin:0 auto">
+    <p class="mono-text" style="margin-bottom:1.8em">The Scope</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(52,52,52,0.08)">
+      <div style="padding:2.4em 0;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">2</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Months to production</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">8</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Flows shipped</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08);border-right:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">57</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Components in production</p>
+      </div>
+      <div style="padding:2.4em 0 2.4em 2em;border-bottom:1px solid rgba(52,52,52,0.08)">
+        <p style="font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-0.04em">1</p>
+        <p style="font-size:0.875em;font-weight:400;color:rgba(52,52,52,0.55);margin-top:0.5em">Sole designer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ENGINEERING HANDOFF ══════ -->
+
+<section id="mc-handoff" class="content-section" style="padding-top:4em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Engineering Handoff</p>
+      <h2 class="heading4">One Interface,<br>Three Model<br>Endpoints</h2>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">I structured the Figma file by flow — every frame annotated with its state, transitions and edge cases — so engineers could trace any variant without a walkthrough. 57 shared components across all 8 flows kept the implementation consistent. The file covered 9 prompt bar variants, three separate video model integrations, and the deliberate exclusions documented alongside each toolbar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SHIPPED STATUS ══════ -->
+
+<section class="content-section" style="padding-top:4em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Status</p>
+      <h3 class="heading4">Live in<br>Production</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">All 8 flows are live on PixelBin Studio. I originally explored 14 flows; model cost and engineering effort narrowed the set to eight within the two-month production window. Everything that shipped was designed, handed off and built within that timeline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DESIGN PRINCIPLE ══════ -->
+
+<section id="mc-principle" class="scene--silence" style="min-height:100vh;min-height:100dvh">
+  <div style="text-align:center">
+    <p class="mono-text" style="margin-bottom:1.2em">Design Principle</p>
+    <p class="pull-quote">AI that thinks<br>before it makes.</p>
+  </div>
+</section>
+
+<!-- ══════ CROSS NAV ══════ -->
+
+<section class="scene--bridge">
+  <div class="bridge__inner">
+    <nav class="bridge__cross-nav" aria-label="Explore the rest of the PixelBin case study">
+      <a href="/pixelbin/pixelbin-app/" class="bridge__cross-link">
+        <p class="bridge__cross-eyebrow">← PixelBin App</p>
+        <p class="bridge__cross-title">The Mobile Experience</p>
+        <p class="bridge__cross-desc">AI image editing, prompt design, and batch tools for mobile</p>
+      </a>
+      <a href="/pixelbin/" class="bridge__cross-link bridge__cross-link--next">
+        <p class="bridge__cross-eyebrow">All PixelBin Work →</p>
+        <p class="bridge__cross-title">9 Products, 3 Years</p>
+        <p class="bridge__cross-desc">The full scope of what was designed and shipped</p>
+      </a>
+    </nav>
+  </div>
+</section>
+
+
+<!-- ══════ CTA + FOOTER ══════ -->
+
+<section id="cta">
+  <h2 class="cta-heading" style="opacity:1">
+    <span class="h-reg">Still </span><em class="h-ital">here</em>
+  </h2>
+  <div class="cta-content">
+    <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer working across AI, commerce and fintech products. I'm looking for a permanent Product Design role in the UK and would require Skilled Worker sponsorship to relocate.</p>
+    <p class="cta-label">Open to permanent UK opportunities</p>
+    <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+      <span class="btn-mail-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-left">
+      <span>terryjohnpaul20@gmail.com</span>
+      <span>Designed and coded by me. · © 2026 Terry John Paul</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="/resume/">Resume</a>
+      <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════ BOTTOM NAV ══════ -->
+
+<nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+  <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+  <a href="#mc-context" class="cs-nav-item" data-section="mc-context" aria-label="Context">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.2 10.2L14 14"/></svg>
+    <span>Context</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#mc-flows" class="cs-nav-item" data-section="mc-flows" aria-label="Flows">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1.5" width="8" height="13" rx="1.5"/><path d="M7 12.5h2"/></svg>
+    <span>Flows</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#mc-handoff" class="cs-nav-item" data-section="mc-handoff" aria-label="Handoff">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="1.5" y="9.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.8"/></svg>
+    <span>Handoff</span>
+  </a>
+</nav>
+
+</main>
+</div>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var player = entry.target;
+        var src = player.getAttribute('data-src');
+        if (src) { player.setAttribute('src', src); player.removeAttribute('data-src'); }
+        observer.unobserve(player);
+      }
+    });
+  }, { rootMargin: '400px' });
+  document.querySelectorAll('lottie-player[data-src]').forEach(function(el) { observer.observe(el); });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="../js/chapter1.js"></script>
+<script>
+(function () {
+  'use strict';
+  document.querySelectorAll('.slideshow').forEach(function (show) {
+    var frame = show.querySelector('.slideshow__frame');
+    var slides = frame.querySelectorAll('picture');
+    var dots = show.querySelectorAll('.slideshow__dot');
+    var interval = parseInt(show.getAttribute('data-interval') || '2500', 10);
+    var current = 0;
+    var timer = null;
+    var paused = false;
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = index;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+    }
+    function next() { goTo((current + 1) % slides.length); }
+    function startAuto() { if (timer) clearInterval(timer); if (!paused) timer = setInterval(next, interval); }
+    function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(dot.getAttribute('data-slide'), 10));
+        paused = true; stopAuto();
+        setTimeout(function () { paused = false; startAuto(); }, 8000);
+      });
+    });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAuto(); }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof Lenis === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  var lenis = new Lenis({
+    autoRaf: false,
+    duration: 1.1,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1,
+    touchMultiplier: 2
+  });
+
+  window.__lenis = lenis;
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add(function (time) {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+
+  // Hero image — zoom-out reveal
+  var heroAsset = document.querySelector('.full-screen-asset picture');
+  if (heroAsset) {
+    gsap.fromTo(heroAsset,
+      { scale: 1.08, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: heroAsset, start: 'top 90%', once: true }
+      }
+    );
+  }
+
+  // Content sections — subtle fade up
+  gsap.utils.toArray('.content-section .content-row').forEach(function (row) {
+    gsap.from(row, {
+      y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: row, start: 'top 85%', once: true }
+    });
+  });
+
+  // Decision cards — fade up
+  gsap.utils.toArray('.decision-card .decision-inner').forEach(function (inner) {
+    gsap.from(inner, {
+      y: 30, opacity: 0, duration: 0.6, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: inner, start: 'top 82%', once: true }
+    });
+  });
+
+  // Pull quotes — deliberate landing
+  gsap.utils.toArray('.pull-quote').forEach(function (quote) {
+    gsap.fromTo(quote,
+      { opacity: 0, y: 25 },
+      { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out', immediateRender: true,
+        scrollTrigger: { trigger: quote, start: 'top 75%', once: true }
+      }
+    );
+  });
+
+  // Full-screen asset reveals
+  gsap.utils.toArray('.full-screen-asset picture').forEach(function (pic, i) {
+    if (i === 0) return;
+    gsap.from(pic, {
+      opacity: 0, duration: 0.8, ease: 'power1.out', immediateRender: true,
+      scrollTrigger: { trigger: pic, start: 'top 90%', once: true }
+    });
+  });
+
+  // Scene questions — fade up
+  gsap.utils.toArray('.scene--question .heading2').forEach(function (h) {
+    gsap.fromTo(h,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', immediateRender: true,
+        scrollTrigger: { trigger: h, start: 'top 78%', once: true }
+      }
+    );
+  });
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var nav = document.getElementById('csBottomNav');
+  if (!nav) return;
+  var pill = document.getElementById('csNavPill');
+  var items = nav.querySelectorAll('.cs-nav-item');
+  var sections = [];
+  var ticking = false;
+
+  items.forEach(function (item) {
+    var id = item.getAttribute('data-section');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, item: item });
+  });
+
+  if (!sections.length) return;
+
+  function movePill(activeItem) {
+    pill.style.left = activeItem.offsetLeft + 'px';
+    pill.style.width = activeItem.offsetWidth + 'px';
+  }
+
+  function update() {
+    ticking = false;
+    var scrollY = window.scrollY;
+    var vh = window.innerHeight;
+
+    var footer = document.getElementById('cta');
+    var atFooter = footer && footer.getBoundingClientRect().top <= vh;
+
+    if (scrollY > vh * 0.5 && !atFooter) {
+      nav.classList.add('is-visible');
+    } else {
+      nav.classList.remove('is-visible');
+    }
+
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.getBoundingClientRect().top <= vh * 0.35) {
+        current = sections[i];
+      }
+    }
+
+    items.forEach(function (item) { item.classList.remove('is-active'); });
+    current.item.classList.add('is-active');
+    movePill(current.item);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = item.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) {
+        if (window.__lenis) { window.__lenis.scrollTo(el, { offset: 0 }); }
+        else { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    });
+  });
+
+  pill.style.width = sections[0].item.offsetWidth + 'px';
+  pill.style.left = sections[0].item.offsetLeft + 'px';
+  update();
+})();
+</script>
+
+
+<script defer src="https://va.vercel-scripts.com/v1/script.js" data-endpoint="/_vercel/insights"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option D — Minimal / Confidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1919;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .stats-section {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12vh 8%;
+    }
+
+    .stats-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: clamp(3rem, 8vw, 8rem);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #1a1919;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 0.6em;
+      font-family: 'Geist Mono', 'Courier New', monospace;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(52, 52, 52, 0.55);
+    }
+
+    .principle-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6em 8%;
+    }
+
+    .principle-quote {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 6rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #1a1919;
+      text-align: center;
+      max-width: 14em;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="stats-section">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-number">170</div>
+        <span class="stat-label">Frames</span>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8</div>
+        <span class="stat-label">Core Flows</span>
+      </div>
+      <div class="stat">
+        <div class="stat-number">57</div>
+        <span class="stat-label">Components</span>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <span class="stat-label">Designer</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="principle-section">
+    <p class="principle-quote">The best AI doesn't wait for instructions.<br>It proposes a plan and asks if you agree.</p>
+  </section>
+
+</body>
+</html>

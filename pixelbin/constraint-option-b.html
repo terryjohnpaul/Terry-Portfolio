@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option B — Merged with Lottie</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+    .constraint-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 8% 6em;
+      background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+    }
+    .constraint-overlay__inner {
+      max-width: 72em;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      gap: 4em;
+      pointer-events: auto;
+    }
+    .constraint-overlay__left {
+      width: 25%;
+      flex-shrink: 0;
+    }
+    .constraint-overlay__right {
+      width: 45%;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .constraint-overlay { padding: 0 6% 4em; align-items: flex-end; }
+      .constraint-overlay__inner { flex-direction: column; gap: 1.5em; }
+      .constraint-overlay__left, .constraint-overlay__right { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<!-- Evo grid placeholder -->
+<section class="content-section" style="padding:4em 8%;background:#f5f5f5;text-align:center">
+  <p class="mono-text">↑ V2→V4 Evolution Grid above ↑</p>
+</section>
+
+<!-- OPTION B: Constraint text overlaid on Lottie section -->
+<div class="full-screen-asset" style="height:100vh;background:#f5f5f5;overflow:hidden;position:relative">
+
+  <!-- Lottie would go here -->
+  <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">
+    <p class="mono-text" style="opacity:0.2;font-size:2em">Lottie Animation</p>
+  </div>
+
+  <!-- Constraint text overlaid at bottom -->
+  <div class="constraint-overlay">
+    <div class="constraint-overlay__inner">
+      <div class="constraint-overlay__left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Constraint</p>
+        <h3 class="heading4">4x Fewer<br>Interaction<br>Zones</h3>
+      </div>
+      <div class="constraint-overlay__right">
+        <p class="body-copy"><strong style="font-weight:800;font-size:1.1em;color:var(--charcoal)">2,074</strong> interaction zones on a MacBook. <strong style="font-weight:800;font-size:1.1em;color:var(--charcoal)">723</strong> on an iPhone. <strong style="font-weight:800;font-size:1.1em;color:var(--charcoal)">75%</strong> of mobile interactions are thumb-driven. Average session: <strong style="font-weight:800;font-size:1.1em;color:var(--charcoal)">72 seconds.</strong></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Design Principles placeholder -->
+<section class="content-section" style="padding:4em 8%;background:#f5f5f5;text-align:center">
+  <p class="mono-text">↓ Three Design Principles below ↓</p>
+</section>
+
+</main>
+</div>
+</body>
+</html>

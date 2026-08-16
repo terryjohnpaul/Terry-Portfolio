@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/pixelbin/magic-canvas.html",
+      "destination": "/pixelbin/magic-canvas/",
+      "permanent": true
+    },
+    {
+      "source": "/pixelbin/pixelbin-app.html",
+      "destination": "/pixelbin/pixelbin-app/",
+      "permanent": true
+    }
+  ]
+}

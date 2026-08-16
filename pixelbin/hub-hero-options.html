@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Options — PixelBin Hub</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#343434;--ghost:#767672;--muted:#636360;--secondary:#5a5a56;
+  --font:'Helvetica Now Display',Helvetica,Arial,sans-serif;
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:var(--font);background:#fff;color:var(--charcoal);overflow-x:hidden}
+
+/* ── Page chrome ── */
+.option-divider{width:100%;padding:3em 8%;text-align:center;background:#f5f5f5;border-top:2px solid #e0e0e0;border-bottom:2px solid #e0e0e0}
+.option-divider h2{font-size:1.4em;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.3em}
+.option-divider p{font-size:0.75em;color:var(--ghost);max-width:36em;margin:0 auto;line-height:1.5}
+.toc{position:fixed;top:50%;right:1.5em;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:0.8em}
+.toc a{font-size:0.55em;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ghost);text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--charcoal)}
+
+/* ══════════════════════════════════════
+   OPTION A — MONUMENTAL TITLE
+   ══════════════════════════════════════ */
+.hero-a{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:0 3%}
+.hero-a__title{font-size:clamp(5rem,14vw,12rem);font-weight:500;letter-spacing:-0.05em;line-height:0.9;text-align:center;clip-path:inset(0 0 100% 0)}
+.hero-a__sub{font-size:0.875em;font-weight:400;color:var(--ghost);text-align:center;max-width:18em;margin-top:1em;line-height:1.5;clip-path:inset(0 0 100% 0)}
+.hero-a__stats{position:absolute;bottom:3em;left:50%;transform:translateX(-50%);display:flex;gap:2em;align-items:center}
+.hero-a__stat{font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ghost);clip-path:inset(0 0 100% 0)}
+.hero-a__pipe{width:1px;height:12px;background:rgba(52,52,52,0.15);clip-path:inset(0 0 100% 0)}
+
+/* ══════════════════════════════════════
+   OPTION B — STACKED LEDGER
+   ══════════════════════════════════════ */
+.hero-b{position:relative;height:100vh;background:#fff;padding:0 8%}
+.hero-b__top{padding-top:22vh}
+.hero-b__eyebrow{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ghost);margin-bottom:1.5em;opacity:0;transform:translateX(-20px)}
+.hero-b__title{font-size:clamp(3rem,6vw,5rem);font-weight:500;letter-spacing:-0.04em;line-height:0.95;opacity:0;transform:translateX(-20px)}
+.hero-b__ledger{position:absolute;bottom:16vh;left:8%;width:30%;max-width:22em}
+.hero-b__row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(52,52,52,0.08);opacity:0;transform:translateX(-20px)}
+.hero-b__row:first-child{border-top:1px solid rgba(52,52,52,0.08)}
+.hero-b__label{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.03em;color:var(--ghost)}
+.hero-b__value{font-size:0.85em;font-weight:700;color:var(--charcoal)}
+
+/* ══════════════════════════════════════
+   OPTION C — SPLIT TENSION
+   ══════════════════════════════════════ */
+.hero-c{position:relative;height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;background:#fff;padding:0 8% 12vh}
+.hero-c__left{opacity:0;transform:translateY(30px)}
+.hero-c .hero-c__left~.hero-c__right{}
+.hero-c__title{font-size:clamp(4rem,9vw,8rem);font-weight:500;letter-spacing:-0.05em;line-height:0.9}
+.hero-c__sub{font-size:0.8em;font-weight:400;color:var(--ghost);margin-top:0.8em;max-width:16em;line-height:1.5}
+.hero-c__right{text-align:right}
+.hero-c__stat-block{margin-bottom:2em;opacity:0;transform:translateY(20px)}
+.hero-c__stat-block:last-child{margin-bottom:0}
+.hero-c__num{font-size:clamp(2rem,4vw,3.2rem);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--charcoal)}
+.hero-c__stat-label{font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ghost);margin-top:0.3em}
+
+/* ── C1: Narrative statements ── */
+.hero-c__right--narrative{display:flex;flex-direction:column;justify-content:flex-end;gap:0}
+.hero-c__narrative{font-size:0.9em;font-weight:400;color:var(--secondary);line-height:1.55;padding:0.8em 0;border-bottom:1px solid rgba(52,52,52,0.08)}
+.hero-c__narrative:first-child{border-top:1px solid rgba(52,52,52,0.08)}
+
+/* ── C2: Role statement ── */
+.hero-c__right--role{display:flex;flex-direction:column;justify-content:flex-end}
+.hero-c__role-line{font-size:1.1em;font-weight:600;color:var(--charcoal);letter-spacing:-0.02em}
+.hero-c__role-sub{font-size:0.75em;font-weight:400;color:var(--ghost);margin-top:0.3em;text-transform:uppercase;letter-spacing:0.03em}
+
+/* ── C3: Ruled data pairs ── */
+.hero-c__right--ruled{display:flex;flex-direction:column;justify-content:flex-end;gap:0}
+.hero-c__ruled-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(52,52,52,0.08)}
+.hero-c__ruled-row:first-child{border-top:1px solid rgba(52,52,52,0.08)}
+.hero-c__ruled-label{font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ghost)}
+.hero-c__ruled-value{font-size:0.8em;font-weight:600;color:var(--charcoal)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .toc{display:none}
+  .hero-a__title{font-size:clamp(3rem,16vw,6rem)}
+  .hero-b__ledger{width:60%}
+  .hero-c{grid-template-columns:1fr;align-items:center;padding:0 5% 8vh}
+  .hero-c__right{text-align:left;margin-top:3em;display:flex;gap:2em}
+  .hero-c__stat-block{margin-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOC ── -->
+<nav class="toc">
+  <a href="#option-a">A</a>
+  <a href="#option-b">B</a>
+  <a href="#option-c">C1</a>
+  <a href="#option-c2">C2</a>
+  <a href="#option-c3">C3</a>
+</nav>
+
+<!-- ════════ OPTION A — MONUMENTAL ════════ -->
+<div class="option-divider" id="option-a">
+  <h2>Option A — Monumental Title</h2>
+  <p>Centered massive title. Subtitle small. Stats at the bottom as a quiet data row. Apple "iPhone" energy — the name IS the layout.</p>
+</div>
+
+<section class="hero-a" id="hero-a">
+  <h1 class="hero-a__title">PixelBin</h1>
+  <p class="hero-a__sub">An AI creative studio across mobile and desktop. Free and Pro. Four versions.</p>
+  <div class="hero-a__stats">
+    <span class="hero-a__stat">58M users</span>
+    <span class="hero-a__pipe"></span>
+    <span class="hero-a__stat">9 products</span>
+    <span class="hero-a__pipe"></span>
+    <span class="hero-a__stat">4 versions</span>
+    <span class="hero-a__pipe"></span>
+    <span class="hero-a__stat">3 years</span>
+  </div>
+</section>
+
+<!-- ════════ OPTION B — STACKED LEDGER ════════ -->
+<div class="option-divider" id="option-b">
+  <h2>Option B — Stacked Ledger</h2>
+  <p>Left-aligned title near the top, ruled stat rows near the bottom. Right side is pure emptiness. Stripe/financial report feel — quiet data, not marketing.</p>
+</div>
+
+<section class="hero-b" id="hero-b">
+  <div class="hero-b__top">
+    <p class="hero-b__eyebrow">AI creative studio · Mobile + Desktop · Free + Pro</p>
+    <h1 class="hero-b__title">PixelBin</h1>
+  </div>
+  <div class="hero-b__ledger">
+    <div class="hero-b__row"><span class="hero-b__label">Users</span><span class="hero-b__value">58 million</span></div>
+    <div class="hero-b__row"><span class="hero-b__label">Products</span><span class="hero-b__value">9</span></div>
+    <div class="hero-b__row"><span class="hero-b__label">Versions</span><span class="hero-b__value">4</span></div>
+    <div class="hero-b__row"><span class="hero-b__label">Duration</span><span class="hero-b__value">3 years</span></div>
+  </div>
+</section>
+
+<!-- ════════ OPTION C1 — NARRATIVE STATEMENTS ════════ -->
+<div class="option-divider" id="option-c">
+  <h2>Option C1 — Narrative Statements</h2>
+  <p>Same split tension layout, but the right side carries conviction statements instead of raw numbers. Reads like a person, not a dashboard.</p>
+</div>
+
+<section class="hero-c" id="hero-c">
+  <div class="hero-c__left">
+    <h1 class="hero-c__title">PixelBin</h1>
+    <p class="hero-c__sub">An AI creative studio across mobile and desktop. Free and Pro. Four versions.</p>
+  </div>
+  <div class="hero-c__right hero-c__right--narrative">
+    <p class="hero-c__narrative" style="opacity:0;transform:translateY(20px)">58 million people use what I designed.</p>
+    <p class="hero-c__narrative" style="opacity:0;transform:translateY(20px)">9 products shipped from one design system.</p>
+    <p class="hero-c__narrative" style="opacity:0;transform:translateY(20px)">4 versions — each one killed the last.</p>
+  </div>
+</section>
+
+<!-- ════════ OPTION C2 — ROLE STATEMENT ════════ -->
+<div class="option-divider" id="option-c2">
+  <h2>Option C2 — Single Role Statement</h2>
+  <p>Right side carries one strong role line instead of stats. Stats move below the fold. The right side becomes a quiet authority signal.</p>
+</div>
+
+<section class="hero-c" id="hero-c2">
+  <div class="hero-c__left">
+    <h1 class="hero-c__title">PixelBin</h1>
+    <p class="hero-c__sub">An AI creative studio across mobile and desktop. Free and Pro. Four versions.</p>
+  </div>
+  <div class="hero-c__right hero-c__right--role">
+    <div class="hero-c__role-block" style="opacity:0;transform:translateY(20px)">
+      <p class="hero-c__role-line">Senior Product Designer</p>
+      <p class="hero-c__role-sub">Lead designer across all versions</p>
+      <p class="hero-c__role-sub" style="margin-top:1.5em">58M users · 9 products · 3 years</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OPTION C3 — RULED DATA ════════ -->
+<div class="option-divider" id="option-c3">
+  <h2>Option C3 — Ruled Data Pairs</h2>
+  <p>Right side has ruled rows like Option B's ledger, but positioned at the bottom to match the split tension. Data with structure, not just big numbers.</p>
+</div>
+
+<section class="hero-c" id="hero-c3">
+  <div class="hero-c__left">
+    <h1 class="hero-c__title">PixelBin</h1>
+    <p class="hero-c__sub">An AI creative studio across mobile and desktop. Free and Pro. Four versions.</p>
+  </div>
+  <div class="hero-c__right hero-c__right--ruled">
+    <div class="hero-c__ruled-row" style="opacity:0;transform:translateY(20px)"><span class="hero-c__ruled-label">Role</span><span class="hero-c__ruled-value">Senior Product Designer</span></div>
+    <div class="hero-c__ruled-row" style="opacity:0;transform:translateY(20px)"><span class="hero-c__ruled-label">Scope</span><span class="hero-c__ruled-value">Lead designer, all versions</span></div>
+    <div class="hero-c__ruled-row" style="opacity:0;transform:translateY(20px)"><span class="hero-c__ruled-label">Scale</span><span class="hero-c__ruled-value">58 million users</span></div>
+    <div class="hero-c__ruled-row" style="opacity:0;transform:translateY(20px)"><span class="hero-c__ruled-label">Shipped</span><span class="hero-c__ruled-value">9 products · 4 versions</span></div>
+    <div class="hero-c__ruled-row" style="opacity:0;transform:translateY(20px)"><span class="hero-c__ruled-label">Duration</span><span class="hero-c__ruled-value">3 years</span></div>
+  </div>
+</section>
+
+<div style="height:4em"></div>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  'use strict';
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── OPTION A: Clip-path reveal ──
+  var tlA = gsap.timeline({
+    scrollTrigger: { trigger: '#hero-a', start: 'top 80%' }
+  });
+  tlA.to('.hero-a__title', {
+    clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power2.inOut', delay: 0.1
+  });
+  tlA.to('.hero-a__sub', {
+    clipPath: 'inset(0 0 0% 0)', duration: 0.6, ease: 'power2.inOut'
+  }, '-=0.4');
+  tlA.to('.hero-a__stat, .hero-a__pipe', {
+    clipPath: 'inset(0 0 0% 0)', duration: 0.5, ease: 'power2.inOut', stagger: 0.08
+  }, '-=0.2');
+
+  // ── OPTION B: Slide-in from left ──
+  var tlB = gsap.timeline({
+    scrollTrigger: { trigger: '#hero-b', start: 'top 80%' }
+  });
+  tlB.to('.hero-b__eyebrow', {
+    opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', delay: 0.1
+  });
+  tlB.to('.hero-b__title', {
+    opacity: 1, x: 0, duration: 0.7, ease: 'power3.out'
+  }, '-=0.35');
+  tlB.to('.hero-b__row', {
+    opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', stagger: 0.12
+  }, '-=0.2');
+
+  // ── OPTION C1: Narrative ──
+  var tlC1 = gsap.timeline({
+    scrollTrigger: { trigger: '#hero-c', start: 'top 80%' }
+  });
+  tlC1.to('#hero-c .hero-c__left', {
+    opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.1
+  });
+  tlC1.to('#hero-c .hero-c__narrative', {
+    opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.12
+  }, '-=0.3');
+
+  // ── OPTION C2: Role statement ──
+  var tlC2 = gsap.timeline({
+    scrollTrigger: { trigger: '#hero-c2', start: 'top 80%' }
+  });
+  tlC2.to('#hero-c2 .hero-c__left', {
+    opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.1
+  });
+  tlC2.to('#hero-c2 .hero-c__role-block', {
+    opacity: 1, y: 0, duration: 0.6, ease: 'power3.out'
+  }, '-=0.3');
+
+  // ── OPTION C3: Ruled data ──
+  var tlC3 = gsap.timeline({
+    scrollTrigger: { trigger: '#hero-c3', start: 'top 80%' }
+  });
+  tlC3.to('#hero-c3 .hero-c__left', {
+    opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.1
+  });
+  tlC3.to('#hero-c3 .hero-c__ruled-row', {
+    opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.1
+  }, '-=0.3');
+
+})();
+</script>
+</body>
+</html>

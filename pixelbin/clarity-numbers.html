@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Numbers Speak — Clarity Data</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+
+    .numbers-speak {
+      background: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6em 8%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .numbers-speak__inner {
+      max-width: 72em;
+      width: 100%;
+    }
+
+    .numbers-speak__eyebrow {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 4em;
+    }
+
+    .numbers-speak__line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4em;
+      padding: 0.5em 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .numbers-speak__line:first-of-type {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .numbers-speak__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .numbers-speak__unit {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+
+    .numbers-speak__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(0.75rem, 1.2vw, 1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.25);
+      margin-left: auto;
+      text-align: right;
+      max-width: 16em;
+      line-height: 1.3;
+    }
+
+    .numbers-speak__source {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.15);
+      margin-top: 4em;
+    }
+
+    .numbers-speak__source span {
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .numbers-speak { padding: 4em 6%; }
+      .numbers-speak__line {
+        flex-wrap: wrap;
+        gap: 0.2em;
+        padding: 1em 0;
+      }
+      .numbers-speak__label {
+        margin-left: 0;
+        text-align: left;
+        width: 100%;
+        margin-top: 0.4em;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<section class="numbers-speak" id="numberSpeak">
+  <div class="numbers-speak__inner">
+    <p class="numbers-speak__eyebrow">Real Data · Microsoft Clarity</p>
+
+    <div class="numbers-speak__line">
+      <span class="numbers-speak__number" data-target="92.94" data-decimals="2">0</span>
+      <span class="numbers-speak__unit">%</span>
+      <span class="numbers-speak__label">scroll depth — users reach the bottom</span>
+    </div>
+
+    <div class="numbers-speak__line">
+      <span class="numbers-speak__number" data-target="0.60" data-decimals="2">0</span>
+      <span class="numbers-speak__unit">%</span>
+      <span class="numbers-speak__label">rage clicks — the UI is clear</span>
+    </div>
+
+    <div class="numbers-speak__line">
+      <span class="numbers-speak__number" data-target="0" data-decimals="0">0</span>
+      <span class="numbers-speak__unit">%</span>
+      <span class="numbers-speak__label">excessive scrolling — content density is right</span>
+    </div>
+
+    <div class="numbers-speak__line">
+      <span class="numbers-speak__number" data-target="4.8" data-decimals="1">0</span>
+      <span class="numbers-speak__unit">min</span>
+      <span class="numbers-speak__label">active time per session</span>
+    </div>
+
+    <div class="numbers-speak__line">
+      <span class="numbers-speak__number" data-target="8891" data-decimals="0">0</span>
+      <span class="numbers-speak__unit">sessions</span>
+      <span class="numbers-speak__label">tracked over 200 days</span>
+    </div>
+
+    <p class="numbers-speak__source">Microsoft Clarity · <span>PixelBin Editor · Last 200 days</span></p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lines = document.querySelectorAll('#numberSpeak .numbers-speak__line');
+
+  lines.forEach(function (line, i) {
+    var numEl = line.querySelector('.numbers-speak__number');
+    var target = parseFloat(numEl.getAttribute('data-target'));
+    var decimals = parseInt(numEl.getAttribute('data-decimals') || '0', 10);
+    var counter = { val: 0 };
+
+    gsap.from(line, {
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      delay: i * 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#numberSpeak',
+        start: 'top 70%',
+        once: true
+      }
+    });
+
+    gsap.to(counter, {
+      val: target,
+      duration: target > 100 ? 1.8 : 1.2,
+      delay: i * 0.15 + 0.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '#numberSpeak',
+        start: 'top 70%',
+        once: true
+      },
+      onUpdate: function () {
+        if (target > 100) {
+          numEl.textContent = Math.round(counter.val).toLocaleString();
+        } else {
+          numEl.textContent = counter.val.toFixed(decimals);
+        }
+      }
+    });
+  });
+
+  gsap.from('.numbers-speak__eyebrow', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '#numberSpeak',
+      start: 'top 75%',
+      once: true
+    }
+  });
+
+  gsap.from('.numbers-speak__source', {
+    opacity: 0,
+    duration: 0.5,
+    delay: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '#numberSpeak',
+      start: 'top 75%',
+      once: true
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

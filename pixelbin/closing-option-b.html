@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option B — Reflection-Led Closing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Helvetica Now Display';
+      src: url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1919;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .placeholder-banner {
+      width: 100%;
+      height: 30vh;
+      background: linear-gradient(135deg, #e8e4f0 0%, #d5cfe6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2rem, 5vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: rgba(26, 25, 25, 0.25);
+    }
+
+    .section-reflection {
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 8em 8% 8em;
+      display: flex;
+      gap: 6em;
+    }
+
+    .section-reflection__left {
+      width: 23%;
+      flex-shrink: 0;
+    }
+
+    .section-reflection__right {
+      flex: 1;
+    }
+
+    .mono-label {
+      font-family: 'Geist', 'SF Mono', monospace;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(52, 52, 52, 0.55);
+      margin-bottom: 0.8em;
+    }
+
+    .section-heading {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #1a1919;
+    }
+
+    .body-copy {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.875em;
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+      color: #1a1919;
+      margin-bottom: 1.4em;
+    }
+
+    .body-copy:last-child {
+      margin-bottom: 0;
+    }
+
+    .pull-quote-section {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6em 8%;
+      text-align: center;
+    }
+
+    .pull-quote-label {
+      font-family: 'Geist', 'SF Mono', monospace;
+      font-size: 0.6em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: rgba(52, 52, 52, 0.55);
+      margin-bottom: 1.2em;
+    }
+
+    .pull-quote {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 6rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #1a1919;
+      max-width: 14em;
+      margin: 0 auto;
+    }
+
+    .placeholder-cta {
+      width: 100%;
+      padding: 8em 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .section-reflection {
+        flex-direction: column;
+        gap: 2em;
+        padding: 4em 6% 4em;
+      }
+      .section-reflection__left {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="placeholder-banner">↑ One Creative Studio image ↑</div>
+
+  <!-- ══════ REFLECTION ══════ -->
+
+  <section class="section-reflection">
+    <div class="section-reflection__left">
+      <p class="mono-label">Reflection</p>
+      <h3 class="section-heading">What I Cut<br>and Why</h3>
+    </div>
+    <div class="section-reflection__right">
+      <p class="body-copy">V1 had 14 flows. Every idea made it to the canvas — AI Influencer, Script to Video, Edit Video, Motion Control — all as separate journeys. 170 frames across the Figma file. It felt comprehensive. It was also unusable as a product spec. No engineering team could ship 14 parallel workflows for a POC.</p>
+      <p class="body-copy">The hardest cut wasn't a flow — it was the interaction model. Early versions had Pixie respond only when asked. The AI was capable but passive. Flipping it to proactive — where Pixie analyses an uploaded image and proposes edits before the user types anything — was a bet that took three rounds of stakeholder review to land. The concern was that users would feel the AI was overstepping. The evidence said otherwise: removing the blank-prompt problem reduced the gap between upload and first action to a single tap.</p>
+      <p class="body-copy">What's still open: batch mode at true catalogue scale (1,000+ images), AI influencer consistency across 50+ generations without drift, and whether the structured interview pattern holds when users want to skip questions and just generate. These are the edges I'd push next.</p>
+    </div>
+  </section>
+
+  <!-- ══════ DESIGN PRINCIPLE ══════ -->
+
+  <section class="pull-quote-section">
+    <p class="pull-quote-label">Design Principle</p>
+    <p class="pull-quote">The best AI doesn't wait for instructions.<br>It proposes a plan and asks if you agree.</p>
+  </section>
+
+  <div class="placeholder-cta">[ CTA + Footer ]</div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section Options — Also Designed</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#343434;--ghost:#767672;--muted:#636360;--line:rgba(52,52,52,0.08);
+  --font:'Helvetica Now Display',Helvetica,Arial,sans-serif;
+}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);background:#fff;color:var(--charcoal);overflow-x:hidden}
+
+.page-title{text-align:center;padding:4em 0 1em;font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.08em;color:var(--ghost)}
+.option-label{text-align:center;padding:3em 0 0.5em;font-size:0.6em;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--charcoal)}
+.option-sublabel{text-align:center;padding:0 0 2em;font-size:0.7em;color:var(--ghost);max-width:30em;margin:0 auto;line-height:1.5}
+.divider-thick{width:80%;max-width:72em;margin:4em auto;height:2px;background:var(--charcoal);opacity:0.06}
+
+/* ══════════════════════════════════════
+   OPTION A — RULED STACK
+   ══════════════════════════════════════ */
+.ruled-section{max-width:72em;margin:0 auto;padding:0 8%}
+.ruled-header{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--ghost);margin-bottom:1.5em}
+.ruled-item{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);cursor:default;position:relative}
+.ruled-item:first-child{border-top:1px solid var(--line)}
+.ruled-item::before{content:'';position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--charcoal);opacity:0;transition:opacity .3s ease}
+.ruled-title{font-size:0.85em;font-weight:600;color:var(--charcoal);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.ruled-sub{font-size:0.7em;font-weight:400;color:var(--ghost);transition:color .3s ease}
+.ruled-item:hover .ruled-title{transform:translateX(8px)}
+.ruled-item:hover::before{opacity:1}
+.ruled-item:hover .ruled-sub{color:var(--muted)}
+
+/* ══════════════════════════════════════
+   OPTION B — LARGE-INDEX GRID
+   ══════════════════════════════════════ */
+.index-section{max-width:72em;margin:0 auto;padding:0 8%}
+.index-header{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--ghost);margin-bottom:1.5em}
+.index-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.index-item{padding:2em;border-bottom:1px solid var(--line);cursor:default;transition:background .4s ease}
+.index-item:nth-child(odd){border-right:1px solid var(--line)}
+.index-item:first-child,.index-item:nth-child(2){border-top:1px solid var(--line)}
+.index-num{font-size:3.5rem;font-weight:500;line-height:1;color:#f0efeb;letter-spacing:-0.03em;transition:color .4s ease}
+.index-title{font-size:0.85em;font-weight:600;color:var(--charcoal);margin-top:0.5em}
+.index-sub{font-size:0.68em;font-weight:400;color:var(--ghost);margin-top:0.2em}
+.index-item:hover{background:#fafaf8}
+.index-item:hover .index-num{color:var(--charcoal)}
+
+/* ══════════════════════════════════════
+   OPTION C — PILL CLUSTER
+   ══════════════════════════════════════ */
+.pill-section{max-width:72em;margin:0 auto;padding:0 8%}
+.pill-header{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--ghost);margin-bottom:1.5em}
+.pill-cluster{display:flex;flex-wrap:wrap;gap:10px}
+.pill{position:relative;padding:12px 24px;border:1px solid rgba(52,52,52,0.12);border-radius:100px;font-size:0.8em;font-weight:500;color:var(--charcoal);cursor:default;transition:background .25s ease,color .25s ease,border-color .25s ease}
+.pill:hover{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.pill::after{content:attr(data-sub);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;font-size:0.75rem;font-weight:400;color:var(--ghost);background:#fff;padding:6px 14px;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.08);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.pill:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:768px){
+  .index-grid{grid-template-columns:1fr}
+  .index-item:nth-child(odd){border-right:none}
+  .ruled-item{flex-direction:column;align-items:flex-start;gap:0.3em}
+}
+</style>
+</head>
+<body>
+
+<p class="page-title">Three design options for the "Also Designed" section</p>
+
+<!-- ════════ OPTION A ════════ -->
+<p class="option-label">Option A — Ruled Stack</p>
+<p class="option-sublabel">Full-width rows, title left, subtitle right. Hover: title shifts right, dot appears. Editorial, restrained.</p>
+
+<div class="ruled-section">
+  <p class="ruled-header">Also designed · Case studies in progress</p>
+  <div class="ruled-item"><span class="ruled-title">Video Editor</span><span class="ruled-sub">AI video editing on mobile</span></div>
+  <div class="ruled-item"><span class="ruled-title">Batch Editor</span><span class="ruled-sub">Multi-image processing</span></div>
+  <div class="ruled-item"><span class="ruled-title">Checkout Flow</span><span class="ruled-sub">Subscription and payment</span></div>
+  <div class="ruled-item"><span class="ruled-title">Video Generator</span><span class="ruled-sub">Text-to-video with background processing</span></div>
+  <div class="ruled-item"><span class="ruled-title">Pre and Post Sign in</span><span class="ruled-sub">Onboarding and authentication</span></div>
+  <div class="ruled-item"><span class="ruled-title">Watermark Remover</span><span class="ruled-sub">Auto and manual removal</span></div>
+  <div class="ruled-item"><span class="ruled-title">Upscale Media</span><span class="ruled-sub">Resolution enhancement</span></div>
+  <div class="ruled-item"><span class="ruled-title">Free IP Landing Page</span><span class="ruled-sub">Marketing template system</span></div>
+</div>
+
+<div class="divider-thick"></div>
+
+<!-- ════════ OPTION B ════════ -->
+<p class="option-label">Option B — Large-Index Grid</p>
+<p class="option-sublabel">2×4 grid with giant watermark numbers. Hover: number darkens, cell tints. More visual weight.</p>
+
+<div class="index-section">
+  <p class="index-header">Also designed · Case studies in progress</p>
+  <div class="index-grid">
+    <div class="index-item"><p class="index-num">03</p><p class="index-title">Video Editor</p><p class="index-sub">AI video editing on mobile</p></div>
+    <div class="index-item"><p class="index-num">04</p><p class="index-title">Batch Editor</p><p class="index-sub">Multi-image processing</p></div>
+    <div class="index-item"><p class="index-num">05</p><p class="index-title">Checkout Flow</p><p class="index-sub">Subscription and payment</p></div>
+    <div class="index-item"><p class="index-num">06</p><p class="index-title">Video Generator</p><p class="index-sub">Text-to-video with background processing</p></div>
+    <div class="index-item"><p class="index-num">07</p><p class="index-title">Pre and Post Sign in</p><p class="index-sub">Onboarding and authentication</p></div>
+    <div class="index-item"><p class="index-num">08</p><p class="index-title">Watermark Remover</p><p class="index-sub">Auto and manual removal</p></div>
+    <div class="index-item"><p class="index-num">09</p><p class="index-title">Upscale Media</p><p class="index-sub">Resolution enhancement</p></div>
+    <div class="index-item"><p class="index-num">10</p><p class="index-title">Free IP Landing Page</p><p class="index-sub">Marketing template system</p></div>
+  </div>
+</div>
+
+<div class="divider-thick"></div>
+
+<!-- ════════ OPTION C ════════ -->
+<p class="option-label">Option C — Pill Cluster</p>
+<p class="option-sublabel">Rounded pills, title only. Hover: inverts to charcoal, tooltip shows subtitle. Casual, organic.</p>
+
+<div class="pill-section">
+  <p class="pill-header">Also designed · Case studies in progress</p>
+  <div class="pill-cluster">
+    <span class="pill" data-sub="AI video editing on mobile">Video Editor</span>
+    <span class="pill" data-sub="Multi-image processing">Batch Editor</span>
+    <span class="pill" data-sub="Subscription and payment">Checkout Flow</span>
+    <span class="pill" data-sub="Text-to-video with background processing">Video Generator</span>
+    <span class="pill" data-sub="Onboarding and authentication">Pre and Post Sign in</span>
+    <span class="pill" data-sub="Auto and manual removal">Watermark Remover</span>
+    <span class="pill" data-sub="Resolution enhancement">Upscale Media</span>
+    <span class="pill" data-sub="Marketing template system">Free IP Landing Page</span>
+  </div>
+</div>
+
+<div style="height:6em"></div>
+
+</body>
+</html>

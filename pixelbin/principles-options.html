@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Principles — 3 Options</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+  <style>
+    :root { --frost: #ffffff; }
+    body { background: #fff; }
+    .option-label {
+      text-align: center;
+      padding: 3em 0 1em;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-ghost);
+    }
+    .option-divider {
+      width: 60%;
+      margin: 0 auto;
+      height: 1px;
+      background: rgba(52,52,52,0.08);
+    }
+
+    /* ═══ OPTION A: Stat Strip ═══ */
+    .stat-strip {
+      display: flex;
+      justify-content: center;
+      max-width: 64em;
+      margin: 0 auto;
+      padding: 0 8%;
+    }
+    .stat-strip__col {
+      flex: 1;
+      text-align: center;
+      padding: 3em 2em;
+    }
+    .stat-strip__col + .stat-strip__col {
+      border-left: 1px solid rgba(52,52,52,0.08);
+    }
+    .stat-strip__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+    }
+    .stat-strip__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-top: 0.8em;
+    }
+    .stat-strip__desc {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      margin-top: 0.4em;
+      max-width: 16em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 768px) {
+      .stat-strip { flex-direction: column; }
+      .stat-strip__col + .stat-strip__col { border-left: none; border-top: 1px solid rgba(52,52,52,0.08); }
+    }
+
+    /* ═══ OPTION B: Centered Stack ═══ */
+    .stack-principles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+      padding: 0 8%;
+      max-width: 64em;
+      margin: 0 auto;
+    }
+    .stack-principles__item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2em;
+    }
+    .stack-principles__num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      flex-shrink: 0;
+    }
+    .stack-principles__text {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+    }
+
+    /* ═══ OPTION C: Editorial Figure Labels ═══ */
+    .fig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3em;
+      max-width: 64em;
+      margin: 0 auto;
+      padding: 0 8%;
+    }
+    .fig-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    .fig-card__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-ghost);
+    }
+    .fig-card__heading {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .fig-card__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.78em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      max-width: 30ch;
+    }
+    @media (max-width: 768px) {
+      .fig-grid { grid-template-columns: 1fr; gap: 2em; }
+    }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<main>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OPTION A: Three-Column Stat Strip      -->
+<!-- ═══════════════════════════════════════ -->
+
+<p class="option-label">Option A — Stat Strip</p>
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="stat-strip">
+    <div class="stat-strip__col">
+      <p class="stat-strip__number">75%</p>
+      <p class="stat-strip__label">Thumb-Driven</p>
+      <p class="stat-strip__desc">Every tool in the bottom third of the screen</p>
+    </div>
+    <div class="stat-strip__col">
+      <p class="stat-strip__number">72s</p>
+      <p class="stat-strip__label">Session Length</p>
+      <p class="stat-strip__desc">Every workflow survives an interruption</p>
+    </div>
+    <div class="stat-strip__col">
+      <p class="stat-strip__number">1</p>
+      <p class="stat-strip__label">Interaction Pattern</p>
+      <p class="stat-strip__desc">Bottom sheet for everything. Learn once.</p>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OPTION B: Centered Stack               -->
+<!-- ═══════════════════════════════════════ -->
+
+<p class="option-label">Option B — Centered Stack</p>
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="stack-principles">
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">01</span>
+      <p class="stack-principles__text">Every tool in the thumb zone</p>
+    </div>
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">02</span>
+      <p class="stack-principles__text">Every workflow survives interruption</p>
+    </div>
+    <div class="stack-principles__item">
+      <span class="stack-principles__num">03</span>
+      <p class="stack-principles__text">One interaction pattern for everything</p>
+    </div>
+  </div>
+</section>
+
+<div class="option-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OPTION C: Editorial Figure Labels      -->
+<!-- ═══════════════════════════════════════ -->
+
+<p class="option-label">Option C — Editorial Figure Labels</p>
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="fig-grid">
+    <div class="fig-card">
+      <p class="fig-card__label">Fig 01</p>
+      <h3 class="fig-card__heading">Thumb<br>Zone</h3>
+      <p class="fig-card__body">75% of mobile interactions are thumb-driven. Every tool lives in the bottom third of the screen.</p>
+    </div>
+    <div class="fig-card">
+      <p class="fig-card__label">Fig 02</p>
+      <h3 class="fig-card__heading">Survives<br>Interruption</h3>
+      <p class="fig-card__body">72-second sessions. Every generation runs in the background. Every state auto-saves.</p>
+    </div>
+    <div class="fig-card">
+      <p class="fig-card__label">Fig 03</p>
+      <h3 class="fig-card__heading">One<br>Pattern</h3>
+      <p class="fig-card__body">Bottom sheet for every tool. Learn the interaction once, use it everywhere.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelBin — Terry John Paul | Senior Product Designer</title>
+<meta name="description" content="Senior Product Designer portfolio: PixelBin, an AI image and video platform. 9 products, 4 versions, 3 years.">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x06tjk9wcc");
+  </script>
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --frost:#ffffff;--charcoal:#343434;
+  --text-secondary:#5a5a56;--text-muted:#636360;--text-ghost:#767672;
+  --font:'Helvetica Now Display',Helvetica,Arial,sans-serif;
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font);background:var(--frost);color:var(--charcoal);overflow-x:hidden}
+::selection{color:var(--charcoal);background:#c8ff00}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--charcoal);text-decoration:none}
+*:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+
+.top-nav{padding:1.2em 3%;display:flex;justify-content:space-between;align-items:center}
+.top-nav a{font-size:0.75em;font-weight:500;letter-spacing:-0.01em}
+.top-nav .nav-email{font-weight:400;color:var(--text-muted)}
+
+#hero{position:relative;height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;background:var(--frost);padding:0 8% 12vh;overflow:hidden}
+.follow-img{position:absolute;top:0;left:0;width:160px;height:200px;object-fit:cover;border-radius:4px;pointer-events:none;will-change:transform}
+.follow-img:nth-child(1){z-index:4}
+.follow-img:nth-child(2){z-index:3}
+.follow-img:nth-child(3){z-index:2}
+.follow-img:nth-child(4){z-index:1}
+.hero-left{opacity:0;transform:translateY(30px);position:relative;z-index:5}
+.hero-title{font-size:clamp(4rem,9vw,8rem);font-weight:500;letter-spacing:-0.05em;line-height:0.9}
+.hero-sub{font-size:0.8em;font-weight:400;color:var(--text-ghost);margin-top:0.8em;max-width:18em;line-height:1.55}
+.hero-right{display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:5}
+.hero-ruled-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(52,52,52,0.08);opacity:0;transform:translateY(20px)}
+.hero-ruled-row:first-child{border-top:1px solid rgba(52,52,52,0.08)}
+.hero-ruled-label{font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost)}
+.hero-ruled-value{font-size:0.8em;font-weight:600;color:var(--charcoal)}
+
+.mono-text{font-family:var(--font);font-size:0.7em;font-weight:400;line-height:1.15;letter-spacing:0.02em;text-transform:uppercase;color:var(--text-muted)}
+.heading4{font-family:var(--font);font-size:2em;font-weight:800;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;color:var(--charcoal)}
+
+.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:2em;max-width:72em;margin:0 auto}
+.work-card{display:block;text-decoration:none;color:var(--charcoal)}
+.work-card__image{aspect-ratio:1/1;background:var(--frost);border:1px solid rgba(52,52,52,0.06);border-radius:8px;margin-bottom:1em;overflow:hidden}
+.work-card__image img{width:100%;height:100%;object-fit:cover}
+.work-card__title{font-size:1em;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.3em}
+.work-card__desc{font-size:0.75em;font-weight:400;color:var(--text-muted);line-height:1.4}
+.work-card__link{font-size:0.7em;font-weight:500;color:var(--charcoal);margin-top:0.6em;display:inline-block;text-decoration:underline;text-underline-offset:3px}
+
+.ruled-section{max-width:72em;margin:3em auto 0;padding-top:2em}
+.ruled-header{font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:1.5em}
+.ruled-item{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid rgba(52,52,52,0.08);cursor:default;position:relative}
+.ruled-item:first-child{border-top:1px solid rgba(52,52,52,0.08)}
+.ruled-item::before{content:'';position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--charcoal);opacity:0;transition:opacity .3s ease}
+.ruled-title{font-size:0.85em;font-weight:600;color:var(--charcoal);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.ruled-sub{font-size:0.7em;font-weight:400;color:var(--text-ghost);transition:color .3s ease}
+.ruled-item:hover .ruled-title{transform:translateX(8px)}
+.ruled-item:hover::before{opacity:1}
+.ruled-item:hover .ruled-sub{color:var(--text-muted)}
+
+@media(max-width:768px){
+  #hero{grid-template-columns:1fr;align-items:center;padding:0 5% 8vh}
+  .hero-title{font-size:clamp(2.4rem,12vw,4rem)}
+  .hero-right{margin-top:3em}
+  .follow-img{display:none}
+  .works-grid{grid-template-columns:1fr}
+  .ruled-item{flex-direction:column;align-items:flex-start;gap:0.3em}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #hero{opacity:1 !important;transform:none !important}
+  .hero-left{opacity:1 !important;transform:none !important}
+  .hero-ruled-row{opacity:1 !important;transform:none !important}
+  .ruled-item{opacity:1 !important;transform:none !important;clip-path:none !important}
+  .follow-img{display:none !important}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Site navigation">
+  <a href="/">← Terry John Paul</a>
+  <a href="mailto:terryjohnpaul20@gmail.com" class="nav-email">terryjohnpaul20@gmail.com</a>
+</nav>
+
+<header id="hero">
+  <img class="follow-img" src="assets/app/follow-1.png" alt="" role="presentation">
+  <img class="follow-img" src="assets/app/follow-2.png" alt="" role="presentation">
+  <img class="follow-img" src="assets/app/follow-3.png" alt="" role="presentation">
+  <img class="follow-img" src="assets/app/follow-4.png" alt="" role="presentation">
+  <div class="hero-left">
+    <h1 class="hero-title">PixelBin</h1>
+    <p class="hero-sub">PixelBin started as a single image editing tool. Over three years and four major versions, it became an AI creative platform serving 58 million people across mobile, desktop, free and paid.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-ruled-row"><span class="hero-ruled-label">Role</span><span class="hero-ruled-value">Senior Product Designer</span></div>
+    <div class="hero-ruled-row"><span class="hero-ruled-label">Scope</span><span class="hero-ruled-value">Product design across all 4 versions</span></div>
+    <div class="hero-ruled-row"><span class="hero-ruled-label">Scale</span><span class="hero-ruled-value">58 million users</span></div>
+    <div class="hero-ruled-row"><span class="hero-ruled-label">Shipped</span><span class="hero-ruled-value">9 products · 4 versions</span></div>
+    <div class="hero-ruled-row"><span class="hero-ruled-label">Duration</span><span class="hero-ruled-value">3 years</span></div>
+  </div>
+</header>
+
+<main>
+<section style="padding:6em 8% 4em" aria-label="Shipped work">
+  <div style="max-width:72em;margin:0 auto 3em">
+    <p class="mono-text" style="margin-bottom:0.6em">The Work</p>
+    <h2 class="heading4">What We Shipped</h2>
+  </div>
+
+  <div class="works-grid">
+    <a href="/pixelbin/pixelbin-app/" class="work-card">
+      <div class="work-card__image">
+        <img src="../chat-bottom-app.png" alt="PixelBin App on iPhone showing the AI chat editing interface" loading="lazy">
+      </div>
+      <h3 class="work-card__title">PixelBin App</h3>
+      <p class="work-card__desc">AI creation and editing app for mobile · 11 flows · 67 screens · iOS + Android</p>
+      <p class="work-card__link">View case study →</p>
+    </a>
+    <a href="/pixelbin/magic-canvas/" class="work-card">
+      <div class="work-card__image">
+        <img src="assets/mc/mc-hub-cover.png" alt="Magic Canvas generative AI workspace interface" loading="lazy">
+      </div>
+      <h3 class="work-card__title">Magic Canvas</h3>
+      <p class="work-card__desc">Infinite canvas for AI generation · Multi-asset campaigns · 170 prototype frames</p>
+      <p class="work-card__link">View case study →</p>
+    </a>
+  </div>
+
+  <div class="ruled-section" aria-label="Additional work">
+    <p class="ruled-header">Also designed · Case studies in progress</p>
+    <div class="ruled-item"><span class="ruled-title">Video Editor</span><span class="ruled-sub">AI video editing on mobile</span></div>
+    <div class="ruled-item"><span class="ruled-title">Batch Editor</span><span class="ruled-sub">Multi-image processing</span></div>
+    <div class="ruled-item"><span class="ruled-title">Checkout</span><span class="ruled-sub">Subscription and payment</span></div>
+    <div class="ruled-item"><span class="ruled-title">Video Generator</span><span class="ruled-sub">Text-to-video with background processing</span></div>
+    <div class="ruled-item"><span class="ruled-title">Authentication & Onboarding</span><span class="ruled-sub">Sign-up, sign-in and first-use experience</span></div>
+    <div class="ruled-item"><span class="ruled-title">Watermark Remover</span><span class="ruled-sub">Auto and manual removal</span></div>
+    <div class="ruled-item"><span class="ruled-title">Media Upscaling</span><span class="ruled-sub">Resolution enhancement</span></div>
+    <div class="ruled-item"><span class="ruled-title">Free Tool Landing Pages</span><span class="ruled-sub">Acquisition pages for free-tier products</span></div>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion) {
+    document.querySelector('.hero-left').style.opacity = '1';
+    document.querySelector('.hero-left').style.transform = 'none';
+    document.querySelectorAll('.hero-ruled-row').forEach(function(r) {
+      r.style.opacity = '1';
+      r.style.transform = 'none';
+    });
+    return;
+  }
+
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var heroTl = gsap.timeline({ delay: 0.2 });
+  heroTl.to('.hero-left', {
+    opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)'
+  });
+  heroTl.to('.hero-ruled-row', {
+    opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.1
+  }, '-=0.3');
+
+  gsap.to('#hero', {
+    opacity: 0,
+    y: -50,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: '+=50vh',
+      pin: true,
+      pinSpacing: false,
+      scrub: true
+    }
+  });
+
+  var hero = document.getElementById('hero');
+  var followImgs = hero.querySelectorAll('.follow-img');
+  var followActive = true;
+  var mapper = gsap.utils.mapRange(0, 30, 0, 1);
+  var clamp = gsap.utils.clamp(0, 1);
+
+  gsap.set(followImgs, { xPercent: -50, yPercent: -50, scale: 0 });
+
+  hero.addEventListener('mousemove', function(e) {
+    if (!followActive) return;
+    var rect = hero.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    var speed = Math.abs(e.movementX) + Math.abs(e.movementY);
+
+    gsap.to(followImgs, {
+      duration: 0.5,
+      overwrite: 'auto',
+      x: x,
+      y: y,
+      stagger: 0.1,
+      ease: 'none'
+    });
+
+    gsap.to(followImgs, {
+      duration: 0.3,
+      overwrite: 'auto',
+      scale: clamp(mapper(speed)),
+      stagger: 0.1,
+      ease: 'none'
+    });
+  });
+
+  hero.addEventListener('mouseleave', function() {
+    gsap.to(followImgs, {
+      duration: 0.4,
+      scale: 0,
+      stagger: 0.05,
+      ease: 'power2.inOut'
+    });
+  });
+
+  ScrollTrigger.create({
+    trigger: '#hero',
+    start: 'top top',
+    end: '+=50vh',
+    onLeave: function() {
+      followActive = false;
+      gsap.to(followImgs, { scale: 0, duration: 0.3, ease: 'power2.in' });
+    },
+    onEnterBack: function() {
+      followActive = true;
+    }
+  });
+
+  gsap.from('.ruled-item', {
+    scrollTrigger: { trigger: '.ruled-section', start: 'top 85%' },
+    y: 30,
+    opacity: 0,
+    clipPath: 'inset(100% 0 0 0)',
+    duration: 0.8,
+    ease: 'power3.out',
+    stagger: 0.1
+  });
+
+  document.querySelectorAll('.work-card').forEach(function(card) {
+    var img = card.querySelector('.work-card__image img');
+    if (!img) return;
+    card.addEventListener('mouseenter', function() {
+      gsap.to(img, { scale: 1.03, duration: 0.6, ease: 'power3.out' });
+    });
+    card.addEventListener('mouseleave', function() {
+      gsap.to(img, { scale: 1, duration: 0.8, ease: 'power3.out' });
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

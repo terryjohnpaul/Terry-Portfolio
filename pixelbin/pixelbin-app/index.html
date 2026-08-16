@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Product Design Case Study — PixelBin App | Terry John Paul</title>
+  <meta name="description" content="AI product design case study for the PixelBin mobile app — a generative AI creative studio covering image and video generation, mobile editing, 11 flows and three product versions designed by Terry John Paul.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://terryjohn.me/pixelbin/pixelbin-app/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Product Design Case Study — PixelBin App | Terry John Paul">
+  <meta property="og:description" content="AI product design case study for the PixelBin mobile app — a generative AI creative studio covering image and video generation, mobile editing, 11 flows and three product versions.">
+  <meta property="og:url" content="https://terryjohn.me/pixelbin/pixelbin-app/">
+  <meta property="og:image" content="https://terryjohn.me/pixelbin/assets/app/app-og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PixelBin App — AI Product Design Case Study by Terry John Paul">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Product Design Case Study — PixelBin App | Terry John Paul">
+  <meta name="twitter:description" content="AI product design case study for the PixelBin mobile app — generative AI creative studio with 11 flows and three product versions.">
+  <meta name="twitter:image" content="https://terryjohn.me/pixelbin/assets/app/app-og-card.png">
+  <meta name="twitter:image:alt" content="PixelBin App — AI Product Design Case Study by Terry John Paul">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://terryjohn.me/pixelbin/pixelbin-app/","name":"AI Product Design Case Study — PixelBin App","author":{"@type":"Person","@id":"https://terryjohn.me/#person","name":"Terry John Paul","url":"https://terryjohn.me","jobTitle":"Senior Product Designer"},"description":"AI product design case study for the PixelBin mobile app — a generative AI creative studio covering image and video generation, mobile editing, 11 flows and three product versions.","url":"https://terryjohn.me/pixelbin/pixelbin-app/","image":"https://terryjohn.me/pixelbin/assets/app/app-og-card.png","inLanguage":"en-GB","about":[{"@type":"Thing","name":"AI Product Design"},{"@type":"Thing","name":"Mobile UX Design"},{"@type":"Thing","name":"Generative AI"}]}</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x06tjk9wcc");
+  </script>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/chapter1.css?v=2">
+  <style>
+    :root { --frost: #ffffff; }
+    .slideshow--mobile .slideshow__frame { background: #f5f5f5; }
+
+    .stacked-stats {
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .stacked-stats__heading {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      max-width: 10em;
+      margin-bottom: 0.8em;
+    }
+    .stacked-stats__source {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      margin-bottom: 3em;
+    }
+    .stacked-card {
+      display: flex;
+      align-items: center;
+      gap: 3em;
+      padding: 1.8em 2.5em;
+      position: relative;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      cursor: default;
+      border-top: 1px solid rgba(52,52,52,0.06);
+    }
+    .stacked-card:last-child {
+      border-bottom: 1px solid rgba(52,52,52,0.06);
+    }
+    .stacked-card::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: -50vw; right: -50vw;
+      z-index: -1;
+    }
+    .stacked-card:hover { background: #f5f5f5; }
+    .stacked-card__left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3em;
+      width: 10rem;
+      flex-shrink: 0;
+    }
+    .stacked-card__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+    }
+    .stacked-card__unit {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-muted);
+    }
+    .stacked-card__right { flex: 1; }
+    .stacked-card__desc {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+    .stacked-card__thumb {
+      position: absolute;
+      left: calc(100% + 2em);
+      top: 50%;
+      transform: translateY(-50%) translateX(-8px);
+      width: 180px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 20;
+    }
+    .stacked-card__thumb img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      border: 1px solid rgba(52,52,52,0.06);
+    }
+    .stacked-card__thumb-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.45em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-ghost);
+      margin-top: 0.3em;
+      text-align: center;
+    }
+    .stacked-card:hover .stacked-card__thumb {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+    @media (max-width: 768px) {
+      .stacked-card { flex-direction: column; align-items: flex-start; gap: 1em; padding: 1.5em 1em; }
+      .stacked-card__left { width: auto; }
+      .stacked-card__thumb { display: none; }
+    }
+
+    .zz-block {
+      display: flex;
+      align-items: center;
+      gap: 4em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 6em 8%;
+    }
+    .zz-block--reverse { flex-direction: row-reverse; }
+    .zz-text { width: 40%; flex-shrink: 0; }
+    .zz-visual { flex: 1; min-width: 0; }
+    .zz-visual img {
+      width: 100%; height: auto; border-radius: 8px;
+      border: 1px solid rgba(52,52,52,0.06);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+    .zz-visual__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost); margin-top: 0.8em;
+    }
+    .zz-stat { display: flex; align-items: baseline; gap: 0.2em; margin-bottom: 0.6em; }
+    .zz-stat__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800;
+      line-height: 1; letter-spacing: -0.04em; color: var(--charcoal);
+    }
+    .zz-stat__unit {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 400;
+      letter-spacing: -0.02em; color: var(--text-muted);
+    }
+    .zz-insight {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.1em; font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 1em;
+    }
+    .zz-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .zz-body + .zz-body { margin-top: 0.8em; }
+    .zz-tag {
+      display: inline-block; font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--charcoal);
+      border: 1px solid rgba(52,52,52,0.12);
+      padding: 0.2em 0.6em; margin-bottom: 1.6em;
+    }
+    .zz-divider { max-width: 72em; margin: 0 auto; padding: 0 8%; }
+    .zz-divider__line { height: 1px; background: var(--charcoal); opacity: 0.06; }
+    @media (max-width: 768px) {
+      .zz-block, .zz-block--reverse { flex-direction: column; gap: 2em; padding: 4em 6%; }
+      .zz-text { width: 100%; }
+    }
+
+    /* ── Flow Strip ── */
+    .flow-card {
+      padding: 6em 8%;
+      border-top: none;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+    }
+    .flow-inner {
+      display: flex;
+      gap: 10em;
+      max-width: 72em;
+      margin: 0 auto;
+      width: 100%;
+      align-items: flex-start;
+    }
+    .flow-left {
+      width: 23%;
+      flex-shrink: 0;
+      position: sticky;
+      top: 6em;
+      align-self: flex-start;
+    }
+    .flow-num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 4em;
+      font-weight: 800;
+      color: var(--charcoal);
+      opacity: 0.08;
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    .flow-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.4em;
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.6em;
+    }
+    .flow-status {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+    }
+    .flow-right {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      padding-top: 5.2em;
+    }
+    .flow-problem {
+      max-width: 36em;
+      margin-bottom: 2em;
+    }
+    .flow-problem__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-bottom: 0.8em;
+      line-height: 1;
+    }
+    .flow-problem__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+    .phone-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3.5em 2em;
+      padding: 1em 0 2em 0;
+    }
+    .phone-item {
+      flex: 0 0 calc((100% - 6em) / 4);
+      min-width: 140px;
+    }
+    .phone-item__frame img {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(52,52,52,0.08);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03);
+    }
+    .phone-item__meta {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4em;
+      margin-top: 1.2em;
+    }
+    .phone-item__step {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.5em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-ghost);
+      flex-shrink: 0;
+    }
+    .phone-item__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.5em;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-ghost);
+    }
+    .strip-wrap { position: relative; }
+    .flow-card--unnumbered .flow-right { padding-top: 0; }
+    .flow-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-bottom: 1.2em;
+    }
+    .flow-decision {
+      max-width: 36em;
+      margin-top: 2.5em;
+    }
+    .flow-decision__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin-bottom: 0.8em;
+    }
+    .flow-decision__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+    .flow-outcome {
+      margin-top: 2.4em;
+      padding-top: 1.6em;
+      border-top: 1px solid rgba(52,52,52,0.08);
+      display: flex;
+      align-items: baseline;
+      gap: 1.6em;
+    }
+    .flow-outcome__label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .flow-outcome__metric {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em;
+      font-weight: 800;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+    }
+    .flow-strip-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      margin: 2em 0 0.5em;
+    }
+    @media (max-width: 768px) {
+      .flow-card { padding: 4em 6%; min-height: auto; }
+      .flow-inner { flex-direction: column; gap: 2em; }
+      .flow-left { width: 100%; position: static; }
+      .flow-num { font-size: 3em; margin-bottom: 0.2em; }
+      .flow-title { font-size: 1.2em; }
+      .flow-right { padding-top: 0; }
+      .flow-problem { max-width: 100%; }
+      .flow-decision { max-width: 100%; }
+      .phone-strip { gap: 1em 1em; }
+      .phone-item { flex: 0 0 calc((100% - 1em) / 2); }
+      .phone-item__meta { gap: 0.3em; }
+      .phone-item__step { font-size: 0.55em; }
+      .phone-item__caption { font-size: 0.55em; }
+      .flow-outcome { flex-direction: column; gap: 0.6em; }
+    }
+    @media (max-width: 480px) {
+      .flow-card { padding: 3em 5%; }
+      .phone-strip { gap: 0.8em 0.8em; }
+      .phone-item { flex: 0 0 calc((100% - 0.8em) / 2); }
+      .flow-num { font-size: 2.4em; }
+      .flow-title { font-size: 1em; }
+    }
+  </style>
+<style>
+.cs-bottom-nav {
+  position: fixed; bottom: 1.8em; left: 50%; transform: translateX(-50%);
+  z-index: 500; display: flex; align-items: center; gap: 0.3em; padding: 0.4em;
+  background: rgba(52, 52, 52, 0.65); border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px; box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  white-space: nowrap; opacity: 0; transform: translateX(-50%) translateY(1.5em);
+  transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
+}
+.cs-bottom-nav.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.cs-nav-pill {
+  position: absolute; top: 0.4em; left: 0; height: calc(100% - 0.8em);
+  border-radius: 100px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none; z-index: 0;
+}
+.cs-nav-item {
+  display: flex; align-items: center; gap: 0.4em; padding: 0.55em 1.1em;
+  border-radius: 100px; font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.85); text-decoration: none; cursor: pointer;
+  transition: color 0.35s ease; user-select: none; position: relative; z-index: 1;
+}
+.cs-nav-item:hover { color: rgba(255,255,255,0.95); opacity: 1; }
+.cs-nav-item.is-active { color: var(--charcoal); }
+.cs-nav-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.35s ease; }
+.cs-nav-item.is-active svg { opacity: 0.9; }
+.cs-nav-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); flex-shrink: 0; position: relative; z-index: 1; }
+@media (max-width: 768px) {
+  .cs-bottom-nav { bottom: 1.2em; gap: 0.15em; padding: 0.3em; }
+  .cs-nav-item { font-size: 0.75rem; padding: 0.7em 0.9em; gap: 0.35em; min-height: 44px; }
+  .cs-nav-item svg { width: 13px; height: 13px; }
+  .cs-nav-pill { top: 0.3em; height: calc(100% - 0.6em); }
+}
+@media (max-width: 520px) {
+  .cs-nav-item span { display: none; }
+  .cs-nav-item { padding: 0.55em 0.7em; }
+  .cs-nav-item svg { width: 15px; height: 15px; opacity: 0.6; }
+  .cs-nav-item.is-active svg { opacity: 1; }
+  .cs-nav-sep { display: none; }
+}
+</style>
+<style>
+@media (max-width: 768px) {
+  .evo-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .split-asset .split-asset__panel { min-height: 50vh !important; }
+  [style*="display:flex"][style*="gap:1.5em"] > [style*="width:50%"],
+  [style*="display:flex"][style*="gap:2em"] > [style*="width:50%"],
+  [style*="display:flex"][style*="gap:1em"] > [style*="width:33.33%"] {
+    width: 100% !important;
+  }
+  [style*="display:flex"][style*="gap:1.5em"],
+  [style*="display:flex"][style*="gap:2em"],
+  [style*="display:flex"][style*="gap:1em"] {
+    flex-wrap: wrap;
+  }
+}
+</style>
+<style>
+.statblock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em; }
+.statblock-cell { padding: 2em; border: 1px solid rgba(52,52,52,0.08); }
+.statblock-badge {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.02em; color: var(--text-ghost);
+  border: 1px solid rgba(52,52,52,0.12);
+  display: inline-block; padding: 0.15em 0.5em;
+  margin-bottom: 1.2em; line-height: 1.4;
+}
+.statblock-keyword {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800; line-height: 1;
+  letter-spacing: -0.04em; text-transform: uppercase;
+  color: var(--charcoal); margin-bottom: 0.4em;
+}
+.statblock-label {
+  font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+  font-size: 0.6em; font-weight: 400; text-transform: uppercase;
+  letter-spacing: 0.02em; color: var(--text-ghost);
+  margin-bottom: 1em;
+}
+.statblock-body {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 0.8em; font-weight: 400; line-height: 1.5;
+  color: var(--text-secondary);
+}
+@media (max-width: 768px) {
+  .statblock-grid { grid-template-columns: 1fr; }
+}
+</style>
+<style>
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="overflow-clip">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
+
+<!-- ══════ HERO ══════ -->
+
+<section class="cs-hero-section">
+  <div class="cs-hero-inner">
+    <p class="mono-text cs-hero-eyebrow">/Work/Pixelbin/App</p>
+    <p class="cs-hero-product">PixelBin App</p>
+    <h1 class="cs-hero-title">How Do You Put an AI<br>Creative Studio in<br>Someone's Pocket?</h1>
+    <div class="divider" style="margin-bottom:1.6em"></div>
+    <div class="cs-hero-meta" style="flex-direction:column;gap:1.2em">
+      <div class="cs-hero-meta-group">
+        <p class="cs-hero-meta-label">Role / Team</p>
+        <p class="mono-text" style="color:var(--text-muted)">Sole Product Designer · Designed V2, V3 and V4</p>
+        <p class="mono-text" style="color:var(--text-muted)">1 PM · 2 engineers · 1 graphic designer</p>
+      </div>
+      <div class="cs-hero-meta-group">
+        <p class="cs-hero-meta-label">Scope / Evidence</p>
+        <p class="mono-text" style="color:var(--text-muted)">11 flows · 67 screens · iOS + Android · 10 AI tools</p>
+        <p class="mono-text" style="color:var(--text-muted)">11.3K app users · 183.4K usage events over 200 days · 0% rage clicks on editor tool-switching</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-screen-asset" style="height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+  <picture><source srcset="../assets/app/app-hero-cover.webp" type="image/webp"><img src="../assets/app/app-hero-cover.png" alt="PixelBin App — AI creative studio for mobile with generation model interface, prompt bar, and creative tools" class="image-full-k-a" style="width:100%;height:100%;object-fit:cover;object-position:center center" loading="eager" fetchpriority="high"></picture>
+</div>
+
+<!-- ══════ V1→V4 EVOLUTION ══════ -->
+
+<section id="cs-context" class="content-section content-section--full" style="padding-top:6em;padding-bottom:1em;min-height:auto">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The Evolution</p>
+      <h3 class="heading4">Three Versions,<br>Three Identities</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">V1 existed before I joined. I designed V2, V3 and V4 as the sole product designer, working with one PM, two engineers and a junior graphic designer.</p>
+      <p class="body-copy">V2 inherited its design system from the SaaS product. The main goal was getting the app live with limited AI features. V3 was a full rebuild — I created a new design system, expanded into AR and tutorials, and introduced a light theme. V4 moved the prompt bar to the Home screen and made AI the primary interaction.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:1.5em 8%;max-width:72em;margin:0 auto">
+  <div class="evo-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1em">
+    <div class="evo-item">
+      <picture><source srcset="../assets/app/app-evo-v2.webp" type="image/webp"><img src="../assets/app/app-evo-v2.png" alt="V2: platform with coins, batch mode, and templates" loading="lazy" style="width:100%;height:auto;border-radius:8px"></picture>
+      <p class="mono-text" style="margin-top:0.6em;text-align:center">V2 · The Platform</p>
+      <span class="evo-descriptor" style="text-align:center">Credits + batch</span>
+    </div>
+    <div class="evo-item">
+      <picture><source srcset="../assets/app/app-evo-v3.webp?v=2" type="image/webp"><img src="../assets/app/app-evo-v3.png?v=2" alt="V3: ecosystem with light theme, tutorials, AR integration" loading="lazy" style="width:100%;height:auto;border-radius:8px"></picture>
+      <p class="mono-text" style="margin-top:0.6em;text-align:center">V3 · The Ecosystem</p>
+      <span class="evo-descriptor" style="text-align:center">AR + tutorials + light theme</span>
+    </div>
+    <div class="evo-item">
+      <picture><source srcset="../assets/app/app-home-1.webp" type="image/webp"><img src="../assets/app/app-home-1.png" alt="V4: AI-first with prompt bar on Home, AI Tools tab" loading="lazy" style="width:100%;height:auto;border-radius:8px"></picture>
+      <p class="mono-text" style="margin-top:0.6em;text-align:center">V4 · The AI</p>
+      <span class="evo-descriptor" style="text-align:center">Prompt-first</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ THE CONSTRAINT ══════ -->
+
+<section class="content-section" style="padding-top:2em !important;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The Constraint</p>
+      <h3 class="heading4">Desktop Patterns<br>Don't Survive Mobile</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">Desktop AI tools rely on hover tooltips, keyboard shortcuts, multi-window workflows and sidebar panels. None of these work on a phone. Core editing controls needed to stay within easy thumb reach, particularly for one-handed use.</p>
+      <p class="body-copy">The editor needed six tools accessible without covering the image. Video generation takes 2–5 minutes, and users may leave the app before it finishes. Every workflow had to survive being interrupted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ THE PRODUCT QUESTION ══════ -->
+
+<section id="cs-product-question" class="content-section content-section--full" style="padding-top:6em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The Product Question</p>
+      <h3 class="heading4" style="font-size:clamp(1.2rem,2.5vw,1.8rem)">If AI Can Already Generate Images,<br>Why Build PixelBin?</h3>
+    </div>
+    <div class="content-right" style="padding-top:1.4em">
+      <p class="body-copy">Image generation is becoming widely available. A prompt box alone is not enough reason for a dedicated product to exist.</p>
+      <p class="body-copy">PixelBin was designed around the work that happens before and after generation: editing specific regions, processing images in batch, resizing for different platforms, generating video, handling jobs that take minutes to finish, and letting people return to past work or discover new prompts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VISUAL BREAK ══════ -->
+
+<div class="full-screen-asset" style="height:100vh;background:#f5f5f5;overflow:hidden">
+  <div id="lottie-hero" style="width:100%;height:100%"></div>
+</div>
+
+<!-- ══════ THREE DESIGN PRINCIPLES (stacked stats) ══════ -->
+
+<section class="scene--silence" style="min-height:100vh">
+  <div class="stacked-stats" id="stackedStats">
+    <p class="stacked-stats__heading">What the data showed<br>after 8,069 sessions</p>
+    <p class="stacked-stats__source">All metrics from Microsoft Clarity · 8,069 sessions · Last 200 days</p>
+
+    <div class="stacked-card">
+      <div class="stacked-card__left">
+        <span class="stacked-card__number" data-target="92" data-suffix="">0</span>
+        <span class="stacked-card__unit">%</span>
+      </div>
+      <div class="stacked-card__right">
+        <p class="stacked-card__desc">scroll depth. Users are reaching the bottom of the screen.</p>
+      </div>
+      <div class="stacked-card__thumb">
+        <picture><source srcset="../assets/app/app-clarity-scroll.webp" type="image/webp"><img src="../assets/app/app-clarity-scroll.png" alt="Clarity: Scroll depth trend" loading="lazy"></picture>
+        <p class="stacked-card__thumb-label">Clarity · Scroll depth trend</p>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card__left">
+        <span class="stacked-card__number" data-target="4.8" data-suffix="">0</span>
+        <span class="stacked-card__unit">min</span>
+      </div>
+      <div class="stacked-card__right">
+        <p class="stacked-card__desc">active time per session. Generation runs in the background, so leaving the app doesn't lose progress.</p>
+      </div>
+      <div class="stacked-card__thumb">
+        <picture><source srcset="../assets/app/app-clarity-active.webp" type="image/webp"><img src="../assets/app/app-clarity-active.png" alt="Clarity: Active time trend" loading="lazy"></picture>
+        <p class="stacked-card__thumb-label">Clarity · Active time trend</p>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card__left">
+        <span class="stacked-card__number" data-target="0" data-suffix="">0</span>
+        <span class="stacked-card__unit">%</span>
+      </div>
+      <div class="stacked-card__right">
+        <p class="stacked-card__desc">rage clicks on the editor tool-switching flow.</p>
+      </div>
+      <div class="stacked-card__thumb">
+        <picture><source srcset="../assets/app/app-clarity-rage.webp" type="image/webp"><img src="../assets/app/app-clarity-rage.png" alt="Clarity: Rage clicks trend" loading="lazy"></picture>
+        <p class="stacked-card__thumb-label">Clarity · Rage clicks → 0%</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ THE FLOWS ══════ -->
+
+<!-- ══════ FLOW 01: ONBOARDING ══════ -->
+
+<section id="cs-flows" class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">01</div>
+      <h3 class="flow-title">Onboarding</h3>
+      <span class="flow-status">5 → 3 Cards</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">V3 had five onboarding cards. By step three, users were swiping past without reading. I cut it to three cards, each introducing one capability: image generation, batch editing, and video.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-onboard-1.webp" type="image/webp"><img src="../assets/app/app-onboard-1.png" alt="Splash screen with PixelBin logo" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Brand moment</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-onboard-2.webp" type="image/webp"><img src="../assets/app/app-onboard-2.png" alt="Generate and edit images using the latest AI models" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">AI image generation</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-onboard-3-new.webp" type="image/webp"><img src="../assets/app/app-onboard-3-new.png" alt="Edit multiple images at the same time with batch mode" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Batch editing</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-onboard-4-entry.webp" type="image/webp"><img src="../assets/app/app-onboard-4-entry.png" alt="PixelBin App entry screen" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Entry</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ FLOW 02: HOME (DEEP DIVE) ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">02</div>
+      <h3 class="flow-title">What Should the<br>First Screen Show?</h3>
+      <span class="flow-status">Home</span>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">The Trade-off</p>
+        <p class="flow-problem__body">The Home screen changed with every version. V2 led with tools and batch mode. V3 added an AI-tools grid, suggestion pills and use-case galleries. For V4, I tested a tool-first Home — a grid of all 10 AI tools as the primary UI — but it forced users to choose a tool before they knew what they wanted to make.</p>
+      </div>
+
+      <div class="decision-options" style="margin-bottom:2em;flex-direction:row;gap:1.2em">
+        <div class="option option-killed">
+          <span class="option-tag">Killed</span>
+          <p><strong>Tool-first.</strong> A grid of all 10 AI tools. Clear and comprehensive, but assumes the user already knows which tool they need. Favours experienced users.</p>
+        </div>
+        <div class="option option-shipped">
+          <span class="option-tag">Shipped</span>
+          <p><strong>Prompt-first.</strong> A prompt bar as the primary interaction, with tool cards below. Users who know what to type start immediately. Users who don't see suggestion pills and quick-action cards.</p>
+        </div>
+      </div>
+
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-home-v2.webp" type="image/webp"><img src="../assets/app/app-home-v2.png" alt="Home screen V2: dark theme with batch editing and templates" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">V2 Home — tools and batch</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-home-v3.webp" type="image/webp"><img src="../assets/app/app-home-v3.png" alt="Home screen V3: light theme with AI tools grid" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">V3 Home — AI tools grid</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-home-v4.webp" type="image/webp"><img src="../assets/app/app-home-v4.png" alt="Home screen V4: prompt-first with tool cards below" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">V4 Home — prompt-first</span></div></div>
+        </div>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">The Prompt Bar</p>
+        <p class="flow-decision__body">I designed one prompt bar shared between image and video generation. Image mode gets suggestion pills and an enhance button. Video mode gets model selection, aspect ratio, duration and resolution as tags. The "Enhance prompt" feature rewrites vague inputs before generation starts.</p>
+      </div>
+
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-prompt-default.webp" type="image/webp"><img src="../assets/app/app-prompt-default.png" alt="Prompt bar default state with suggestion pills and quick actions" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Image tab with suggestion pills</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-prompt-filled.webp" type="image/webp"><img src="../assets/app/app-prompt-filled.png" alt="Prompt typed with AI enhancing the input" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Prompt typed, AI enhancing</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-prompt-video.webp" type="image/webp"><img src="../assets/app/app-prompt-video.png" alt="Video tab with model selector and generation settings" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Video tab with settings</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-prompt-video-filled.webp" type="image/webp"><img src="../assets/app/app-prompt-video-filled.png" alt="Video prompt filled with all settings configured" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Video prompt ready</span></div></div>
+        </div>
+      </div>
+
+      <div class="evidence-signal">
+        <span class="evidence-signal__label">Design signal</span>
+        <span class="evidence-signal__value">3 Home screen approaches evaluated before choosing prompt-first — <a href="/pixelbin/#chapter-1" style="font-size:inherit;color:inherit">see Chapter I</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 04: AI TOOLS ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">03</div>
+      <h3 class="flow-title">AI Tools</h3>
+      <span class="flow-status">10 Tools, Two Tiers</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">I gave the four most-used tools (Video Generator, Image Generator, AI Editor, Batch Editor) hero cards at the top. The remaining six sit in a secondary grid below. One-tap actions for common tasks like background removal.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-tools-hero.webp" type="image/webp"><img src="../assets/app/app-tools-hero.png" alt="AI Tools screen showing hero cards for the 4 most-used tools" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Hero cards — 4 most-used tools</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-tools-all.webp" type="image/webp"><img src="../assets/app/app-tools-all.png" alt="Full AI Tools grid showing all 10 tools" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">All 10 tools visible</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-tools-action.webp" type="image/webp"><img src="../assets/app/app-tools-action.png" alt="Quick action — one-tap background removal" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">One-tap action</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-tools-result.webp" type="image/webp"><img src="../assets/app/app-tools-result.png" alt="Action result — background removed instantly" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Result</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ AI IMAGE EDITOR ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">04</div>
+      <h3 class="flow-title">How Do You Fit<br>6 Editing Tools on<br>a 6-Inch Screen?</h3>
+      <span class="flow-status">AI Image Editor</span>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">The Constraint</p>
+        <p class="flow-problem__body">The editor has six tools: Prompt editing, Smart Select, Brush Select, Upscale, Watermark Removal and Adjust. On desktop, these live in a sidebar. On mobile, there is no sidebar. Every tool needs to be reachable with one thumb without covering the image being edited.</p>
+      </div>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-prompt.webp" type="image/webp"><img src="../assets/app/app-editor-prompt.png" alt="Editor entry: upload or prompt to start" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Upload an image or start from a prompt</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-generate.webp" type="image/webp"><img src="../assets/app/app-editor-generate.png" alt="Prompt editing: describe changes in natural language" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Describe changes in natural language</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-smartselect.webp" type="image/webp"><img src="../assets/app/app-editor-smartselect.png" alt="Smart Select: AI-powered region selection" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">AI detects and selects objects</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-brushselect.webp" type="image/webp"><img src="../assets/app/app-editor-brushselect.png" alt="Brush Select: manual paint selection with size slider" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Paint over any area for manual control</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-upscale.webp" type="image/webp"><img src="../assets/app/app-editor-upscale.png" alt="Upscale: 2x, 4x, 8x with output dimensions shown" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">05</span><span class="phone-item__caption">2x, 4x, 8x with dimensions shown</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-watermark.webp" type="image/webp"><img src="../assets/app/app-editor-watermark.png" alt="Watermark removal: Auto or Manual mode" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">06</span><span class="phone-item__caption">Auto detection or manual brush removal</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-adjust.webp" type="image/webp"><img src="../assets/app/app-editor-adjust.png" alt="Adjust: Brightness, Saturation, Contrast sliders" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">07</span><span class="phone-item__caption">Brightness, saturation, contrast sliders</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-editor-resize.webp" type="image/webp"><img src="../assets/app/app-editor-resize.png" alt="Resize: aspect ratio, social media, marketplace presets" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">08</span><span class="phone-item__caption">Social, marketplace, and custom presets</span></div></div>
+        </div>
+      </div>
+      <div class="flow-decision">
+        <p class="flow-decision__label">What I Built</p>
+        <p class="flow-decision__body">I used one reusable bottom-sheet pattern across all six editing tools. The image stays visible above while controls sit underneath. Adding a new tool means adding a new bottom-sheet panel, not redesigning the editor.</p>
+      </div>
+
+      <p class="flow-strip-label">Two selection modes, same editing workflow</p>
+      <p class="flow-problem__body" style="margin-bottom:1em">Smart Select uses AI to identify objects — tap one to select it and describe the change. Brush Select gives manual precision — paint over any area, then describe the edit. From the prompt step onward, both use the same workflow.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-smartsel-2.webp" type="image/webp"><img src="../assets/app/app-smartsel-2.png" alt="AI identifying and highlighting selectable objects" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Smart Select — AI scans</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-smartsel-3.webp" type="image/webp"><img src="../assets/app/app-smartsel-3.png" alt="Object selected — AI highlights the region" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Object selected</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-brushsel-1.webp" type="image/webp"><img src="../assets/app/app-brushsel-1.png" alt="Brush Select tool with adjustable size slider" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Brush Select — manual</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-smartsel-5.webp" type="image/webp"><img src="../assets/app/app-smartsel-5.png" alt="AI editing complete — selected region transformed" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Region transformed</span></div></div>
+        </div>
+      </div>
+
+      <div class="flow-outcome">
+        <span class="flow-outcome__label">Evidence</span>
+        <span class="flow-outcome__metric">0% rage clicks on editor tool-switching (Microsoft Clarity, 8,069 sessions)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="split-asset" style="min-height:100vh">
+  <div class="split-asset__panel" style="min-height:100vh">
+    <picture><source srcset="../assets/app/app-split-left.webp" type="image/webp"><img src="../assets/app/app-split-left.png" alt="PixelBin App — chat-based editing interface with bottom sheet" style="width:100%;height:100%;object-fit:cover" loading="lazy"></picture>
+    <div class="split-asset__label split-asset__label--bottom" style="background:linear-gradient(to top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);right:0;padding:1.6em 2em">
+      <p class="caps-subheading" style="color:var(--charcoal);margin-bottom:0.3em">Chat-Based Editing</p>
+      <p class="mono-text" style="color:var(--text-muted)">Describe changes in natural language</p>
+    </div>
+  </div>
+  <div class="split-asset__panel" style="min-height:100vh;overflow:hidden;position:relative">
+    <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0"><source srcset="../assets/app/app-split-right-bg.webp" type="image/webp"><img src="../assets/app/app-split-right-bg.png" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></picture>
+    <div style="position:absolute;top:2em;left:2em;z-index:2">
+      <p class="caps-subheading" style="color:var(--charcoal);margin-bottom:0.3em">User-Controlled AI</p>
+      <p class="mono-text" style="color:var(--text-muted)">Review, adjust and save before committing</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ UTILITY TOOLS ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">05</div>
+      <h3 class="flow-title">Watermark +<br>Resize</h3>
+      <span class="flow-status">Utility Tools</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">Watermark removal and resizing reuse the same bottom-sheet pattern as the main editor. Watermark runs in auto or manual mode. Resize has presets for social media, marketplaces and custom aspect ratios.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-watermark-1.webp" type="image/webp"><img src="../assets/app/app-watermark-1.png" alt="Watermark tool open — Auto mode selected by default" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Watermark — auto mode</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-watermark-3.webp" type="image/webp"><img src="../assets/app/app-watermark-3.png" alt="Watermark removed — success toast" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Watermark removed</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-resize-1.webp" type="image/webp"><img src="../assets/app/app-resize-1.png" alt="Default resize — aspect ratio options" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Resize presets</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-resize-2.webp" type="image/webp"><img src="../assets/app/app-resize-2.png" alt="Social media templates — Instagram, Facebook, Twitter presets" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Social media templates</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 05: VIDEO GENERATOR ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">06</div>
+      <h3 class="flow-title">Designing for a<br>Task That Takes<br>Minutes</h3>
+      <span class="flow-status">Video Generator</span>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">The Constraint</p>
+        <p class="flow-problem__body">Video generation takes 2–5 minutes. On desktop, the user switches tabs. On mobile, they put the phone in their pocket. I needed to design for a task that outlasts the session.</p>
+      </div>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-1.webp" type="image/webp"><img src="../assets/app/app-videogen-1.png" alt="Empty state: magic hat illustration, Generate new video" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Playful empty state</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-3.webp" type="image/webp"><img src="../assets/app/app-videogen-3.png" alt="Settings: start image, 16:9, 5 sec, 1080p, Audio" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Settings as tags</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-4.webp" type="image/webp"><img src="../assets/app/app-videogen-4.png" alt="Ready to generate: prompt + all settings visible" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Ready to generate</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-2-new.webp" type="image/webp"><img src="../assets/app/app-videogen-2-new.png" alt="Choose generation model: Google VEO 3.1 with feature details" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Choose model — VEO 3.1</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-5.webp" type="image/webp"><img src="../assets/app/app-videogen-5.png" alt="Enhancing prompt: AI improves the description" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">05</span><span class="phone-item__caption">AI enhances the prompt</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-6.webp" type="image/webp"><img src="../assets/app/app-videogen-6.png" alt="Generating: 2 min remaining, progress bar, prompt recap" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">06</span><span class="phone-item__caption">Progress bar — 2 min remaining</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-videogen-7-done.webp" type="image/webp"><img src="../assets/app/app-videogen-7-done.png" alt="Video generation complete — ready to view" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">07</span><span class="phone-item__caption">Generation done</span></div></div>
+        </div>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">What I Built</p>
+        <p class="flow-decision__body">I designed the generation flow around background processing and push notifications. The generation screen shows time remaining, a progress bar, the original prompt and settings as tags — so users can confirm the right job is running before they put the phone away.</p>
+      </div>
+
+      <p class="flow-strip-label">No image needed — generate start frames from text</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-vidframe-1.webp" type="image/webp"><img src="../assets/app/app-vidframe-1.png" alt="Video generator with Generate Start Image option" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Generate Start Image option</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-vidframe-2-new.webp" type="image/webp"><img src="../assets/app/app-vidframe-2-new.png" alt="Generate start image — describe the starting frame" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Describe the starting frame</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-vidframe-3.webp" type="image/webp"><img src="../assets/app/app-vidframe-3.png" alt="Generating the start frame from text prompt" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Generating from text</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-vidframe-4.webp" type="image/webp"><img src="../assets/app/app-vidframe-4.png" alt="Start frame generated — ready to create video" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Start frame ready</span></div></div>
+        </div>
+      </div>
+
+      <div class="flow-outcome">
+        <span class="flow-outcome__label">Shipped</span>
+        <span class="flow-outcome__metric">Background processing with push notifications</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 06: BATCH EDITOR ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">07</div>
+      <h3 class="flow-title">Batch Editor</h3>
+      <span class="flow-status">Multi-Image Editing</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">I reused the same bottom-sheet pattern from single-image editing. A two-column grid shows the batch, the prompt bar sits at the bottom. If someone has used the single-image editor, they already know how batch works.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-batch-1.webp" type="image/webp"><img src="../assets/app/app-batch-1.png" alt="Upload: empty state with Upload images CTA" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Upload images</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-batch-2.webp" type="image/webp"><img src="../assets/app/app-batch-2.png" alt="Grid: uploaded images with prompt bar below" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">2-column grid</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-batch-4.webp" type="image/webp"><img src="../assets/app/app-batch-4.png" alt="Upscale: 2x/4x/8x panel over image grid" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Bottom-sheet tools</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-batch-5.webp" type="image/webp"><img src="../assets/app/app-batch-5.png" alt="Result: all images processed with applied effects" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">All processed</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CONVERSATIONAL EDITING: UPLOAD + CHAT ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">08</div>
+      <h3 class="flow-title">Upload + Chat</h3>
+      <span class="flow-status">Conversational Editing</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">Start from a generated image or upload one. Describe what you want changed, see the result and keep going. Each edit stacks as a conversation with full history.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-chatedit-1-new.webp" type="image/webp"><img src="../assets/app/app-chatedit-1-new.png" alt="AI-generated image result ready for further editing" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Start from generated</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-chatedit-2-new.webp" type="image/webp"><img src="../assets/app/app-chatedit-2-new.png" alt="Upload your own image to the editor" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Or upload your own</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-chatedit-3-new.webp" type="image/webp"><img src="../assets/app/app-chatedit-3-new.png" alt="Describe the edit in natural language, AI applies the change" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Describe the change</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-chatedit-4-new.webp" type="image/webp"><img src="../assets/app/app-chatedit-4-new.png" alt="Continue editing with another prompt, full history visible" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Full history</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FLOW 10: EXPLORE ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">09</div>
+      <h3 class="flow-title">Explore</h3>
+      <span class="flow-status">Discovery Feed</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">I made Explore a primary tab, equal to Home, AI Tools and Gallery. Users who don't know what to create can browse real generations from other users, see their prompts and reuse them. Category filters let you browse by visual style.</p>
+      <div class="strip-wrap">
+        <div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-explore-1.webp" type="image/webp"><img src="../assets/app/app-explore-1.png" alt="Explore feed with category filters" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Discovery feed</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-explore-2.webp" type="image/webp"><img src="../assets/app/app-explore-2.png" alt="Explore feed showing AI-generated art with category filters" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Category filters</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-explore-3.webp" type="image/webp"><img src="../assets/app/app-explore-3.png" alt="Explore feed scrolled with more community creations" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Community creations</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><picture><source srcset="../assets/app/app-explore-4.webp" type="image/webp"><img src="../assets/app/app-explore-4.png" alt="Explore: generation detail with prompt" loading="lazy"></picture></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Copyable prompt</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VISUAL BREAK: FLOWS → SYSTEM ══════ -->
+
+<div class="full-screen-asset" style="height:100vh;overflow:hidden;position:relative">
+  <picture><source srcset="../assets/app/app-fullbleed-hero.webp" type="image/webp"><img src="../assets/app/app-fullbleed-hero.png" alt="PixelBin App — 10 AI tools designed for one-thumb interaction" style="width:100%;height:100%;object-fit:cover;object-position:center center" loading="lazy"></picture>
+  <div class="overlay-text overlay-text--bottom-left" style="max-width:28em">
+    <p class="caps-subheading" style="color:rgba(255,255,255,0.6);margin-bottom:0.4em">Design Principle</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,3rem);font-weight:600;line-height:1.05;letter-spacing:-0.04em;color:#fff">Same bottom sheet<br>for all six editor tools.</p>
+  </div>
+</div>
+
+<!-- ══════ SYSTEM DIAGRAM: HOW THE APP FITS TOGETHER ══════ -->
+
+<section id="cs-system" class="content-section content-section--full" style="padding-top:6em;padding-bottom:4em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The System</p>
+      <h3 class="heading4">How It All<br>Connects</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">Gallery and Explore create a loop between discovering prompts, creating something, reviewing it and returning to browse more. This diagram shows how the flows connect.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:0 8% 6em;max-width:72em;margin:0 auto" class="k-a">
+  <img src="../assets/app/app-flow-architecture-new.png" alt="PixelBin App — complete product flow architecture showing Home, AI Tools, AI Image Editor, Explore, Gallery, Pricing, and Profile navigation and data flows" style="width:100%;height:auto;border-radius:4px;border:1px solid rgba(52,52,52,0.06)" loading="lazy">
+  <p class="mono-text" style="margin-top:0.8em;color:var(--text-ghost)">Architecture · 11 flows · All cross-connections</p>
+</div>
+
+<!-- ══════ VISUAL BREAK: SYSTEM → ICE BREAKER ══════ -->
+
+<div style="display:grid;grid-template-columns:1fr 1fr;width:100%;height:140vh;min-height:140vh">
+  <div style="position:relative;overflow:hidden;height:140vh">
+    <img src="../assets/app/app-iphone-mockup.webp" alt="PixelBin App — iPhone 16 mockup in hand showing Explore feed" class="parallax-img" style="width:100%;height:110%;object-fit:cover;object-position:center center" loading="lazy">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:2.4em 2em;z-index:2">
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.7);margin-bottom:0.5em">Explore</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:600;line-height:1.05;letter-spacing:-0.03em;color:rgba(255,255,255,0.85)">See what others are making<br>and reuse the prompt.</p>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden;height:140vh">
+    <picture><source srcset="../assets/app/app-brush-tool.webp" type="image/webp"><img src="../assets/app/app-brush-tool.png" alt="PixelBin Brush Select — AI-powered region editing on a product photo" class="parallax-img" style="width:100%;height:110%;object-fit:cover;object-position:center center" loading="lazy"></picture>
+    <div style="position:absolute;top:2em;left:2em;z-index:10">
+      <p class="caps-subheading" style="color:#fff;margin-bottom:0.4em">AI Image Editor</p>
+      <p class="mono-text" style="color:rgba(255,255,255,0.6)">Paint the area, describe what to change</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ THE ICE BREAKER ══════ -->
+
+<section class="scene--question" style="min-height:100vh;flex-direction:column;gap:1.6em">
+  <p class="mono-text" style="color:var(--text-ghost)">The Blank Prompt Problem</p>
+  <h2 class="heading2">What If You Don't Know<br>What to Make?</h2>
+  <p class="body-copy" style="max-width:32em;text-align:center">V4 launched with a prompt-first Home. Some users opened the app, saw a blinking cursor and left. The Home screen needed to help people who didn't know what to type.</p>
+</section>
+
+<style>
+  .ib-annotation { max-width:64em; margin:0 auto; padding:4em 4% 8em; display:flex; gap:2.5em; align-items:stretch; }
+  .ib-cards { width:50%; flex-shrink:0; display:flex; flex-direction:column; }
+  .ib-screen { width:42%; flex-shrink:0; }
+  .ib-screen__label { font-family:'Helvetica Now Display',sans-serif; font-size:0.65em; font-weight:400; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-ghost); margin-bottom:0.8em; }
+  .ib-screen img { width:100%; height:auto; border-radius:12px; border:1px solid rgba(52,52,52,0.06); }
+  .ib-card { border:1px dashed rgba(52,52,52,0.18); padding:1.2em 1.4em; position:relative; }
+  .ib-card + .ib-card { margin-top:1.4em; }
+  .ib-card__header { display:flex; align-items:baseline; gap:0.6em; margin-bottom:0.6em; }
+  .ib-card__title { font-family:'Helvetica Now Display',sans-serif; font-size:0.82em; font-weight:800; text-transform:uppercase; letter-spacing:-0.02em; color:var(--charcoal); }
+  .ib-card__tag { font-family:'Helvetica Now Display',sans-serif; font-size:0.55em; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; color:var(--charcoal); background:#f5e6d0; padding:0.2em 0.6em; border-radius:2px; white-space:nowrap; }
+  .ib-card__body { font-family:'Helvetica Now Display',sans-serif; font-size:0.75em; font-weight:400; line-height:1.45; color:var(--text-secondary); }
+  .ib-card__cite { font-family:'Helvetica Now Display',sans-serif; font-size:0.65em; font-weight:400; color:var(--text-ghost); margin-top:0.6em; font-style:italic; line-height:1.4; }
+  .ib-card__dot { position:absolute; right:-1em; width:7px; height:7px; border-radius:50%; background:var(--charcoal); opacity:0.2; }
+  .ib-card__line { position:absolute; right:-2.5em; width:1.5em; border-top:1px dashed rgba(52,52,52,0.15); }
+  .ib-zone { font-family:'Helvetica Now Display',sans-serif; font-size:0.6em; font-weight:400; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-ghost); border:1px dashed rgba(52,52,52,0.12); display:inline-block; padding:0.3em 0.8em; margin-bottom:1.2em; }
+  .ib-spacer-sm { height:1em; } .ib-spacer-md { height:3em; } .ib-spacer-lg { height:5em; }
+  @media (max-width:768px) {
+    .ib-annotation { flex-direction:column-reverse; gap:2em; padding:3em 6% 4em; }
+    .ib-cards, .ib-screen { width:100% !important; position:static; }
+    .ib-screen img { max-width:280px; margin:0 auto; display:block; }
+    .ib-card__dot, .ib-card__line { display:none; }
+    .ib-spacer-sm, .ib-spacer-md, .ib-spacer-lg { height:0; }
+  }
+</style>
+
+<div class="ib-annotation">
+  <div class="ib-cards">
+    <p class="ib-zone">Annotations listed here ↓</p>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">"What will you make today?"</span><span class="ib-card__tag">Framing</span></div>
+      <p class="ib-card__body">Intent-first, not tool-first. The heading asks what the user wants — not which tool to use. Credits badge and Go Pro sit in the top bar — monetisation visible but never blocking creation.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">Prompt Bar</span><span class="ib-card__tag">Interaction</span></div>
+      <p class="ib-card__body">Natural language as primary input. Users describe what they want instead of picking tools. The + button uploads images into the prompt context. The sparkle enhances vague prompts using AI.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">Quick Action Carousel</span><span class="ib-card__tag">Discovery</span></div>
+      <p class="ib-card__body">Before/after thumbnails for users who know the task but can't describe it. Tap the transformation, skip the typing.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">Hero Creation Cards</span><span class="ib-card__tag">Inspiration</span></div>
+      <p class="ib-card__body">Large visual cards showing AI outputs — not feature lists. The user sees what's possible before deciding what to make.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-spacer-lg"></div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">"Just Type to Edit"</span><span class="ib-card__tag">Recovery</span></div>
+      <p class="ib-card__body">Pre-written prompt examples. Users learn AI interaction by seeing real prompts. The fix for the V4 blank-canvas failure.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-spacer-md"></div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">Video Generation Promo</span><span class="ib-card__tag">Cross-Sell</span></div>
+      <p class="ib-card__body">Users who came for images discover video generation without navigating away. Cross-selling within context.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-spacer-md"></div>
+    <div class="ib-card">
+      <div class="ib-card__header"><span class="ib-card__title">AI Magic</span><span class="ib-card__tag">Trending</span></div>
+      <p class="ib-card__body">Viral AI effects — Baby Face, Ghibli, Sticker Generator. Low-commitment entry points riding cultural trends.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div class="ib-spacer-lg"></div>
+    <div class="ib-card" style="margin-top:6em">
+      <div class="ib-card__header"><span class="ib-card__title">Visuals That Make an Impact</span><span class="ib-card__tag">Use Cases</span></div>
+      <p class="ib-card__body">Category-driven discovery — Product shots, Social media, Ad creatives. Users find their use case, not a tool.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+    <div style="flex:1"></div>
+    <div class="ib-card" style="margin-top:auto">
+      <div class="ib-card__header"><span class="ib-card__title">✦ AI Button + Navigation</span><span class="ib-card__tag">Architecture</span></div>
+      <p class="ib-card__body">Five tabs, five intents. The floating ✦ button is visible on every tab — creation is a global action, not a destination.</p>
+      <span class="ib-card__dot" style="top:50%"></span><span class="ib-card__line" style="top:50%"></span>
+    </div>
+  </div>
+  <div class="ib-screen">
+    <p class="ib-screen__label">The Home Screen · Full Scroll</p>
+    <picture><source srcset="../assets/app/app-home-full.webp" type="image/webp"><img src="../assets/app/app-home-full.png" alt="PixelBin App complete Home screen" loading="lazy"></picture>
+  </div>
+</div>
+
+
+<!-- ══════ REAL DATA: CLARITY (zigzag) ══════ -->
+
+<div id="cs-evidence" class="zz-block">
+  <div class="zz-text">
+    <span class="zz-tag">Session Recordings</span>
+    <div class="zz-stat">
+      <span class="zz-stat__number">50</span>
+      <span class="zz-stat__unit">sessions watched</span>
+    </div>
+    <p class="zz-insight">What Users Actually Did</p>
+    <p class="zz-body">We reviewed around 50 session recordings in Microsoft Clarity. Users regularly scrolled past the tool cards and paused at the prompt bar. Most either typed a prompt or left — very few browsed tools or opened settings first.</p>
+    <p class="zz-body">This supported the prompt-first direction. The content above the prompt bar gives context; the content below it gives discovery for users who need help starting.</p>
+  </div>
+  <div class="zz-visual">
+    <picture><source srcset="../assets/app/app-clarity-recording.webp" type="image/webp"><img src="../assets/app/app-clarity-recording.png" alt="Microsoft Clarity session recording showing real user interaction" loading="lazy"></picture>
+    <p class="zz-visual__caption">Clarity · Session recordings · Real user behaviour</p>
+  </div>
+</div>
+
+<div class="zz-divider"><div class="zz-divider__line"></div></div>
+
+<div class="zz-block zz-block--reverse" id="zzBlock2">
+  <div class="zz-text">
+    <span class="zz-tag">Dashboard</span>
+    <div class="zz-stat">
+      <span class="zz-stat__number">8,891</span>
+      <span class="zz-stat__unit">sessions</span>
+    </div>
+    <p class="zz-insight">Later Clarity Snapshot</p>
+    <p class="zz-body">92.94% scroll depth. 0.60% rage clicks across the overall app. 0% excessive scrolling.</p>
+    <p class="zz-body">4.8 minutes average active time per session.</p>
+  </div>
+  <div class="zz-visual">
+    <picture><source srcset="../assets/app/app-clarity-stats.webp" type="image/webp"><img src="../assets/app/app-clarity-stats.png" alt="Microsoft Clarity dashboard showing 8,891 sessions with key metrics" loading="lazy"></picture>
+    <p class="zz-visual__caption">Clarity · Dashboard · 8,891 sessions (later snapshot) · Last 200 days</p>
+  </div>
+</div>
+
+<div style="padding:0 8% 6em;max-width:64em;margin:0 auto">
+  <div style="display:flex;gap:1em;align-items:flex-start">
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">1 / 3 · Above the fold</p>
+      <picture><source srcset="../assets/app/app-heatmap-top.webp" type="image/webp"><img src="../assets/app/app-heatmap-top.png" alt="Clarity heatmap — above the fold" style="width:100%;height:auto;border-radius:12px 12px 0 0" loading="lazy"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px"><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">10</strong> click targets</span><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">70%</strong> in thumb zone</span></div>
+    </div>
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">2 / 3 · Mid-scroll</p>
+      <picture><source srcset="../assets/app/app-heatmap-mid.webp" type="image/webp"><img src="../assets/app/app-heatmap-mid.png" alt="Clarity heatmap — mid-scroll" style="width:100%;height:auto;border-radius:12px 12px 0 0" loading="lazy"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px"><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">10</strong> click targets</span><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">60%</strong> in thumb zone</span></div>
+    </div>
+    <div style="width:33.33%;flex-shrink:0">
+      <p class="mono-text" style="margin-bottom:0.6em;font-size:0.55em">3 / 3 · Bottom scroll</p>
+      <picture><source srcset="../assets/app/app-heatmap-bottom.webp" type="image/webp"><img src="../assets/app/app-heatmap-bottom.png" alt="Clarity heatmap — bottom scroll" style="width:100%;height:auto;border-radius:12px 12px 0 0" loading="lazy"></picture>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#1a1a2e;padding:0.5em 0.8em;border-radius:0 0 8px 8px"><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">8</strong> click targets</span><span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;color:rgba(255,255,255,0.7)"><strong style="color:#fff">75%</strong> in thumb zone</span></div>
+    </div>
+  </div>
+  <p class="mono-text" style="margin-top:1.2em;color:var(--text-ghost)">Microsoft Clarity · Live interaction data · PixelBin Home Screen</p>
+</div>
+
+<!-- ══════ IMPACT ══════ -->
+
+<section id="cs-impact" class="content-section" style="padding-top:6em;padding-bottom:2em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Business Context</p>
+      <h3 class="heading4">11.3K Users<br>Over 200 Days</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">11.3K app users and 183.4K usage events across 200 days. After V4 launched, 96% of revenue was product-led — users converting through the app itself rather than through a sales process.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:0 8%;max-width:72em;margin:0 auto 4em" class="k-a">
+  <picture><source srcset="../assets/app/app-metrics-geckoboard.webp" type="image/webp"><img src="../assets/app/app-metrics-geckoboard.png" alt="Geckoboard dashboard — PixelBin Apps: 11.3K app users, 183.4K usage events, subscription and add-on revenue across all product lines" style="width:100%;height:auto;border-radius:4px" loading="lazy"></picture>
+  <p class="mono-text" style="margin-top:0.6em">Geckoboard → PixelBin Apps · 11.3K users · 183.4K usage events · 200 days</p>
+</div>
+
+<!-- ══════ WHAT THE RECORDINGS SHOWED + PRICING ══════ -->
+
+<section class="flow-card flow-card--unnumbered">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <p class="flow-label">Pricing</p>
+      <h3 class="flow-title">5 Options<br>Down to 3</h3>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">What the Recordings Showed</p>
+        <p class="flow-problem__body">Session recordings showed that most users had already decided whether to pay before reaching the pricing screen. They weren't comparing plans — they were looking for confirmation.</p>
+      </div>
+
+      <div style="display:flex;gap:3em;align-items:flex-start;margin:2em 0">
+        <div style="flex:1;text-align:center">
+          <div style="display:inline-block;max-width:220px;opacity:0.5">
+            <picture><source srcset="../assets/app/app-pricing-old.webp" type="image/webp"><img src="../assets/app/app-pricing-old.png" alt="Old pricing screen — V3, 5 options" style="width:100%;height:auto;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04),0 12px 40px rgba(0,0,0,0.03)" loading="lazy"></picture>
+          </div>
+          <div class="phone-item__meta" style="justify-content:center"><span class="phone-item__step">V3 · Killed</span><span class="phone-item__caption">5 choices, feature comparison, users hesitated</span></div>
+        </div>
+        <div style="flex:1;text-align:center">
+          <div style="display:inline-block;max-width:220px">
+            <picture><source srcset="../assets/app/app-pricing-new.webp" type="image/webp"><img src="../assets/app/app-pricing-new.png" alt="New pricing screen — V4, 3 options, Monthly pre-selected" style="width:100%;height:auto;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 16px rgba(0,0,0,0.04),0 12px 40px rgba(0,0,0,0.03)" loading="lazy"></picture>
+          </div>
+          <div class="phone-item__meta" style="justify-content:center"><span class="phone-item__step">V4 · Shipped</span><span class="phone-item__caption">3 choices, Monthly pre-selected, hero image, specific CTA</span></div>
+        </div>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">What Changed</p>
+        <p class="flow-decision__body">I simplified the screen from five options to three: Monthly pre-selected, Weekly as a lower-commitment option, and Pay-as-you-go for power users. The PM owned the pricing model itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHAT DIDN'T WORK ══════ -->
+
+<section id="cs-data" style="padding:6em 8%">
+  <div style="max-width:72em;margin:0 auto">
+    <div style="margin-bottom:3em">
+      <p class="mono-text" style="margin-bottom:0.6em">Honest Assessment</p>
+      <h3 class="heading4">What Didn't Work</h3>
+    </div>
+    <div class="statblock-grid">
+      <div class="statblock-cell">
+        <span class="statblock-badge">V2</span>
+        <p class="statblock-keyword">Coins</p>
+        <p class="statblock-label">Confused the payment model</p>
+        <p class="statblock-body">Credits felt like a game mechanic. Users completed edits but abandoned at the credit-deduction moment. They understood the tool but not the cost. V4 replaced it with straightforward monthly and weekly plans.</p>
+      </div>
+      <div class="statblock-cell">
+        <span class="statblock-badge">V3</span>
+        <p class="statblock-keyword">5 Steps</p>
+        <p class="statblock-label">Too many onboarding cards</p>
+        <p class="statblock-body">Five carousel cards. By step 3, users were swiping past without reading. The content was accurate but the format was wrong. V4 cut it to 3 cards, each showing one capability with a single visual.</p>
+      </div>
+      <div class="statblock-cell">
+        <span class="statblock-badge">V4</span>
+        <p class="statblock-keyword">Blank</p>
+        <p class="statblock-label">No suggestion pills on launch</p>
+        <p class="statblock-body">The prompt bar was the primary UI, but users who didn't know what to type stared at an empty input box. Adding pre-written suggestion pills gave hesitant users a starting point without cluttering the interface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VISUAL BREAK: HONESTY → PRINCIPLE ══════ -->
+
+<div class="full-screen-asset" style="height:100vh;overflow:hidden;position:relative">
+  <picture><source srcset="../assets/app/app-final-banner.webp" type="image/webp"><img src="../assets/app/app-final-banner.png" alt="PixelBin App — AI creative studio for mobile" style="width:100%;height:100%;object-fit:cover;object-position:center center" loading="lazy"></picture>
+</div>
+
+<section id="cs-reflection" class="flow-card flow-card--unnumbered">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <p class="flow-label">Reflection</p>
+      <h3 class="flow-title">The Hardest<br>Part</h3>
+    </div>
+    <div class="flow-right">
+      <div class="flow-problem">
+        <p class="flow-problem__label">What I Learned</p>
+        <p class="flow-problem__body">Moving the product to mobile meant rethinking desktop patterns rather than shrinking them. The sidebar became a bottom sheet. Tool-first navigation became a prompt bar with suggestions. Long-running generation became a background flow with progress and push notifications. Each of those translations required its own design work.</p>
+      </div>
+
+      <div class="flow-decision">
+        <p class="flow-decision__label">What I'd Do Differently</p>
+        <p class="flow-decision__body">I'd move intent detection into onboarding. The suggestion pills already route users to the right tool — "Remove background" opens the editor, "Generate product photo" opens the generator. But they appear after onboarding, not during it. Asking "What do you want to create?" on the first screen would let the Home screen pre-configure around the user's goal. The routing logic exists. The sequencing doesn't.</p>
+      </div>
+
+      <div class="flow-outcome">
+        <span class="flow-outcome__label">Scope</span>
+        <span class="flow-outcome__metric">3 versions · 11 flows · 67 screens</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BRIDGE ══════ -->
+
+<section class="scene--bridge">
+  <div class="bridge__inner">
+    <nav class="bridge__cross-nav" aria-label="Explore the rest of the Pixelbin case study">
+      <a href="/pixelbin/" class="bridge__cross-link">
+        <p class="bridge__cross-eyebrow">← Pixelbin</p>
+        <p class="bridge__cross-title">All PixelBin Work</p>
+        <p class="bridge__cross-desc">9 products, 4 versions, 3 years</p>
+      </a>
+      <a href="/pixelbin/magic-canvas/" class="bridge__cross-link bridge__cross-link--next">
+        <p class="bridge__cross-eyebrow">Magic Canvas →</p>
+        <p class="bridge__cross-title">The Generative Workspace</p>
+        <p class="bridge__cross-desc">8 creation flows, campaign tools, and AI influencer generation</p>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══════ CTA + FOOTER ══════ -->
+
+<style>
+  .cta-heading {
+    font-size: 48px;
+    font-weight: 400;
+    color: rgb(238,238,238);
+    letter-spacing: -1.2px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .cta-heading .h-reg { font-family: 'Helvetica Now Display', sans-serif; font-style: normal; }
+  .cta-heading .h-ital { font-family: 'Helvetica Now Display', sans-serif; font-style: italic; }
+  #cta {
+    background: #000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 160px 0 160px;
+    box-sizing: border-box;
+  }
+  .cta-content {
+    text-align: center;
+    max-width: 560px;
+    padding: 0 48px;
+  }
+  #cta, #site-footer { font-size: 16px; }
+  .cta-label {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+  }
+  .cta-description {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.015em;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 48px;
+  }
+  .cta-reveal-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    margin: 0 auto 64px;
+    overflow: hidden;
+  }
+  .cta-reveal-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 18px 52px;
+    background: #fff;
+    color: #000;
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background 0.22s ease, gap 0.26s cubic-bezier(0.16,1,0.3,1);
+  }
+  .footer-cta-btn:hover {
+    background: rgba(255,255,255,0.88);
+    gap: 10px;
+    opacity: 1;
+  }
+  .footer-cta-btn .btn-mail-icon {
+    display: inline-flex;
+    align-items: center;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.6) translateX(-4px);
+    transition: width 0.26s cubic-bezier(0.16,1,0.3,1),
+                opacity 0.20s ease,
+                transform 0.26s cubic-bezier(0.16,1,0.3,1);
+  }
+  .footer-cta-btn:hover .btn-mail-icon {
+    width: 18px;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  #site-footer {
+    background: #000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 60px 48px;
+    box-sizing: border-box;
+  }
+  .footer-bottom {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer-left span {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-right {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-right a {
+    font-family: 'Helvetica Now Display', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-right a:hover { color: rgba(255,255,255,0.9); }
+
+  @media (max-width: 768px) {
+    .cta-heading { font-size: clamp(28px, 9vw, 44px); }
+    #cta { padding: 80px 24px 100px; }
+    .cta-content { padding: 0; }
+    .cta-label { font-size: 13px; margin-bottom: 24px; }
+    .cta-description { font-size: 14px; margin-bottom: 40px; }
+    #site-footer { padding: 60px 24px 40px; }
+    .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
+    .cta-reveal-wrap { max-width: 200px; margin-bottom: 48px; }
+  }
+</style>
+
+<section id="cta">
+  <h2 class="cta-heading" style="opacity:1">
+    <span class="h-reg">Still </span><em class="h-ital">here</em>
+  </h2>
+  <div class="cta-content">
+    <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer working across AI, commerce and fintech products. I'm looking for a permanent Product Design role in the UK and would require Skilled Worker sponsorship to relocate.</p>
+    <p class="cta-label">Open to permanent UK opportunities</p>
+    <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+      <span class="btn-mail-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-left">
+      <span>terryjohnpaul20@gmail.com</span>
+      <span>Designed and coded by me. · © 2026 Terry John Paul</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="/resume/">Resume</a>
+      <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+  <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+  <a href="#cs-context" class="cs-nav-item" data-section="cs-context" aria-label="Context">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.2 10.2L14 14"/></svg>
+    <span>Context</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-flows" class="cs-nav-item" data-section="cs-flows" aria-label="Flows">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1.5" width="8" height="13" rx="1.5"/><path d="M7 12.5h2"/></svg>
+    <span>Flows</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-system" class="cs-nav-item" data-section="cs-system" aria-label="System">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="1.5" y="9.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.8"/></svg>
+    <span>System</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-evidence" class="cs-nav-item" data-section="cs-evidence" aria-label="Evidence">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h12"/><path d="M3.5 14V9"/><path d="M6.5 14V7"/><path d="M9.5 14V5"/><path d="M12.5 14V3"/></svg>
+    <span>Evidence</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-impact" class="cs-nav-item" data-section="cs-impact" aria-label="Impact">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h4l1.5-3 3 6L12 8h2"/></svg>
+    <span>Impact</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-data" class="cs-nav-item" data-section="cs-data" aria-label="Honesty">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v6"/><circle cx="8" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
+    <span>Honesty</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#cs-reflection" class="cs-nav-item" data-section="cs-reflection" aria-label="Reflection">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v5"/><path d="M8 7l4 4"/><path d="M8 7L4 11"/><circle cx="8" cy="2" r="0.8" fill="currentColor" stroke="none"/><circle cx="4" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none"/></svg>
+    <span>Reflection</span>
+  </a>
+</nav>
+
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="../js/chapter1.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof Lenis === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  var lenis = new Lenis({
+    autoRaf: false,
+    duration: 1.1,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1,
+    touchMultiplier: 2
+  });
+
+  window.__lenis = lenis;
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add(function (time) {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+
+  // Hero image — zoom-out reveal
+  var heroImg = document.querySelector('.image-full-k-a');
+  if (heroImg) {
+    gsap.fromTo(heroImg,
+      { scale: 1.08, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: heroImg, start: 'top 90%', once: true }
+      }
+    );
+  }
+
+  // Evolution grid — authored progression: V2 → V3 → V4 culminates
+  var evoItems = document.querySelectorAll('.evo-item');
+  if (evoItems.length >= 3) {
+    gsap.from(evoItems[0], {
+      y: 50, opacity: 0, duration: 0.7, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: '.evo-grid', start: 'top 80%', once: true }
+    });
+    gsap.from(evoItems[1], {
+      y: 50, opacity: 0, duration: 0.7, delay: 0.18, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: '.evo-grid', start: 'top 80%', once: true }
+    });
+    gsap.fromTo(evoItems[2],
+      { y: 60, opacity: 0, scale: 0.96 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.95, delay: 0.4, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: '.evo-grid', start: 'top 80%', once: true }
+      }
+    );
+  }
+
+  // Content sections — subtle fade up (system section gets authored treatment below)
+  gsap.utils.toArray('.content-section--full .content-row').forEach(function (row) {
+    if (row.closest('#cs-system') || row.closest('#cs-product-question')) return;
+    gsap.from(row, {
+      y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: row, start: 'top 85%', once: true }
+    });
+  });
+
+  // System section — two-beat reveal: principle statement lands, then evidence follows
+  var systemRow = document.querySelector('#cs-system .content-row');
+  if (systemRow) {
+    var sysLeft = systemRow.querySelector('.content-left');
+    var sysRight = systemRow.querySelector('.content-right');
+    if (sysLeft) {
+      gsap.from(sysLeft, {
+        y: 30, opacity: 0, duration: 0.85, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: systemRow, start: 'top 82%', once: true }
+      });
+    }
+    if (sysRight) {
+      gsap.from(sysRight, {
+        y: 30, opacity: 0, duration: 0.7, delay: 0.3, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: systemRow, start: 'top 82%', once: true }
+      });
+    }
+  }
+
+  // Product Question — question appears, then answer follows
+  var pqRow = document.querySelector('#cs-product-question .content-row');
+  if (pqRow) {
+    var pqLeft = pqRow.querySelector('.content-left');
+    var pqRight = pqRow.querySelector('.content-right');
+    if (pqLeft) {
+      gsap.from(pqLeft, {
+        y: 25, opacity: 0, duration: 0.8, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: pqRow, start: 'top 78%', once: true }
+      });
+    }
+    if (pqRight) {
+      gsap.from(pqRight, {
+        y: 25, opacity: 0, duration: 0.7, delay: 0.35, ease: 'power2.out', immediateRender: true,
+        scrollTrigger: { trigger: pqRow, start: 'top 78%', once: true }
+      });
+    }
+  }
+
+  // Flow cards — fade up
+  gsap.utils.toArray('.flow-card .flow-inner').forEach(function (inner) {
+    gsap.from(inner, {
+      y: 30, opacity: 0, duration: 0.6, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: inner, start: 'top 82%', once: true }
+    });
+  });
+
+  // Phone strips — progressive evidence reveal
+  gsap.utils.toArray('.flow-card .phone-strip').forEach(function (strip) {
+    var items = strip.querySelectorAll('.phone-item');
+    if (!items.length) return;
+    gsap.from(items, {
+      y: 18, duration: 0.45, stagger: 0.07, ease: 'power2.out',
+      scrollTrigger: { trigger: strip, start: 'top 85%', once: true }
+    });
+  });
+
+  // Split asset — sequential panel reveal
+  var splitPanels = document.querySelectorAll('.split-asset .split-asset__panel');
+  if (splitPanels.length) {
+    splitPanels.forEach(function (panel, i) {
+      gsap.from(panel, {
+        opacity: 0, duration: 0.9, delay: i * 0.2, ease: 'power1.out', immediateRender: true,
+        scrollTrigger: { trigger: '.split-asset', start: 'top 85%', once: true }
+      });
+    });
+  }
+
+  // Stacked stats — counter animation
+  var stackedCards = document.querySelectorAll('#stackedStats .stacked-card');
+  stackedCards.forEach(function (card, i) {
+    var numEl = card.querySelector('.stacked-card__number');
+    if (!numEl) return;
+    var target = parseFloat(numEl.getAttribute('data-target'));
+    var isDecimal = target % 1 !== 0;
+    var counter = { val: 0 };
+
+    gsap.from(card, {
+      y: 60, opacity: 0, duration: 0.7, delay: i * 0.25, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: '#stackedStats', start: 'top 70%', once: true }
+    });
+
+    gsap.to(counter, {
+      val: target, duration: 1.2, delay: i * 0.25 + 0.2, ease: 'power2.out',
+      scrollTrigger: { trigger: '#stackedStats', start: 'top 70%', once: true },
+      onUpdate: function () {
+        numEl.textContent = isDecimal ? counter.val.toFixed(1) : Math.round(counter.val);
+      }
+    });
+  });
+
+  gsap.from('.stacked-stats__heading, .stacked-stats__source', {
+    y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', immediateRender: true,
+    scrollTrigger: { trigger: '#stackedStats', start: 'top 75%', once: true }
+  });
+
+  // Zigzag clarity rows — slide in from sides
+  document.querySelectorAll('.zz-block').forEach(function (block) {
+    var text = block.querySelector('.zz-text');
+    var visual = block.querySelector('.zz-visual');
+    var isReversed = block.classList.contains('zz-block--reverse');
+
+    gsap.from(text, {
+      x: isReversed ? 40 : -40, opacity: 0, duration: 0.7, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: block, start: 'top 75%', once: true }
+    });
+    gsap.from(visual, {
+      x: isReversed ? -40 : 40, opacity: 0, duration: 0.7, delay: 0.15, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: block, start: 'top 75%', once: true }
+    });
+  });
+
+  // Full-screen asset reveals — skip hero (has its own zoom-reveal)
+  gsap.utils.toArray('.full-screen-asset picture').forEach(function (pic) {
+    if (pic.querySelector('.image-full-k-a')) return;
+    gsap.from(pic, {
+      opacity: 0, duration: 0.8, ease: 'power1.out', immediateRender: true,
+      scrollTrigger: { trigger: pic, start: 'top 90%', once: true }
+    });
+  });
+
+  // Parallax — images scroll slower than the page (Settle Club style)
+  gsap.utils.toArray('.parallax-img').forEach(function (img) {
+    gsap.to(img, {
+      y: '10%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.closest('.split-asset__panel') || img,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var nav = document.getElementById('csBottomNav');
+  if (!nav) return;
+  var pill = document.getElementById('csNavPill');
+  var items = nav.querySelectorAll('.cs-nav-item');
+  var sections = [];
+  var ticking = false;
+
+  items.forEach(function (item) {
+    var id = item.getAttribute('data-section');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, item: item });
+  });
+
+  function movePill(activeItem) {
+    pill.style.left = activeItem.offsetLeft + 'px';
+    pill.style.width = activeItem.offsetWidth + 'px';
+  }
+
+  function update() {
+    ticking = false;
+    var scrollY = window.scrollY;
+    var vh = window.innerHeight;
+
+    var footer = document.getElementById('cta');
+    var atFooter = footer && footer.getBoundingClientRect().top <= vh;
+
+    if (scrollY > vh * 0.5 && !atFooter) {
+      nav.classList.add('is-visible');
+    } else {
+      nav.classList.remove('is-visible');
+    }
+
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.getBoundingClientRect().top <= vh * 0.35) {
+        current = sections[i];
+      }
+    }
+
+    items.forEach(function (item) { item.classList.remove('is-active'); });
+    current.item.classList.add('is-active');
+    movePill(current.item);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = item.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) {
+        if (window.__lenis) { window.__lenis.scrollTo(el, { offset: 0 }); }
+        else { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    });
+  });
+
+  if (sections.length) {
+    pill.style.width = sections[0].item.offsetWidth + 'px';
+    pill.style.left = sections[0].item.offsetLeft + 'px';
+  }
+  update();
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var container = document.getElementById('lottie-hero');
+  if (container) {
+  var anim = lottie.loadAnimation({
+    container: container,
+    renderer: 'svg',
+    loop: true,
+    autoplay: false,
+    path: '../assets/app/app-lottie-hero.json',
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { anim.play(); }
+      else { anim.pause(); }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(container);
+  }
+
+
+})();
+</script>
+
+<script defer src="https://va.vercel-scripts.com/v1/script.js" data-endpoint="/_vercel/insights"></script>
+</body>
+</html>

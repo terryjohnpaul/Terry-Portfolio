@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelbin — Terry John Paul | Senior Product Designer</title>
+  <meta name="description" content="Six lessons in AI product design. How Pixelbin evolved from an image tool into a creative platform serving 58 million users — and what it taught us about designing for AI.">
+  <meta property="og:title" content="Pixelbin — Terry John Paul | Senior Product Designer">
+  <meta property="og:description" content="Six lessons in AI product design, backed by three years of shipped evidence.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chapter1.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+
+<nav style="padding:1.2em 8%;display:flex;justify-content:space-between;align-items:center;max-width:72em;margin:0 auto">
+  <a href="/" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;color:var(--charcoal);text-decoration:none;letter-spacing:-0.01em">← Terry John Paul</a>
+  <a href="mailto:terryjohnpaul20@gmail.com" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;color:var(--text-muted);text-decoration:none">terryjohnpaul20@gmail.com</a>
+</nav>
+
+<div class="overflow-clip">
+<main id="main-content">
+
+<!-- ════════════════════════════════════════════ HERO ════════════════════════════════════════════ -->
+
+<section class="cs-hero-section">
+  <div class="cs-hero-inner">
+    <p class="mono-text cs-hero-eyebrow">/Work/Pixelbin</p>
+    <p class="cs-hero-product">Pixelbin</p>
+    <h1 class="cs-hero-title">Six Lessons in<br>AI Product Design</h1>
+    <div class="divider" style="margin-bottom:1.6em"></div>
+    <div class="cs-hero-meta">
+      <p class="mono-text" style="color:var(--text-muted)">Senior Product Designer · 1 Designer, 2-4 Engineers, 1 PM per feature</p>
+      <p class="mono-text" style="color:var(--text-muted)">58M+ users · 9 products · 3 years</p>
+      <p class="mono-text" style="color:var(--text-muted)">AI creative platform</p>
+    </div>
+  </div>
+</section>
+
+<div class="full-screen-asset k-a" style="height:80vh">
+  <picture>
+    <source srcset="assets/ch1/ch1-panoramic-170-frames.webp" type="image/webp">
+    <img src="assets/ch1/ch1-panoramic-170-frames.png" alt="170 prototype frames from the Magic Canvas proof of concept" style="object-fit:cover;object-position:center" loading="eager" fetchpriority="high">
+  </picture>
+</div>
+
+<!-- ════════════════════════════════════════════ CHAPTERS ════════════════════════════════════════════ -->
+
+<nav class="five-doors" aria-label="Chapter navigation">
+  <ol class="five-doors__list">
+    <li class="five-doors__item"><a href="#chapter-1" class="five-doors__link"><span class="five-doors__number">Chapter I</span><span class="five-doors__question">How should people interact with AI?</span><span class="five-doors__description">The paradigm you choose matters more than every feature combined.</span></a></li>
+    <li class="five-doors__item"><a href="#chapter-2" class="five-doors__link"><span class="five-doors__number">Chapter II</span><span class="five-doors__question">What if the user doesn't know what to ask?</span><span class="five-doors__description">Don't design for the prompt. Design for the moment before it.</span></a></li>
+    <li class="five-doors__item"><a href="#chapter-3" class="five-doors__link"><span class="five-doors__number">Chapter III</span><span class="five-doors__question">What happens when the AI gets it wrong?</span><span class="five-doors__description">If you've only designed the happy path, you've designed 70% of the product.</span></a></li>
+    <li class="five-doors__item"><a href="#chapter-4" class="five-doors__link"><span class="five-doors__number">Chapter IV</span><span class="five-doors__question">How do you scale creativity?</span><span class="five-doors__description">Scale should eliminate decisions, not multiply them.</span></a></li>
+    <li class="five-doors__item"><a href="#chapter-5" class="five-doors__link"><span class="five-doors__number">Chapter V</span><span class="five-doors__question">What happens when you redesign a product four times?</span><span class="five-doors__description">A redesign that doesn't kill anything isn't a redesign.</span></a></li>
+    <li class="five-doors__item"><a href="#chapter-6" class="five-doors__link"><span class="five-doors__number">Chapter VI</span><span class="five-doors__question">How do you explain three years in sixty seconds?</span><span class="five-doors__description">35 iterations to find six words.</span></a></li>
+  </ol>
+</nav>
+
+<!-- ════════════════════════════════════════════ CHAPTER I ════════════════════════════════════════════ -->
+
+<article id="chapter-1" data-chapter="I" data-chapter-title="Paradigms">
+
+  <section class="scene--question"><h2 class="heading2">How should people<br>interact with AI?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">The Feature<br>List</h3></div><div class="content-right"><p class="body-copy">We believed the question was "which features should the editor have." Background removal. Upscaling. Watermark removal. Generation. The feature list felt like the product decision.</p><p class="body-copy">The feature list was identical across every competitor. The differentiation was not what the tool could do. It was how the user communicated with it.</p><p class="body-copy">We had to stop designing features and start choosing a worldview.</p></div></div></section>
+
+  <section class="content-section" style="padding-top:2em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What Challenged That Belief</p><h3 class="heading4">Three<br>Paradigms</h3></div><div class="content-right"><p class="body-copy">Three fundamentally different interaction philosophies existed. Each assumed something different about the user. Each excluded someone. The design question was not "which paradigm is best" but "which assumption are you willing to make about your users — and which users are you willing to lose."</p></div></div></section>
+
+  <!-- Decision 01: Canvas -->
+  <section class="decision-card">
+    <div class="decision-inner">
+      <div class="decision-left">
+        <div class="decision-num">01</div>
+        <h3 class="decision-title">Canvas</h3>
+        <span class="decision-status">Rejected</span>
+      </div>
+      <div class="decision-right">
+        <p class="decision-label">The Paradigm</p>
+        <p class="decision-body">The spatial approach — users place, arrange, and edit assets on an infinite canvas. We studied Flora Fauna, Remake, and Google Mixboard. Then we prototyped 170 frames of this paradigm ourselves.</p>
+
+        <div class="decision-screen k-a" style="margin-top:2em">
+          <picture><source srcset="assets/ch1/ch1-canvas-screen.webp" type="image/webp"><img src="assets/ch1/ch1-canvas-screen.png" alt="Magic Canvas proof of concept: a spatial workspace showing multiple images arranged on an infinite canvas with toolbars, prompt bar, and AI assistant Pixie" loading="lazy" width="1440" height="900"></picture>
+          <p class="option-caption">Magic Canvas POC → Spatial workspace prototype</p>
+        </div>
+
+        <p class="decision-label" style="margin-top:2.4em">What the Research Revealed</p>
+        <p class="decision-body">Highly visual and tangible. Ideal for multi-asset campaigns — users could drag concepts around, compare variants side-by-side, and keep all assets in a single project. A board equals a campaign. Good mental model for e-commerce workflows.</p>
+        <p class="decision-body">But overwhelming for non-creatives. If someone just wants to remove a background and export in three sizes, the canvas feels like overkill. Performance-heavy on lower-end machines. And it conflicts with the wizard-style flows that SMB users prefer.</p>
+
+        <p class="decision-label" style="margin-top:2.4em">Verdict</p>
+        <p class="decision-body">Strong for professional creators who work with multiple assets spatially. Wrong for the majority of Pixelbin's users — people who want quick, guided results, not an infinite workspace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decision 02: Chat -->
+  <section class="decision-card">
+    <div class="decision-inner">
+      <div class="decision-left">
+        <div class="decision-num">02</div>
+        <h3 class="decision-title">Chat</h3>
+        <span class="decision-status">Rejected</span>
+      </div>
+      <div class="decision-right">
+        <p class="decision-label">The Paradigm</p>
+        <p class="decision-body">The conversational approach — describe what you want in natural language and the AI creates it. We studied Google AI Studio, Wix AI Chat, Lumalabs, and Lovart.</p>
+
+        <div class="decision-screen decision-screen--row k-a" style="margin-top:2em">
+          <div class="decision-screen__item">
+            <picture><source srcset="assets/ch1/ch1-chat-screen-1.webp" type="image/webp"><img src="assets/ch1/ch1-chat-screen-1.png" alt="Chat-based AI editor: conversational interface where users describe edits in natural language" loading="lazy" width="800" height="600"></picture>
+          </div>
+          <div class="decision-screen__item">
+            <picture><source srcset="assets/ch1/ch1-chat-screen-2.webp" type="image/webp"><img src="assets/ch1/ch1-chat-screen-2.png" alt="Chat-based AI editor: prompt-driven generation with conversation history" loading="lazy" width="800" height="600"></picture>
+          </div>
+          <div class="decision-screen__item">
+            <picture><source srcset="assets/ch1/ch1-chat-screen-3.webp" type="image/webp"><img src="assets/ch1/ch1-chat-screen-3.png" alt="Chat-based AI editor: text-only interaction for image creation and editing" loading="lazy" width="800" height="600"></picture>
+          </div>
+          <p class="option-caption">Competitors studied → Chat-based editors</p>
+        </div>
+
+        <p class="decision-label" style="margin-top:2.4em">What the Research Revealed</p>
+        <p class="decision-body">Extremely low barrier to start. Minimal UI complexity — mostly input, result, refine. Mobile-friendly and easy to wrap into templated workflows. Fast experimentation for users who are good at prompting.</p>
+        <p class="decision-body">But prompt quality becomes a gatekeeper. Small business users struggle to describe what they want — "make it more premium but not too premium" is vague. Harder to control layout and micro details through text alone. Editing feels abstract. And learnability is fragile — changes in model behavior feel like the tool changed.</p>
+
+        <p class="decision-label" style="margin-top:2.4em">Verdict</p>
+        <p class="decision-body">Accessible for advanced users who think in language. Excluding for everyone who thinks in images. If you can't describe what you want, you can't get it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decision 03: Prompt + Tool -->
+  <section class="decision-card">
+    <div class="decision-inner">
+      <div class="decision-left">
+        <div class="decision-num">03</div>
+        <h3 class="decision-title">Prompt<br>+ Tool</h3>
+        <span class="decision-status decision-status--selected">Selected</span>
+      </div>
+      <div class="decision-right">
+        <p class="decision-label">The Paradigm</p>
+        <p class="decision-body">The hybrid — a prompt bar for broad strokes, precision tools for fine control. We studied Krea, Runway ML, Playground, Pixelcut, and OpenArt. This was the paradigm we ultimately shipped.</p>
+
+        <div class="decision-screen k-a" style="margin-top:2em">
+          <picture><source srcset="assets/ch1/ch1-split-editor.webp" type="image/webp"><img src="assets/ch1/ch1-split-editor.png" alt="Pixelbin 3.0 Image Editor: the shipped production interface with prompt bar for natural language commands, precision editing tools, and AI-powered transformations" loading="lazy" width="1440" height="900"></picture>
+          <p class="option-caption">PB 3.0 → Image Editor → Shipped production interface</p>
+        </div>
+
+        <p class="decision-label" style="margin-top:2.4em">What the Research Revealed</p>
+        <p class="decision-body">Best of both worlds — prompt for big moves, tools for precision. Gentle learning curve for users coming from existing image editors. Clear mapping between regions and prompts: select an area, describe the change, only that region updates. Supports both quick tasks and deep editing. Great fit for template-based use cases like AI Photoshoots and e-commerce banners.</p>
+        <p class="decision-body">But the warning was clear: UI complexity risk. Canvas plus toolbar plus layers plus prompt box plus model selector — it can get crowded. Users might not know when to use AI versus manual controls. Performance and state management complexity across undo, redo, and large images. This warning would prove prophetic — 103 usability issues later.</p>
+
+        <p class="decision-label" style="margin-top:2.4em">Verdict</p>
+        <p class="decision-body">The strongest candidate. Selected for production. But only because the team was willing to fight the complexity warning through 103 rounds of QA and iteration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene--silence"><p class="pull-quote">Three paradigms.<br>Four user types.<br>One decision.</p></section>
+
+  <section class="content-section" style="padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">Four User<br>Types</h3></div><div class="content-right"><p class="body-copy">We mapped four user types by their relationship to prompting — not by demographics, not by industry. By how they relate to the act of telling an AI what to do. The taxonomy emerged from 4 user interviews, competitor research across 9 products, and analysis of Pixelbin's existing usage patterns — not from a formal survey, but from pattern recognition across qualitative data.</p><ol class="taxonomy-list"><li class="taxonomy-list__item"><span class="taxonomy-list__type">01</span><span class="taxonomy-list__desc">Users who know what they want and how to prompt for it</span></li><li class="taxonomy-list__item"><span class="taxonomy-list__type">02</span><span class="taxonomy-list__desc">Users who know how to prompt but don't have a use case</span></li><li class="taxonomy-list__item"><span class="taxonomy-list__type">03</span><span class="taxonomy-list__desc">Users who don't know how to prompt</span></li><li class="taxonomy-list__item"><span class="taxonomy-list__type">04</span><span class="taxonomy-list__desc">Users who don't know what AI can make</span></li></ol><div class="taxonomy-source k-a"><img src="assets/ch1/ch1-user-taxonomy.png" alt="Original research sticky note documenting the four user types" loading="lazy" width="1400" height="600"><p class="mono-text taxonomy-source__caption">PB Research 3.0 → User type taxonomy</p></div><p class="body-copy" style="margin-top:2em">No single paradigm serves all four. The question was not "which paradigm is best." It was "which assumption are you willing to make about your users."</p></div></div></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:2em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">The Commitment</p><h3 class="heading4">170<br>Frames</h3></div><div class="content-right"><p class="body-copy">We committed 170 prototype frames to the Canvas paradigm. Built it. Lived in it. 13 complete user journeys. A complete AI assistant named Pixie. The goal was not to explore — it was to understand deeply enough to decide.</p></div></div></section>
+
+  <div class="panoramic-section" id="panoramic-1"><div class="panoramic-section__sticky"><div class="panoramic-section__image-wrap" id="panoramic-1-wrap"><picture><source srcset="assets/ch1/ch1-panoramic-170-frames.webp" type="image/webp"><img src="assets/ch1/ch1-panoramic-170-frames.png" alt="170 prototype frames from the Magic Canvas POC" class="panoramic-section__image" id="panoramic-1-image" width="6000" height="3000" loading="eager" fetchpriority="high"></picture></div></div><div class="panoramic-section__scroll-track" id="panoramic-1-track" aria-hidden="true"></div></div>
+
+  <div class="supporting-screens"><div class="supporting-screen k-a"><p class="supporting-screen__lead">They designed the complete creative workflow.</p><picture><source srcset="assets/ch1/ch1-proto-screen-1.webp" type="image/webp"><img src="assets/ch1/ch1-proto-screen-1.png" alt="Magic Canvas: image generation workflow" loading="lazy" width="1440" height="900"></picture><p class="mono-text supporting-screen__caption">Magic Canvas POC → Image generation</p></div><div class="supporting-screen k-a"><p class="supporting-screen__lead">They designed the AI assistant interaction.</p><picture><source srcset="assets/ch1/ch1-proto-screen-2.webp" type="image/webp"><img src="assets/ch1/ch1-proto-screen-2.png" alt="Magic Canvas: Pixie AI assistant" loading="lazy" width="1440" height="900"></picture><p class="mono-text supporting-screen__caption">Magic Canvas POC → Pixie AI assistant</p></div><div class="supporting-screen k-a"><p class="supporting-screen__lead">They designed for multiple content types.</p><picture><source srcset="assets/ch1/ch1-proto-screen-3.webp" type="image/webp"><img src="assets/ch1/ch1-proto-screen-3.png" alt="Magic Canvas: multi-content editing" loading="lazy" width="1440" height="900"></picture><p class="mono-text supporting-screen__caption">Magic Canvas POC → Multi-content editing</p></div></div>
+
+  <section class="content-section" style="padding-bottom:4em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">The Decision</p><h3 class="heading4">Two<br>Paradigms</h3></div><div class="content-right"><p class="body-copy">Canvas was rejected for the consumer product. Chat was rejected. The Prompt + Tool hybrid was selected for production.</p><p class="body-copy">But the Canvas paradigm didn't die. It became the power-user vision. Two paradigms serving two audiences, informed by a deliberate study of three. And then we chose a different one for production.</p></div></div></section>
+
+  <div class="comparison-spread"><div class="comparison-spread__intro"><p class="body-copy">The decision was not to abandon the Canvas paradigm. It was to assign each to the audience it serves best.</p></div><div class="comparison-spread__grid k-a"><div class="comparison-spread__panel"><picture><source srcset="assets/ch1/ch1-split-canvas.webp" type="image/webp"><img src="assets/ch1/ch1-split-canvas.png" alt="Canvas paradigm: spatial workspace" loading="lazy" width="1440" height="900"></picture><div class="comparison-spread__panel-label"><p class="caps-subheading" style="color:#fff;margin-bottom:0.3em">Canvas</p><p class="mono-text" style="color:rgba(255,255,255,0.6)">For professional creators</p></div></div><div class="comparison-spread__panel"><picture><source srcset="assets/ch1/ch1-split-editor.webp" type="image/webp"><img src="assets/ch1/ch1-split-editor.png" alt="Prompt+Tool: precision editing" loading="lazy" width="1440" height="900"></picture><div class="comparison-spread__panel-label"><p class="caps-subheading" style="color:#fff;margin-bottom:0.3em">Prompt + Tool</p><p class="mono-text" style="color:rgba(255,255,255,0.6)">For everyone</p></div></div></div></div>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">Every AI interface is a bet on<br>how your users think.<br>Make the bet deliberately.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CHAPTER II ════════════════════════════════════════════ -->
+
+<article id="chapter-2" data-chapter="II" data-chapter-title="Prompting">
+
+  <section class="scene--question"><h2 class="heading2">What if the user doesn't<br>know what to ask?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">The Prompt<br>Box</h3></div><div class="content-right"><p class="body-copy">We believed the prompt box was the product. Type what you want. Get what you described. The AI is as good as the instruction it receives.</p><p class="body-copy">We watched four user types approach that prompt box. Type 1 — people who know what they want and how to ask — thrived. They were maybe 15% of the user base. Everyone else froze.</p><p class="body-copy">Our most powerful tool had a blank input box as its front door. We were asking people to learn a new language before they could use the product.</p></div></div></section>
+
+  <section class="content-section" style="padding-top:2em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">Propose,<br>Don't Wait</h3></div><div class="content-right"><p class="body-copy">The solution wasn't better prompts. It was removing the need to prompt.</p><p class="body-copy">We designed Pixie — an AI that proposes instead of waiting. When a user uploads an image, Pixie analyzes it and suggests specific actions. The user never writes a prompt. They approve a proposal.</p><p class="body-copy">We designed a backbone flow where Pixie interprets vague input, proposes a complete plan, asks for context once, creates the assets, then explains WHY it made each design decision — like an actual designer presenting their rationale.</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:60vh"><picture><source srcset="assets/ch2/ch2-backbone-flow.webp" type="image/webp"><img src="assets/ch2/ch2-backbone-flow.png" alt="Pixelbin Backbone Flow: complete agentic AI interaction design showing how Pixie interprets, proposes, creates, explains, and handles user satisfaction branching" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <section class="content-section" style="padding-top:6em;padding-bottom:4em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">The Evidence</p><h3 class="heading4">Pixie's<br>States</h3></div><div class="content-right"><p class="body-copy">Pixie wasn't a feature. It was a complete state system. Eight toast states for every moment the AI might need to communicate. Proactive suggestions that turn uploads into conversations.</p><p class="body-copy">On mobile, we put suggestion pills on the Home screen. Pre-written prompts for people who can't write their own. The user who knows what to type still types. The user who doesn't is already being helped.</p></div></div></section>
+
+  <div class="decision-card--evidence"><div class="decision-options k-a"><div class="option"><div class="option-tag">Pixie Toast States</div><picture><source srcset="assets/ch2/ch2-pixie-toast.webp" type="image/webp"><img src="assets/ch2/ch2-pixie-toast.png" alt="Pixie AI assistant: 8 toast states — Generating, Analysing, Complete, Smart suggestion, Liked, Disliked" loading="lazy" width="800" height="400"></picture><div class="option-caption">Magic Canvas POC → Pixie toast (8 states)</div></div><div class="option"><div class="option-tag">Smart Suggestions</div><picture><source srcset="assets/ch2/ch2-smart-suggestions.webp" type="image/webp"><img src="assets/ch2/ch2-smart-suggestions.png" alt="Proactive smart suggestions: image-based suggestions post upload like low lighting detected, adjust brightness" loading="lazy" width="800" height="400"></picture><div class="option-caption">POC → Proactive suggestions post-upload</div></div></div></div>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">Users should never have to learn AI<br>before AI can help them.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CHAPTER III ════════════════════════════════════════════ -->
+
+<article id="chapter-3" data-chapter="III" data-chapter-title="Failure">
+
+  <section class="scene--question"><h2 class="heading2">What happens when<br>the AI gets it wrong?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">Edge<br>Cases</h3></div><div class="content-right"><p class="body-copy">We believed that if the AI model was good enough, failure states were edge cases. Design the happy path. Handle errors with a toast notification. Move on.</p><p class="body-copy">We shipped the Prompt+Tool editor. The paradigm research had warned us: "UI complexity risk." We noted the warning. We designed carefully. And the warning came true anyway.</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:60vh"><picture><source srcset="assets/ch3/ch3-qa-wall.webp" type="image/webp"><img src="assets/ch3/ch3-qa-wall.png" alt="103 QA sticky notes documenting usability failures in the Image Editor, organized by tool — the complete wall of issues flagged after shipping" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <section class="content-section" style="padding-top:6em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">103<br>Issues</h3></div><div class="content-right"><p class="body-copy">103 usability issues were documented directly in the design file. Not a backlog. Sticky notes on the Figma canvas, organized by tool.</p><p class="body-copy">"Entire screen is getting covered by the toolbar." "Brush tool is not even usable." "Camera angle auto-snaps to 45 degrees." These weren't AI failures. They were interaction failures that made the user think the AI was broken.</p><p class="body-copy">Separately, the onboarding flow had 10 documented UX failures. "Popup looks like error warning." "CTA says purchase without showing tools." "2 popups one over another — credits not explained."</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:50vh"><picture><source srcset="assets/ch3/ch3-signup-critique.webp" type="image/webp"><img src="assets/ch3/ch3-signup-critique.png" alt="10 UX critique sticky notes documenting the failures in the non-signed-up user journey, with annotated screenshots" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <section class="content-section" style="padding-top:6em;padding-bottom:4em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">The System</p><h3 class="heading4">Designing<br>Failure</h3></div><div class="content-right"><p class="body-copy">We built a taxonomy of failure. Interface failure: the tool itself is confusing. AI failure: the model generates something wrong. Resource failure: the user runs out of credits.</p><p class="body-copy">Every tool got paired success/failure messages — 12 variants in the Messages component. The credit bar got four emotional tiers, from "Plenty of pixel power left" to "It's time to refuel your creative powers." The model slow response got an explicit toast instead of an ambiguous spinner.</p></div></div></section>
+
+  <div class="decision-card--evidence"><div class="decision-options k-a"><div class="option"><div class="option-tag">Messages Component</div><picture><source srcset="assets/ch3/ch3-messages-component.webp" type="image/webp"><img src="assets/ch3/ch3-messages-component.png" alt="Messages component: 12 variants with paired success and failure states for every tool" loading="lazy" width="800" height="400"></picture><div class="option-caption">Design Library → Messages (12 variants)</div></div><div class="option"><div class="option-tag">Credit System</div><picture><source srcset="assets/ch3/ch3-credit-system.webp" type="image/webp"><img src="assets/ch3/ch3-credit-system.png" alt="Credit bar with 4 emotional tiers and empathetic microcopy for each level of remaining credits" loading="lazy" width="800" height="400"></picture><div class="option-caption">User Delight → Inside AI Editor</div></div></div></div>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">Failure is not the absence of design.<br>It is half the design.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CHAPTER IV ════════════════════════════════════════════ -->
+
+<article id="chapter-4" data-chapter="IV" data-chapter-title="Scale">
+
+  <section class="scene--question"><h2 class="heading2">How do you scale<br>creativity?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">More<br>Volume</h3></div><div class="content-right"><p class="body-copy">We believed that scaling meant "the same interface, but it handles more images." Upload 50 instead of one. Apply the same edit. Progress bar. Done.</p><p class="body-copy">When one image fails, the user retries. When image 23 of 50 fails, the user doesn't know if they should restart the batch, skip that image, or change the settings. The single-image mental model breaks entirely.</p></div></div></section>
+
+  <section class="content-section" style="padding-top:2em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">Decision<br>Reduction</h3></div><div class="content-right"><p class="body-copy">Scale is not about handling more volume. It is about reducing decisions. The template system transforms "configure this 50 times" into "configure once, apply forever."</p><p class="body-copy">Then we faced a different scale problem. Pixelbin wasn't one product anymore. It was nine. The Foundation→Element→Assembly architecture transforms "design 9 products" into "design atoms, compose everything."</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:60vh"><picture><source srcset="assets/ch4/ch4-design-system.webp" type="image/webp"><img src="assets/ch4/ch4-design-system.png" alt="Foundation-Element-Assembly design system architecture serving 9 products" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <!-- Generator Merge — the real story of scaling -->
+  <section class="content-section" style="padding-top:6em;padding-bottom:2em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">The Merge</p><h3 class="heading4">Two Tools,<br>One Interface</h3></div><div class="content-right"><p class="body-copy">When image and video generation merged into one interface, the cost was visible. The generation panel, model selector, history timeline, and empty states all had to change — separately for each generator. Then came the fixes: 25 for the image panel, 24 for video, 15 for image history, 14 for video history. Merging two AI tools was not a redesign. It was 78 production fixes.</p></div></div></section>
+
+  <div class="supporting-screens" style="padding-top:0">
+    <div class="supporting-screen k-a">
+      <p class="supporting-screen__lead">Image generation panel — redesigned for the unified interface.</p>
+      <picture><source srcset="assets/ch4/ch4-image-gen-panel.webp" type="image/webp"><img src="assets/ch4/ch4-image-gen-panel.png" alt="Dev Handoff: Image Generator changes showing the generation panel redesigned for the merged interface" loading="lazy" width="1440" height="900"></picture>
+      <p class="mono-text supporting-screen__caption">Dev Handoff → Image Generator changes → Generation panel</p>
+    </div>
+    <div class="supporting-screen k-a">
+      <p class="supporting-screen__lead">Video generation panel — adapted with the same interaction model.</p>
+      <picture><source srcset="assets/ch4/ch4-video-gen-panel.webp" type="image/webp"><img src="assets/ch4/ch4-video-gen-panel.png" alt="Dev Handoff: Video Generator changes showing the generation panel adapted for the merged interface" loading="lazy" width="1440" height="900"></picture>
+      <p class="mono-text supporting-screen__caption">Dev Handoff → Video Generator changes → Generation panel</p>
+    </div>
+    <div class="supporting-screen k-a">
+      <p class="supporting-screen__lead">29 annotated tooltips documenting every interaction detail for engineering handoff.</p>
+      <picture><source srcset="assets/ch4/ch4-atd-desktop.webp" type="image/webp"><img src="assets/ch4/ch4-atd-desktop.png" alt="ATD desktop: 29 annotated tooltip overlays documenting every interaction detail for the merged generator interface" loading="lazy" width="1440" height="900"></picture>
+      <p class="mono-text supporting-screen__caption">Dev Handoff → ATD desktop → 29 annotated interactions</p>
+    </div>
+  </div>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Process</p>
+        <h3 class="heading4">How We<br>Handed Off</h3>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">The 29 annotated tooltips were the handoff language we developed with engineering. Each tooltip specifies the interaction, the state change, and the edge case. Engineers reviewed annotations before sprint planning — disagreements were resolved in the Figma file, not in Slack. The annotation became the contract.</p>
+        <p class="body-copy">This process emerged from necessity. Early handoffs used separate spec documents that drifted from the designs within days. Moving specs into the Figma file as tooltip annotations meant the spec and the design were always in sync. When a design changed, the annotation changed with it. One source of truth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">Scale should eliminate decisions,<br>not multiply them.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CHAPTER V ════════════════════════════════════════════ -->
+
+<article id="chapter-5" data-chapter="V" data-chapter-title="Evolution">
+
+  <section class="scene--question"><h2 class="heading2">What happens when you<br>redesign a product four times?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">V1 Was<br>The Product</h3></div><div class="content-right"><p class="body-copy">We believed V1 was the product. A traditional image editor. Upload, select a tool, edit, export. The bottom navigation had two tabs: Home and Gallery. It was clean. It worked.</p><p class="body-copy">AI changed what the product could do faster than the interface could communicate. V1 was an editor. Then batch processing arrived. Then AR. Then generative AI. Each required not just new features but a new architecture.</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:60vh"><picture><source srcset="assets/ch5/ch5-v4-overview.webp" type="image/webp"><img src="assets/ch5/ch5-v4-overview.png" alt="V4 AI mode: complete redesign of the PixelBin mobile app with prompt-first Home, AI Tools, Explore, and Gallery tabs" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <section class="content-section" style="padding-top:6em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">Kill To<br>Evolve</h3></div><div class="content-right"><p class="body-copy">V1: "This app edits images." V2: "This app edits images at scale." V3: "This app is a creative ecosystem." V4: "This app is an AI."</p><p class="body-copy">The V4 redesign required killing the V1 mental model. The Home screen became a prompt bar with suggestion pills. The bottom navigation added "Explore" — making discovery equal to creation.</p><p class="body-copy">The Explorations page has sections labeled "JUNK" and "Dump." The V1 file is marked with an X. These aren't failures. They're fossils. The product couldn't become V4 without killing V1.</p></div></div></section>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">A redesign that doesn't kill anything<br>isn't a redesign. It's decoration.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CHAPTER VI ════════════════════════════════════════════ -->
+
+<article id="chapter-6" data-chapter="VI" data-chapter-title="Positioning">
+
+  <section class="scene--question"><h2 class="heading2">How do you explain three years<br>in sixty seconds?</h2></section>
+
+  <section class="content-section" style="padding-top:4em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Believed</p><h3 class="heading4">Describe<br>Everything</h3></div><div class="content-right"><p class="body-copy">We believed the homepage should describe the product accurately. List the features. Show the tools. Explain the technology. Be comprehensive.</p><p class="body-copy">Draft 70 was a simple headline and a call-to-action. Accurate. Generic. It could have been any AI tool's homepage. 35 iterations later, we were still searching.</p></div></div></section>
+
+  <section class="content-section" style="padding-top:2em;padding-bottom:6em"><div class="content-row"><div class="content-left"><p class="mono-text" style="margin-bottom:0.6em">What We Discovered</p><h3 class="heading4">Six<br>Words</h3></div><div class="content-right"><p class="body-copy">"AI Photo Editor" was accurate. It was also forgettable. The positioning pivot changed six words: "The #1 AI Media Generator." From tool to platform. From photo to media. From editor to generator.</p><p class="body-copy">The product didn't change between draft 70 and draft 104. Only the understanding of what it was.</p><p class="body-copy">The final homepage puts the prompt bar in the hero. Visitors can try the product before reading about it. The interface became the marketing.</p></div></div></section>
+
+  <div class="full-screen-asset k-a" style="min-height:50vh"><picture><source srcset="assets/ch6/ch6-homepage-final.webp" type="image/webp"><img src="assets/ch6/ch6-homepage-final.png" alt="Final Pixelbin homepage with prompt bar in the hero, model partner strip, and the positioning: The #1 AI Media Generator" style="object-fit:contain;object-position:center;background:#f0f0e5" loading="lazy"></picture></div>
+
+  <!-- Impact: Geckoboard proof -->
+  <section class="content-section" style="padding-top:6em;padding-bottom:2em">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Impact</p>
+        <h3 class="heading4">132% Growth<br>in 30 Days</h3>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">Landing page sessions grew from 4,556 to 10,567 daily unique sessions in a single 30-day period — a 132% increase. The repositioning from "AI Photo Editor" to "The #1 AI Media Generator" didn't just change the words. It changed the numbers.</p>
+        <p class="body-copy">96% of revenue is product-led. The design isn't just usable. It converts.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:0 8%;max-width:72em;margin:0 auto 4em" class="k-a">
+    <picture><source srcset="assets/ch6/ch6-geckoboard-sessions.webp" type="image/webp"><img src="assets/ch6/ch6-geckoboard-sessions.png" alt="Geckoboard analytics: unique sessions on landing pages growing from 4,556 to 10,567 daily over 30 days — 132% increase" style="width:100%;height:auto;border-radius:4px" loading="lazy"></picture>
+    <p class="mono-text" style="margin-top:0.6em">Geckoboard → Unique sessions on landing pages → Last 30 days</p>
+  </div>
+
+  <section class="scene--silence" style="min-height:40vh"><div style="text-align:center"><p class="mono-text" style="margin-bottom:1.2em">Design Principle</p><p class="pull-quote">If your homepage needs more than<br>one sentence, the positioning is wrong.</p></div></section>
+
+</article>
+
+<!-- ════════════════════════════════════════════ CLOSING ════════════════════════════════════════════ -->
+
+<section class="content-section" style="padding:10em 8% 4em">
+  <div style="max-width:72em;margin:0 auto;text-align:center">
+    <p class="mono-text" style="margin-bottom:2em">Six Principles</p>
+    <div style="max-width:32em;margin:0 auto;text-align:left">
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08)">I. Every AI interface is a bet on how your users think.</p>
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08)">II. Users should never have to learn AI before AI can help them.</p>
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08)">III. Failure is not the absence of design. It is half the design.</p>
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08)">IV. Scale should eliminate decisions, not multiply them.</p>
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08)">V. A redesign that doesn't kill anything isn't a redesign.</p>
+      <p class="body-copy" style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.08);border-bottom:1px solid rgba(52,52,52,0.08)">VI. If your homepage needs more than one sentence, the positioning is wrong.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ SHIPPED WORK ════════════════════════════════════════════ -->
+
+<style>
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  max-width: 72em;
+  margin: 0 auto;
+}
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: var(--charcoal);
+  transition: opacity 0.2s ease;
+}
+.work-card:hover { opacity: 0.7; }
+.work-card--disabled { pointer-events: none; }
+.work-card__image {
+  aspect-ratio: 16 / 10;
+  background: var(--frost);
+  border: 1px dashed rgba(52,52,52,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+.work-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.work-card__title {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3em;
+}
+.work-card__desc {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.work-card__status {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: 0.6em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-ghost);
+  margin-top: 0.4em;
+}
+.works-also {
+  max-width: 72em;
+  margin: 3em auto 0;
+  padding-top: 2em;
+  border-top: 1px solid rgba(52,52,52,0.06);
+}
+.works-also__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5em;
+}
+.works-also__item {
+  font-family: 'Helvetica Now Display', sans-serif;
+}
+.works-also__title {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 0.2em;
+}
+.works-also__sub {
+  font-size: 0.65em;
+  font-weight: 400;
+  color: var(--text-ghost);
+}
+@media (max-width: 768px) {
+  .works-grid { grid-template-columns: 1fr; }
+  .works-also__list { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .works-also__list { grid-template-columns: 1fr; }
+}
+</style>
+
+<section style="padding:6em 8% 4em">
+  <div style="max-width:72em;margin:0 auto;margin-bottom:3em">
+    <p class="mono-text" style="margin-bottom:0.6em">The Work</p>
+    <h3 class="heading4">What We Shipped</h3>
+  </div>
+
+  <div class="works-grid">
+    <a href="/pixelbin/pixelbin-app/" class="work-card">
+      <div class="work-card__image">
+        <!-- TODO: Add PixelBin App cover image -->
+        <p class="mono-text" style="color:var(--text-ghost)">Image placeholder</p>
+      </div>
+      <p class="work-card__title">PixelBin App</p>
+      <p class="work-card__desc">AI creative studio for mobile · 11 flows · 67 screens · iOS + Android</p>
+    </a>
+    <a href="magic-canvas.html" class="work-card">
+      <div class="work-card__image">
+        <!-- TODO: Add Magic Canvas cover image -->
+        <p class="mono-text" style="color:var(--text-ghost)">Image placeholder</p>
+      </div>
+      <p class="work-card__title">Magic Canvas</p>
+      <p class="work-card__desc">Generative workspace · Campaign tools · AI influencer generation</p>
+    </a>
+  </div>
+
+  <div class="works-also">
+    <p class="mono-text" style="margin-bottom:1.2em">Also shipped across PixelBin</p>
+    <ul class="works-also__list">
+      <li class="works-also__item">
+        <p class="works-also__title">Video Editor</p>
+        <p class="works-also__sub">AI video editing on mobile</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Batch Editor</p>
+        <p class="works-also__sub">Multi-image processing</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Checkout Flow</p>
+        <p class="works-also__sub">Subscription and payment</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Video Generator</p>
+        <p class="works-also__sub">Text-to-video with background processing</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Pre and Post Sign in</p>
+        <p class="works-also__sub">Onboarding and authentication</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Watermark Remover</p>
+        <p class="works-also__sub">Auto and manual removal</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Upscale Media</p>
+        <p class="works-also__sub">Resolution enhancement</p>
+      </li>
+      <li class="works-also__item">
+        <p class="works-also__title">Free IP Landing Page</p>
+        <p class="works-also__sub">Marketing template system</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ BRIDGE + CTA ════════════════════════════════════════════ -->
+
+<section class="scene--bridge">
+  <div class="bridge__inner">
+    <p class="bridge__text">These six lessons came from three years of designing one AI product. The evidence is in the Figma files. The decisions are in the screens. The failures are in the sticky notes.</p>
+    <div style="margin-top:3em;text-align:center">
+      <p class="mono-text" style="margin-bottom:1.2em;color:var(--text-ghost)">Terry John Paul · Senior Product Designer</p>
+      <a href="mailto:terryjohnpaul20@gmail.com" style="display:inline-block;padding:14px 40px;background:var(--charcoal);color:var(--frost);font-family:'Helvetica Now Display',sans-serif;font-size:0.85em;font-weight:500;text-decoration:none;border-radius:100px;transition:opacity 0.2s ease">Get in touch</a>
+      <p class="mono-text" style="margin-top:1.2em;color:var(--text-ghost)">Open to permanent UK opportunities requiring Skilled Worker sponsorship</p>
+    </div>
+    <nav style="margin-top:3em;display:flex;justify-content:center;gap:2em" aria-label="Portfolio links">
+      <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;color:var(--text-ghost);text-decoration:none">LinkedIn ↗</a>
+      <a href="/resume/" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;color:var(--text-ghost);text-decoration:none">Resume</a>
+      <a href="/" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;color:var(--text-ghost);text-decoration:none">Portfolio</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script src="js/chapter1.js"></script>
+
+</body>
+</html>

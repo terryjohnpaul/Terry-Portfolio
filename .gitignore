@@ -8,3 +8,6 @@ icons/
 docs/
 video_assets/
 .vercel
+pixelbin/assets/app/originals/
+pixelbin/assets/app/app-lottie-split.json
+pixelbin/assets/app/app-lottie-hero-rtl.json

@@ -1,0 +1,40 @@
+# Source masters and backups
+pixelbin/assets/app/originals/
+pixelbin/index.backup.html
+pixelbin/pixelbin-hub-review.html
+pixelbin/pixelbin-app.backup.html
+
+# Unused Lottie files (no longer referenced)
+pixelbin/assets/app/app-lottie-split.json
+pixelbin/assets/app/app-lottie-hero-rtl.json
+
+# Large unused assets
+images /
+assets/ve-images/
+compressed-assets/
+video_assets/
+
+# Loose source files in root
+/#image gen.mp4
+App-casestudy_cover_image.png
+app_pixelbin_casestudy.png
+canvas_50%_image.png
+canvas_50%_right.png
+chat-bottom-app.png
+edit-up-casestudy.png
+final-banner-app-casestudy.png
+gradient-bg.png
+Image_slight.png
+magic-canvas-casestudy-banner.png
+model-handbag.png
+"Mockuuups iPhone 16 mockup in a woman's hand with concrete backdrop.webp"
+
+# Non-production pages
+kaily-*.html
+
+# Dev/build
+.claude/
+.wrangler/
+.vercel
+docs/
+icons/

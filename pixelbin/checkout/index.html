@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Flow Case Study — PixelBin | Terry John Paul</title>
+  <meta name="description" content="Product design case study: PixelBin Checkout. 88% of users were leaving at checkout. I redesigned the pricing and payment flow. By Terry John Paul.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://terryjohn.me/pixelbin/checkout/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Checkout Flow Case Study — PixelBin | Terry John Paul">
+  <meta property="og:description" content="PixelBin Checkout case study. 88% of users were leaving at checkout. I redesigned the pricing and payment flow.">
+  <meta property="og:url" content="https://terryjohn.me/pixelbin/checkout/">
+  <meta property="og:image" content="https://terryjohn.me/pixelbin/assets/checkout/co-pricing-popup.png">
+  <meta property="og:image:width" content="2880">
+  <meta property="og:image:height" content="1656">
+  <meta property="og:image:alt" content="PixelBin Checkout — pricing popup redesign">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Checkout Flow Case Study — PixelBin | Terry John Paul">
+  <meta name="twitter:description" content="PixelBin Checkout case study. 88% of users were leaving at checkout. I redesigned the pricing and payment flow.">
+  <meta name="twitter:image" content="https://terryjohn.me/pixelbin/assets/checkout/co-pricing-popup.png">
+  <meta name="twitter:image:alt" content="PixelBin Checkout — pricing popup redesign">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://terryjohn.me/pixelbin/checkout/","name":"Checkout Flow Case Study — PixelBin","author":{"@type":"Person","@id":"https://terryjohn.me/#person","name":"Terry John Paul","url":"https://terryjohn.me","jobTitle":"Senior Product Designer"},"description":"Product design case study: PixelBin Checkout — redesigning a pricing and payment flow with an 88% drop-off rate.","url":"https://terryjohn.me/pixelbin/checkout/","image":"https://terryjohn.me/pixelbin/assets/checkout/co-pricing-popup.png","inLanguage":"en-GB","about":[{"@type":"Thing","name":"Conversion Design"},{"@type":"Thing","name":"Pricing UX"},{"@type":"Thing","name":"Product Design"}]}</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x06tjk9wcc");
+  </script>
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Bold.woff2">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/chapter1.css?v=2">
+  <style>
+    :root { --frost: #ffffff; }
+
+    .co-mobile-strip {
+      display: flex;
+      gap: 1.5em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0 8% 4em;
+      justify-content: center;
+    }
+    .co-mobile-item {
+      flex: 0 0 220px;
+    }
+    .co-mobile-item img {
+      width: 100%; height: auto; border-radius: 12px;
+      border: 1px solid rgba(52,52,52,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .co-mobile-item__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.55em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-top: 0.6em; text-align: center;
+    }
+
+    .co-insight-card {
+      border: 1px dashed rgba(52,52,52,0.18);
+      padding: 1em 1.2em;
+    }
+    .co-insight-card p {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em; font-weight: 400; line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .co-decisions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0 8% 4em;
+    }
+    .co-decision-card {
+      padding: 1.5em;
+      border: 1px solid rgba(52,52,52,0.08);
+    }
+    .co-decision-card__title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.02em; color: var(--charcoal);
+      margin-bottom: 0.5em;
+    }
+    .co-decision-card__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 400; line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .co-math-compare {
+      display: flex;
+      gap: 1.5em;
+      max-width: 36em;
+      margin: 1.5em 0;
+    }
+    .co-math-card {
+      flex: 1;
+      border: 1px dashed rgba(52,52,52,0.18);
+      padding: 1.2em 1.4em;
+    }
+    .co-math-card--alt {
+      border-color: rgba(52,52,52,0.35);
+      background: rgba(52,52,52,0.02);
+    }
+    .co-math-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-bottom: 0.8em;
+    }
+    .co-math-value {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.03em;
+      color: var(--charcoal); margin-bottom: 0.3em;
+    }
+    .co-math-detail {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 400; line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    .co-finding-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0 8% 4em;
+    }
+    .co-finding-card {
+      padding: 1.8em;
+      border: 1px solid rgba(52,52,52,0.08);
+    }
+    .co-finding-num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 3em; font-weight: 800; color: var(--charcoal);
+      opacity: 0.06; line-height: 1; margin-bottom: 0.2em;
+    }
+    .co-finding-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.82em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.02em; color: var(--charcoal);
+      margin-bottom: 0.6em;
+    }
+    .co-finding-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .co-finding-stat {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--charcoal);
+      margin-bottom: 0.8em; line-height: 1.4;
+    }
+
+    .co-three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5em;
+      max-width: 72em;
+      margin: 0 auto;
+      padding: 0 8% 6em;
+    }
+    .co-three-card {
+      padding: 1.8em;
+      border-top: 2px solid var(--charcoal);
+    }
+    .co-three-num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.65em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-bottom: 0.8em;
+    }
+    .co-three-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em; font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 0.6em;
+    }
+    .co-three-body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .co-change-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 72em;
+      margin: 0 auto 4em;
+      padding: 0 8%;
+    }
+    .co-change-col {
+      padding: 2em;
+    }
+    .co-change-col--before {
+      background: rgba(52,52,52,0.03);
+      border: 1px solid rgba(52,52,52,0.06);
+    }
+    .co-change-col--after {
+      border: 1px solid rgba(52,52,52,0.08);
+    }
+    .co-change-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-bottom: 1.2em;
+    }
+    .co-change-item {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 400; line-height: 1.5;
+      color: var(--text-secondary);
+      padding: 0.4em 0;
+      border-bottom: 1px solid rgba(52,52,52,0.04);
+    }
+    .co-change-item:last-child { border-bottom: none; }
+
+    /* ── Flow Card ── */
+    .flow-card {
+      padding: 6em 8%;
+      border-top: none;
+      min-height: auto;
+      display: flex;
+      align-items: center;
+    }
+    .flow-inner {
+      display: flex;
+      gap: 6em;
+      max-width: 72em;
+      margin: 0 auto;
+      width: 100%;
+      align-items: flex-start;
+    }
+    .flow-left {
+      width: 23%;
+      flex-shrink: 0;
+      position: sticky;
+      top: 6em;
+      align-self: flex-start;
+    }
+    .flow-num {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 4em; font-weight: 800; color: var(--charcoal);
+      opacity: 0.08; line-height: 1; margin-bottom: 0.3em;
+    }
+    .flow-title {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 1.4em; font-weight: 800; line-height: 0.95;
+      letter-spacing: -0.03em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 0.6em;
+    }
+    .flow-status {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.7em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-muted);
+    }
+    .flow-right {
+      flex: 1; min-width: 0; overflow: hidden;
+    }
+    .flow-problem__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.8em; font-weight: 400; line-height: 1.45;
+      color: var(--charcoal); opacity: 0.85; max-width: 36em;
+      margin-bottom: 1.5em;
+    }
+    .flow-label {
+      font-family: 'Geist', 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.7em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-muted); margin-bottom: 1.2em;
+    }
+    .flow-card--unnumbered .flow-right { padding-top: 0; }
+
+    .flow-screen img {
+      width: 100%; height: auto; border-radius: 8px;
+      border: 1px solid rgba(52,52,52,0.08);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .flow-screen__caption {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.55em; font-weight: 400; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text-ghost);
+      margin-top: 0.6em;
+    }
+
+    @media (max-width: 768px) {
+      .flow-card { padding: 4em 6%; }
+      .flow-inner { flex-direction: column; gap: 2em; }
+      .flow-left { width: 100%; position: static; }
+      .flow-num { font-size: 3em; margin-bottom: 0.2em; }
+      .flow-title { font-size: 1.2em; }
+      .co-mobile-strip { flex-wrap: wrap; gap: 1em; }
+      .co-mobile-item { flex: 0 0 calc(50% - 0.5em); }
+      .co-decisions { grid-template-columns: 1fr; }
+      .co-finding-cards { grid-template-columns: 1fr; }
+      .co-math-compare { flex-direction: column; }
+      .co-three-grid { grid-template-columns: 1fr; }
+      .co-change-grid { grid-template-columns: 1fr; }
+      .co-synthesis-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Arrow Flow ── */
+    .co-arrow-row { display:flex; align-items:center; padding:1em 0; border-bottom:1px solid rgba(52,52,52,0.04); gap:1.2em; }
+    .co-arrow-row:last-child { border-bottom:none; }
+    .co-arrow-before { flex:1; font-size:0.75em; color:var(--text-ghost); line-height:1.45; text-align:right; }
+    .co-arrow-icon { flex-shrink:0; font-size:0.8em; color:var(--charcoal); opacity:0.25; }
+    .co-arrow-after { flex:1; font-size:0.75em; font-weight:800; color:var(--charcoal); line-height:1.45; }
+    @media (max-width:768px) {
+      .co-arrow-row { flex-direction:column; text-align:left; gap:0.4em; }
+      .co-arrow-before { text-align:left; }
+    }
+
+    /* ── Credit Menu ── */
+    .co-menu-row { display:flex; align-items:baseline; padding:0.7em 0; border-bottom:1px solid rgba(52,52,52,0.04); }
+    .co-menu-name { font-size:0.8em; font-weight:400; color:var(--charcoal); flex-shrink:0; }
+    .co-menu-dots { flex:1; border-bottom:1px dotted rgba(52,52,52,0.15); margin:0 0.8em; min-width:2em; position:relative; top:-0.25em; }
+    .co-menu-cost { font-size:0.85em; font-weight:800; color:var(--charcoal); flex-shrink:0; min-width:5em; text-align:right; }
+    .co-menu-time { font-size:0.65em; font-weight:400; color:var(--text-ghost); flex-shrink:0; min-width:3em; text-align:right; margin-left:1.5em; }
+    .co-menu-free { font-size:0.65em; font-weight:800; color:#4CAF50; text-transform:uppercase; letter-spacing:0.02em; }
+    .co-menu-label { font-size:0.85em; font-weight:800; text-transform:uppercase; letter-spacing:-0.02em; color:var(--charcoal); margin:2em 0 0.4em; }
+    .co-menu-sub { font-size:0.65em; font-weight:400; color:var(--text-ghost); text-transform:uppercase; letter-spacing:0.02em; margin-bottom:1em; }
+    .co-menu-card { background:rgba(52,52,52,0.03); padding:2em; border-radius:6px; margin-bottom:2em; }
+
+    /* ── Journey Stepper ── */
+    .co-journey { margin-top:0.5em; }
+    .co-journey-step { display:flex; gap:1.4em; align-items:stretch; }
+    .co-journey-track { display:flex; flex-direction:column; align-items:center; width:40px; flex-shrink:0; }
+    .co-journey-num { font-family:'Helvetica Now Display',sans-serif; font-size:2.4em; font-weight:800; color:var(--charcoal); opacity:0.07; line-height:1; flex-shrink:0; }
+    .co-journey-line { width:1px; flex:1; background:rgba(52,52,52,0.1); margin-top:0.3em; }
+    .co-journey-body { padding-bottom:2em; flex:1; padding-top:0.15em; }
+    .co-journey-title { font-family:'Helvetica Now Display',sans-serif; font-size:0.72em; font-weight:800; text-transform:uppercase; letter-spacing:-0.02em; color:var(--charcoal); margin-bottom:0.3em; line-height:1.2; }
+    .co-journey-desc { font-family:'Helvetica Now Display',sans-serif; font-size:0.75em; font-weight:400; line-height:1.5; color:var(--text-secondary); }
+    .co-journey-exit { display:inline-flex; align-items:center; gap:0.4em; margin-top:0.5em; padding:0.35em 0.7em; border:1px dashed rgba(180,50,50,0.3); background:rgba(180,50,50,0.03); border-radius:2px; }
+    .co-journey-exit__icon { font-size:0.7em; color:rgba(180,50,50,0.6); font-weight:800; }
+    .co-journey-exit__text { font-family:'Helvetica Now Display',sans-serif; font-size:0.6em; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; color:rgba(180,50,50,0.7); }
+    .co-journey-path { display:inline-flex; align-items:center; gap:0.4em; margin-top:0.5em; padding:0.35em 0.7em; border:1px dashed rgba(52,52,52,0.15); background:rgba(52,52,52,0.02); border-radius:2px; }
+    .co-journey-path__text { font-family:'Helvetica Now Display',sans-serif; font-size:0.6em; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-muted); }
+
+    /* ── Bottom Nav ── */
+    .cs-bottom-nav {
+      position: fixed; bottom: 1.8em; left: 50%; transform: translateX(-50%);
+      z-index: 500; display: flex; align-items: center; gap: 0.3em; padding: 0.4em;
+      background: rgba(52, 52, 52, 0.65); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px; box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      white-space: nowrap; opacity: 0; transform: translateX(-50%) translateY(1.5em);
+      transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
+    }
+    .cs-bottom-nav.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .cs-nav-pill {
+      position: absolute; top: 0.4em; left: 0; height: calc(100% - 0.8em);
+      border-radius: 100px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; z-index: 0;
+    }
+    .cs-nav-item {
+      display: flex; align-items: center; gap: 0.4em; padding: 0.55em 1.1em;
+      border-radius: 100px; font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.85); text-decoration: none; cursor: pointer;
+      transition: color 0.35s ease; user-select: none; position: relative; z-index: 1;
+    }
+    .cs-nav-item:hover { color: rgba(255,255,255,0.95); opacity: 1; }
+    .cs-nav-item.is-active { color: var(--charcoal); }
+    .cs-nav-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.35s ease; }
+    .cs-nav-item.is-active svg { opacity: 0.9; }
+    .cs-nav-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); flex-shrink: 0; position: relative; z-index: 1; }
+    @media (max-width: 768px) {
+      .cs-bottom-nav { bottom: 1.2em; gap: 0.15em; padding: 0.3em; }
+      .cs-nav-item { font-size: 0.75rem; padding: 0.7em 0.9em; gap: 0.35em; min-height: 44px; }
+      .cs-nav-pill { top: 0.3em; height: calc(100% - 0.6em); }
+    }
+    @media (max-width: 520px) {
+      .cs-nav-item span { display: none; }
+      .cs-nav-item { padding: 0.55em 0.7em; }
+      .cs-nav-item svg { width: 15px; height: 15px; opacity: 0.6; }
+      .cs-nav-item.is-active svg { opacity: 1; }
+      .cs-nav-sep { display: none; }
+    }
+
+    /* ── CTA + Footer ── */
+    .cta-heading { font-size: 48px; font-weight: 400; color: rgb(238,238,238); letter-spacing: -1.2px; line-height: 1; text-align: center; margin-bottom: 40px; }
+    .cta-heading .h-reg { font-family: 'Helvetica Now Display', sans-serif; font-style: normal; }
+    .cta-heading .h-ital { font-family: 'Helvetica Now Display', sans-serif; font-style: italic; }
+    #cta { background: #000; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 160px 0 160px; box-sizing: border-box; }
+    .cta-content { text-align: center; max-width: 560px; padding: 0 48px; }
+    #cta, #site-footer { font-size: 16px; }
+    .cta-label { font-family: 'Helvetica Now Display', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.03em; color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .cta-description { font-family: 'Helvetica Now Display', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.65; letter-spacing: -0.015em; color: rgba(255,255,255,0.82); margin-bottom: 48px; }
+    .footer-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0; padding: 18px 52px; background: #fff; color: #000; font-family: 'Helvetica Now Display', sans-serif; font-size: 18px; font-weight: 400; text-decoration: none; border-radius: 100px; transition: background 0.22s ease, gap 0.26s cubic-bezier(0.16,1,0.3,1); }
+    .footer-cta-btn:hover { background: rgba(255,255,255,0.88); gap: 10px; opacity: 1; }
+    .footer-cta-btn .btn-mail-icon { display: inline-flex; align-items: center; width: 0; overflow: hidden; opacity: 0; transform: scale(0.6) translateX(-4px); transition: width 0.26s cubic-bezier(0.16,1,0.3,1), opacity 0.20s ease, transform 0.26s cubic-bezier(0.16,1,0.3,1); }
+    .footer-cta-btn:hover .btn-mail-icon { width: 18px; opacity: 1; transform: scale(1) translateX(0); }
+    #site-footer { background: #000; width: 100%; display: flex; flex-direction: column; position: relative; padding: 60px 48px; box-sizing: border-box; }
+    .footer-bottom { width: 100%; display: flex; align-items: flex-end; justify-content: space-between; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left span { font-family: 'Helvetica Now Display', sans-serif; font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.6); }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-family: 'Helvetica Now Display', sans-serif; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s ease; }
+    .footer-right a:hover { color: rgba(255,255,255,0.9); }
+    @media (max-width: 768px) {
+      .cta-heading { font-size: clamp(28px, 9vw, 44px); }
+      #cta { padding: 80px 24px 100px; }
+      .cta-content { padding: 0; }
+      .cta-label { font-size: 13px; margin-bottom: 24px; }
+      .cta-description { font-size: 14px; margin-bottom: 40px; }
+      #site-footer { padding: 60px 24px 40px; }
+      .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
+    }
+
+    /* ── Lenis ── */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+  </style>
+</head>
+<body>
+<div class="overflow-clip">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
+
+<!-- ══════ HERO ══════ -->
+
+<section class="cs-hero-section">
+  <div class="cs-hero-inner">
+    <p class="mono-text cs-hero-eyebrow">/Work/Pixelbin/Checkout</p>
+    <p class="cs-hero-product">PixelBin Checkout</p>
+    <h1 class="cs-hero-title">Why Were 88% of Users<br>Leaving at Checkout?</h1>
+    <div class="divider" style="margin-bottom:1.6em"></div>
+    <div class="cs-hero-meta" style="flex-direction:column;gap:1.2em">
+      <div class="cs-hero-meta-group">
+        <p class="cs-hero-meta-label">Role</p>
+        <p class="mono-text" style="color:var(--text-muted)">Sole Product Designer</p>
+      </div>
+      <div class="cs-hero-meta-group">
+        <p class="cs-hero-meta-label">Scope / Evidence</p>
+        <p class="mono-text" style="color:var(--text-muted)">Pricing · Checkout · Retention · Desktop + Mobile</p>
+        <p class="mono-text" style="color:var(--text-muted)">88% checkout drop-off rate before redesign</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-screen-asset" style="height:140vh;overflow:hidden;background:#e8e0f0">
+  <picture><source srcset="../assets/checkout/co-hero-banner.webp" type="image/webp"><img src="../assets/checkout/co-hero-banner.png" alt="PixelBin checkout redesign — pricing popup over the AI workspace on a monitor" style="width:100%;height:140vh;object-fit:cover;object-position:center center" fetchpriority="high"></picture>
+</div>
+
+<!-- ══════ THE BUSINESS MODEL ══════ -->
+
+<section id="co-model" class="content-section content-section--full" style="padding-top:6em;padding-bottom:4em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The Business Model</p>
+      <h3 class="heading4">AI Usage<br>Runs on<br>Credits</h3>
+    </div>
+    <div class="content-right">
+      <div style="display:flex;flex-direction:column;gap:0">
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--charcoal);opacity:0.2;flex-shrink:0;margin-top:0.45em"></div>
+            <div style="width:1px;flex:1;background:rgba(52,52,52,0.1)"></div>
+          </div>
+          <div style="padding-bottom:1.6em">
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Use AI</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">Image generation, background removal, watermark removal, upscaling. Each operation consumes credits.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--charcoal);opacity:0.2;flex-shrink:0;margin-top:0.45em"></div>
+            <div style="width:1px;flex:1;background:rgba(52,52,52,0.1)"></div>
+          </div>
+          <div style="padding-bottom:1.6em">
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Credits Consumed</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">Users start with free credits. Every AI operation reduces the balance.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:7px;height:7px;border-radius:50%;background:var(--charcoal);opacity:0.5;flex-shrink:0;margin-top:0.45em"></div>
+            <div style="width:1px;flex:1;background:rgba(52,52,52,0.1)"></div>
+          </div>
+          <div style="padding-bottom:1.6em;border-left:2px dashed rgba(52,52,52,0.15);padding-left:1em;background:rgba(52,52,52,0.02);padding-top:0.6em;padding-right:0.8em">
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Limit Reached</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">Free credits run out. The user is mid-task, actively creating when they're stopped.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--charcoal);opacity:0.2;flex-shrink:0;margin-top:0.45em"></div>
+            <div style="width:1px;flex:1;background:rgba(52,52,52,0.1)"></div>
+          </div>
+          <div style="padding-bottom:1.6em">
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Pricing Appears</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">A popup appears inside the product. No redirect to a separate billing page.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--charcoal);opacity:0.2;flex-shrink:0;margin-top:0.45em"></div>
+            <div style="width:1px;flex:1;background:rgba(52,52,52,0.1)"></div>
+          </div>
+          <div style="padding-bottom:1.6em">
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Choose Plan + Checkout</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">Monthly, One-time, Annual or Enterprise. Payment happens without leaving the product.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.2em;align-items:stretch">
+          <div style="display:flex;flex-direction:column;align-items:center;width:12px;flex-shrink:0">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--charcoal);opacity:0.2;flex-shrink:0;margin-top:0.45em"></div>
+          </div>
+          <div>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.2em;line-height:1.2">Credits Restored</p>
+            <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.45;color:var(--text-secondary)">User continues working immediately.</p>
+            <div style="display:flex;align-items:center;gap:0.5em;padding-top:0.4em">
+              <span style="font-size:0.85em;color:var(--text-ghost);opacity:0.6">↺</span>
+              <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost)">Back to Use AI</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:500;color:var(--charcoal);margin-top:2em;padding-top:1.4em;border-top:1px solid rgba(52,52,52,0.06);line-height:1.4">The purchase decision happens mid-task. That's why checkout stays inside the product.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ THE PROBLEM ══════ -->
+
+<section id="co-problem" class="content-section content-section--full" style="padding-top:4em;padding-bottom:0">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">The Problem</p>
+      <h3 class="heading4">88% Were<br>Leaving at<br>Checkout</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy">Checkout analytics showed an 88% drop-off rate. Only 12% of users who reached checkout actually completed payment. But the checkout screen was only part of the problem.</p>
+      <p class="body-copy">I analysed pricing pages, purchase data, heatmaps, rage clicks and dead clicks across four PixelBin products: PixelBin, Watermark Remover, EraseBG and Upscale Media. The PM and I also audited 15+ competitor pricing pages. What we found was that users were arriving at checkout already confused. The pricing itself was the problem, not just the payment screen.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:0 4%;max-width:90em;margin:-4em auto 0" class="k-a">
+  <picture><source srcset="../assets/checkout/co-old-purchase-journey.webp?v=2" type="image/webp"><img src="../assets/checkout/co-old-purchase-journey.png" alt="Purchase journey flowchart before redesign — decision tree with multiple exit points, most purchased 45-credit add-on, least purchased 500-credit yearly plan" style="width:100%;height:auto;border-radius:8px" loading="lazy"></picture>
+</div>
+
+<section class="content-section content-section--full" style="padding-top:2em;padding-bottom:6em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Before Redesign</p>
+      <h3 class="heading4">The Old<br>Purchase<br>Journey</h3>
+    </div>
+    <div class="content-right">
+      <div style="border-left:3px solid #4CAF50;padding:1em 1.4em;background:rgba(76,175,80,0.03);margin-bottom:1.2em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--charcoal);margin-bottom:0.3em">Most Purchased</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:1.1em;font-weight:600;color:var(--charcoal);margin-bottom:0.2em">45-credit add-on</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;color:var(--text-secondary)">The lowest-commitment, smallest purchase available.</p>
+      </div>
+      <div style="border-left:3px solid #E53935;padding:1em 1.4em;background:rgba(229,57,53,0.03);margin-bottom:2.5em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--charcoal);margin-bottom:0.3em">Least Purchased</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:1.1em;font-weight:600;color:var(--charcoal);margin-bottom:0.2em">500-credit yearly subscription</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;color:var(--text-secondary)">The plan the business wanted to make more attractive.</p>
+      </div>
+      <div class="co-journey">
+        <div class="co-journey-step">
+          <div class="co-journey-track"><span class="co-journey-num">01</span><div class="co-journey-line"></div></div>
+          <div class="co-journey-body">
+            <p class="co-journey-title">User Tries the Free Tier</p>
+            <p class="co-journey-desc">New users start with free credits. No payment required. This is the first interaction with PixelBin's AI tools.</p>
+          </div>
+        </div>
+        <div class="co-journey-step">
+          <div class="co-journey-track"><span class="co-journey-num">02</span><div class="co-journey-line"></div></div>
+          <div class="co-journey-body">
+            <p class="co-journey-title">Happy with the Output?</p>
+            <p class="co-journey-desc">The first decision point. If the AI result didn't meet expectations, there was no recovery path.</p>
+            <div class="co-journey-exit"><span class="co-journey-exit__icon">✗</span><span class="co-journey-exit__text">No → Conversion lost</span></div>
+          </div>
+        </div>
+        <div class="co-journey-step">
+          <div class="co-journey-track"><span class="co-journey-num">03</span><div class="co-journey-line"></div></div>
+          <div class="co-journey-body">
+            <p class="co-journey-title">Willing to Commit Long-Term?</p>
+            <p class="co-journey-desc">Users who liked the output faced a second question before they'd had enough experience to judge long-term value. Most chose the safest option.</p>
+            <div class="co-journey-path"><span class="co-journey-path__text">→ No → Pay-as-you-go (add-on plan)</span></div>
+          </div>
+        </div>
+        <div class="co-journey-step">
+          <div class="co-journey-track"><span class="co-journey-num">04</span><div class="co-journey-line"></div></div>
+          <div class="co-journey-body">
+            <p class="co-journey-title">Enough Credits Purchased?</p>
+            <p class="co-journey-desc">Add-on users who ran out of credits faced another decision: repurchase or leave. There was no clear upgrade path, so many left.</p>
+            <div class="co-journey-exit"><span class="co-journey-exit__icon">✗</span><span class="co-journey-exit__text">No → Conversion lost</span></div>
+          </div>
+        </div>
+        <div class="co-journey-step">
+          <div class="co-journey-track"><span class="co-journey-num">05</span></div>
+          <div class="co-journey-body" style="padding-bottom:0">
+            <p class="co-journey-title">High Volume?</p>
+            <p class="co-journey-desc">Only users processing large quantities of images reached the Enterprise path. A small segment.</p>
+            <div class="co-journey-path"><span class="co-journey-path__text">→ Yes → Enterprise plan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ THE PIVOTAL FINDING ══════ -->
+
+<section id="co-evidence" class="scene--question" style="min-height:70vh;flex-direction:column;gap:1.6em">
+  <p class="mono-text" style="color:var(--text-ghost)">What We Found</p>
+  <h2 class="heading2" style="max-width:18em;text-align:center">Some subscriptions were a<br>worse deal than buying add-ons</h2>
+  <p class="body-copy" style="max-width:34em;text-align:center">In Watermark Remover, a user buying three 45-credit add-ons got 135 credits for ₹4,800. The annual subscription gave 120 credits for ₹5,000. More credits, less money, no commitment. Users choosing add-ons weren't being irrational. They were doing the maths.</p>
+</section>
+
+<!-- ══════ OLD PRICING PAGE ══════ -->
+
+<div style="max-width:68em;margin:0 auto;padding:4em 8% 2em" class="k-a">
+  <picture><source srcset="../assets/checkout/co-evidence-pricing-page.webp" type="image/webp"><img src="../assets/checkout/co-evidence-pricing-page.png" alt="Watermark Remover pricing page — V3 before the restructure, showing four plan columns with subscription, one-time, and enterprise options, plus Terry's analysis annotations" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.06)" loading="lazy"></picture>
+  <p class="mono-text" style="margin-top:0.6em;color:var(--text-ghost)">Watermark Remover pricing page · V3 · Before the restructure</p>
+</div>
+
+<!-- ══════ PURCHASE DATA ══════ -->
+
+<section style="padding:6em 0 2em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Purchase Data</p>
+      <h3 class="heading4">What the<br>Data Showed</h3>
+    </div>
+    <div class="content-right">
+      <div style="display:flex;align-items:baseline;gap:0.8em;padding:1em 0;border-top:1px solid rgba(52,52,52,0.06);border-bottom:1px solid rgba(52,52,52,0.06)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);min-width:4em;line-height:1">512</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;color:var(--text-secondary);line-height:1.4">45-credit add-on purchases in March. The most popular plan by far.</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:0.8em;padding:1em 0;border-bottom:1px solid rgba(52,52,52,0.06)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);min-width:4em;line-height:1">13</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;color:var(--text-secondary);line-height:1.4">Yearly subscription purchases in March. Down 91% from October's 144.</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:0.8em;padding:1em 0;border-bottom:1px solid rgba(52,52,52,0.06)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);min-width:4em;line-height:1">~800</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;color:var(--text-secondary);line-height:1.4">Total paid users per month. With volume staying steady, the data pointed more towards the plan mix than a lack of demand.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:68em;margin:0 auto;padding:3em 8% 1em" class="k-a">
+  <picture><source srcset="../assets/checkout/co-evidence-purchase-data.webp" type="image/webp"><img src="../assets/checkout/co-evidence-purchase-data.png" alt="Watermark Remover purchase data — plan breakdown by month showing add-on dominance and yearly plan decline" style="width:100%;height:auto;border-radius:8px" loading="lazy"></picture>
+  <p class="mono-text" style="margin-top:0.6em;color:var(--text-ghost)">Watermark Remover · Purchase data · October 2024 – March 2025</p>
+</div>
+
+<!-- ══════ OUTCOME ══════ -->
+
+<section id="co-competitors" style="padding:6em 0 2em">
+  <div class="content-row">
+    <div class="content-left">
+      <p class="mono-text" style="margin-bottom:0.6em">Outcome</p>
+      <h3 class="heading4">Plan Mix<br>After Launch</h3>
+    </div>
+    <div class="content-right">
+      <p class="body-copy" style="margin-bottom:2em">After restructuring the pricing, the plan mix changed.</p>
+
+      <div style="display:flex;align-items:baseline;gap:1em;padding:0.8em 0">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:1.2em;font-weight:800;letter-spacing:-0.02em;color:var(--charcoal);min-width:5em">+184%</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;color:var(--text-secondary)">WM 100 Credits Yearly Plan</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:1em;padding:0.8em 0">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:1.2em;font-weight:800;letter-spacing:-0.02em;color:var(--charcoal);min-width:5em">+94%</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;color:var(--text-secondary)">WM 100 Credits Monthly Plan</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:1em;padding:0.8em 0">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:1.2em;font-weight:800;letter-spacing:-0.02em;color:var(--charcoal);min-width:5em">+65%</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;color:var(--text-secondary)">WM 500 Credits Monthly Plan</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:1em;padding:0.8em 0">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:1.2em;font-weight:800;letter-spacing:-0.02em;color:var(--charcoal);min-width:5em">+56%</span>
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;color:var(--text-secondary)">WM 100 Credits Addon</span>
+      </div>
+
+      <p class="body-copy" style="margin-top:2em">Revenue rose alongside a shift towards higher-value plans.</p>
+      <p class="body-copy">Entry-level plans (10 credits) showed 2–3% change, so the cheapest options stayed accessible.</p>
+      <p class="body-copy">Four underperforming plans were discontinued based on the purchase data.</p>
+
+      <div style="margin-top:2.5em;padding-top:2em;border-top:1px solid rgba(52,52,52,0.06)">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:1em">Early Signal — Internal Slack</p>
+        <picture><source srcset="../assets/checkout/co-slack-conversion.webp" type="image/webp"><img src="../assets/checkout/co-slack-conversion.png" alt="Slack message from business manager: pixelbin checkout conversion yesterday was 57% and today already at 40%, much higher than 33-35% average — our new pricing page is making an impact" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.08)" loading="lazy"></picture>
+
+        <picture style="display:block;margin-top:1.5em"><source srcset="../assets/checkout/co-slack-survey.webp" type="image/webp"><img src="../assets/checkout/co-slack-survey.png" alt="Slack message from business manager showing survey data — 240 people initiated checkout from surveys in 30 days, 4000 users on AI Image Generator, 2300 on pricing page" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.08)" loading="lazy"></picture>
+
+        <picture style="display:block;margin-top:1.5em"><source srcset="../assets/checkout/co-geckoboard.webp" type="image/webp"><img src="../assets/checkout/co-geckoboard.png" alt="PixelBin Revenue Dashboard — Geckoboard showing INR 577.5K daily revenue, 152 new payments, revenue trend charts" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(52,52,52,0.08)" loading="lazy"></picture>
+      </div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;font-style:italic;color:var(--text-ghost);line-height:1.5;margin-top:2em;padding-top:1.4em;border-top:1px solid rgba(52,52,52,0.06)">These results reflect both pricing model changes owned by the PM and the redesigned pricing experience I designed. The two contributions aren't separable.</p>
+    </div>
+  </div>
+</section>
+
+<div style="overflow:hidden;background:var(--frost);padding:35vh 0">
+  <lottie-player src="../assets/checkout/co-breaker-lottie.json" background="transparent" speed="1" style="width:100%" loop autoplay></lottie-player>
+</div>
+
+<!-- ══════ SYNTHESIS ══════ -->
+
+<section style="padding:6em 8%">
+  <div style="max-width:72em;margin:0 auto">
+    <div style="margin-bottom:3em">
+      <p class="mono-text" style="margin-bottom:0.6em">What Needed to Change</p>
+      <h3 class="heading4">Three Things<br>Had to Change</h3>
+    </div>
+    <div class="co-synthesis-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5em">
+      <div style="padding:2em;border:1px solid rgba(52,52,52,0.08)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);display:block;margin-bottom:0.8em">01</span>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:1.4em;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--charcoal);line-height:1;margin-bottom:0.3em">Clarity</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;color:var(--text-muted);margin-bottom:0.8em">What users are buying</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Credits, billing period, plan name and total cost needed to stay consistent from pricing through payment. No more sticker shock at checkout.</p>
+      </div>
+      <div style="padding:2em;border:1px solid rgba(52,52,52,0.08)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);display:block;margin-bottom:0.8em">02</span>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:1.4em;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--charcoal);line-height:1;margin-bottom:0.3em">Value</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;color:var(--text-muted);margin-bottom:0.8em">Make plan differences visible</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Subscriptions couldn't rely on credit quantities alone. Benefits and purchase-model differences needed to be visible before checkout.</p>
+      </div>
+      <div style="padding:2em;border:1px solid rgba(52,52,52,0.08)">
+        <span style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);display:block;margin-bottom:0.8em">03</span>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:1.4em;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--charcoal);line-height:1;margin-bottom:0.3em">Context</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;color:var(--text-muted);margin-bottom:0.8em">Keep the upgrade in the task</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;line-height:1.5;color:var(--text-secondary)">The payment moment happens when users are actively using an AI tool. The upgrade flow should behave like part of the product, not a separate destination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DESIGN PRINCIPLE ══════ -->
+
+<section class="scene--question" style="min-height:100vh;flex-direction:column;gap:1.6em">
+  <p class="mono-text" style="color:var(--text-ghost)">Design Principle</p>
+  <h2 class="heading2" style="max-width:16em;text-align:center">Don't make users compare<br>things they shouldn't be<br>comparing</h2>
+</section>
+
+<!-- ══════ THE REDESIGNED FLOW ══════ -->
+
+<section id="co-flow" class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">01</div>
+      <h3 class="flow-title">Tabs, Not<br>Comparison</h3>
+      <span class="flow-status">Pricing Architecture</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">I split plan types into tabs: Monthly, One time, Annual and Enterprise. Instead of showing all purchase models together and asking users to compare them, each type gets its own view. Monthly opens by default on desktop.</p>
+      <div class="slideshow" data-interval="3000">
+        <nav class="slideshow__nav" aria-label="Pricing tab views"><button class="slideshow__dot is-active" data-slide="0">Monthly</button><button class="slideshow__dot" data-slide="1">One Time</button><button class="slideshow__dot" data-slide="2">Annual</button><button class="slideshow__dot" data-slide="3">Enterprise</button><button class="slideshow__dot" data-slide="4">Sale</button></nav>
+        <div class="slideshow__frame">
+          <picture class="is-active"><source srcset="../assets/checkout/co-tab-monthly.webp" type="image/webp"><img src="../assets/checkout/co-tab-monthly.png" alt="Monthly pricing tab — Lite, Standard and Pro plans with credit allocations" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-tab-onetime.webp" type="image/webp"><img src="../assets/checkout/co-tab-onetime.png" alt="One-time credit purchase tab — pay-as-you-go options" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-tab-annual.webp" type="image/webp"><img src="../assets/checkout/co-tab-annual.png" alt="Annual pricing tab — discounted yearly plans" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-tab-enterprise.webp" type="image/webp"><img src="../assets/checkout/co-tab-enterprise.png" alt="Enterprise tab — custom pricing and contact sales" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-tab-sale.webp" type="image/webp"><img src="../assets/checkout/co-tab-sale.png" alt="Sale banner — seasonal promotion pricing" loading="lazy"></picture>
+        </div>
+      </div>
+      <p class="flow-screen__caption">Tab-based separation · Each purchase model gets its own space</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ POPUP PRICING — ALL PLANS ══════ -->
+
+<section id="co-popup" class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">02</div>
+      <h3 class="flow-title">In-Product<br>Pricing</h3>
+      <span class="flow-status">Desktop + Mobile</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">Pricing appears inside the product, never on a separate page. On desktop it's an overlay with the workspace visible behind it. On mobile it's a full-screen bottom sheet. The options and layout are the same on both, just adapted for the screen size.</p>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin:2em 0 1em">Desktop</p>
+      <div class="slideshow" data-interval="3000">
+        <nav class="slideshow__nav" aria-label="Desktop popup states"><button class="slideshow__dot is-active" data-slide="0">Default</button><button class="slideshow__dot" data-slide="1">Special Offer</button><button class="slideshow__dot" data-slide="2">Enterprise</button><button class="slideshow__dot" data-slide="3">Pay-as-you-go</button></nav>
+        <div class="slideshow__frame">
+          <picture class="is-active"><source srcset="../assets/checkout/co-popup-default-desktop.webp" type="image/webp"><img src="../assets/checkout/co-popup-default-desktop.png" alt="Default monthly pricing popup overlaying the AI workspace" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-popup-offer-desktop.webp" type="image/webp"><img src="../assets/checkout/co-popup-offer-desktop.png" alt="Special offer pricing popup with festival/holiday sale banner" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-popup-enterprise-desktop.webp" type="image/webp"><img src="../assets/checkout/co-popup-enterprise-desktop.png" alt="Enterprise pricing popup with custom plan and contact sales" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-popup-paygo-desktop.webp" type="image/webp"><img src="../assets/checkout/co-popup-paygo-desktop.png" alt="Pay-as-you-go pricing popup with one-time credit purchase options" loading="lazy"></picture>
+        </div>
+      </div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin:3em 0 1em">Mobile</p>
+      <div style="display:flex;gap:1.5em;flex-wrap:wrap">
+        <div style="flex:1 1 0">
+          <picture><source srcset="../assets/checkout/co-popup-default-mobile.webp" type="image/webp"><img src="../assets/checkout/co-popup-default-mobile.png" alt="Mobile default monthly pricing as bottom sheet" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(52,52,52,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.08)" loading="lazy"></picture>
+          <p class="mono-text" style="margin-top:0.5em;font-size:0.5em">Default</p>
+        </div>
+        <div style="flex:1 1 0">
+          <picture><source srcset="../assets/checkout/co-popup-offer-mobile.webp" type="image/webp"><img src="../assets/checkout/co-popup-offer-mobile.png" alt="Mobile special offer pricing with sale banner" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(52,52,52,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.08)" loading="lazy"></picture>
+          <p class="mono-text" style="margin-top:0.5em;font-size:0.5em">Special Offer</p>
+        </div>
+        <div style="flex:1 1 0">
+          <picture><source srcset="../assets/checkout/co-popup-enterprise-mobile.webp" type="image/webp"><img src="../assets/checkout/co-popup-enterprise-mobile.png" alt="Mobile enterprise pricing with custom plan" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(52,52,52,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.08)" loading="lazy"></picture>
+          <p class="mono-text" style="margin-top:0.5em;font-size:0.5em">Enterprise</p>
+        </div>
+        <div style="flex:1 1 0">
+          <picture><source srcset="../assets/checkout/co-popup-paygo-mobile.webp" type="image/webp"><img src="../assets/checkout/co-popup-paygo-mobile.png" alt="Mobile pay-as-you-go one-time credit purchase" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(52,52,52,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.08)" loading="lazy"></picture>
+          <p class="mono-text" style="margin-top:0.5em;font-size:0.5em">Pay-as-you-go</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">03</div>
+      <h3 class="flow-title">In-Product<br>Checkout</h3>
+      <span class="flow-status">Payment Inside the Product</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">When credits run out, the checkout popup appears over the workspace. The user's work stays visible behind it. Plan name, credits and total stay the same from selection through to payment. They never leave what they were doing.</p>
+      <div class="flow-screen">
+        <picture><source srcset="../assets/checkout/co-flow-checkout.webp" type="image/webp"><img src="../assets/checkout/co-flow-checkout.png" alt="Checkout popup overlaying the workspace — payment form with clear plan breakdown" loading="lazy"></picture>
+        <p class="flow-screen__caption">Checkout inside product · Workspace visible behind overlay</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ EXIT + FEEDBACK ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">04</div>
+      <h3 class="flow-title">Exit +<br>Feedback</h3>
+      <span class="flow-status">Retention · Learning</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">When a user tries to close the pricing popup, a feedback form asks why. Each response triggers a different follow-up. "Too expensive" surfaces a discount code. "Not what I'm looking for" opens a text field. "Found a better tool" asks which one. That data goes straight back into pricing decisions.</p>
+      <div class="flow-screen" style="margin-bottom:2em">
+        <picture><source srcset="../assets/checkout/co-exit-intent.webp" type="image/webp"><img src="../assets/checkout/co-exit-intent.png" alt="Exit intent — discount nudge appears when user tries to close pricing" loading="lazy"></picture>
+        <p class="flow-screen__caption">Discount nudge on exit · Feedback on final close</p>
+      </div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin:2em 0 1em">Feedback States</p>
+      <div class="slideshow" data-interval="3500">
+        <nav class="slideshow__nav" aria-label="Feedback popup states"><button class="slideshow__dot is-active" data-slide="0">Form</button><button class="slideshow__dot" data-slide="1">Discount Nudge</button><button class="slideshow__dot" data-slide="2">Missing Feature</button><button class="slideshow__dot" data-slide="3">Competitor</button></nav>
+        <div class="slideshow__frame">
+          <picture class="is-active"><source srcset="../assets/checkout/co-feedback-1.webp" type="image/webp"><img src="../assets/checkout/co-feedback-1.png" alt="Feedback form — What's stopping you from upgrading? Six options, submit disabled" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-feedback-2.webp" type="image/webp"><img src="../assets/checkout/co-feedback-2.png" alt="Plans too expensive selected — discount code popup with 10% off" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-feedback-4.webp" type="image/webp"><img src="../assets/checkout/co-feedback-4.png" alt="Not what I'm looking for selected — text input for missing features" loading="lazy"></picture>
+          <picture><source srcset="../assets/checkout/co-feedback-6.webp" type="image/webp"><img src="../assets/checkout/co-feedback-6.png" alt="I found a better tool selected — text input for competitor name" loading="lazy"></picture>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ CREDIT TRANSPARENCY ══════ -->
+
+<section class="flow-card">
+  <div class="flow-inner">
+    <div class="flow-left">
+      <div class="flow-num">05</div>
+      <h3 class="flow-title">Know What<br>You're Buying</h3>
+      <span class="flow-status">Credit Transparency</span>
+    </div>
+    <div class="flow-right">
+      <p class="flow-problem__body">Users were already doing the maths. 512 bought the add-on over the subscription, and the pricing made that the rational choice. In a credit-based product, "500 credits" is meaningless until you know what 500 credits actually gets you. That depends on which AI model you use, and the cost range is 75x.</p>
+      <p class="flow-problem__body" style="margin-top:1em">We put a breakdown table on the pricing page. Every model, its credit cost, its generation time. None of the competitors we audited showed this information before purchase.</p>
+
+      <p class="co-menu-label" style="margin-top:2.5em">Image Generation</p>
+      <p class="co-menu-sub">7 models · 1–5 credits per generation · 20–25s</p>
+      <div class="co-menu-card">
+        <div class="co-menu-row"><span class="co-menu-name">Nano Banana</span><span class="co-menu-dots"></span><span class="co-menu-cost">1 credit</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Nano Banana Pro</span><span class="co-menu-dots"></span><span class="co-menu-cost">2 credits</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Seedream 4.5</span><span class="co-menu-dots"></span><span class="co-menu-cost">3 credits</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Imagen 4</span><span class="co-menu-dots"></span><span class="co-menu-cost">3 credits</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Imagen 4 Fast</span><span class="co-menu-dots"></span><span class="co-menu-cost">1.5 credits</span><span class="co-menu-time">25s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Imagen 4 Ultra</span><span class="co-menu-dots"></span><span class="co-menu-cost">5 credits</span><span class="co-menu-time">25s</span></div>
+      </div>
+
+      <p class="co-menu-label">Video Generation</p>
+      <p class="co-menu-sub">14 models · 2–75 credits per generation · 25–58s</p>
+      <div class="co-menu-card">
+        <div class="co-menu-row"><span class="co-menu-name">Seedance 1.0 Lite</span><span class="co-menu-dots"></span><span class="co-menu-cost">2 credits</span><span class="co-menu-time">25s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Seedance 1.0 Pro</span><span class="co-menu-dots"></span><span class="co-menu-cost">4 credits</span><span class="co-menu-time">25s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Google Veo 3</span><span class="co-menu-dots"></span><span class="co-menu-cost">10 credits</span><span class="co-menu-time">50s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">WAN 2.2</span><span class="co-menu-dots"></span><span class="co-menu-cost">14 credits</span><span class="co-menu-time">50s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">LTX-2 Fast</span><span class="co-menu-dots"></span><span class="co-menu-cost">18 credits</span><span class="co-menu-time">50s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">MiniMax Hailuo 02</span><span class="co-menu-dots"></span><span class="co-menu-cost">20 credits</span><span class="co-menu-time">55s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">LTX-2</span><span class="co-menu-dots"></span><span class="co-menu-cost">24 credits</span><span class="co-menu-time">48s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">MiniMax Hailuo 2.3</span><span class="co-menu-dots"></span><span class="co-menu-cost">25 credits</span><span class="co-menu-time">55s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Kling 2.6</span><span class="co-menu-dots"></span><span class="co-menu-cost">30 credits</span><span class="co-menu-time">55s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">WAN 2.5</span><span class="co-menu-dots"></span><span class="co-menu-cost">30 credits</span><span class="co-menu-time">50s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">OpenAI Sora 2</span><span class="co-menu-dots"></span><span class="co-menu-cost">32 credits</span><span class="co-menu-time">46s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Google Veo 2</span><span class="co-menu-dots"></span><span class="co-menu-cost">35 credits</span><span class="co-menu-time">52s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Kling 2.1 Master</span><span class="co-menu-dots"></span><span class="co-menu-cost">75 credits</span><span class="co-menu-time">58s</span></div>
+      </div>
+
+      <p class="co-menu-label">Image Editing</p>
+      <p class="co-menu-sub">6 tools · FREE–1 credit · 20s</p>
+      <div class="co-menu-card">
+        <div class="co-menu-row"><span class="co-menu-name">Prompt and Edit</span><span class="co-menu-dots"></span><span class="co-menu-cost">1 credit</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Watermark Remover</span><span class="co-menu-dots"></span><span class="co-menu-cost">1 credit</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Image Upscale</span><span class="co-menu-dots"></span><span class="co-menu-cost">1 credit</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Background Removal</span><span class="co-menu-dots"></span><span class="co-menu-cost">1 credit</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Resize</span><span class="co-menu-dots"></span><span class="co-menu-cost co-menu-free">FREE</span><span class="co-menu-time">20s</span></div>
+        <div class="co-menu-row"><span class="co-menu-name">Adjust and Retouch</span><span class="co-menu-dots"></span><span class="co-menu-cost co-menu-free">FREE</span><span class="co-menu-time">20s</span></div>
+      </div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:400;font-style:italic;color:var(--text-ghost);line-height:1.4">Live on the PixelBin pricing page. In the competitors we reviewed, none showed per-model credit costs, generation time, or free operations in a single view.</p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:3em;border-radius:8px;border:1px solid rgba(52,52,52,0.06)">
+        <picture><source srcset="../assets/checkout/co-competitor-research.webp" type="image/webp"><img src="../assets/checkout/co-competitor-research.png" alt="Competitor pricing audit — annotated screenshots of Remove BG, Photoroom, Canva, Veed.io and Dewatermark pricing pages with analysis callouts" style="width:100%;height:auto;display:block;min-width:600px" loading="lazy"></picture>
+      </div>
+      <p class="flow-problem__body" style="margin-top:1.5em">I audited pricing across Remove BG, Photoroom, Canva, Veed.io and Dewatermark. The same pattern came up across the competitors we reviewed: credit costs were often bundled into subscriptions, with no per-model breakdown or generation time shown. Users typically found out what things cost after they'd paid.</p>
+      <p class="flow-problem__body" style="margin-top:1em">That's what the credit table on our pricing page was built to fix. Every model, every cost, every generation time in one place, visible before the user spends anything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHAT CHANGED ══════ -->
+
+<section style="padding:6em 8%">
+  <div style="text-align:center;padding:4em 0 3em">
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:1em">What Changed</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">33% → 57%</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.85em;font-weight:400;color:var(--text-secondary);margin-top:0.6em;line-height:1.4">Checkout conversion within days of the new pricing page going live</p>
+  </div>
+
+  <div style="width:60px;height:2px;background:var(--charcoal);opacity:0.1;margin:3em auto"></div>
+
+  <div style="max-width:48em;margin:0 auto">
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:1.5em;text-align:center">The Shifts</p>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">Multiple purchase models competing simultaneously</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Plan types separated by tabs, one type at a time</p>
+    </div>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">Inconsistent monthly/yearly credit language</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Clearer billing-period communication</p>
+    </div>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">Subscription value unclear, sometimes worse than add-ons</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Benefits alongside credits, cost per credit visible</p>
+    </div>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">Checkout separated from the user's active task</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Checkout embedded inside the product workspace</p>
+    </div>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">Sudden yearly total + tax at payment</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Consistent pricing from plan selection through payment</p>
+    </div>
+    <div class="co-arrow-row">
+      <p class="co-arrow-before">No structured learning from final exits</p>
+      <span class="co-arrow-icon">→</span>
+      <p class="co-arrow-after">Exits generate feedback for pricing decisions</p>
+    </div>
+  </div>
+
+  <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;font-style:italic;color:var(--text-ghost);text-align:center;max-width:36em;margin:2.5em auto 0;line-height:1.5">These results reflect both pricing model changes owned by the PM and the redesigned pricing experience I designed. The two aren't separable.</p>
+</section>
+
+<!-- ══════ BREAKER PLACEHOLDER ══════ -->
+
+<div class="full-screen-asset" style="height:140vh;overflow:hidden;position:relative">
+  <img src="../assets/checkout/co-banner-macbook.webp" alt="PixelBin pricing redesign — MacBook Pro showing the checkout experience" style="width:100%;height:100%;object-fit:cover;object-position:center center" loading="lazy">
+</div>
+
+<!-- ══════ REFLECTION ══════ -->
+
+<section id="co-reflection" style="padding:8em 8%">
+  <div style="max-width:48em;margin:0 auto">
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:1.5em">Reflection</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;letter-spacing:-0.03em;line-height:1.1;color:var(--charcoal)">When the pricing logic creates a worse deal, interface polish cannot solve the underlying business problem.</p>
+
+    <div style="width:100%;height:1px;background:var(--charcoal);opacity:0.08;margin:2.5em 0"></div>
+
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.875em;font-weight:400;line-height:1.55;color:var(--text-secondary);max-width:32em">This project sat right between product and business decisions. The PM owned the pricing model. I owned the screen that had to make those choices understandable. The hardest part was showing enough information for users to trust the purchase without overwhelming them. The subscription maths showed that both the model and the presentation had to change together.</p>
+  </div>
+</section>
+
+<!-- ══════ BRIDGE ══════ -->
+
+<section class="scene--bridge">
+  <div class="bridge__inner">
+    <nav class="bridge__cross-nav" aria-label="Explore the rest of the Pixelbin case study">
+      <a href="/pixelbin/" class="bridge__cross-link">
+        <p class="bridge__cross-eyebrow">← Pixelbin</p>
+        <p class="bridge__cross-title">All PixelBin Work</p>
+        <p class="bridge__cross-desc">Explore the wider PixelBin product work</p>
+      </a>
+      <a href="/pixelbin/video-editor/" class="bridge__cross-link bridge__cross-link--next">
+        <p class="bridge__cross-eyebrow">Video Editor →</p>
+        <p class="bridge__cross-title">The Desktop Workspace</p>
+        <p class="bridge__cross-desc">Desktop workspace, toolbar redesign</p>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══════ CTA + FOOTER ══════ -->
+
+<section id="cta">
+  <h2 class="cta-heading" style="opacity:1">
+    <span class="h-reg">Still </span><em class="h-ital">here</em>
+  </h2>
+  <div class="cta-content">
+    <p class="cta-description">Good. Let's talk about what you're building. I'm Terry, a Senior Product Designer working across AI, commerce and fintech products. I'm looking for a permanent Product Design role in the UK and would require Skilled Worker sponsorship to relocate.</p>
+    <p class="cta-label">Open to permanent UK opportunities</p>
+    <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+      <span class="btn-mail-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-left">
+      <span>terryjohnpaul20@gmail.com</span>
+      <span>Designed and coded by me. · © 2026 Terry John Paul</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="/resume/">Resume</a>
+      <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+  <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+  <a href="#co-model" class="cs-nav-item" data-section="co-model" aria-label="Model">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 2"/></svg>
+    <span>Model</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#co-problem" class="cs-nav-item" data-section="co-problem" aria-label="Problem">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v6"/><circle cx="8" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
+    <span>Problem</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#co-evidence" class="cs-nav-item" data-section="co-evidence" aria-label="Evidence">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h12"/><path d="M3.5 14V9"/><path d="M6.5 14V7"/><path d="M9.5 14V5"/><path d="M12.5 14V3"/></svg>
+    <span>Evidence</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#co-flow" class="cs-nav-item" data-section="co-flow" aria-label="Design">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="1.5" y="9.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.8"/></svg>
+    <span>Design</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#co-popup" class="cs-nav-item" data-section="co-popup" aria-label="Pricing">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h12"/><path d="M3.5 14V9"/><path d="M6.5 14V7"/><path d="M9.5 14V5"/><path d="M12.5 14V3"/></svg>
+    <span>Pricing</span>
+  </a>
+  <div class="cs-nav-sep" aria-hidden="true"></div>
+  <a href="#co-reflection" class="cs-nav-item" data-section="co-reflection" aria-label="Reflection">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v5"/><path d="M8 7l4 4"/><path d="M8 7L4 11"/><circle cx="8" cy="2" r="0.8" fill="currentColor" stroke="none"/><circle cx="4" cy="11" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none"/></svg>
+    <span>Reflection</span>
+  </a>
+</nav>
+
+</main>
+</div>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="../js/chapter1.js"></script>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof Lenis === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  var lenis = new Lenis({
+    autoRaf: false,
+    duration: 1.1,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1,
+    touchMultiplier: 2
+  });
+
+  window.__lenis = lenis;
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+
+  gsap.utils.toArray('.content-section--full .content-row').forEach(function (row) {
+    gsap.from(row, {
+      y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: row, start: 'top 85%', once: true }
+    });
+  });
+
+  gsap.utils.toArray('.flow-card .flow-inner').forEach(function (inner) {
+    gsap.from(inner, {
+      y: 30, opacity: 0, duration: 0.6, ease: 'power2.out', immediateRender: true,
+      scrollTrigger: { trigger: inner, start: 'top 82%', once: true }
+    });
+  });
+
+  var mobileStrip = document.querySelector('.co-mobile-strip');
+  if (mobileStrip) {
+    var items = mobileStrip.querySelectorAll('.co-mobile-item');
+    gsap.from(items, {
+      y: 20, opacity: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: mobileStrip, start: 'top 80%', once: true }
+    });
+  }
+
+  var findingCards = document.querySelectorAll('.co-finding-card');
+  if (findingCards.length) {
+    gsap.from(findingCards, {
+      y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: findingCards[0].parentElement, start: 'top 80%', once: true }
+    });
+  }
+
+  var decisions = document.querySelectorAll('.co-decision-card');
+  if (decisions.length) {
+    gsap.from(decisions, {
+      y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: decisions[0].parentElement, start: 'top 80%', once: true }
+    });
+  }
+
+  var threeCards = document.querySelectorAll('.co-three-card');
+  if (threeCards.length) {
+    gsap.from(threeCards, {
+      y: 20, opacity: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out',
+      scrollTrigger: { trigger: threeCards[0].parentElement, start: 'top 80%', once: true }
+    });
+  }
+
+  gsap.utils.toArray('.scene--question .heading2').forEach(function (h) {
+    gsap.from(h, {
+      y: 25, opacity: 0, duration: 0.9, ease: 'power3.out', immediateRender: true,
+      scrollTrigger: { trigger: h, start: 'top 75%', once: true }
+    });
+  });
+
+  gsap.utils.toArray('.full-screen-asset picture').forEach(function (pic) {
+    gsap.from(pic, {
+      opacity: 0, duration: 0.8, ease: 'power1.out', immediateRender: true,
+      scrollTrigger: { trigger: pic, start: 'top 90%', once: true }
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var nav = document.getElementById('csBottomNav');
+  if (!nav) return;
+  var pill = document.getElementById('csNavPill');
+  var items = nav.querySelectorAll('.cs-nav-item');
+  var sections = [];
+  var ticking = false;
+
+  items.forEach(function (item) {
+    var id = item.getAttribute('data-section');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, item: item });
+  });
+
+  if (!sections.length) return;
+
+  function movePill(activeItem) {
+    pill.style.left = activeItem.offsetLeft + 'px';
+    pill.style.width = activeItem.offsetWidth + 'px';
+  }
+
+  function update() {
+    ticking = false;
+    var scrollY = window.scrollY;
+    var vh = window.innerHeight;
+
+    var footer = document.getElementById('cta');
+    var atFooter = footer && footer.getBoundingClientRect().top <= vh;
+
+    if (scrollY > vh * 0.5 && !atFooter) {
+      nav.classList.add('is-visible');
+    } else {
+      nav.classList.remove('is-visible');
+    }
+
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.getBoundingClientRect().top <= vh * 0.35) {
+        current = sections[i];
+      }
+    }
+
+    items.forEach(function (item) { item.classList.remove('is-active'); });
+    current.item.classList.add('is-active');
+    movePill(current.item);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = item.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) {
+        if (window.__lenis) { window.__lenis.scrollTo(el, { offset: 0 }); }
+        else { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    });
+  });
+
+  pill.style.width = sections[0].item.offsetWidth + 'px';
+  pill.style.left = sections[0].item.offsetLeft + 'px';
+  update();
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  document.querySelectorAll('.slideshow').forEach(function (show) {
+    var frame = show.querySelector('.slideshow__frame');
+    var slides = frame.querySelectorAll('picture');
+    var dots = show.querySelectorAll('.slideshow__dot');
+    var interval = parseInt(show.getAttribute('data-interval') || '2500', 10);
+    var current = 0;
+    var timer = null;
+    var paused = false;
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = index;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+    }
+    function next() { goTo((current + 1) % slides.length); }
+    function startAuto() { if (timer) clearInterval(timer); if (!paused) timer = setInterval(next, interval); }
+    function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(dot.getAttribute('data-slide'), 10));
+        paused = true; stopAuto();
+        setTimeout(function () { paused = false; startAuto(); }, 8000);
+      });
+    });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAuto(); }
+  });
+})();
+</script>
+
+<script defer src="https://va.vercel-scripts.com/v1/script.js" data-endpoint="/_vercel/insights"></script>
+</body>
+</html>

@@ -31,6 +31,12 @@ model-handbag.png
 
 # Non-production pages
 kaily-*.html
+pixelbin/checkout/option-*.html
+pixelbin/checkout/google-ai-monetization.html
+pixelbin/checkout/credit-transparency-options.html
+pixelbin/checkout/what-changed-options.html
+pixelbin/checkout/reflection-options.html
+checkout-casestudy-banner.png
 
 # Dev/build
 .claude/

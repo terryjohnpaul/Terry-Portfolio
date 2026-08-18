@@ -1160,6 +1160,23 @@
       opacity:   1;
       transform: scale(1) translateX(0);
     }
+    .footer-case-studies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-case-studies a {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-case-studies a:hover { color: rgba(255,255,255,0.8); }
     .footer-bottom {
       width: 100%;
       display: flex;
@@ -2169,6 +2186,15 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
   <!-- Footer -->
   <footer id="site-footer">
+    <nav class="footer-case-studies" aria-label="Case studies">
+      <a href="/settle-club/">Settle Club</a>
+      <a href="/pixelbin/">PixelBin</a>
+      <a href="/pixelbin/checkout/">PixelBin Checkout</a>
+      <a href="/pixelbin/magic-canvas/">Magic Canvas</a>
+      <a href="/pixelbin/pixelbin-app/">PixelBin App</a>
+      <a href="/about/">About</a>
+      <a href="/first-take/">First Take</a>
+    </nav>
     <div class="footer-bottom">
       <div class="footer-left">
         <span>terryjohnpaul20@gmail.com</span>

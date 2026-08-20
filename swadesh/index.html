@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swadesh Design System — Case Study | Terry John Paul, Product Designer</title>
+  <meta name="description" content="How I built a design system for Swadesh, a luxury Indian marketplace — 35 components, 510 variants, design tokens, component architecture, and governance across six product categories. By Terry John Paul, Senior Product Designer.">
+  <link rel="canonical" href="https://terryjohn.me/swadesh/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swadesh Design System — Case Study | Terry John Paul, Product Designer">
+  <meta property="og:description" content="How I built a design system for Swadesh, a luxury Indian marketplace — 35 components, 510 variants, design tokens, component architecture, and governance across six product categories. By Terry John Paul, Senior Product Designer.">
+  <meta property="og:url" content="https://terryjohn.me/swadesh/">
+  <meta property="og:image" content="https://terryjohn.me/swadesh/optimised/swadesh-hero-banner.webp">
+  <meta property="og:image:width" content="2880">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="Swadesh Design System — typography, photography, and mobile app layouts for a luxury Indian marketplace">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Swadesh Design System — Case Study | Terry John Paul">
+  <meta name="twitter:description" content="Design system case study: 35 components, 510 variants, design tokens, and governance for a luxury marketplace across six product categories.">
+  <meta name="twitter:image" content="https://terryjohn.me/swadesh/optimised/swadesh-hero-banner.webp">
+  <meta name="twitter:image:alt" content="Swadesh Design System — typography, photography, and mobile app layouts for a luxury Indian marketplace">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="../pixelbin/css/base.css">
+  <link rel="stylesheet" href="../pixelbin/css/chapter1.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://terryjohn.me/swadesh/","name":"Swadesh Design System — Case Study","headline":"From Brand Book to Product System","author":{"@type":"Person","@id":"https://terryjohn.me/#person","name":"Terry John Paul","url":"https://terryjohn.me","jobTitle":"Senior Product Designer"},"description":"How I built a design system for Swadesh, a luxury Indian marketplace — 35 components, 510 variants, design tokens, component architecture, and governance across six product categories.","url":"https://terryjohn.me/swadesh/","image":"https://terryjohn.me/swadesh/optimised/swadesh-hero-banner.webp","inLanguage":"en-GB","keywords":["Design Systems","Product Design","Design Tokens","Component Architecture","Design System Governance","Engineering Handoff","Figma","Accessibility","Luxury E-Commerce"],"about":[{"@type":"Thing","name":"Design Systems"},{"@type":"Thing","name":"Component Architecture"},{"@type":"Thing","name":"Design Tokens"},{"@type":"Thing","name":"Design System Governance"},{"@type":"Thing","name":"Luxury E-Commerce Design"}]}</script>
+  <style>
+    :root { --frost: #ffffff; }
+
+    /* Section headings — sentence case, not uppercase */
+    .content-left .heading4 {
+      text-transform: none;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    /* ── Swadesh-specific styles ── */
+
+    /* Before / After */
+    .ba-grid { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: start; margin: 3em 0; }
+    .ba-side { padding: 2em; border-radius: 4px; }
+    .ba-side.before { background: rgba(204,85,85,0.04); }
+    .ba-side.after { background: rgba(42,157,92,0.04); }
+    .ba-label { font-size: 0.7em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 1em; }
+    .ba-label.before-label { color: #b33b3b; }
+    .ba-label.after-label { color: #1a7a3c; }
+    .ba-side p { font-size: 0.85em; color: var(--text-secondary); line-height: 1.8; }
+    .ba-side p strong { color: var(--charcoal); font-weight: 500; }
+    .ba-arrow { display: flex; align-items: center; justify-content: center; padding-top: 3em; font-size: 20px; color: var(--text-ghost); }
+
+    /* Invariant / Flexible model */
+    .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin: 3em 0; }
+    .model-col { padding: 2em; border-radius: 4px; }
+    .model-col.invariant { background: rgba(0,0,0,0.025); border: 1px solid rgba(52,52,52,0.06); }
+    .model-col.flexible { background: rgba(183,142,89,0.06); border: 1px solid rgba(183,142,89,0.15); }
+    .model-col h3 { font-size: 0.7em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.8em; }
+    .model-col.invariant h3 { color: var(--charcoal); }
+    .model-col.flexible h3 { color: #8C6D3F; }
+    .model-tag { display: inline-block; font-size: 0.75em; padding: 3px 10px; border-radius: 4px; margin: 3px 4px 3px 0; color: var(--text-secondary); border: 1px solid rgba(52,52,52,0.08); }
+    .model-col.flexible .model-tag { border-color: rgba(183,142,89,0.2); color: #8C6D3F; }
+
+    /* Numbered list */
+    .numbered-list { list-style: none; margin-top: 1.5em; }
+    .numbered-list li { display: flex; gap: 1em; padding: 1.2em 0; border-bottom: 1px solid rgba(52,52,52,0.06); align-items: baseline; }
+    .numbered-list li:first-child { border-top: 1px solid rgba(52,52,52,0.06); }
+    .numbered-list .num { font-size: 0.7em; font-weight: 400; letter-spacing: 0.02em; color: var(--text-ghost); flex-shrink: 0; width: 24px; }
+    .numbered-list .text { font-size: 0.875em; color: var(--text-secondary); line-height: 1.55; }
+    .numbered-list .text strong { color: var(--charcoal); font-weight: 500; }
+
+    /* Ratio showcase */
+    .ratio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5em; margin: 3em 0; }
+    .ratio-card { text-align: center; }
+    .ratio-card .ratio-frame { background: #F9F6EF; border-radius: 4px; overflow: hidden; margin-bottom: 0.5em; }
+    .ratio-card .ratio-frame img { width: 100%; display: block; }
+    .ratio-card .ratio-label { font-size: 0.875em; font-weight: 500; color: var(--charcoal); }
+    .ratio-card .ratio-desc { font-size: 0.7em; font-weight: 400; letter-spacing: 0.02em; color: var(--text-ghost); }
+
+    /* Card showcase */
+    .card-showcase { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; margin: 2.5em 0; }
+    .card-showcase-item { border-radius: 4px; overflow: hidden; }
+    .card-showcase-item img { width: 100%; display: block; }
+    .card-showcase-item .showcase-label { font-size: 0.7em; font-weight: 400; letter-spacing: 0.02em; color: var(--text-ghost); margin-top: 0.4em; }
+
+    /* Zoom container */
+    .zoom-container { position: relative; overflow: hidden; cursor: zoom-in; }
+    .zoom-container img { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), transform-origin 0.15s ease; transform-origin: center; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .zoom-container.zoomed { cursor: zoom-out; }
+    .zoom-container.zoomed img { transform: scale(3.5); }
+    .zoom-hint { position: absolute; bottom: 16px; right: 16px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 100px; pointer-events: none; transition: opacity 0.3s; }
+    .zoom-container.zoomed .zoom-hint { opacity: 0; }
+
+    /* Governance steps */
+    .gov-steps { display: flex; flex-direction: column; gap: 0; margin: 2em 0; }
+    .gov-step { display: flex; gap: 1.2em; padding: 1.2em 0; border-bottom: 1px solid rgba(52,52,52,0.06); align-items: baseline; }
+    .gov-step:first-child { border-top: 1px solid rgba(52,52,52,0.06); }
+    .gov-num { font-size: 1.2em; font-weight: 800; color: #C45434; width: 32px; flex-shrink: 0; }
+    .gov-step h3 { font-size: 0.875em; font-weight: 500; color: var(--charcoal); margin-bottom: 2px; }
+    .gov-step p { font-size: 0.8em; color: var(--text-muted); line-height: 1.5; }
+
+    /* Reflection grid */
+    .reflection-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2em; margin: 3em 0; }
+    .reflection-card h3 { font-size: 0.8em; font-weight: 500; margin-bottom: 0.5em; }
+    .reflection-card h3.worked { color: #1a7a3c; }
+    .reflection-card h3.different { color: #996600; }
+    .reflection-card h3.failed { color: #b33b3b; }
+    .reflection-card p { font-size: 0.8em; color: var(--text-muted); line-height: 1.55; }
+
+    /* Component library grid */
+    .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em; margin: 3em 0; }
+    .comp-group h3 { font-size: 0.7em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); margin-bottom: 0.8em; }
+    .comp-group ul { list-style: none; }
+    .comp-group li { font-size: 0.8em; color: var(--text-secondary); padding: 3px 0; }
+
+    /* File block (Design.md) */
+    .file-block { margin: 2em 0; background: var(--charcoal); border-radius: 8px; padding: 1.5em 1.8em; overflow-x: auto; }
+    .file-header { font-size: 0.7em; font-weight: 500; color: #949494; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 1em; padding-bottom: 0.8em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .file-block pre { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #aaa; line-height: 1.8; white-space: pre-wrap; margin: 0; }
+    .file-block pre .key { color: #7ec8e3; }
+    .file-block pre .val { color: #c4a265; }
+    .file-block pre .comment { color: #949494; }
+
+    /* ── Storybook panel ── */
+    .sb-panel { background: #fff; border: 1px solid rgba(52,52,52,0.06); border-radius: 16px; overflow: hidden; margin: 3.5em 0; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.03); }
+    .sb-header { padding: 2.2em 2.5em 0; display: flex; align-items: center; justify-content: space-between; }
+    .sb-header-left { display: flex; align-items: center; gap: 14px; }
+    .sb-comp-dot { width: 8px; height: 8px; border-radius: 50%; background: #2a9d5c; flex-shrink: 0; }
+    .sb-comp-name { font-size: 1.4em; font-weight: 500; color: var(--charcoal); letter-spacing: -0.02em; }
+    .sb-badge { font-size: 0.6em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: #1a7a3c; border: 1px solid rgba(42,157,92,0.2); padding: 3px 10px; border-radius: 100px; }
+    .sb-version { font-size: 0.7em; color: var(--text-ghost); font-family: 'SF Mono', 'Fira Code', monospace; }
+    .sb-desc { font-size: 0.875em; color: var(--text-muted); padding: 0.5em 2.5em 0; line-height: 1.55; }
+    .sb-tabs { display: flex; gap: 0; padding: 0 2.5em; margin-top: 1.2em; border-bottom: 1px solid rgba(52,52,52,0.06); }
+    .sb-tab { padding: 0.9em 1.2em; font-size: 0.8em; font-weight: 500; color: var(--text-ghost); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none; font-family: 'Helvetica Now Display', sans-serif; }
+    .sb-tab:hover { color: var(--text-secondary); }
+    .sb-tab[aria-selected="true"] { color: var(--charcoal); border-bottom-color: #C45434; }
+    .sb-tabpanel { display: none; }
+    .sb-tabpanel.active { display: block; }
+    .sb-preview-layout { display: grid; grid-template-columns: 1fr 280px; }
+    .sb-canvas { display: flex; align-items: center; justify-content: center; min-height: 320px; padding: 4em; background: #F9F6EF; position: relative; }
+    .sb-canvas::after { content: ''; position: absolute; inset: 1em; border: 1px dashed rgba(0,0,0,0.06); border-radius: 8px; pointer-events: none; }
+    .sb-controls { padding: 1.8em; border-left: 1px solid rgba(52,52,52,0.05); background: #fcfcfc; }
+    .sb-controls-title { font-size: 0.65em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); margin-bottom: 1.5em; padding-bottom: 0.8em; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .sb-control-group { margin-bottom: 1.5em; }
+    .sb-control-group:last-child { margin-bottom: 0; }
+    .sb-control-legend { font-size: 0.75em; font-weight: 500; color: var(--text-muted); margin-bottom: 0.8em; display: block; border: none; padding: 0; }
+    .sb-radios { display: flex; flex-direction: column; gap: 10px; }
+    .sb-radio { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.8em; color: var(--text-secondary); transition: color 0.15s; }
+    .sb-radio:hover { color: var(--charcoal); }
+    .sb-radio input[type="radio"] { appearance: none; -webkit-appearance: none; width: 16px; height: 16px; border: 1.5px solid #ddd; border-radius: 50%; cursor: pointer; position: relative; flex-shrink: 0; transition: border-color 0.15s; }
+    .sb-radio:hover input[type="radio"] { border-color: #aaa; }
+    .sb-radio input[type="radio"]:checked { border-color: #C45434; background: #C45434; }
+    .sb-radio input[type="radio"]:checked::after { content: ''; position: absolute; top: 3px; left: 3px; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+    .sb-props-table { width: 100%; border-collapse: collapse; font-size: 0.8em; }
+    .sb-props-table th { text-align: left; font-size: 0.65em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); padding: 0.9em 1.2em; border-bottom: 1px solid rgba(52,52,52,0.06); background: var(--frost); }
+    .sb-props-table td { padding: 0.9em 1.2em; border-bottom: 1px solid rgba(0,0,0,0.03); color: var(--text-secondary); vertical-align: top; line-height: 1.5; }
+    .sb-props-table tbody tr:hover { background: rgba(0,0,0,0.01); }
+    .sb-props-table tr:last-child td { border-bottom: none; }
+    .prop-name { font-weight: 500; color: var(--charcoal); }
+    .prop-type { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75em; color: #C45434; background: rgba(196,84,52,0.05); padding: 2px 6px; border-radius: 4px; display: inline; }
+    .prop-default { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75em; color: var(--text-muted); background: rgba(0,0,0,0.03); padding: 2px 6px; border-radius: 4px; }
+    .sb-usage { padding: 2.5em; }
+    .sb-section-heading { font-size: 0.8em; font-weight: 500; color: var(--charcoal); margin-bottom: 0.9em; padding-bottom: 0.5em; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .sb-usage-list { list-style: none; padding: 0; margin: 0 0 2em; }
+    .sb-usage-list li { font-size: 0.8em; color: var(--text-secondary); line-height: 1.6; padding: 0.5em 0 0.5em 1.8em; position: relative; }
+    .sb-usage-list li::before { position: absolute; left: 0; font-size: 0.875em; font-weight: 600; top: 0.5em; }
+    .sb-usage-list.do li::before { content: '✓'; color: #1a7a3c; }
+    .sb-usage-list.dont li::before { content: '✗'; color: #b33b3b; }
+    .sb-usage-list li strong { color: var(--charcoal); }
+    .sb-dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin-bottom: 1.8em; }
+    .sb-dodont-card { border-radius: 8px; padding: 1.5em; }
+    .sb-dodont-card.do { background: rgba(42,157,92,0.03); }
+    .sb-dodont-card.dont { background: rgba(204,85,85,0.03); }
+    .sb-dodont-title { font-size: 0.8em; font-weight: 500; margin-bottom: 0.9em; }
+    .sb-dodont-card.do .sb-dodont-title { color: #1a7a3c; }
+    .sb-dodont-card.dont .sb-dodont-title { color: #b33b3b; }
+    .sb-dodont-card ul { list-style: none; }
+    .sb-dodont-card li { font-size: 0.8em; color: var(--text-secondary); line-height: 1.55; padding: 0.4em 0; border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .sb-dodont-card li:last-child { border-bottom: none; }
+    .sb-tokens-section { padding: 2em 2.5em; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .sb-tokens-section:last-child { border-bottom: none; }
+    .sb-token-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .sb-token-cell { padding: 0.8em 0; border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .sb-token-cell-head { font-size: 0.65em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); padding: 0 0 0.6em; }
+    .sb-token-val { font-size: 0.75em; font-family: 'SF Mono', 'Fira Code', monospace; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+    .sb-token-dot { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06); }
+    .sb-color-variant-label { font-size: 0.8em; font-weight: 500; color: var(--charcoal); margin: 1.5em 0 0.8em; }
+    .sb-anatomy-num { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: #C45434; color: #fff; font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center; line-height: 1; }
+    .sb-anatomy-legend { display: grid; grid-template-columns: 20px 1fr; gap: 10px 12px; align-items: center; }
+    .sb-anatomy-legend-num { width: 20px; height: 20px; border-radius: 50%; background: #C45434; color: #fff; font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+    .sb-anatomy-legend-label { font-size: 0.8em; color: var(--text-secondary); }
+    .sb-designmd { background: var(--charcoal); border-radius: 8px; padding: 1.5em 1.8em; overflow-x: auto; }
+    .sb-designmd-label { font-size: 0.65em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: #949494; margin-bottom: 1em; padding-bottom: 0.6em; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sb-designmd pre { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #aaa; line-height: 1.8; white-space: pre-wrap; margin: 0; }
+    .dm-key { color: #7ec8e3; }
+    .dm-val { color: #c4a265; }
+    .dm-comment { color: #949494; }
+    kbd { display: inline-block; padding: 3px 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; color: var(--text-secondary); background: var(--frost); border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 1px 0 #ddd; }
+    .sb-kbd-table { width: 100%; }
+    .sb-kbd-table td { padding: 0.9em 0; border-bottom: 1px solid rgba(0,0,0,0.04); font-size: 0.8em; color: var(--text-secondary); vertical-align: middle; }
+    .sb-kbd-table td:first-child { width: 160px; }
+    .sb-kbd-table tr:last-child td { border-bottom: none; }
+    .sb-aria-table { width: 100%; }
+    .sb-aria-table td { padding: 0.8em 0; border-bottom: 1px solid rgba(0,0,0,0.04); font-size: 0.8em; color: var(--text-secondary); vertical-align: top; }
+    .sb-aria-table td:first-child { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75em; color: #C45434; width: 200px; }
+    .sb-aria-table tr:last-child td { border-bottom: none; }
+    .sb-toggle { position: relative; width: 32px; height: 18px; cursor: pointer; display: inline-block; }
+    .sb-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .sb-toggle-track { position: absolute; inset: 0; background: #ddd; border-radius: 9px; transition: background 0.2s; }
+    .sb-toggle input:checked + .sb-toggle-track { background: #C45434; }
+    .sb-toggle input:focus-visible + .sb-toggle-track { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+    .sb-toggle-knob { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+    .sb-toggle input:checked ~ .sb-toggle-knob { transform: translateX(14px); }
+    .sb-select { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.75em; padding: 6px 28px 6px 10px; border: 1px solid #ddd; border-radius: 6px; background: #fff url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 8px center; color: var(--text-secondary); appearance: none; -webkit-appearance: none; cursor: pointer; }
+    .sb-input { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px; background: #fff; color: var(--text-secondary); width: 140px; }
+
+    /* Props table overflow on mobile */
+    .sb-props-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Component thumbnails grid */
+    .comp-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+    /* CTA + Footer */
+    #cta, #site-footer { font-size: 16px; }
+    #cta {
+      background: #000;
+      text-align: center;
+      min-height: 120vh;
+      min-height: 120dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 100px;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .cta-heading {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+    .cta-heading .h-reg { font-style: normal; }
+    .cta-heading .h-ital { font-style: italic; font-weight: 400; }
+    .cta-content { max-width: 420px; margin: 0 auto; }
+    .cta-label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+    }
+    .cta-description {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+    .footer-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+      background: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 18px 48px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .footer-cta-btn:hover { background: rgba(255,255,255,0.88); transform: scale(1.02); }
+    .btn-mail-icon { display: flex; }
+    #site-footer {
+      background: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 60px 48px;
+      box-sizing: border-box;
+    }
+    .footer-bottom {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-left span {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-right a {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-right a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ── Responsive ── */
+    @media (max-width: 840px) {
+      .sb-preview-layout { grid-template-columns: 1fr; }
+      .sb-controls { border-left: none; border-top: 1px solid rgba(52,52,52,0.06); }
+      .sb-header { flex-direction: column; gap: 0.5em; padding: 1.8em 1.5em 0; }
+      .sb-desc { padding: 0.5em 1.5em 0; }
+      .sb-tabs { padding: 0 1.5em; }
+      .sb-usage { padding: 1.5em; }
+      .sb-tokens-section { padding: 1.5em; }
+      .sb-token-grid { grid-template-columns: repeat(2, 1fr); }
+      .comp-grid { grid-template-columns: 1fr 1fr; }
+      .screens-grid { grid-template-columns: 1fr !important; }
+      .brand-gradient-grid { grid-template-columns: 1fr !important; }
+      .arch-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      .ba-grid { grid-template-columns: 1fr; gap: 1em; }
+      .ba-arrow { display: none; }
+      .model-grid { grid-template-columns: 1fr; }
+      .ratio-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-showcase { grid-template-columns: 1fr 1fr; }
+      .reflection-grid { grid-template-columns: 1fr; }
+      .comp-grid { grid-template-columns: 1fr; }
+      .sb-dodont { grid-template-columns: 1fr; }
+      .sb-canvas { padding: 2em; min-height: 200px; }
+      .comp-thumbs { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { flex-direction: column; gap: 0.8em; }
+      .metrics-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .principles-grid { grid-template-columns: 1fr !important; }
+      .anatomy-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .tiers-grid { grid-template-columns: 1fr !important; }
+      .invariant-flex { flex-direction: column; }
+      .invariant-divider { display: none; }
+      .cs-hero-meta .mono-text { font-size: 0.6em; }
+      #cta { padding: 80px 24px 100px; }
+      .cta-heading { font-size: clamp(28px, 9vw, 44px); }
+      .cta-description { font-size: 14px; margin-bottom: 40px; }
+      #site-footer { padding: 60px 24px 40px; }
+      .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+</head>
+<body class="overflow-clip">
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <main id="main-content">
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="cs-hero-section">
+    <div class="cs-hero-inner">
+      <p class="mono-text cs-hero-eyebrow">/Work/Swadesh</p>
+      <p class="cs-hero-product">Swadesh Design System</p>
+      <h1 class="cs-hero-title">From Brand Book<br>to Product System</h1>
+      <div class="divider" style="margin-bottom:1.6em"></div>
+      <div class="cs-hero-meta" style="flex-direction:column;gap:1.2em">
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Role / Team</p>
+          <p class="mono-text" style="color:var(--text-muted)">Sole Product Designer · Design System Owner</p>
+          <p class="mono-text" style="color:var(--text-muted)">1 Illustrator · 1 UX Designer · 2 Engineers</p>
+        </div>
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Scope / Evidence</p>
+          <p class="mono-text" style="color:var(--text-muted)">35 component sets · 510 variants · 6 product categories · Web + Mobile</p>
+          <p class="mono-text" style="color:var(--text-muted)">99 colour tokens · 26 text styles · 4 responsive grids · 8 months</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-screen-asset" style="height:120vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/swadesh-hero-banner.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/swadesh-hero-banner.png" alt="Swadesh Design System — brand collage showing typography, photography, mobile app, and editorial layouts" style="width:100%;height:100%;object-fit:cover;object-position:center" loading="eager" fetchpriority="high"></picture>
+  </div>
+
+
+  <!-- ═══════ 01 — STARTING POINT ═══════ -->
+
+  <!-- Viewport 1: The principle -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">01 / The Starting Point</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">The brand had been imagined.<br>The digital product had not.</h2>
+    </div>
+  </section>
+
+  <!-- Viewport 2: Context + stats -->
+  <section style="padding:6em 8% 2em">
+    <div style="max-width:40em;margin:0 auto;text-align:center">
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:400;line-height:1.55;color:var(--text-secondary)">Swadesh had a luxury brand identity — warm saffron palette, serif typography, cultural motifs from Pichwai and Thangka traditions — all designed for print and physical retail. When six product categories went digital, each was designed independently. Jewellery had one card layout, Furniture had another, Home Linen used a third. A customer browsing a Kundan necklace and switching to bedsheets felt like they had left the site.</p>
+    </div>
+  </section>
+
+  <div style="padding:0 8% 5em;max-width:60em;margin:0 auto">
+    <p class="mono-text" style="text-align:center;margin-bottom:2em">What I built</p>
+    <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid rgba(52,52,52,0.06);border-bottom:1px solid rgba(52,52,52,0.06)">
+      <div style="padding:1.8em 0;text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">35</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Components</p>
+      </div>
+      <div style="padding:1.8em 0;border-left:1px solid rgba(52,52,52,0.06);text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">510</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Variants</p>
+      </div>
+      <div style="padding:1.8em 0;border-left:1px solid rgba(52,52,52,0.06);text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">99</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Colours</p>
+      </div>
+      <div style="padding:1.8em 0;border-left:1px solid rgba(52,52,52,0.06);text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">26</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Type styles</p>
+      </div>
+      <div style="padding:1.8em 0;border-left:1px solid rgba(52,52,52,0.06);text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">4</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Grids</p>
+      </div>
+      <div style="padding:1.8em 0;border-left:1px solid rgba(52,52,52,0.06);text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">6</p>
+        <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.3em">Categories</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════ 02 — DESIGN CHALLENGE ═══════ -->
+  <section class="content-section">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">02 / The Design Challenge</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Consistency<br>without<br>sameness.</h2>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">The problem was not simply "make everything consistent." A jewellery close-up and a landscape furniture photograph do not need different card components — but they need the same component to give each product room to breathe.</p>
+        <p class="body-copy"><strong style="color:var(--charcoal)">The challenge: how do you standardise a multi-category luxury platform without making jewellery, furniture, apparel, art, home and wellness feel generic?</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+    <div class="invariant-flex" style="display:flex;gap:0;border-top:1px solid rgba(52,52,52,0.06);border-bottom:1px solid rgba(52,52,52,0.06)">
+      <div style="flex:1;padding:2.5em 2.5em 2.5em 0;text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:var(--charcoal);line-height:1">8</p>
+        <p style="font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin:0.4em 0 1em">Shared Platform Behaviour</p>
+        <p style="font-size:0.75em;color:var(--text-muted);line-height:1.7">Components · Colour tokens · Typography · Grid · Spacing · Interaction patterns · Motion · Cart and checkout</p>
+      </div>
+      <div class="invariant-divider" style="width:1px;background:rgba(52,52,52,0.06)"></div>
+      <div style="flex:1;padding:2.5em 0 2.5em 2.5em;text-align:center">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:#8C6D3F;line-height:1">5</p>
+        <p style="font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#8C6D3F;margin:0.4em 0 1em">Flexible</p>
+        <p style="font-size:0.75em;color:var(--text-muted);line-height:1.7">Photography · Aspect ratio · Editorial composition · Card density · Merchandising</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 03 — LUXURY PRINCIPLES ═══════ -->
+
+  <!-- Viewport: the principle statement -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:42em">
+      <p class="mono-text" style="margin-bottom:1.6em">03 / Luxury Principles</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.4rem,3vw,2.4rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">The strongest luxury platforms don't decorate — they get out of the way. Warm palettes, generous spacing, and photography-first components so the product speaks before the interface does.</h2>
+    </div>
+  </section>
+
+  <!-- Three words horizontal strip -->
+  <div style="padding:0 8% 3em;max-width:60em;margin:0 auto">
+    <div class="principles-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center">
+      <div style="padding:2em 1.5em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:500;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:0.3em">Warmth.</p>
+        <p style="font-size:0.75em;color:var(--text-muted);line-height:1.45">Warm neutrals signal craft. Cold grays signal mass production.</p>
+      </div>
+      <div style="padding:2em 1.5em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:500;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:0.3em">Space.</p>
+        <p style="font-size:0.75em;color:var(--text-muted);line-height:1.45">Luxury needs negative space. Density signals discount.</p>
+      </div>
+      <div style="padding:2em 1.5em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:500;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:0.3em">Restraint.</p>
+        <p style="font-size:0.75em;color:var(--text-muted);line-height:1.45">Components frame the product — they don't compete with it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit image -->
+  <div class="full-screen-asset" style="height:120vh;overflow:hidden;background:#1a1a1a">
+    <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into competitive audit board" style="width:100%;height:100%">
+      <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/benchmarking-audit.webp?v=3" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/benchmarking-audit.png" alt="Competitive benchmarking board — Swadesh design system audit across 12+ luxury e-commerce platforms" loading="lazy" style="width:100%;height:100%;object-fit:cover"></picture>
+      <span class="zoom-hint">Click to explore</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 04 — THE HARD DECISION ═══════ -->
+
+  <!-- Viewport: the title -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">04 / The Hard Decision</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">In luxury, cropping<br>destroys value.</h2>
+    </div>
+  </section>
+
+  <!-- Block 1: Narrative left, crop comparison right -->
+  <section style="padding:5em 0 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;padding:0 8%;align-items:start" class="s04-row">
+      <div style="width:40%;flex-shrink:0">
+        <p class="mono-text" style="margin-bottom:0.8em">The Constraint</p>
+        <p style="font-size:0.85em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.2em">I started with a fixed 3:4 portrait ratio. It worked for jewellery — Kundan necklaces and chandbali earrings looked right in a tall frame.</p>
+        <p style="font-size:0.85em;color:var(--text-secondary);line-height:1.55">Then Furniture pushed back. A carved walnut bookstand cropped at 3:4 lost half the piece. Instead of building category-specific cards, I made the ratio configurable.</p>
+      </div>
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1em;max-width:420px">
+        <div>
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#b33b3b;margin-bottom:0.5em">Forced 3:4</p>
+          <div style="overflow:hidden;border-radius:4px"><picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-artisanal.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-artisanal.png" alt="Artisanal product forced into portrait crop — craftsmanship details lost" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block"></picture></div>
+          <p style="font-size:0.55em;color:var(--text-ghost);margin-top:0.4em">Craftsmanship lost</p>
+        </div>
+        <div>
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#1a7a3c;margin-bottom:0.5em">Natural 3:2</p>
+          <div style="overflow:hidden;border-radius:4px"><picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-artisanal.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-artisanal.png" alt="Artisanal product at natural 3:2 ratio — full composition preserved" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block"></picture></div>
+          <p style="font-size:0.55em;color:var(--text-ghost);margin-top:0.4em">Full product</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Block 2: Title + principle left, interactive selector right -->
+  <section style="padding:4em 0 5em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;padding:0 8%;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:45%;flex-shrink:0">
+        <p class="mono-text" style="margin-bottom:0.8em">The Solution — One Component, Four Ratios</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:1.2em">The card has no knowledge of whether it is displaying a necklace or a bookstand.</p>
+        <p style="font-size:0.8em;color:var(--text-muted);line-height:1.55;margin-bottom:2em">Category identity lives in the photography and the editorial choice of ratio — not in the component.</p>
+        <div style="border-top:1px solid rgba(52,52,52,0.06);padding-top:1.5em">
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.4em">The proof</p>
+          <p style="font-size:0.8em;color:var(--text-muted);line-height:1.5">When Wellness launched as a seventh category, the existing card system handled it without needing a new variant or any engineering changes.</p>
+        </div>
+      </div>
+      <div style="flex:1;text-align:center;height:480px" id="s04Selector">
+        <div style="display:flex;gap:0.4em;justify-content:center;margin-bottom:1.5em">
+          <button class="ratio-btn active" data-ratio="3/4" data-label="Jewellery, Apparel" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;padding:0.5em 1.2em;border-radius:100px;border:1px solid rgba(52,52,52,0.12);background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s">3:4</button>
+          <button class="ratio-btn" data-ratio="4/5" data-label="Featured products" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;padding:0.5em 1.2em;border-radius:100px;border:1px solid rgba(52,52,52,0.12);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">4:5</button>
+          <button class="ratio-btn" data-ratio="3/2" data-label="Furniture, Artisanal" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;padding:0.5em 1.2em;border-radius:100px;border:1px solid rgba(52,52,52,0.12);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">3:2</button>
+          <button class="ratio-btn" data-ratio="1/1" data-label="Mobile, Social" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:500;padding:0.5em 1.2em;border-radius:100px;border:1px solid rgba(52,52,52,0.12);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">1:1</button>
+        </div>
+        <div style="max-width:280px;margin:0 auto;overflow:hidden;border-radius:4px">
+          <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-precious.webp" type="image/webp"><img id="s04Preview" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-precious.png" alt="Product card at configurable aspect ratio" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:aspect-ratio 0.4s ease"></picture>
+        </div>
+        <p id="s04Label" style="font-size:0.6em;color:var(--text-ghost);margin-top:0.6em">Jewellery, Apparel</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 05 — FOUNDATIONS ═══════ -->
+  <section class="content-section">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">05 / Foundations</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Tokens that<br>carry the brand.</h2>
+      </div>
+      <div class="content-right">
+        <p class="mono-text" style="margin-bottom:0.4em">Colour</p>
+        <p class="body-copy">99 colour tokens organised into five tiers: Primary (Saffron scale), Secondary (12 nature-derived families — Ocean &amp; Sky, Marine, Rouge, Magenta, Emerald, Leaf, Moss, Forest, Clay, Terra, Earth, Gold — each with a consistent six-step scale), Neutral, Surface (a warm Sand scale from cream to mid-tone, never cold gray), and System (success, alert, error).</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:0 8%;max-width:72em;margin:0 auto">
+    <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into colour token system" style="border-radius:4px">
+      <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/figma-colors-v2.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/figma-colors-v2.png" alt="Swadesh colour token system — Primary, Secondary, Surface, Neutral, System tiers" loading="lazy" style="width:100%;display:block;border-radius:4px"></picture>
+      <span class="zoom-hint">Click to explore</span>
+    </div>
+  </div>
+
+  <section class="content-section" style="padding-top:2em">
+    <div class="content-row">
+      <div class="content-left"><p class="mono-text">Typography</p></div>
+      <div class="content-right">
+        <p class="body-copy">Two typefaces. Begum — a serif supporting Devanagari, Latin, and Tamil — for all headings. JioType Var for all body text and functional UI. Five heading sizes across three responsive breakpoints. Four body sizes with weight variants. 26 text styles total.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:0 8%;max-width:72em;margin:0 auto">
+    <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into typography system" style="border-radius:4px">
+      <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/figma-typography-v2.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/figma-typography-v2.png" alt="Typography system — Begum headings and JioType Var body across Desktop, Tablet, and Mobile" loading="lazy" style="width:100%;display:block;border-radius:4px"></picture>
+      <span class="zoom-hint">Click to explore</span>
+    </div>
+  </div>
+
+  <section class="content-section" style="padding-top:2em;padding-bottom:2em">
+    <div class="content-row">
+      <div class="content-left"><p class="mono-text">Spacing</p></div>
+      <div class="content-right">
+        <p class="body-copy">I built the initial spacing scale with 4px increments up to 24px. It worked inside components. It fell apart at page-level composition.</p>
+        <p class="body-copy">The Furniture category landing page was what broke it. Nothing looked right with only small increments. Luxury needs breathing room between sections, and 24px is not breathing room.</p>
+        <p class="body-copy">I added semantic spacing tokens for section-level composition: 40, 56, 84, 120px. The jumps are irregular because they were born from real layout testing, not mathematical elegance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" style="padding-top:0">
+    <div class="content-row">
+      <div class="content-left"><p class="mono-text">Grid</p></div>
+      <div class="content-right"><p class="body-copy">Four responsive breakpoints.</p></div>
+    </div>
+  </section>
+
+  <div style="padding:0 8% 4em;max-width:72em;margin:0 auto">
+    <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into grid specifications" style="border-radius:4px">
+      <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/swadesh-grid-layout.png" alt="Swadesh design system responsive grid — Desktop, Tablet, and Mobile breakpoints with column counts, margins, and gutters" loading="lazy" style="width:100%;display:block;border-radius:4px">
+      <span class="zoom-hint">Click to explore</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 06 — RIBBON BUTTON ═══════ -->
+
+  <!-- Viewport title -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">06 / Brand into Component</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Most luxury brands use<br>rectangles for their CTA.</h2>
+    </div>
+  </section>
+
+  <!-- Block 1: Why not a rectangle + annotated button -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start" class="s04-row">
+      <div style="width:40%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Why Not a Rectangle?</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">Hermès, Cartier, and Tiffany use rectangles because their identity lives in colour, material, or one iconic object. Swadesh is different — a marketplace spanning six categories, thousands of artisans, products from Rs 1,690 to Rs 11,99,990. There is no single iconic product. What unifies everything is India itself and the tradition behind its making.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">The brand book's "Shapes of India" uses Indian architecture as the unifying visual principle — arches, jharokha windows, scalloped doorways. These forms are pan-Indian. They belong to no single region, religion, or dynasty. For products, rectangles only. For buttons, a subtle touch of India.</p>
+      </div>
+      <div style="flex:1">
+        <div style="background:#F9F6EF;border-radius:8px;padding:3.5em 2.5em 2em;text-align:center">
+          <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/btn-primary-default.svg" alt="Swadesh primary ribbon button with gold gradient border" style="height:56px;display:block;margin:0 auto 2em">
+          <div class="anatomy-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1em;text-align:center">
+            <div>
+              <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.3em">Wing Curve</p>
+              <p style="font-size:0.65em;color:var(--text-muted);line-height:1.4">Patta scroll endpoints</p>
+            </div>
+            <div>
+              <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.3em">Gold</p>
+              <p style="font-size:0.65em;color:var(--text-muted);line-height:1.4">3 conic gradients per surface</p>
+            </div>
+            <div>
+              <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.3em">Label</p>
+              <p style="font-size:0.65em;color:var(--text-muted);line-height:1.4">JioType 12px uppercase</p>
+            </div>
+            <div>
+              <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.3em">Arrows</p>
+              <p style="font-size:0.65em;color:var(--text-muted);line-height:1.4">Custom bezier echoing wings</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Block 2: Patta reference + what was rejected -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:40%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">The Patta Reference</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">The wing endpoints reference the patta — a form from Indian manuscript and textile tradition. In palm-leaf manuscripts, the leaves curl inward at binding points. Over centuries, this natural curl was stylised into a deliberate visual signature across Banarasi brocades, Kanchipuram silks, and Phulkari embroidery.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">The patta references craft itself — manuscripts (knowledge, tradition) and textiles (what Swadesh actually sells). A lotus would reference religion. A peacock would reference the state. The patta references the act of making.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">What Was Rejected</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(52,52,52,0.06)">
+          <div style="padding:1em 1em 1em 0;border-bottom:1px solid rgba(52,52,52,0.06)">
+            <p style="font-size:0.8em;color:var(--charcoal);font-weight:500">Lotus shape</p>
+            <p style="font-size:0.7em;color:var(--text-muted)">Too religious, too literal</p>
+          </div>
+          <div style="padding:1em 0 1em 1em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.06)">
+            <p style="font-size:0.8em;color:var(--charcoal);font-weight:500">Peacock motif</p>
+            <p style="font-size:0.7em;color:var(--text-muted)">Too decorative, can't contain text</p>
+          </div>
+          <div style="padding:1em 1em 1em 0;border-bottom:1px solid rgba(52,52,52,0.06)">
+            <p style="font-size:0.8em;color:var(--charcoal);font-weight:500">Full arch</p>
+            <p style="font-size:0.7em;color:var(--text-muted)">Reads as container, not button</p>
+          </div>
+          <div style="padding:1em 0 1em 1em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.06)">
+            <p style="font-size:0.8em;color:var(--charcoal);font-weight:500">Rounded corners</p>
+            <p style="font-size:0.7em;color:var(--text-muted)">Too generic, every app does this</p>
+          </div>
+        </div>
+        <div style="padding:1em 0 0;margin-top:0.5em">
+          <p style="font-size:0.8em;color:var(--charcoal);font-weight:500">Patta/scroll ✓</p>
+          <p style="font-size:0.7em;color:var(--text-muted)">Horizontally extensible, bilateral symmetry, degrades across 3 tiers, pan-Indian, references craft</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three buttons centred -->
+  <section style="padding:4em 8% 0">
+    <div style="max-width:62em;margin:0 auto;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em">
+      <div class="tiers-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;text-align:center">
+        <div>
+          <div style="background:#F9F6EF;border-radius:4px;display:flex;align-items:center;justify-content:center;height:120px"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/btn-primary-default.svg" alt="Primary button — full brand expression" style="height:44px"></div>
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-top:0.8em">Full Expression</p>
+          <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.2em">Commitment moments</p>
+        </div>
+        <div>
+          <div style="background:#F9F6EF;border-radius:4px;display:flex;align-items:center;justify-content:center;height:120px"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/btn-secondary-default.svg" alt="Secondary button — measured restraint" style="height:44px"></div>
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-top:0.8em">Restraint</p>
+          <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.2em">Shape kept, fill removed</p>
+        </div>
+        <div>
+          <div style="background:#F9F6EF;border-radius:4px;display:flex;align-items:center;justify-content:center;height:120px"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/btn-tertiary-default.svg" alt="Tertiary button — brand steps back completely" style="height:20px"></div>
+          <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-top:0.8em">Silence</p>
+          <p style="font-size:0.65em;color:var(--text-muted);margin-top:0.2em">Brand steps back</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why gradients / why restraint -->
+  <section style="padding:3em 8% 5em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto" class="s04-row">
+      <div style="flex:1">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Why Three Gradients?</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">The brand book says gold honours the craft. On real gold-embroidered work, light catches each surface at a different angle. A single gradient looks like cheap digital decoration. Three independent conic gradients simulate how light rotates across compound metalwork, so the gold reads as material rather than a Photoshop layer effect.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Why the Silence?</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">The brand book's own design pillar: "We allow the essence of the craft to take centre stage. Indian beauty is used only as highlights." The tertiary tier is that principle implemented at the component level. Decorative elements lose power through repetition, so the brand shape appears only at moments of commitment — not on every link.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Button interactive Storybook panel -->
+  <div style="padding:0 8%;max-width:72em;margin:0 auto">
+    <div class="sb-panel">
+      <div class="sb-header">
+        <div class="sb-header-left"><span class="sb-comp-dot"></span><span class="sb-comp-name">Button</span><span class="sb-badge">Stable</span></div>
+        <span class="sb-version">v1.0</span>
+      </div>
+      <p class="sb-desc">Buttons trigger actions. The Swadesh button uses a unique ribbon shape with decorative wing vectors and a gold gradient border stroke.</p>
+
+      <div class="sb-tabs" role="tablist" aria-label="Button documentation">
+        <button class="sb-tab" role="tab" aria-selected="true" aria-controls="sb-code" id="sb-tab-code" tabindex="0">Code</button>
+        <button class="sb-tab" role="tab" aria-selected="false" aria-controls="sb-usage" id="sb-tab-usage" tabindex="-1">Usage</button>
+        <button class="sb-tab" role="tab" aria-selected="false" aria-controls="sb-style" id="sb-tab-style" tabindex="-1">Style</button>
+        <button class="sb-tab" role="tab" aria-selected="false" aria-controls="sb-a11y" id="sb-tab-a11y" tabindex="-1">Accessibility</button>
+      </div>
+
+      <!-- Code tab -->
+      <div class="sb-tabpanel active" role="tabpanel" id="sb-code" aria-labelledby="sb-tab-code" tabindex="0">
+        <div class="sb-preview-layout">
+          <div class="sb-canvas" id="sbCanvas">
+            <svg id="sbBtnSvg" viewBox="0 0 260 56" width="223" height="48" style="display:block;margin:0 auto;max-width:100%" aria-hidden="true">
+              <path id="sbBtnPath" d="M40,0 L220,0 L232.53,0 C232.53,0 244.19,0.19 248.54,14.02 C252.44,25.6 257.86,27.64 260,28 C257.86,28.35 252.44,30.4 248.54,41.98 C244.19,55.81 232.53,56 232.53,56 L220,56 L40,56 L27.47,56 C27.47,56 15.81,55.81 11.46,41.98 C7.56,30.4 2.14,28.35 0,28 C2.14,27.64 7.55,25.6 11.46,14.02 C15.81,0.19 27.47,0 27.47,0 L40,0 Z" fill="#C45434" stroke="#EBB872" stroke-width="1.5"/>
+              <text id="sbBtnText" x="50%" y="50%" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="Helvetica Now Display,Helvetica,sans-serif" font-size="12" font-weight="500" letter-spacing="1.2" style="text-transform:uppercase">ADD TO BAG</text>
+            </svg>
+          </div>
+          <div class="sb-controls">
+            <p class="sb-controls-title">Controls</p>
+            <fieldset class="sb-control-group" style="border:none;padding:0;margin:0">
+              <legend class="sb-control-legend">Type</legend>
+              <div class="sb-radios">
+                <label class="sb-radio"><input type="radio" name="sb-type" value="primary" checked> Primary</label>
+                <label class="sb-radio"><input type="radio" name="sb-type" value="secondary"> Secondary</label>
+                <label class="sb-radio"><input type="radio" name="sb-type" value="tertiary"> Tertiary</label>
+              </div>
+            </fieldset>
+            <fieldset class="sb-control-group" style="border:none;padding:0;margin:0">
+              <legend class="sb-control-legend">State</legend>
+              <div class="sb-radios">
+                <label class="sb-radio"><input type="radio" name="sb-state" value="default" checked> Default</label>
+                <label class="sb-radio"><input type="radio" name="sb-state" value="hover"> Hover</label>
+                <label class="sb-radio"><input type="radio" name="sb-state" value="pressed"> Pressed</label>
+                <label class="sb-radio"><input type="radio" name="sb-state" value="disabled"> Disabled</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="sb-props-wrap">
+          <table class="sb-props-table">
+            <thead><tr><th>Name</th><th>Description</th><th>Default</th><th>Control</th></tr></thead>
+            <tbody>
+              <tr><td class="prop-name">type</td><td>Visual type <span class="prop-type">union</span></td><td class="prop-default">"primary"</td><td><select class="sb-select" name="sb-ctrl-type" aria-label="Button type"><option>primary</option><option>secondary</option><option>tertiary</option></select></td></tr>
+              <tr><td class="prop-name">size</td><td>Height variant <span class="prop-type">union</span></td><td class="prop-default">"medium"</td><td><select class="sb-select" data-sb-prop="size" aria-label="Button size"><option value="large">large</option><option value="medium" selected>medium</option><option value="small">small</option></select></td></tr>
+              <tr><td class="prop-name">disabled</td><td>Non-interactive <span class="prop-type">boolean</span></td><td class="prop-default">false</td><td><label class="sb-toggle"><input type="checkbox" data-sb-prop="disabled" aria-label="Toggle disabled"><span class="sb-toggle-track"></span><span class="sb-toggle-knob"></span></label></td></tr>
+              <tr><td class="prop-name">loading</td><td>Loading spinner <span class="prop-type">boolean</span></td><td class="prop-default">false</td><td><label class="sb-toggle"><input type="checkbox" data-sb-prop="loading" aria-label="Toggle loading"><span class="sb-toggle-track"></span><span class="sb-toggle-knob"></span></label></td></tr>
+              <tr><td class="prop-name">label</td><td>Button text <span class="prop-type">string</span></td><td class="prop-default">"ADD TO BAG"</td><td><input class="sb-input" type="text" value="ADD TO BAG" data-sb-prop="label" aria-label="Button label text"></td></tr>
+              <tr><td class="prop-name">fullWidth</td><td>Fill container <span class="prop-type">boolean</span></td><td class="prop-default">false</td><td><label class="sb-toggle"><input type="checkbox" data-sb-prop="fullWidth" aria-label="Toggle full width"><span class="sb-toggle-track"></span><span class="sb-toggle-knob"></span></label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Usage tab -->
+      <div class="sb-tabpanel" role="tabpanel" id="sb-usage" aria-labelledby="sb-tab-usage" tabindex="0">
+        <div class="sb-usage">
+          <p class="sb-section-heading">When to use</p>
+          <ul class="sb-usage-list do">
+            <li><strong>Primary:</strong> One per screen. Add to bag, Checkout, Submit order.</li>
+            <li><strong>Secondary:</strong> Supporting actions alongside primary. Add to wishlist, Continue shopping.</li>
+            <li><strong>Tertiary:</strong> Low-emphasis inline actions. View details, Learn more.</li>
+          </ul>
+          <p class="sb-section-heading">Guidelines</p>
+          <div class="sb-dodont">
+            <div class="sb-dodont-card do"><p class="sb-dodont-title">&#10003; Do</p><ul><li>Use verb-first labels: "Add to bag", not "Bag"</li><li>Pair secondary with a primary for clear hierarchy</li><li>Provide a disabled reason via helper text</li></ul></div>
+            <div class="sb-dodont-card dont"><p class="sb-dodont-title">&#10007; Don't</p><ul><li>Use more than one primary per screen</li><li>Disable without explaining why</li><li>Override the gold gradient border</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Style tab -->
+      <div class="sb-tabpanel" role="tabpanel" id="sb-style" aria-labelledby="sb-tab-style" tabindex="0">
+        <div class="sb-tokens-section">
+          <p class="sb-section-heading" style="border:none;margin:0 0 20px">Anatomy</p>
+          <div style="display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap">
+            <div style="flex-shrink:0;padding:48px 56px;background:#F9F6EF;border-radius:8px;position:relative">
+              <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/btn-primary-default.svg" alt="Button anatomy" style="height:56px;display:block">
+              <span class="sb-anatomy-num" style="left:8px;top:50%;transform:translateY(-50%)">1</span>
+              <span class="sb-anatomy-num" style="left:50%;top:4px;transform:translateX(-50%)">2</span>
+              <span class="sb-anatomy-num" style="left:50%;bottom:4px;transform:translateX(-50%)">3</span>
+              <span class="sb-anatomy-num" style="left:28%;top:50%;transform:translate(-50%,-50%)">4</span>
+              <span class="sb-anatomy-num" style="right:28%;top:50%;transform:translate(50%,-50%);left:auto">5</span>
+              <span class="sb-anatomy-num" style="right:8px;top:50%;transform:translateY(-50%);left:auto">6</span>
+              <span class="sb-anatomy-num" style="left:22%;top:-4px;transform:translateX(-50%)">7</span>
+            </div>
+            <div class="sb-anatomy-legend">
+              <span class="sb-anatomy-legend-num">1</span><span class="sb-anatomy-legend-label">Wing vector (left) — curved bezier path</span>
+              <span class="sb-anatomy-legend-num">2</span><span class="sb-anatomy-legend-label">Container — background fill, 16px padding</span>
+              <span class="sb-anatomy-legend-num">3</span><span class="sb-anatomy-legend-label">Label — JioType Medium 12px uppercase</span>
+              <span class="sb-anatomy-legend-num">4</span><span class="sb-anatomy-legend-label">Leading icon — 16px, optional</span>
+              <span class="sb-anatomy-legend-num">5</span><span class="sb-anatomy-legend-label">Trailing icon — 16px, optional</span>
+              <span class="sb-anatomy-legend-num">6</span><span class="sb-anatomy-legend-label">Wing vector (right) — mirrored</span>
+              <span class="sb-anatomy-legend-num">7</span><span class="sb-anatomy-legend-label">Gold gradient border — #EBB872, 1.5px</span>
+            </div>
+          </div>
+        </div>
+        <div class="sb-tokens-section">
+          <p class="sb-section-heading" style="border:none;margin:0 0 16px">Colour tokens</p>
+          <p class="sb-color-variant-label" style="margin-top:0">Primary</p>
+          <div class="sb-token-grid">
+            <div class="sb-token-cell sb-token-cell-head">Element</div><div class="sb-token-cell sb-token-cell-head">Default</div><div class="sb-token-cell sb-token-cell-head">Hover</div><div class="sb-token-cell sb-token-cell-head">Pressed</div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Background</div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#C45434"></span>#C45434</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#CE7056"></span>#CE7056</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#A3462B"></span>#A3462B</span></div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Text</div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#fff;border:1px solid #ddd"></span>#FFFFFF</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#fff;border:1px solid #ddd"></span>#FFFFFF</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#fff;border:1px solid #ddd"></span>#FFFFFF</span></div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Border</div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#EBB872"></span>#EBB872</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#EBB872"></span>#EBB872</span></div><div class="sb-token-cell"><span class="sb-token-val"><span class="sb-token-dot" style="background:#EBB872"></span>#EBB872</span></div>
+          </div>
+        </div>
+        <div class="sb-tokens-section">
+          <p class="sb-section-heading" style="border:none;margin:0 0 12px">Sizing</p>
+          <div class="sb-token-grid">
+            <div class="sb-token-cell sb-token-cell-head">Size</div><div class="sb-token-cell sb-token-cell-head">Height</div><div class="sb-token-cell sb-token-cell-head">Wing</div><div class="sb-token-cell sb-token-cell-head">Padding</div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Large</div><div class="sb-token-cell"><span class="sb-token-val">56px</span></div><div class="sb-token-cell"><span class="sb-token-val">40px</span></div><div class="sb-token-cell"><span class="sb-token-val">16px</span></div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Medium</div><div class="sb-token-cell"><span class="sb-token-val">48px</span></div><div class="sb-token-cell"><span class="sb-token-val">32px</span></div><div class="sb-token-cell"><span class="sb-token-val">16px</span></div>
+            <div class="sb-token-cell" style="font-size:0.75em;color:var(--text-ghost)">Small</div><div class="sb-token-cell"><span class="sb-token-val">40px</span></div><div class="sb-token-cell"><span class="sb-token-val">28px</span></div><div class="sb-token-cell"><span class="sb-token-val">12px</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accessibility tab -->
+      <div class="sb-tabpanel" role="tabpanel" id="sb-a11y" aria-labelledby="sb-tab-a11y" tabindex="0">
+        <div class="sb-usage">
+          <p class="sb-section-heading">Keyboard interaction</p>
+          <table class="sb-kbd-table"><tr><td><kbd>Tab</kbd></td><td>Move focus to the button</td></tr><tr><td><kbd>Enter</kbd></td><td>Activate the button</td></tr><tr><td><kbd>Space</kbd></td><td>Activate the button</td></tr></table>
+          <p class="sb-section-heading" style="margin-top:36px">ARIA attributes</p>
+          <table class="sb-aria-table">
+            <tr><td>role="button"</td><td>Applied automatically by the native &lt;button&gt; element.</td></tr>
+            <tr><td>aria-label</td><td>Required for icon-only buttons. Must describe the action.</td></tr>
+            <tr><td>aria-disabled</td><td>Use instead of native disabled when the button should remain focusable.</td></tr>
+            <tr><td>aria-busy</td><td>Auto-applied during loading state.</td></tr>
+          </table>
+          <p class="sb-section-heading" style="margin-top:36px">Design considerations</p>
+          <ul class="sb-usage-list do">
+            <li>Disabled buttons retain focus so screen readers can announce why the action is unavailable</li>
+            <li>The 48px and 56px sizes exceed the 44×44px touch target minimum. The 40px size relies on surrounding padding for touch compliance.</li>
+            <li>Focus ring: 2px solid #C45434, 3px offset</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 07 — COMPONENT LIBRARY ═══════ -->
+
+  <!-- Screens section -->
+  <section style="padding:6em 8% 3em;text-align:center">
+    <div style="max-width:52em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:1.2em">07 / The Component Library</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:1em">35 shared components. 510 variants. Every screen assembled from the same library.</h2>
+      <p style="font-size:0.85em;color:var(--text-muted);line-height:1.55;max-width:38em;margin:0 auto">No category-specific components. A customer browsing jewellery and switching to furniture encounters the same interactions, the same spatial logic — a shared language across every category.</p>
+    </div>
+  </section>
+
+  <div class="screens-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em;padding:0 8% 4em;max-width:72em;margin:0 auto">
+    <div><div style="border-radius:4px;overflow:hidden;border:1px solid rgba(52,52,52,0.06)"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/screen-shopping-bag.png" alt="Swadesh Shopping Bag page — Furniture products assembled from shared design system components" loading="lazy" style="width:100%;display:block"></div><p style="font-size:0.65em;color:var(--text-ghost);margin-top:0.6em">Shopping Bag — Furniture products</p></div>
+    <div><div style="border-radius:4px;overflow:hidden;border:1px solid rgba(52,52,52,0.06)"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/screen-checkout.png" alt="Swadesh Checkout page — address and payment forms using shared design system components" loading="lazy" style="width:100%;display:block"></div><p style="font-size:0.65em;color:var(--text-ghost);margin-top:0.6em">Checkout — shared form components</p></div>
+    <div><div style="border-radius:4px;overflow:hidden;border:1px solid rgba(52,52,52,0.06)"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/screen-customer-care.png" alt="Swadesh Customer Care page — accordion, cards, and buttons from the component library" loading="lazy" style="width:100%;display:block"></div><p style="font-size:0.65em;color:var(--text-ghost);margin-top:0.6em">Customer Care — accordion, cards, buttons</p></div>
+  </div>
+
+  <!-- Brand gradient section -->
+  <section style="padding:3em 8% 2em;text-align:center">
+    <div style="max-width:52em;margin:0 auto">
+      <h3 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:500;line-height:1.15;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.8em">Not every component carries the brand equally.</h3>
+      <p style="font-size:0.8em;color:var(--text-muted);line-height:1.55;max-width:36em;margin:0 auto">The library ranges from functionally neutral to fully brand-encoded. Where each component sits on that range depends on its role.</p>
+    </div>
+  </section>
+
+  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+    <div class="brand-gradient-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5em;border-top:1px solid rgba(52,52,52,0.06);padding-top:3em;text-align:center">
+      <div>
+        <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:1.2em">Neutral</p>
+        <div style="background:#F9F6EF;border-radius:4px;padding:2em 1.5em;display:flex;align-items:center;justify-content:center;height:140px"><picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/figma-checkbox-radio.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/figma-checkbox-radio.png" alt="Checkbox and radio components — functionally neutral, no brand decoration" loading="lazy" style="max-height:90px;max-width:100%"></picture></div>
+        <p style="font-size:0.7em;color:var(--text-muted);margin-top:0.8em;line-height:1.5">Checkbox, Radio, Input, Dropdown, Search — functional, universal, no brand decoration</p>
+      </div>
+      <div>
+        <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:1.2em">Token-Branded</p>
+        <div style="background:#F9F6EF;border-radius:4px;padding:2em 1.5em;display:flex;align-items:center;justify-content:center;height:140px"><picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/figma-navigation.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/figma-navigation.png" alt="Navigation component — branded through saffron accent colour and sand surface tokens" loading="lazy" style="max-height:90px;max-width:100%"></picture></div>
+        <p style="font-size:0.7em;color:var(--text-muted);margin-top:0.8em;line-height:1.5">Navigation, Toast, Cards, Tabs, Footer — branded through saffron accent, sand surfaces, Begum type</p>
+      </div>
+      <div>
+        <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#C45434;margin-bottom:1.2em">Brand-Encoded</p>
+        <div style="background:#F9F6EF;border-radius:4px;padding:2em 1.5em;display:flex;align-items:center;justify-content:center;height:140px"><picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/icon-banner.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/icon-banner.png" alt="Brand-encoded components — Sutras badges and ribbon buttons with cultural motifs, gold gradient, and architectural shapes" loading="lazy" style="max-height:90px;max-width:100%"></picture></div>
+        <p style="font-size:0.7em;color:var(--text-muted);margin-top:0.8em;line-height:1.5">Buttons, Sutras, Patterns — cultural motifs, gold gradient, architectural shapes</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 08 — ENGINEERING HANDOFF ═══════ -->
+
+  <!-- Viewport title -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">08 / Engineering Handoff</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Most design handoffs<br>stop at static screens.</h2>
+    </div>
+  </section>
+
+  <!-- Artifact 1: Specification Table -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start" class="s04-row">
+      <div style="width:33%;flex-shrink:0;position:sticky;top:6em;align-self:flex-start">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Every interaction specified</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">I built this table because the same argument happened three sprints in a row. A developer would implement an animation, I would say it felt too slow, they would ask for a number, and I would guess. The table was the answer to the question every engineer eventually asks: what exact value do you want?</p>
+        <p style="font-size:0.7em;color:var(--text-muted);line-height:1.5;margin-top:0.8em;font-style:italic">Figma Dev Mode has no fields for entry easing, exit easing, entry direction, exit direction, duration, or animation sequencing. This table does.</p>
+        <p style="font-size:0.75em;color:var(--charcoal);font-weight:500;line-height:1.5;margin-top:1.5em;padding-top:1em;border-top:1px solid rgba(52,52,52,0.06)">Dev impact: Animation review rounds dropped from three to one. Instead of "this feels wrong," the feedback became "this doesn't match row 14."</p>
+      </div>
+      <div style="flex:1">
+        <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into specification table" style="border-radius:4px">
+          <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/dev-handoff.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/dev-handoff.png" alt="Design system motion specification table — 30+ interaction definitions with easing, duration, and direction values for engineering handoff" loading="lazy" style="width:100%;display:block;border-radius:4px"></picture>
+          <span class="zoom-hint">Click to explore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artifact 2: Motion Tokens -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:33%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Motion tokenised</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">Figma lets you define colour variables and spacing variables. It has zero support for motion variables. Without tokens, each engineer picks their own timing — 200ms ease-in-out on the accordion, 400ms linear on the dropdown, 560ms ease-out on the checkbox. The platform starts feeling incoherent.</p>
+        <p style="font-size:0.7em;color:var(--text-muted);line-height:1.5;margin-top:0.8em;font-style:italic">Four easing curves, each named by what it's for. A duration scale from 100ms to 1000ms. I treated motion the same way we treated colour and spacing: as a shared set of named values.</p>
+        <p style="font-size:0.75em;color:var(--charcoal);font-weight:500;line-height:1.5;margin-top:1.5em;padding-top:1em;border-top:1px solid rgba(52,52,52,0.06)">Dev impact: Engineers reference a token name in code instead of reverse-engineering values from a prototype video. And if a timing needs to change, updating the token updates every animation that uses it.</p>
+      </div>
+      <div style="flex:1">
+        <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into motion tokens" style="border-radius:4px">
+          <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/dev-handoff-lifecycle.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/dev-handoff-lifecycle.png" alt="Design system motion tokens — four named easing curves and a duration scale from 100ms to 1000ms" loading="lazy" style="width:100%;display:block;border-radius:4px"></picture>
+          <span class="zoom-hint">Click to explore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artifact 3: Interaction Flows -->
+  <section style="padding:4em 8% 5em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:33%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Sequences choreographed</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">Figma Dev Mode shows Frame A and Frame B. It doesn't show the journey between them. For the PDP scroll, there are six distinct states as the user scrolls — the states between start and finish mattered just as much as the two endpoints.</p>
+        <p style="font-size:0.7em;color:var(--text-muted);line-height:1.5;margin-top:0.8em;font-style:italic">For someone configuring a bespoke piece of jewellery, how each form step transitions into the next changes whether the experience feels like a checkout or a consultation.</p>
+        <p style="font-size:0.75em;color:var(--charcoal);font-weight:500;line-height:1.5;margin-top:1.5em;padding-top:1em;border-top:1px solid rgba(52,52,52,0.06)">Dev impact: The sequences gave engineering enough detail to build the scroll behaviour and multi-step flows without needing another walkthrough.</p>
+      </div>
+      <div style="flex:1">
+        <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into interaction flows" style="border-radius:4px">
+          <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/dev-handoff-screens.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/dev-handoff-screens.png" alt="Interaction flow sequences documenting intermediate states for PDP scroll, filter panel, and bespoke configuration" loading="lazy" style="width:100%;display:block;border-radius:4px"></picture>
+          <span class="zoom-hint">Click to explore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Artifact 4: Component Specification -->
+  <section style="padding:4em 8% 5em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:33%;flex-shrink:0;position:sticky;top:6em;align-self:flex-start">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">Components specified</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">Beyond motion, I also documented component structure: how each component adapts across breakpoints, which states it needs, and how variants relate to each other. Writing it down once was faster than explaining it repeatedly.</p>
+        <p style="font-size:0.7em;color:var(--text-muted);line-height:1.5;margin-top:0.8em;font-style:italic">Figma Dev Mode shows individual element properties. It doesn't show how a component adapts across breakpoints, which states are required, or how variants compose.</p>
+        <p style="font-size:0.75em;color:var(--charcoal);font-weight:500;line-height:1.5;margin-top:1.5em;padding-top:1em;border-top:1px solid rgba(52,52,52,0.06)">Dev impact: Engineering built the responsive navigation from this document. No follow-up questions about breakpoint behaviour.</p>
+      </div>
+      <div style="flex:1">
+        <div class="zoom-container" tabindex="0" role="button" aria-label="Zoom into navigation component specification" style="border-radius:4px">
+          <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/nav-component-spec.png" alt="Design system component specification — responsive navigation with breakpoints, spacing tokens, states, and variant documentation for engineering handoff" loading="lazy" style="width:100%;display:block;border-radius:4px">
+          <span class="zoom-hint">Click to explore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breaker: the system in context -->
+  <div style="height:35vh"></div>
+  <div class="full-screen-asset" style="height:120vh;overflow:hidden">
+    <picture><source srcset="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/swadesh-showcase-grid.webp" type="image/webp"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/swadesh-showcase-grid.png" alt="Swadesh design system applied across mobile, desktop, tablet, editorial, and social media — all screens built from the same component library" loading="lazy" style="width:100%;height:100%;object-fit:cover"></picture>
+  </div>
+
+
+  <!-- ═══════ 09 — GOVERNANCE & ADOPTION ═══════ -->
+
+  <!-- Viewport title -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">09 / Governance &amp; Adoption</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Publishing a Figma library<br>is not the same as having<br>a design system.</h2>
+    </div>
+  </section>
+
+  <!-- Story 1: The system -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start" class="s04-row">
+      <div style="width:35%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">The system</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">A Slack channel, a heuristic, and a removal date.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">I set up a dedicated Slack channel where anyone — designer or engineer — could raise a request for a missing component. We reviewed every request against one heuristic: is this a one-off need or a repeating pattern? If only one screen needed it, it stayed local. If it kept appearing across category surfaces, it earned a place in the library.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">When a component was replaced, it got a removal date. The original category header broke at tablet widths, so I replaced it with a configurable full-width text component. Six screens migrated in one sprint, and the old component came out of the library two weeks later.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">That discipline is how the library stayed at 35 component sets instead of ballooning past a hundred.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story 2: The fight -->
+  <section style="padding:4em 8% 5em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:35%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">The reality</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">Building took three months. Adoption took four more.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">The first four teams adopted within weeks. They saw the library, tried it, and stopped rebuilding. The last two teams were different. They had working components. Their patterns were established. Switching meant rework with no visible user benefit.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">I spent four months in pairing sessions — opening their Figma files, sitting with them, migrating screens one at a time. It would have been easier to mandate adoption from a distance, but that doesn't actually work.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">If I did this again, I would start adoption from week one instead of waiting until the library felt "complete." A system that's 70% done but people are actually using is more valuable than one that's polished but sitting untouched in Figma.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ═══════ 10 — STRUCTURED FOR WHAT COMES NEXT ═══════ -->
+
+  <!-- Viewport title -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">10 / Structured for What Comes Next</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">One file an agent reads<br>before generating UI.</h2>
+    </div>
+  </section>
+
+  <!-- Implemented -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start" class="s04-row">
+      <div style="width:35%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:#1a7a3c;margin-bottom:0.8em">Implemented</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1rem,1.8vw,1.3rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">The architecture is already agent-ready.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">Semantic token naming (Primary/Saffron, not red-500). Category-agnostic components that carry no business domain knowledge. The invariant/flexible separation — 8 things an agent generates from, 5 things a human controls. None of this was designed with AI in mind, but the structure turns out to be exactly what an agent would need to generate on-brand UI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structured -->
+  <section style="padding:4em 8% 0">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:4em" class="s04-row">
+      <div style="width:35%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:#8C6D3F;margin-bottom:0.8em">Structured</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1rem,1.8vw,1.3rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">Context documents for agent consumption.</p>
+      </div>
+      <div style="flex:1">
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1.5em">Design.md and Agents.md — structured files describing brand rules, token values, and component constraints. An AI agent reading these files gets enough context to generate brand-compliant UI without needing to dig through source code.</p>
+        <div class="file-block">
+          <div class="file-header">Design.md — Token Reference</div>
+          <pre><span class="key">Primary/Saffron Base:</span> <span class="val">#C45434</span>
+<span class="key">Primary/Gold:</span> <span class="val">#EBB872</span>
+<span class="key">Surface/sand:</span> <span class="val">#F9F6EF — never pure white</span>
+<span class="key">Neutral/100:</span> <span class="val">#1E1E1E</span>
+
+<span class="comment"># Rules</span>
+<span class="val">One product card for all categories.</span>
+<span class="val">Product images are the visual focus. UI chrome stays minimal.</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two-row architecture: humans top, agents bottom (green text) -->
+  <section style="padding:4em 8% 3em">
+    <div style="max-width:62em;margin:0 auto;border-top:1px solid rgba(52,52,52,0.06);padding-top:3em">
+      <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:1.5em">Decisions for humans</p>
+      <div class="arch-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2em;margin-bottom:2.5em">
+        <div>
+          <p style="font-size:0.85em;color:var(--charcoal);font-weight:500;margin-bottom:0.4em">Semantic naming</p>
+          <p style="font-size:0.75em;color:var(--text-muted);line-height:1.5">Primary/Saffron, not red-500. Designers understand the palette through the brand language.</p>
+        </div>
+        <div>
+          <p style="font-size:0.85em;color:var(--charcoal);font-weight:500;margin-bottom:0.4em">Category-agnostic components</p>
+          <p style="font-size:0.75em;color:var(--text-muted);line-height:1.5">No JewelleryCard, no FurnitureNav. One library for all six categories.</p>
+        </div>
+        <div>
+          <p style="font-size:0.85em;color:var(--charcoal);font-weight:500;margin-bottom:0.4em">Invariant / flexible split</p>
+          <p style="font-size:0.75em;color:var(--text-muted);line-height:1.5">8 standardised behaviours. 5 flexible properties. The boundary is explicit.</p>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(52,52,52,0.06);padding-top:2em">
+        <p style="font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:#1a7a3c;margin-bottom:1.5em">Why agents benefit</p>
+        <div class="arch-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2em">
+          <div><p style="font-size:0.75em;color:#1a7a3c;line-height:1.5">An agent reading "Primary/Saffron" understands intent. "red-500" is meaningless without context.</p></div>
+          <div><p style="font-size:0.75em;color:#1a7a3c;line-height:1.5">Agent doesn't need to understand business taxonomy. One API surface.</p></div>
+          <div><p style="font-size:0.75em;color:#1a7a3c;line-height:1.5">Agents generate from the invariant layer. Humans control the flexible layer. No ambiguity.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How an agent uses this + Gantt pipeline -->
+  <section style="padding:2em 8% 3em">
+    <div style="display:flex;gap:4em;max-width:62em;margin:0 auto;align-items:start;border-top:1px solid rgba(52,52,52,0.06);padding-top:3em" class="s04-row">
+      <div style="width:40%;flex-shrink:0">
+        <p style="font-size:0.6em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-ghost);margin-bottom:0.8em">How an agent uses this</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55;margin-bottom:1em">An AI coding agent reads Design.md before generating any component. The primary colour is saffron, not generic red. Surfaces use sand, never white. One product card for all categories. The agent applies these constraints directly — no design context required.</p>
+        <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.55">The next step: DTCG-compliant token export and an MCP server that lets agents query the system as tools, not just read a file.</p>
+      </div>
+      <div style="flex:1">
+        <div style="overflow-x:auto;scrollbar-width:none">
+          <div style="display:grid;grid-template-columns:8em repeat(5,1fr);min-width:36em">
+            <div style="display:contents">
+              <div></div>
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;padding:0 0 1em;text-align:center">Source</div>
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;padding:0 0 1em;text-align:center">Context</div>
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;padding:0 0 1em;text-align:center">Tokens</div>
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;padding:0 0 1em;text-align:center">Interface</div>
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;padding:0 0 1em;text-align:center">Consumer</div>
+            </div>
+            <div style="display:contents">
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;color:var(--charcoal);text-transform:uppercase;letter-spacing:-0.02em;padding:0.8em 1em 0.8em 0;border-top:1px solid rgba(52,52,52,0.06);display:flex;align-items:center">Tool</div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:var(--charcoal);color:var(--frost)">Figma</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.25);color:var(--charcoal)">Design.md</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.12);color:var(--charcoal);opacity:0.9">DTCG JSON</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.12);color:var(--charcoal);opacity:0.9">MCP Server</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em;border-right:1px solid rgba(52,52,52,0.03)"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.12);color:var(--charcoal);opacity:0.9">AI Agents</div></div>
+            </div>
+            <div style="display:contents">
+              <div style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:800;color:var(--charcoal);text-transform:uppercase;letter-spacing:-0.02em;padding:0.8em 1em 0.8em 0;border-top:1px solid rgba(52,52,52,0.06);display:flex;align-items:center">Status</div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:var(--charcoal);color:var(--frost)">In Place</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.25);color:var(--charcoal)">Structured</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.04);color:var(--text-ghost)">Planned</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.04);color:var(--text-ghost)">Planned</div></div>
+              <div style="border-top:1px solid rgba(52,52,52,0.06);border-left:1px solid rgba(52,52,52,0.03);padding:0.6em 0.15em;min-height:3em;border-right:1px solid rgba(52,52,52,0.03)"><div style="height:2em;display:flex;align-items:center;justify-content:center;font-size:0.55em;text-transform:uppercase;letter-spacing:0.02em;white-space:nowrap;background:rgba(52,52,52,0.04);color:var(--text-ghost)">Planned</div></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:2em;margin-top:1.6em;padding-top:1.2em;border-top:1px solid rgba(52,52,52,0.06)">
+            <div style="display:flex;align-items:center;gap:0.5em"><div style="width:1.2em;height:0.7em;background:var(--charcoal)"></div><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase">In Place</span></div>
+            <div style="display:flex;align-items:center;gap:0.5em"><div style="width:1.2em;height:0.7em;background:rgba(52,52,52,0.25)"></div><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase">Structured</span></div>
+            <div style="display:flex;align-items:center;gap:0.5em"><div style="width:1.2em;height:0.7em;background:rgba(52,52,52,0.04)"></div><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase">Planned</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Moments timeline -->
+  <section style="padding:3em 8% 5em">
+    <div style="max-width:62em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:1.2em">Key moments</p>
+      <div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid var(--charcoal);border-top:1px solid rgba(52,52,52,0.06)"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M1</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">Brand book received. Audit started.</strong> Reviewed existing brand guidelines. Mapped what existed digitally vs what needed to be built from scratch.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Foundation</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid #f59e0b"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M2</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">29 of 35 components built in one month.</strong> Buttons first. Then layout, forms, navigation, cards, swatches, tabs. 99 colour tokens, 26 text styles, 4 responsive grids.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Sprint</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid #ef4444"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M3</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">Furniture broke the card.</strong> Fixed 3:4 ratio failed. Evaluated four ratios. One configurable component instead of forking.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Pivot</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid #ef4444"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M3</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">Spacing scale failed at page level.</strong> 4-24px broke at luxury composition. Added 40-120px semantic section spacing.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Pivot</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid var(--charcoal)"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M4</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">First four teams adopted.</strong> Saw the library, tried it, stopped rebuilding. Slack channel opened for requests.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Shipped</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid rgba(52,52,52,0.15)"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M5–7</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">Last two teams resisted — four months of pairing.</strong> Migrated screens one at a time, sitting with each team.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Blocked</span></div>
+        <div style="display:flex;align-items:baseline;gap:1.6em;padding:1.2em 1.4em;border-bottom:1px solid rgba(52,52,52,0.06);border-left:2px solid var(--charcoal)"><span style="font-size:0.7em;font-weight:400;color:var(--text-muted);text-transform:uppercase;width:4em;flex-shrink:0">M8</span><p style="font-size:0.75em;font-weight:400;line-height:1.35;color:var(--charcoal);flex:1"><strong style="font-weight:800;text-transform:uppercase;letter-spacing:-0.02em">Wellness launched on existing system.</strong> Seventh category. Zero new components. Zero engineering work.</p><span style="font-size:0.65em;color:var(--text-muted);text-transform:uppercase;text-align:right;flex-shrink:0">Shipped</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  </main>
+
+  <div style="height:50vh"></div>
+
+  <!-- ═══════ CTA + FOOTER ═══════ -->
+  <section id="cta">
+    <h2 class="cta-heading">
+      <span class="h-reg">Still </span><em class="h-ital">here</em>
+    </h2>
+    <div class="cta-content">
+      <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer working across AI, commerce and fintech products. I'm looking for a permanent Product Design role in the UK and would require Skilled Worker sponsorship to relocate.</p>
+      <p class="cta-label">Open to permanent UK opportunities</p>
+      <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+        <span class="btn-mail-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+  <footer id="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-left">
+        <span>terryjohnpaul20@gmail.com</span>
+        <span>Designed and coded by me. · &copy; 2026 Terry John Paul</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        <a href="/resume/">Resume</a>
+        <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a>
+        <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter &#8599;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching — scoped per panel
+    document.querySelectorAll('.sb-panel').forEach(panel => {
+      const tabs = panel.querySelectorAll('.sb-tab');
+      const panels = panel.querySelectorAll('.sb-tabpanel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => { t.setAttribute('aria-selected', 'false'); t.tabIndex = -1; });
+          panels.forEach(p => p.classList.remove('active'));
+          tab.setAttribute('aria-selected', 'true');
+          tab.tabIndex = 0;
+          const target = document.getElementById(tab.getAttribute('aria-controls'));
+          if (target) target.classList.add('active');
+        });
+        tab.addEventListener('keydown', (e) => {
+          const arr = Array.from(tabs);
+          const idx = arr.indexOf(tab);
+          let next = idx;
+          if (e.key === 'ArrowRight') next = (idx + 1) % arr.length;
+          else if (e.key === 'ArrowLeft') next = (idx - 1 + arr.length) % arr.length;
+          else if (e.key === 'Home') { e.preventDefault(); next = 0; }
+          else if (e.key === 'End') { e.preventDefault(); next = arr.length - 1; }
+          else return;
+          e.preventDefault();
+          arr[next].click();
+          arr[next].focus();
+        });
+      });
+    });
+
+    // Live button rendering engine
+    const sbColors = {
+      primary:   { default:{bg:'#C45434',text:'#fff',border:'#EBB872'}, hover:{bg:'#CE7056',text:'#fff',border:'#EBB872'}, pressed:{bg:'#A3462B',text:'#fff',border:'#EBB872'}, disabled:{bg:'#E0E0E0',text:'#6F6E6C',border:'#E0E0E0'} },
+      secondary: { default:{bg:'none',text:'#C45434',border:'#C45434'}, hover:{bg:'none',text:'#CE7056',border:'#CE7056'}, pressed:{bg:'none',text:'#A3462B',border:'#A3462B'}, disabled:{bg:'none',text:'#6F6E6C',border:'#E0E0E0'} },
+      tertiary:  { default:{bg:'none',text:'#C45434',border:'none'}, hover:{bg:'none',text:'#CE7056',border:'none'}, pressed:{bg:'none',text:'#A3462B',border:'none'}, disabled:{bg:'none',text:'#6F6E6C',border:'none'} }
+    };
+    const sbSizes = { large:{h:56,w:300}, medium:{h:48,w:260}, small:{h:40,w:220} };
+
+    function sbRender() {
+      const typeEl = document.querySelector('input[name="sb-type"]:checked');
+      const stateEl = document.querySelector('input[name="sb-state"]:checked');
+      if (!typeEl || !stateEl) return;
+      const type = typeEl.value, state = stateEl.value;
+      const sizeEl = document.querySelector('[data-sb-prop="size"]');
+      const disabledEl = document.querySelector('[data-sb-prop="disabled"]');
+      const loadingEl = document.querySelector('[data-sb-prop="loading"]');
+      const labelEl = document.querySelector('[data-sb-prop="label"]');
+      const fullWidthEl = document.querySelector('[data-sb-prop="fullWidth"]');
+      const size = sizeEl ? sizeEl.value : 'medium';
+      const disabled = disabledEl ? disabledEl.checked : false;
+      const loading = loadingEl ? loadingEl.checked : false;
+      const label = labelEl ? labelEl.value : 'ADD TO BAG';
+      const fullWidth = fullWidthEl ? fullWidthEl.checked : false;
+      const actualState = disabled ? 'disabled' : state;
+      const c = sbColors[type][actualState] || sbColors[type].default;
+      const s = sbSizes[size];
+      const scale = s.h / 56;
+      const w = fullWidth ? 500 : s.w;
+      const svg = document.getElementById('sbBtnSvg');
+      svg.setAttribute('viewBox', '0 0 ' + w + ' 56');
+      svg.setAttribute('width', Math.round(w * scale));
+      svg.setAttribute('height', s.h);
+      const rw = w - 40;
+      const path = 'M40,0 L'+rw+',0 L'+(rw+12.53)+',0 C'+(rw+12.53)+',0 '+(rw+24.19)+',0.19 '+(rw+28.54)+',14.02 C'+(rw+32.44)+',25.6 '+(rw+37.86)+',27.64 '+w+',28 C'+(rw+37.86)+',28.35 '+(rw+32.44)+',30.4 '+(rw+28.54)+',41.98 C'+(rw+24.19)+',55.81 '+(rw+12.53)+',56 '+(rw+12.53)+',56 L'+rw+',56 L40,56 L27.47,56 C27.47,56 15.81,55.81 11.46,41.98 C7.56,30.4 2.14,28.35 0,28 C2.14,27.64 7.55,25.6 11.46,14.02 C15.81,0.19 27.47,0 27.47,0 L40,0 Z';
+      document.getElementById('sbBtnPath').setAttribute('d', path);
+      document.getElementById('sbBtnPath').setAttribute('fill', c.bg !== 'none' ? c.bg : 'none');
+      document.getElementById('sbBtnPath').setAttribute('stroke', c.border !== 'none' ? c.border : 'none');
+      document.getElementById('sbBtnPath').setAttribute('stroke-width', '1.5');
+      const txtEl = document.getElementById('sbBtnText');
+      txtEl.setAttribute('fill', c.text);
+      if (loading) { txtEl.textContent = '⟳'; txtEl.setAttribute('font-size', '20'); }
+      else { txtEl.textContent = label.toUpperCase(); txtEl.setAttribute('font-size', '12'); }
+      const ctrlType = document.querySelector('select[name="sb-ctrl-type"]');
+      if (ctrlType) ctrlType.value = type;
+    }
+    document.querySelectorAll('input[name="sb-type"],input[name="sb-state"]').forEach(r => r.addEventListener('change', sbRender));
+    document.querySelectorAll('[data-sb-prop]').forEach(el => { el.addEventListener('change', sbRender); el.addEventListener('input', sbRender); });
+    const ctrlTypeEl = document.querySelector('select[name="sb-ctrl-type"]');
+    if (ctrlTypeEl) ctrlTypeEl.addEventListener('change', e => { document.querySelectorAll('input[name="sb-type"]').forEach(r => { r.checked = r.value === e.target.value; }); sbRender(); });
+    sbRender();
+
+    // Zoom containers — mouse and keyboard
+    document.querySelectorAll('.zoom-container').forEach(container => {
+      const img = container.querySelector('img');
+      function toggleZoom(e) {
+        if (container.classList.contains('zoomed')) {
+          container.classList.remove('zoomed');
+        } else {
+          const rect = container.getBoundingClientRect();
+          const x = e.clientX ? ((e.clientX - rect.left) / rect.width) * 100 : 50;
+          const y = e.clientY ? ((e.clientY - rect.top) / rect.height) * 100 : 50;
+          img.style.transformOrigin = x + '% ' + y + '%';
+          container.classList.add('zoomed');
+        }
+      }
+      container.addEventListener('click', toggleZoom);
+      container.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleZoom(e); } });
+      container.addEventListener('mousemove', e => {
+        if (!container.classList.contains('zoomed')) return;
+        const rect = container.getBoundingClientRect();
+        img.style.transformOrigin = ((e.clientX - rect.left) / rect.width) * 100 + '% ' + ((e.clientY - rect.top) / rect.height) * 100 + '%';
+      });
+    });
+
+    // Section 04 — Interactive ratio selector with image swapping
+    (function(){
+      const container = document.querySelector('#s04Selector');
+      if (!container) return;
+      const imageMap = {
+        '3/4': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-precious.webp',
+        '4/5': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-necklaces.webp',
+        '3/2': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-for-him.webp',
+        '1/1': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/card-bracelets.webp'
+      };
+      const fallbackMap = {
+        '3/4': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-precious.png',
+        '4/5': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-necklaces.png',
+        '3/2': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-for-him.png',
+        '1/1': 'https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/swadesh/images/card-bracelets.png'
+      };
+      container.querySelectorAll('.ratio-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('.ratio-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'transparent';
+            b.style.color = 'var(--charcoal)';
+          });
+          btn.classList.add('active');
+          btn.style.background = 'var(--charcoal)';
+          btn.style.color = '#fff';
+          const preview = document.getElementById('s04Preview');
+          const label = document.getElementById('s04Label');
+          const source = preview.closest('picture').querySelector('source');
+          if (preview) {
+            preview.style.aspectRatio = btn.dataset.ratio;
+            preview.src = fallbackMap[btn.dataset.ratio];
+          }
+          if (source) source.srcset = imageMap[btn.dataset.ratio];
+          if (label) label.textContent = btn.dataset.label;
+        });
+      });
+    })();
+  </script>
+
+  <style>
+    @media (max-width: 768px) {
+      .s04-row { flex-direction: column !important; }
+      .s04-row > div { width: 100% !important; }
+      .s04-row > div[style*="height:480px"] { height: auto !important; }
+      .s04-row > div[style*="position:sticky"] { position: static !important; }
+    }
+  </style>
+
+  <script>
+    // Lenis + GSAP ScrollTrigger — integrated, accessible, production-grade
+    // Wrapped in DOMContentLoaded to ensure deferred scripts (GSAP, ScrollTrigger, Lenis) have executed
+    document.addEventListener('DOMContentLoaded', function () {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Focus helper
+      function focusTarget(el) {
+        if (!el) return;
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+        el.focus({ preventScroll: true });
+      }
+      function safeQuery(selector) {
+        try { return document.querySelector(selector); } catch (e) { return null; }
+      }
+
+      // Anchor focus for reduced-motion
+      if (reducedMotion) {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function () {
+            var hash = this.getAttribute('href');
+            if (!hash || hash === '#') return;
+            var target = safeQuery(hash);
+            if (target) setTimeout(function () { focusTarget(target); }, 50);
+          });
+        });
+        return; // No Lenis, no GSAP motion
+      }
+
+      // ── LENIS ──
+      var lenis = null;
+      if (typeof window.Lenis === 'function') {
+        try {
+          lenis = new Lenis({
+            duration: 1.1,
+            easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            touchMultiplier: 1,
+            infinite: false,
+            autoResize: true
+          });
+
+          // Anchor handling
+          document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+              var hash = this.getAttribute('href');
+              if (!hash || hash === '#') return;
+              var target = safeQuery(hash);
+              if (!target) return;
+              e.preventDefault();
+              lenis.scrollTo(target, {
+                offset: 0,
+                duration: 1.2,
+                onComplete: function () { focusTarget(target); }
+              });
+              history.pushState(null, '', hash);
+            });
+          });
+
+          // Hash on load
+          if (window.location.hash) {
+            var hashTarget = safeQuery(window.location.hash);
+            if (hashTarget) {
+              requestAnimationFrame(function () {
+                lenis.scrollTo(hashTarget, { immediate: true });
+              });
+            }
+          }
+
+          // Visibility
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) lenis.stop();
+            else lenis.start();
+          });
+        } catch (e) { lenis = null; }
+      }
+
+      // ── GSAP + SCROLLTRIGGER ──
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        // GSAP unavailable — give Lenis its own RAF loop so the page remains scrollable
+        if (lenis) {
+          function lenisRaf(time) { lenis.raf(time); requestAnimationFrame(lenisRaf); }
+          requestAnimationFrame(lenisRaf);
+        }
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Integrate Lenis with GSAP ticker (single animation loop — replaces standalone RAF)
+      if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      // Refresh ScrollTrigger after fonts/images load
+      window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
+      // ── MOTION DEFAULTS ──
+      var dur = 0.75;
+      var ease = 'power2.out';
+      var isMobile = window.innerWidth < 768;
+      var ySmall = isMobile ? 16 : 24;
+      var yMed = isMobile ? 20 : 32;
+      var viewportH = window.innerHeight;
+
+      // Helper: skip elements already visible in viewport on load
+      function isBelowFold(el) {
+        var rect = el.getBoundingClientRect();
+        return rect.top > viewportH * 0.5;
+      }
+
+      // ── HERO ENTRANCE (no ScrollTrigger — runs on load) ──
+      var heroEyebrow = document.querySelector('.cs-hero-eyebrow');
+      var heroProduct = document.querySelector('.cs-hero-product');
+      var heroTitle = document.querySelector('.cs-hero-title');
+      var heroMeta = document.querySelector('.cs-hero-meta');
+      if (heroEyebrow || heroTitle) {
+        var heroTl = gsap.timeline();
+        if (heroEyebrow) heroTl.from(heroEyebrow, { opacity: 0, y: 16, duration: 0.5, ease: ease });
+        if (heroProduct) heroTl.from(heroProduct, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.35');
+        if (heroTitle) heroTl.from(heroTitle, { opacity: 0, y: 20, duration: 0.6, ease: ease }, '-=0.35');
+        if (heroMeta) heroTl.from(heroMeta, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.3');
+      }
+
+      // ── A. FULL-VIEWPORT STATEMENTS ──
+      document.querySelectorAll('section[style*="min-height:100vh"]').forEach(function (section) {
+        if (!isBelowFold(section)) return;
+        var eyebrow = section.querySelector('.mono-text');
+        // Find the primary statement — h2 or the large styled <p>
+        var heading = section.querySelector('h2') || section.querySelector('p[style*="font-size:clamp"]');
+        if (!eyebrow && !heading) return;
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 80%', once: true }
+        });
+        if (eyebrow) tl.from(eyebrow, { opacity: 0, y: ySmall, duration: dur * 0.8, ease: ease });
+        if (heading) tl.from(heading, { opacity: 0, y: yMed, duration: dur, ease: ease }, eyebrow ? '-=0.55' : 0);
+      });
+
+      // ── B. CONTENT ROWS ──
+      document.querySelectorAll('.content-section').forEach(function (section) {
+        if (!isBelowFold(section)) return;
+        var left = section.querySelector('.content-left');
+        var right = section.querySelector('.content-right');
+        if (!left && !right) return;
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 85%', once: true }
+        });
+        if (left) tl.from(left, { opacity: 0, y: ySmall, duration: dur, ease: ease });
+        if (right) tl.from(right, { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55');
+      });
+
+      // s04-row flex blocks (sections 04, 06, 08, 09, 10)
+      document.querySelectorAll('.s04-row').forEach(function (row) {
+        if (!isBelowFold(row)) return;
+        var children = row.children;
+        if (children.length < 2) return;
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: row, start: 'top 85%', once: true }
+        });
+        tl.from(children[0], { opacity: 0, y: ySmall, duration: dur, ease: ease });
+        tl.from(children[1], { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55');
+      });
+
+      // ── C. STAT METRICS ──
+      document.querySelectorAll('[style*="grid-template-columns:repeat(6"]').forEach(function (grid) {
+        if (!isBelowFold(grid)) return;
+        gsap.from(grid.children, {
+          opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease,
+          stagger: 0.06,
+          scrollTrigger: { trigger: grid, start: 'top 85%', once: true }
+        });
+      });
+
+      // ── D. IMAGES ──
+      document.querySelectorAll('.full-screen-asset').forEach(function (asset) {
+        if (!isBelowFold(asset)) return;
+        gsap.from(asset, {
+          opacity: 0, scale: 0.985, duration: dur * 1.2, ease: ease,
+          scrollTrigger: { trigger: asset, start: 'top 90%', once: true }
+        });
+      });
+
+      document.querySelectorAll('.zoom-container').forEach(function (zc) {
+        if (zc.closest('.sb-panel')) return;
+        if (zc.closest('.full-screen-asset')) return; // parent already animated
+        if (!isBelowFold(zc)) return;
+        gsap.from(zc, {
+          opacity: 0, scale: 0.99, duration: dur, ease: ease,
+          scrollTrigger: { trigger: zc, start: 'top 88%', once: true }
+        });
+      });
+
+      // ── E. STORYBOOK PANEL — container only ──
+      document.querySelectorAll('.sb-panel').forEach(function (panel) {
+        if (!isBelowFold(panel)) return;
+        gsap.from(panel, {
+          opacity: 0, y: yMed, duration: dur, ease: ease,
+          scrollTrigger: { trigger: panel, start: 'top 85%', once: true }
+        });
+      });
+
+      // ── F. COMPARISON BLOCKS ──
+      document.querySelectorAll('[style*="grid-template-columns:repeat(3"]').forEach(function (grid) {
+        if (grid.closest('.sb-panel')) return;
+        if (grid.closest('.s04-row')) return;
+        if (!isBelowFold(grid)) return;
+        gsap.from(grid.children, {
+          opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease,
+          stagger: 0.08,
+          scrollTrigger: { trigger: grid, start: 'top 85%', once: true }
+        });
+      });
+
+      document.querySelectorAll('[style*="grid-template-columns:1fr 1fr"]').forEach(function (grid) {
+        if (grid.children.length !== 2) return;
+        if (!isBelowFold(grid)) return;
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: grid, start: 'top 85%', once: true }
+        });
+        tl.from(grid.children[0], { opacity: 0, y: ySmall, duration: dur, ease: ease });
+        tl.from(grid.children[1], { opacity: 0, y: ySmall, duration: dur, ease: ease }, '-=0.55');
+      });
+
+      // ── 8/5 COMPARISON (flex, not grid — needs its own selector) ──
+      document.querySelectorAll('[style*="border-top:1px solid"][style*="border-bottom:1px solid"][style*="display:flex"]').forEach(function (row) {
+        if (row.children.length !== 3) return; // 8-side + divider + 5-side
+        if (!isBelowFold(row)) return;
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: row, start: 'top 85%', once: true }
+        });
+        tl.from(row.children[0], { opacity: 0, y: ySmall, duration: dur, ease: ease });
+        tl.from(row.children[2], { opacity: 0, y: ySmall, duration: dur, ease: ease }, '-=0.55');
+      });
+
+      // ── G. KEY MOMENTS TIMELINE ──
+      document.querySelectorAll('[style*="border-left:2px"]').forEach(function (row) {
+        if (!isBelowFold(row)) return;
+        gsap.from(row, {
+          opacity: 0, y: 12, duration: dur * 0.7, ease: ease,
+          scrollTrigger: { trigger: row, start: 'top 90%', once: true }
+        });
+      });
+
+      // ── H. GANTT PIPELINE ──
+      document.querySelectorAll('[style*="grid-template-columns:8em"]').forEach(function (grid) {
+        if (!isBelowFold(grid)) return;
+        gsap.from(grid, {
+          opacity: 0, y: ySmall, duration: dur, ease: ease,
+          scrollTrigger: { trigger: grid, start: 'top 85%', once: true }
+        });
+      });
+
+      // ── CENTRED BODY TEXT blocks ──
+      document.querySelectorAll('section[style*="padding:"] > div[style*="max-width"][style*="text-align:center"]').forEach(function (block) {
+        if (block.closest('section[style*="min-height:100vh"]')) return;
+        if (!isBelowFold(block)) return;
+        gsap.from(block, {
+          opacity: 0, y: ySmall, duration: dur, ease: ease,
+          scrollTrigger: { trigger: block, start: 'top 85%', once: true }
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>

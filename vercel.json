@@ -10,6 +10,11 @@
       "source": "/pixelbin/pixelbin-app.html",
       "destination": "/pixelbin/pixelbin-app/",
       "permanent": true
+    },
+    {
+      "source": "/swadesh/v2.html",
+      "destination": "/swadesh/",
+      "permanent": true
     }
   ]
 }

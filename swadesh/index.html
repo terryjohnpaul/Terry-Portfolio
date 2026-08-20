@@ -366,6 +366,49 @@
       .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
       .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
     }
+
+    /* ── Bottom nav ── */
+    .cs-bottom-nav {
+      position: fixed; bottom: 1.8em; left: 50%; transform: translateX(-50%);
+      z-index: 500; display: flex; align-items: center; gap: 0.3em; padding: 0.4em;
+      background: rgba(52, 52, 52, 0.65); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px; box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      white-space: nowrap; opacity: 0; transform: translateX(-50%) translateY(1.5em);
+      transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
+    }
+    .cs-bottom-nav.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .cs-nav-pill {
+      position: absolute; top: 0.4em; left: 0; height: calc(100% - 0.8em);
+      border-radius: 100px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; z-index: 0;
+    }
+    .cs-nav-item {
+      display: flex; align-items: center; gap: 0.4em; padding: 0.55em 1.1em;
+      border-radius: 100px; font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.85); text-decoration: none; cursor: pointer;
+      transition: color 0.35s ease; user-select: none; position: relative; z-index: 1;
+    }
+    .cs-nav-item:hover { color: rgba(255,255,255,0.95); opacity: 1; }
+    .cs-nav-item.is-active { color: var(--charcoal); }
+    .cs-nav-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.35s ease; }
+    .cs-nav-item.is-active svg { opacity: 0.9; }
+    .cs-nav-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); flex-shrink: 0; position: relative; z-index: 1; }
+    @media (max-width: 768px) {
+      .cs-bottom-nav { bottom: 1.2em; gap: 0.15em; padding: 0.3em; }
+      .cs-nav-item { font-size: 0.75rem; padding: 0.7em 0.9em; gap: 0.35em; min-height: 44px; }
+      .cs-nav-item svg { width: 13px; height: 13px; }
+      .cs-nav-pill { top: 0.3em; height: calc(100% - 0.6em); }
+    }
+    @media (max-width: 640px) {
+      .cs-nav-item span { display: none; }
+      .cs-nav-item { padding: 0.55em 0.7em; }
+      .cs-nav-item svg { width: 15px; height: 15px; opacity: 0.6; }
+      .cs-nav-item.is-active svg { opacity: 1; }
+      .cs-nav-sep { display: none; }
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -407,7 +450,7 @@
   <!-- ═══════ 01 — STARTING POINT ═══════ -->
 
   <!-- Viewport 1: The principle -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-origin" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">01 / The Starting Point</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">The brand had been imagined.<br>The digital product had not.</h2>
@@ -454,7 +497,7 @@
 
 
   <!-- ═══════ 02 — DESIGN CHALLENGE ═══════ -->
-  <section class="content-section">
+  <section id="cs-challenge" class="content-section">
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">02 / The Design Challenge</p>
@@ -487,7 +530,7 @@
   <!-- ═══════ 03 — LUXURY PRINCIPLES ═══════ -->
 
   <!-- Viewport: the principle statement -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-principles" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:42em">
       <p class="mono-text" style="margin-bottom:1.6em">03 / Luxury Principles</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.4rem,3vw,2.4rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--charcoal)">The strongest luxury platforms don't decorate — they get out of the way. Warm palettes, generous spacing, and photography-first components so the product speaks before the interface does.</h2>
@@ -524,7 +567,7 @@
   <!-- ═══════ 04 — THE HARD DECISION ═══════ -->
 
   <!-- Viewport: the title -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-decisions" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">04 / The Hard Decision</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">In luxury, cropping<br>destroys value.</h2>
@@ -583,7 +626,7 @@
 
 
   <!-- ═══════ 05 — FOUNDATIONS ═══════ -->
-  <section class="content-section">
+  <section id="cs-foundations" class="content-section">
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">05 / Foundations</p>
@@ -648,7 +691,7 @@
   <!-- ═══════ 06 — RIBBON BUTTON ═══════ -->
 
   <!-- Viewport title -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-brand" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">06 / Brand into Component</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Most luxury brands use<br>rectangles for their CTA.</h2>
@@ -914,7 +957,7 @@
   <!-- ═══════ 07 — COMPONENT LIBRARY ═══════ -->
 
   <!-- Screens section -->
-  <section style="padding:6em 8% 3em;text-align:center">
+  <section id="cs-library" style="padding:6em 8% 3em;text-align:center">
     <div style="max-width:52em;margin:0 auto">
       <p class="mono-text" style="margin-bottom:1.2em">07 / The Component Library</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:1em">35 shared components. 510 variants. Every screen assembled from the same library.</h2>
@@ -960,7 +1003,7 @@
   <!-- ═══════ 08 — ENGINEERING HANDOFF ═══════ -->
 
   <!-- Viewport title -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-handoff" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">08 / Engineering Handoff</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Most design handoffs<br>stop at static screens.</h2>
@@ -1050,7 +1093,7 @@
   <!-- ═══════ 09 — GOVERNANCE & ADOPTION ═══════ -->
 
   <!-- Viewport title -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-governance" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">09 / Governance &amp; Adoption</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">Publishing a Figma library<br>is not the same as having<br>a design system.</h2>
@@ -1093,7 +1136,7 @@
   <!-- ═══════ 10 — STRUCTURED FOR WHAT COMES NEXT ═══════ -->
 
   <!-- Viewport title -->
-  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+  <section id="cs-future" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
     <div style="max-width:52em">
       <p class="mono-text" style="margin-bottom:1.6em">10 / Structured for What Comes Next</p>
       <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.05;letter-spacing:-0.03em;color:var(--charcoal)">One file an agent reads<br>before generating UI.</h2>
@@ -1230,6 +1273,59 @@
 
 
   </main>
+
+  <nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+    <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+    <a href="#cs-origin" class="cs-nav-item" data-section="cs-origin" aria-label="Origin">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.2 10.2L14 14"/></svg>
+      <span>Origin</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-challenge" class="cs-nav-item" data-section="cs-challenge" aria-label="Challenge">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5L14.5 5v6L8 14.5 1.5 11V5z"/><path d="M8 7.5v7"/><path d="M1.5 5L8 8.5 14.5 5"/></svg>
+      <span>Challenge</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-principles" class="cs-nav-item" data-section="cs-principles" aria-label="Principles">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1l2.1 4.3 4.7.7-3.4 3.3.8 4.7L8 11.8 3.8 14l.8-4.7L1.2 6l4.7-.7z"/></svg>
+      <span>Principles</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-decisions" class="cs-nav-item" data-section="cs-decisions" aria-label="Decisions">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v5"/><path d="M8 7l4.5 5"/><path d="M8 7L3.5 12"/></svg>
+      <span>Decisions</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-foundations" class="cs-nav-item" data-section="cs-foundations" aria-label="Foundations">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="12" height="5" rx="0.8"/><rect x="3.5" y="5" width="9" height="4" rx="0.8"/><rect x="5" y="1.5" width="6" height="3.5" rx="0.8"/></svg>
+      <span>Foundations</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-brand" class="cs-nav-item" data-section="cs-brand" aria-label="Brand">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M1 8h14"/><path d="M4 12h8"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>
+      <span>Brand</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-library" class="cs-nav-item" data-section="cs-library" aria-label="Library">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="1.5" width="5" height="5" rx="0.8"/><rect x="1.5" y="9.5" width="5" height="5" rx="0.8"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.8"/></svg>
+      <span>Library</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-handoff" class="cs-nav-item" data-section="cs-handoff" aria-label="Handoff">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h12"/><path d="M10 4l4 4-4 4"/></svg>
+      <span>Handoff</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-governance" class="cs-nav-item" data-section="cs-governance" aria-label="Governance">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5L2 4.5v4c0 3.5 2.5 5.5 6 7 3.5-1.5 6-3.5 6-7v-4z"/><path d="M5.5 8l2 2 3.5-3.5"/></svg>
+      <span>Governance</span>
+    </a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-future" class="cs-nav-item" data-section="cs-future" aria-label="Future">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="1.5"/><circle cx="12" cy="4" r="1.5"/><circle cx="8" cy="12" r="1.5"/><path d="M5.2 5.2L7 10.5"/><path d="M10.8 5.2L9 10.5"/></svg>
+      <span>Future</span>
+    </a>
+  </nav>
 
   <div style="height:50vh"></div>
 
@@ -1499,6 +1595,7 @@
           });
         } catch (e) { lenis = null; }
       }
+      window.lenis = lenis;
 
       // ── GSAP + SCROLLTRIGGER ──
       if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -1687,6 +1784,104 @@
         });
       });
 
+    });
+  </script>
+
+  <script>
+    // Bottom nav — show/hide + active section tracking
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.getElementById('csBottomNav');
+      var pill = document.getElementById('csNavPill');
+      var items = nav ? Array.from(nav.querySelectorAll('.cs-nav-item')) : [];
+      if (!nav || !items.length) return;
+
+      var sectionIds = items.map(function (item) { return item.getAttribute('data-section'); });
+      var sectionEls = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      var heroSection = document.querySelector('.cs-hero-section');
+      var ctaSection = document.getElementById('cta');
+      var currentIndex = -1;
+      var isVisible = false;
+
+      // Cache ALL layout positions + pill offsets — zero DOM reads during scroll
+      var sectionTops = [];
+      var pillOffsets = [];
+      var heroBottom = 400;
+      var ctaTop = Infinity;
+      var viewH = window.innerHeight;
+
+      function cachePositions() {
+        viewH = window.innerHeight;
+        sectionTops = sectionEls.map(function (el) { return el.offsetTop; });
+        heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 400;
+        ctaTop = ctaSection ? ctaSection.offsetTop - viewH : Infinity;
+        pillOffsets = items.map(function (item) {
+          return { left: item.offsetLeft, width: item.offsetWidth };
+        });
+      }
+      cachePositions();
+      window.addEventListener('resize', cachePositions);
+      window.addEventListener('load', cachePositions);
+
+      function setActive(index) {
+        if (index === currentIndex) return;
+        currentIndex = index;
+        for (var i = 0; i < items.length; i++) {
+          if (i === index) {
+            items[i].classList.add('is-active');
+            if (pill && pillOffsets[i]) {
+              pill.style.left = pillOffsets[i].left + 'px';
+              pill.style.width = pillOffsets[i].width + 'px';
+            }
+          } else {
+            items[i].classList.remove('is-active');
+          }
+        }
+      }
+
+      function updateNav() {
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        // Show/hide — only touch DOM when state changes
+        var shouldShow = scrollY > heroBottom && scrollY < ctaTop;
+        if (shouldShow !== isVisible) {
+          isVisible = shouldShow;
+          if (shouldShow) nav.classList.add('is-visible');
+          else nav.classList.remove('is-visible');
+        }
+
+        // Active section
+        var centre = scrollY + viewH * 0.4;
+        var active = -1;
+        for (var i = 0; i < sectionTops.length; i++) {
+          if (sectionTops[i] <= centre) active = i;
+        }
+        if (active >= 0) setActive(active);
+      }
+
+      // Scroll listener — use Lenis callback for sync, native as fallback
+      if (window.lenis) {
+        window.lenis.on('scroll', updateNav);
+      } else {
+        window.addEventListener('scroll', updateNav, { passive: true });
+      }
+
+      // Click handler — smooth scroll via Lenis or native
+      items.forEach(function (item) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = document.getElementById(item.getAttribute('data-section'));
+          if (!target) return;
+          if (window.lenis) {
+            window.lenis.scrollTo(target, { offset: 0, duration: 1.2 });
+          } else {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+          history.pushState(null, '', '#' + item.getAttribute('data-section'));
+        });
+      });
+
+      // Initial state
+      updateNav();
     });
   </script>
 

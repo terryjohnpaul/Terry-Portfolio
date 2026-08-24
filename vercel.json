@@ -15,6 +15,17 @@
       "source": "/swadesh/v2.html",
       "destination": "/swadesh/",
       "permanent": true
+    },
+    {
+      "source": "/bharat-app/v2.html",
+      "destination": "/sorted/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sorted/",
+      "destination": "/bharat-app/v2.html"
     }
   ]
 }

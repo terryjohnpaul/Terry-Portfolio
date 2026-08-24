@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorted — AI Platform Design Case Study | Terry John Paul</title>
+  <meta name="description" content="Sorted: an AI-powered platform concept exploring cross-domain commerce, conversational AI, and shared checkout. 44 screens across 9 modules. Case study by Terry John Paul.">
+  <link rel="canonical" href="https://terryjohn.me/sorted/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sorted — AI Platform Design Case Study | Terry John Paul">
+  <meta property="og:description" content="AI-powered platform concept exploring cross-domain commerce, conversational AI, and shared checkout. 44 screens across 9 modules.">
+  <meta property="og:url" content="https://terryjohn.me/sorted/">
+  <meta property="og:image" content="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/sorted-casestudy.webp">
+  <meta property="og:image:width" content="4500">
+  <meta property="og:image:height" content="3000">
+  <meta property="og:image:alt" content="Sorted AI platform case study — mobile product screens across commerce, food, search, and AI chat">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sorted — AI Platform Design Case Study | Terry John Paul">
+  <meta name="twitter:description" content="AI-powered platform concept: cross-domain commerce, conversational AI, shared checkout. 44 screens across 9 modules.">
+  <meta name="twitter:image" content="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/sorted-casestudy.webp">
+  <meta name="twitter:image:alt" content="Sorted AI platform case study — mobile product screens across commerce, food, search, and AI chat">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="../pixelbin/css/base.css">
+  <link rel="stylesheet" href="../pixelbin/css/chapter1.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://terryjohn.me/sorted/","name":"Sorted — AI Platform Design Case Study","headline":"Could AI Make a Super App Work?","author":{"@type":"Person","@id":"https://terryjohn.me/#person","name":"Terry John Paul","url":"https://terryjohn.me","jobTitle":"Senior Product Designer"},"description":"AI-powered platform concept exploring cross-domain commerce, conversational AI, and shared checkout. 44 screens across 9 modules. Case study by Terry John Paul.","url":"https://terryjohn.me/sorted/","image":"https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/sorted-casestudy.webp","inLanguage":"en-GB","keywords":["AI Product Design","Platform Design","Cross-Domain UX","Conversational AI","Mobile Product Design","Commerce UX","Product Design Case Study","Senior Product Designer Portfolio"],"about":[{"@type":"Thing","name":"AI Product Design"},{"@type":"Thing","name":"Platform Architecture"},{"@type":"Thing","name":"Cross-Domain Commerce"},{"@type":"Thing","name":"Conversational AI UX"}]}</script>
+  <style>
+    :root { --frost: #ffffff; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .content-left .heading4 { text-transform: none; font-weight: 500; line-height: 1.1; }
+    @media (prefers-reduced-motion: reduce) { dotlottie-player { display: none; } }
+
+    /* Placeholder */
+    .img-placeholder { width: 100%; height: 100%; background: #e8e8e8; display: flex; align-items: center; justify-content: center; }
+    .img-placeholder span { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; color: #b0b0b0; }
+
+    /* ── Flow Card ── */
+    .flow-card { padding: 6em 8%; min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; }
+    .flow-inner { display: flex; gap: 10em; max-width: 72em; margin: 0 auto; width: 100%; align-items: flex-start; }
+    .flow-left { width: 23%; flex-shrink: 0; position: sticky; top: 6em; align-self: flex-start; }
+    .flow-num { font-family: 'Helvetica Now Display', sans-serif; font-size: 4em; font-weight: 800; color: var(--charcoal); opacity: 0.08; line-height: 1; margin-bottom: 0.3em; }
+    .flow-title { font-family: 'Helvetica Now Display', sans-serif; font-size: 1.4em; font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.6em; }
+    .flow-status { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-muted); }
+    .flow-right { flex: 1; min-width: 0; overflow: hidden; padding-top: 5.2em; }
+    .flow-problem__label { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-muted); margin-bottom: 0.8em; line-height: 1; }
+    .flow-problem__body { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.8em; font-weight: 400; line-height: 1.45; color: var(--charcoal); opacity: 0.85; }
+    .flow-decision { max-width: 36em; margin-top: 2.5em; }
+    .flow-decision__label { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-muted); margin-bottom: 0.8em; }
+    .flow-decision__body { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.8em; font-weight: 400; line-height: 1.45; color: var(--charcoal); opacity: 0.85; }
+    .phone-strip { display: flex; flex-wrap: wrap; gap: 3.5em 2em; padding: 1em 0 2em 0; }
+    .phone-item { flex: 0 0 calc((100% - 6em) / 4); min-width: 140px; }
+    .phone-item__frame img { width: 100%; height: auto; border: 1px solid rgba(52,52,52,0.08); border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03); }
+    .phone-item__meta { display: flex; align-items: baseline; gap: 0.4em; margin-top: 1.2em; }
+    .phone-item__step { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.5em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); flex-shrink: 0; }
+    .phone-item__caption { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.5em; font-weight: 400; line-height: 1.35; color: var(--text-ghost); }
+    .flow-strip-label { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-muted); margin: 2em 0 0.5em; }
+    .app-pill { display: inline-block; font-family: 'Helvetica Now Display', sans-serif; font-size: 0.65em; font-weight: 500; padding: 0.25em 0.7em; border-radius: 100px; border: 1px solid rgba(52,52,52,0.1); color: var(--text-muted); margin: 0.15em 0.1em; }
+
+    /* ── Versus Table ── */
+    .vs-table { width: 100%; border-collapse: collapse; margin: 2em 0; }
+    .vs-table th { text-align: left; font-size: 0.6em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-ghost); padding: 1em 1.2em; border-bottom: 1px solid rgba(52,52,52,0.08); }
+    .vs-table th:last-child { color: #FF5E39; }
+    .vs-table td { padding: 1em 1.2em; font-size: 0.8em; color: var(--text-secondary); line-height: 1.45; border-bottom: 1px solid rgba(52,52,52,0.04); vertical-align: top; }
+    .vs-table td:first-child { font-weight: 500; color: var(--charcoal); width: 22%; }
+    .vs-table td:last-child { color: var(--charcoal); font-weight: 500; }
+    .vs-table tr:last-child td { border-bottom: none; }
+
+    /* ── Model Grid (from Swadesh) ── */
+    .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin: 3em 0; }
+    .model-col { padding: 2em; border-radius: 4px; }
+    .model-col.v1 { background: rgba(0,0,0,0.025); border: 1px solid rgba(52,52,52,0.06); }
+    .model-col.later { background: rgba(52,52,52,0.02); border: 1px solid rgba(52,52,52,0.04); }
+    .model-col h3 { font-size: 0.7em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.8em; color: var(--charcoal); }
+    .model-col.later h3 { color: var(--text-muted); }
+    .model-tag { display: inline-block; font-size: 0.75em; padding: 3px 10px; border-radius: 4px; margin: 3px 4px 3px 0; color: var(--text-secondary); border: 1px solid rgba(52,52,52,0.08); }
+    .model-col.later .model-tag { color: var(--text-ghost); border-color: rgba(52,52,52,0.05); }
+
+    /* ── Evidence Stats ── */
+    .evidence-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(52,52,52,0.06);
+      border-bottom: 1px solid rgba(52,52,52,0.06);
+      margin: 2em 0;
+    }
+    .evidence-stat {
+      padding: 2em 2em;
+      text-align: center;
+      border-right: 1px solid rgba(52,52,52,0.06);
+    }
+    .evidence-stat:last-child { border-right: none; }
+    .evidence-stat__number {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    .evidence-stat__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.75em;
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 0.8em;
+    }
+    .evidence-stat__sub {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      line-height: 1.4;
+    }
+    .evidence-stat__source {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.55em;
+      font-weight: 400;
+      color: var(--text-ghost);
+      margin-top: 0.6em;
+    }
+    .evidence-stat__source a {
+      color: var(--text-ghost);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .inference-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2em;
+      margin: 3em 0;
+    }
+    .inference-step {
+      padding: 0;
+    }
+    .inference-step__label {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.6em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-ghost);
+      margin-bottom: 0.6em;
+    }
+    .inference-step__body {
+      font-family: 'Helvetica Now Display', sans-serif;
+      font-size: 0.85em;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--charcoal);
+    }
+    @media (max-width: 768px) {
+      .evidence-row { grid-template-columns: 1fr; }
+      .evidence-stat { border-right: none; border-bottom: 1px solid rgba(52,52,52,0.06); }
+      .evidence-stat:last-child { border-bottom: none; }
+      .inference-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Statblock Grid (from PixelBin) ── */
+    .statblock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em; }
+    .statblock-cell { padding: 2em; border: 1px solid rgba(52,52,52,0.08); }
+    .statblock-badge { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.6em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); border: 1px solid rgba(52,52,52,0.12); display: inline-block; padding: 0.15em 0.5em; margin-bottom: 1.2em; line-height: 1.4; }
+    .statblock-keyword { font-family: 'Helvetica Now Display', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.4em; }
+    .statblock-body { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.8em; font-weight: 400; line-height: 1.5; color: var(--text-secondary); }
+
+    /* ── Numbered List (from Swadesh) ── */
+    .numbered-list { list-style: none; margin-top: 1.5em; }
+    .numbered-list li { display: flex; gap: 1em; padding: 1.2em 0; border-bottom: 1px solid rgba(52,52,52,0.06); align-items: baseline; }
+    .numbered-list li:first-child { border-top: 1px solid rgba(52,52,52,0.06); }
+    .numbered-list .num { font-size: 0.7em; font-weight: 400; letter-spacing: 0.02em; color: var(--text-ghost); flex-shrink: 0; width: 24px; }
+    .numbered-list .text { font-size: 0.875em; color: var(--text-secondary); line-height: 1.55; }
+    .numbered-list .text strong { color: var(--charcoal); font-weight: 500; }
+
+    /* ── Reflection Grid (from Swadesh) ── */
+    .reflection-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2em; margin: 3em 0; }
+    .reflection-card h3 { font-size: 0.8em; font-weight: 500; margin-bottom: 0.5em; }
+    .reflection-card h3.worked { color: #1a7a3c; }
+    .reflection-card h3.different { color: #996600; }
+    .reflection-card h3.open { color: var(--text-muted); }
+    .reflection-card p { font-size: 0.8em; color: var(--text-muted); line-height: 1.55; }
+
+    /* ── CTA + Footer ── */
+    #cta, #site-footer { font-size: 16px; }
+    #cta { background: #000; text-align: center; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 48px 100px; position: relative; box-sizing: border-box; }
+    .cta-heading { font-family: 'Helvetica Now Display', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 500; letter-spacing: -0.03em; line-height: 1; color: #fff; margin-bottom: 48px; }
+    .cta-heading .h-reg { font-style: normal; }
+    .cta-heading .h-ital { font-style: italic; font-weight: 400; }
+    .cta-content { max-width: 420px; margin: 0 auto; }
+    .cta-label { font-family: 'Helvetica Now Display', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.03em; color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .cta-description { font-family: 'Helvetica Now Display', sans-serif; font-size: 13px; font-weight: 400; line-height: 1.65; letter-spacing: -0.01em; color: rgba(255,255,255,0.7); margin-bottom: 40px; }
+    .footer-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Helvetica Now Display', sans-serif; font-size: 18px; font-weight: 500; color: #000; background: #fff; border: none; border-radius: 100px; padding: 18px 48px; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; }
+    .footer-cta-btn:hover { background: rgba(255,255,255,0.88); transform: scale(1.02); }
+    .btn-mail-icon { display: flex; }
+    #site-footer { background: #000; width: 100%; display: flex; flex-direction: column; position: relative; padding: 60px 48px; box-sizing: border-box; }
+    .footer-bottom { width: 100%; display: flex; align-items: flex-end; justify-content: space-between; }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-left span { font-family: 'Helvetica Now Display', sans-serif; font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.6); }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-family: 'Helvetica Now Display', sans-serif; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s ease; }
+    .footer-right a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .s04-row { flex-direction: column !important; }
+      .s04-row > div { width: 100% !important; }
+      .flow-card { padding: 4em 6%; min-height: auto; }
+      .flow-inner { flex-direction: column; gap: 2em; }
+      .flow-left { width: 100%; position: static; }
+      .flow-num { font-size: 3em; margin-bottom: 0.2em; }
+      .flow-title { font-size: 1.2em; }
+      .flow-right { padding-top: 0; }
+      .phone-strip { gap: 1em 1em; }
+      .phone-item { flex: 0 0 calc((100% - 1em) / 2); }
+      .model-grid { grid-template-columns: 1fr; }
+      .statblock-grid { grid-template-columns: 1fr; }
+      .reflection-grid { grid-template-columns: 1fr; }
+      .vs-table th, .vs-table td { padding: 0.8em 0.6em; font-size: 0.7em; }
+      .cs-hero-meta .mono-text { font-size: 0.6em; }
+      #cta { padding: 80px 24px 100px; }
+      #site-footer { padding: 60px 24px 40px; }
+      .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-cta-btn { font-size: 16px; padding: 16px 40px; }
+    }
+    @media (max-width: 480px) {
+      .flow-card { padding: 3em 5%; }
+      .phone-strip { gap: 0.8em; }
+      .phone-item { flex: 0 0 calc((100% - 0.8em) / 2); }
+      .flow-num { font-size: 2.4em; }
+      .flow-title { font-size: 1em; }
+    }
+
+    /* ── Lightbox ── */
+    .lb { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(255,255,255,0.45); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
+    .lb.active { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+    .lb__top { position: absolute; top: 0; left: 0; right: 0; padding: 1.5em 2em; display: flex; align-items: center; justify-content: space-between; }
+    .lb__flow { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 500; color: var(--text-ghost); }
+    .lb__flow strong { color: var(--charcoal); font-weight: 500; }
+    .lb__close { background: none; border: none; color: var(--text-ghost); font-size: 1.5em; cursor: pointer; padding: 0.3em; transition: color 0.2s; }
+    .lb__close:hover { color: var(--charcoal); }
+    .lb__img-wrap { max-height: 75vh; max-width: 90vw; display: flex; align-items: center; justify-content: center; }
+    .lb__img-wrap img { max-height: 75vh; max-width: 40vw; width: auto; height: auto; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 12px 60px rgba(0,0,0,0.12); }
+    .lb__caption { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.75em; font-weight: 400; color: var(--text-muted); margin-top: 1.5em; text-align: center; }
+    .lb__nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-ghost); font-size: 2em; cursor: pointer; padding: 0.5em; transition: color 0.2s; }
+    .lb__nav:hover { color: var(--charcoal); }
+    .lb__nav--prev { left: 1.5em; }
+    .lb__nav--next { right: 1.5em; }
+    .phone-item { cursor: pointer; }
+    .phone-item:hover img { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .phone-item img { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+
+    /* ── Bottom Nav ── */
+    .cs-bottom-nav { position: fixed; bottom: 1.8em; left: 50%; transform: translateX(-50%); z-index: 500; display: flex; align-items: center; gap: 0.3em; padding: 0.4em; background: rgba(52,52,52,0.65); border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); white-space: nowrap; opacity: 0; transform: translateX(-50%) translateY(1.5em); transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none; }
+    .cs-bottom-nav.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .cs-nav-pill { position: absolute; top: 0.4em; left: 0; height: calc(100% - 0.8em); border-radius: 100px; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.06); transition: left 0.3s cubic-bezier(0.16,1,0.3,1), width 0.3s cubic-bezier(0.16,1,0.3,1); pointer-events: none; z-index: 0; }
+    .cs-nav-item { display: flex; align-items: center; gap: 0.4em; padding: 0.55em 1.1em; border-radius: 100px; font-family: 'Helvetica Now Display', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: -0.01em; color: rgba(255,255,255,0.85); text-decoration: none; cursor: pointer; transition: color 0.35s ease; user-select: none; position: relative; z-index: 1; }
+    .cs-nav-item:hover { color: rgba(255,255,255,0.95); }
+    .cs-nav-item.is-active { color: var(--charcoal); }
+    .cs-nav-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.7; transition: opacity 0.35s ease; }
+    .cs-nav-item.is-active svg { opacity: 0.9; }
+    .cs-nav-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.18); flex-shrink: 0; position: relative; z-index: 1; }
+    @media (max-width: 768px) { .cs-bottom-nav { bottom: 1.2em; gap: 0.15em; padding: 0.3em; } .cs-nav-item { font-size: 0.75rem; padding: 0.7em 0.9em; gap: 0.35em; min-height: 44px; } .cs-nav-pill { top: 0.3em; height: calc(100% - 0.6em); } }
+    @media (max-width: 640px) { .cs-nav-item span { display: none; } .cs-nav-item { padding: 0.55em 0.7em; } .cs-nav-item svg { width: 15px; height: 15px; opacity: 0.6; } .cs-nav-item.is-active svg { opacity: 1; } .cs-nav-sep { display: none; } }
+  </style>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+</head>
+<body class="overflow-clip">
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <main id="main-content">
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="cs-hero-section">
+    <div class="cs-hero-inner">
+      <p class="mono-text cs-hero-eyebrow">/Work/Sorted</p>
+      <p class="cs-hero-product">Sorted</p>
+      <h1 class="cs-hero-title">Could AI Make a<br>Super App Work?</h1>
+      <div class="divider" style="margin-bottom:1.6em"></div>
+      <div class="cs-hero-meta" style="flex-direction:column;gap:1.2em">
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Role / Team</p>
+          <p class="mono-text" style="color:var(--text-muted)">Sole Product Designer · Concept &amp; Pitch</p>
+        </div>
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Scope</p>
+          <p class="mono-text" style="color:var(--text-muted)">9 modules · 44 screens · AI orchestration layer · Shared checkout · Concept work</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-screen-asset" style="height:120vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/sorted-casestudy.webp" alt="Sorted app homepage on iPhone — location header, search bar, shopping categories, popular restaurants and brand recommendations" style="width:100%;height:100%;object-fit:contain;object-position:center center" loading="eager" fetchpriority="high">
+  </div>
+
+
+  <!-- ═══════ 01 — THE QUESTION ═══════ -->
+
+  <section id="cs-thesis" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:46em">
+      <p class="mono-text" style="margin-bottom:1.6em">01 / The Question</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.15;letter-spacing:-0.03em;color:var(--charcoal)">The UK already has strong specialist apps. What it does not have is a system that understands what you are trying to do across them.</h2>
+    </div>
+  </section>
+
+  <div style="padding:0 8% 2em;max-width:62em;margin:0 auto;text-align:center">
+    <p style="font-size:0.7em;color:var(--text-ghost);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:1em">What people currently use</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.3em;justify-content:center;max-width:40em;margin:0 auto">
+      <span class="app-pill">Deliveroo</span><span class="app-pill">Just Eat</span><span class="app-pill">Uber Eats</span><span class="app-pill">Tesco</span><span class="app-pill">Ocado</span><span class="app-pill">Amazon</span><span class="app-pill">ASOS</span><span class="app-pill">Monzo</span><span class="app-pill">Revolut</span><span class="app-pill">Apple Pay</span><span class="app-pill">Uber</span><span class="app-pill">Bolt</span><span class="app-pill">Trainline</span><span class="app-pill">Citymapper</span><span class="app-pill">BBC News</span><span class="app-pill">NHS App</span><span class="app-pill">GOV.UK</span>
+    </div>
+  </div>
+
+  <section class="content-section" style="padding-top:4em">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Tension</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">The problem is<br>not app switching.</h2>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">Deliveroo works well. Monzo works well. Trainline works well. The individual products are not the problem. The problem is that each one understands only its own domain. Intent is fragmented across them. Location, preferences, and payment are repeatedly re-established. No single layer can coordinate an entire user goal like "sort out my weekend in Edinburgh."</p>
+        <p class="body-copy">Super apps have not taken off in this market because specialist apps already work well enough. The hypothesis behind Sorted: AI could change the value proposition from "put every service into one app" to "understand what the user is trying to do and coordinate across services."</p>
+        <p class="body-copy">This is concept work. It explores that hypothesis through 44 screens across nine modules, with a shared AI layer, shared checkout, and location-first architecture. It was not shipped.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 01.5 — WHY THIS WAS WORTH EXPLORING ═══════ -->
+
+  <section id="cs-evidence" style="padding:6em 8% 2em">
+    <div style="max-width:62em;margin:0 auto;text-align:center">
+      <p class="mono-text" style="margin-bottom:0.6em;text-align:center">02 / Why This Was Worth Exploring</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin:0 auto 1.5em;max-width:16em;text-align:center">The behaviours were already there.<br>The coordination layer was not.</h2>
+    </div>
+  </section>
+
+  <div style="padding:0 8%;max-width:62em;margin:0 auto">
+    <div class="evidence-row">
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">41</p>
+        <p class="evidence-stat__label">apps used per month by UK smartphone users</p>
+        <p class="evidence-stat__source"><a href="https://www.ofcom.org.uk/research-and-data/online-research/online-nation" target="_blank" rel="noopener noreferrer">Ofcom, Online Nation 2025</a> · May 2025</p>
+      </div>
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">53%</p>
+        <p class="evidence-stat__label">of UK people say they often see AI summaries in search results</p>
+        <p class="evidence-stat__source"><a href="https://www.ofcom.org.uk/research-and-data/online-research/online-nation" target="_blank" rel="noopener noreferrer">Ofcom, Online Nation 2025</a> · YouGov · Feb 2025</p>
+      </div>
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">15.2M</p>
+        <p class="evidence-stat__label">Monzo customers</p>
+        <p class="evidence-stat__sub">10.4M monthly active · 49% use Monzo as primary bank</p>
+        <p class="evidence-stat__source"><a href="https://monzo.com/annual-report" target="_blank" rel="noopener noreferrer">Monzo Annual Report</a> · FY2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:3em 8% 2em;max-width:42em;margin:0 auto;text-align:center">
+    <p class="mono-text" style="margin-bottom:1em">Interpretation</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.85em;font-weight:400;line-height:1.55;color:var(--text-secondary)">These numbers do not prove demand for Sorted. They show that the behaviours it proposes to connect already exist at scale. Monzo shows that UK consumers can build a deep primary relationship with a digital platform. Whether that behaviour extends across unrelated service categories remains unproven.</p>
+  </div>
+
+  <div style="padding:2em 8% 4em;max-width:62em;margin:0 auto;text-align:center">
+    <div class="inference-row">
+      <div class="inference-step">
+        <p class="inference-step__label">Observation</p>
+        <p class="inference-step__body">People move across many specialist apps, but each app understands only its own domain.</p>
+      </div>
+      <div class="inference-step">
+        <p class="inference-step__label">Inference</p>
+        <p class="inference-step__body">The problem is fragmented intent, not app count.</p>
+      </div>
+      <div class="inference-step">
+        <p class="inference-step__label">Design response</p>
+        <p class="inference-step__body">One AI orchestration layer across shared context, shared commerce, and distinct vertical experiences.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════ 03 — THE LANDSCAPE ═══════ -->
+
+  <section id="cs-landscape" style="padding:6em 8% 2em">
+    <div style="max-width:72em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:0.6em">03 / The Landscape</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);max-width:14em;margin-bottom:1.5em">Existing products remain<br>largely domain-specific.</h2>
+      <table class="vs-table">
+        <caption class="sr-only">Comparison of existing product models with Sorted</caption>
+        <thead><tr><th>Model</th><th>Examples</th><th>Sorted</th></tr></thead>
+        <tbody>
+          <tr><td>Specialist Vertical</td><td>Deliveroo and Just Eat serve food. Trainline serves rail. Each is excellent within its domain. Most remain focused on a small number of adjacent domains.</td><td>Food, shopping, news, and local discovery share one AI layer and one checkout system.</td></tr>
+          <tr><td>Multi-Service</td><td>Uber has expanded from mobility into food and grocery, but its consumer proposition remains centred on mobility and delivery rather than cross-domain intent orchestration.</td><td>Nine modules coordinated by a shared intent layer, not bolted onto a single-vertical core.</td></tr>
+          <tr><td>Financial Ecosystem</td><td>Revolut demonstrates how a UK digital platform can expand from a strong financial core into adjacent services such as insurance and travel. Its expansion remains within financial and transactional territory.</td><td>Payments are infrastructure, not identity. Sorted integrates with existing providers rather than replacing them.</td></tr>
+          <tr><td>AI Commerce</td><td>Klarna recommends products then navigates away to buy. Amazon Rufus answers questions then links to product pages. Current AI commerce assistants typically return users to conventional product and checkout flows.</td><td>Transactional AI. The concept explores completing a purchase inside a conversation without navigating away.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 04 — CROSS-DOMAIN JOURNEY ═══════ -->
+
+  <section id="cs-architecture" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">04 / How It Works</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">One intent.<br>Multiple domains.<br>Shared checkout.</h2>
+    </div>
+  </section>
+
+  <section id="cs-journey" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">01</div>
+        <h3 class="flow-title">Adaptive Hub,<br>Contextual AI,<br>Shared Checkout</h3>
+        <span class="flow-status">Cross-domain orchestration</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Three Layers</p>
+          <p class="flow-problem__body">A super app fails if every module looks the same or if you have to dig for what you need. I designed three layers that work together: the homepage reshapes by mode, the AI appears wherever you are, and one checkout handles every transaction regardless of entry point.</p>
+        </div>
+
+        <p class="flow-strip-label">One hub, four contexts</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/hub-main-home.webp" alt="Main homepage — search bar, wedding banner, Scan & Pay, Shopping, Food, News categories, popular brands, popular restaurants, explore more" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Main home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/hub-food.webp" alt="Food homepage — restaurant-first layout, food categories, nearby offers, location-aware ordering" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Food home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/hub-shopping.webp" alt="Shopping homepage — fashion brands, product grid, deals and category browsing" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Shopping home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/hub-explore-map.webp" alt="Explore homepage — map-based discovery with smart suggestions and nearby venues" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Explore on map</span></div></div>
+          </div>
+        </div>
+
+        <p class="flow-strip-label">AI as a companion — four entry points</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/ai-trigger-chat.webp" alt="AI Chat — How can I assist you? Quick actions: headlines, track orders, book metro, locate grocery" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">05</span><span class="phone-item__caption">Dedicated chat</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/ai-trigger-map.webp" alt="AI triggered on map — bottom sheet with contextual prompts: restaurants near me, shopping, nearby grocery" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">06</span><span class="phone-item__caption">Triggered on map</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/ai-trigger-homepage.webp" alt="AI voice chat triggered from homepage — bottom sheet slides up over categories and restaurants" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">07</span><span class="phone-item__caption">Voice from home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/ai-trigger-pdp.webp" alt="AI triggered on product detail page — bottom sheet with contextual questions about the product" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">08</span><span class="phone-item__caption">Ask on any product</span></div></div>
+          </div>
+        </div>
+
+        <p class="flow-strip-label">Shared checkout</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/checkout-ai-products.webp" alt="AI chat surfaces similar products — H&M, Superdry, LookMark shirts with Add buttons and prices" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">09</span><span class="phone-item__caption">AI finds products</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/checkout-cart-sheet.webp" alt="Cart bottom sheet — 1 item in cart, H&M cotton shirt, size 36/M, Proceed to Pay" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">10</span><span class="phone-item__caption">Cart sheet</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/checkout-payment.webp" alt="Payment modal — complete payment, delivery address, saved payment cards" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">11</span><span class="phone-item__caption">Payment</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/checkout-cart-full.webp" alt="Order tracking — map with delivery route, arrives in 13 mins, Nike order packed, waiting on delivery partner" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">12</span><span class="phone-item__caption">Order tracking</span></div></div>
+          </div>
+        </div>
+
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Three layers — adaptive homepage, contextual AI, shared checkout — work as one system. The homepage reshapes by mode, the AI surfaces wherever you are, and the same cart and payment components appear regardless of entry point.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 06 — AI CHAT ═══════ -->
+
+  <section id="cs-chat" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">02</div>
+        <h3 class="flow-title">Can You Buy<br>Without Leaving<br>the Chat?</h3>
+        <span class="flow-status">AI transactional chat</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The Design Bet</p>
+          <p class="flow-problem__body">Existing AI assistants recommend products and then hand the user back to conventional checkout flows. Klarna navigates to a product page. Amazon Rufus links out. This concept explores keeping the entire transaction inside the conversation: ask a question, get product recommendations with images and prices, add to cart, select a size, and confirm — without ever leaving the chat.</p>
+        </div>
+        <p class="flow-strip-label">Ask → Browse → Buy — inside the chat</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/chat-default-new.webp" alt="AI Chat — How can I assist you? Quick actions: headlines, track orders, book metro, locate grocery" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Quick actions</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/chat-user-typed-new.webp" alt="User types: I'm going to Edinburgh next month. What types of outfit should I wear?" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Question sent</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/chat-product-reco-new.webp" alt="AI responds with product cards — H&M and Superdry shirts with Add buttons" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Products inline</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/chat-select-size-new.webp" alt="Size selection inside chat — 32/Small to 40/XL with quantity control" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Select size in chat</span></div></div>
+          </div>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">The full purchase flow — product cards, quantity, size selection — stays inside the conversation. The user does not navigate to a product page or a separate checkout.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 07 — SMART SEARCH ═══════ -->
+
+  <section id="cs-search" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">03</div>
+        <h3 class="flow-title">One Search Bar.<br>Three Domains.</h3>
+        <span class="flow-status">Intent-based search</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The Decision</p>
+          <p class="flow-problem__body">Type "Green" and the system resolves it across domains simultaneously: a green dial watch in Fashion, green vegetables in Grocery. The user can search in all domains at once or narrow to Shopping, Food, or News through a domain selector. The AI Overview generates trending context and image carousels before showing product results. One input, three domains, the system resolves intent.</p>
+        </div>
+        <p class="flow-strip-label">Search → Resolve → Results</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/search-page-new.webp" alt="Search home — AI suggestions, Shopping/Food/News tabs, recent searches, continue browsing" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">AI search home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/search-type-new.webp" alt="Typing 'Green' — cross-domain results: watch in Fashion, vegetables in Grocery" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Cross-domain resolve</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/search-results-new.webp" alt="Search results — AI Overview with trending outfits, image carousel, product grid" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">AI Overview + results</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/search-results-2-new.webp" alt="Domain selector — switch between Shopping, Food, News for the same query" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Switch domain</span></div></div>
+          </div>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">One query resolves across Shopping, Food, and News simultaneously. "Green" returns a watch in Fashion and vegetables in Grocery. The user can narrow to a single domain or let the system classify intent.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 08 — FOOD + LOCATION ═══════ -->
+
+  <section id="cs-food" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">04</div>
+        <h3 class="flow-title">5 Kilometres<br>Means Different<br>Things</h3>
+        <span class="flow-status">Spatial food discovery</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Why Food Is Different</p>
+          <p class="flow-problem__body">Restaurant choice is spatial. Where something is relative to you, how long it takes to get there, what is open now — these matter more than an algorithm sorting a list. Sorted opens with a location-aware home, then lets you explore a map with restaurant pins, filter by distance, rating, and cuisine, and ask the AI for recommendations without leaving the map.</p>
+        </div>
+        <p class="flow-strip-label">Discovery to recommendation</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/food-home-new.webp" alt="Food home — location header, deals, favourites, explore near you" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Food home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/food-map-new.webp" alt="Map view with restaurant pins, filter chips, 5km radius slider" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Map with filters</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/food-maps-home-new.webp" alt="Map with AI bottom sheet — 35 restaurants within 5km, restaurant cards" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">AI finds 35 nearby</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/food-chat-new.webp" alt="AI chat on map — describes Foo Three Swans, rating, distance, view details" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">AI recommends</span></div></div>
+          </div>
+        </div>
+        <div class="flow-decision">
+          <p class="flow-decision__label">What the AI Adds</p>
+          <p class="flow-decision__body">The AI sits on top of the map as a bottom sheet. It tells you how many restaurants are within your radius, describes individual restaurants in natural language ("Foo Three Swans is a pan asian restaurant with a rating of 4 stars"), and surfaces a restaurant card with distance, price, and hours. The user can also type a question in the chat input. The map stays visible behind the AI — context and conversation in the same view.</p>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Map-based discovery is specific to food. Shopping does not need a map. The location header re-contextualises every module, but each vertical uses location differently.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 09 — SHOPPING ═══════ -->
+
+  <section id="cs-shopping" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">05</div>
+        <h3 class="flow-title">A Shirt and a<br>Milk Packet Cannot<br>Share a Pattern</h3>
+        <span class="flow-status">Fashion + grocery</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The Trade-Off</p>
+          <p class="flow-problem__body">One shopping module serves grocery, fashion, and local stores. Each needs a different browsing pattern: grocery needs category sidebars and quick-add for repeat purchases. Fashion needs large imagery and brand discovery. Local stores need a storefront with reviews, distance, and offers. Forcing all three into the same layout would weaken each. The decision: one shopping home that branches into three distinct browsing experiences, all sharing the same checkout.</p>
+        </div>
+        <p class="flow-strip-label">One home, three browsing patterns</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/shopping-home-new.webp" alt="Shopping home — categories, fashion banner, grocery cards, location header" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Shopping home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/shopping-house-new.webp" alt="Grocery — category sidebar, milk products with prices and quick-add" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Grocery browsing</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/shopping-grid-new.webp" alt="Fashion — product grid with H&M, Jack & Jill, Uniqlo shirts" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Fashion browsing</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/shopping-store-new.webp" alt="Store detail — Westside Mall, rating, distance, offers, shop tabs" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Store detail</span></div></div>
+          </div>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Grocery uses a category sidebar with quick-add. Fashion uses a visual product grid. Stores use a storefront with reviews and offers. Same checkout underneath all three.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BREAKER ═══════ -->
+  <div class="split-asset" style="min-height:120vh">
+    <div class="split-asset__panel" style="min-height:120vh;position:relative">
+      <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/breaker-4.webp" alt="Sorted bottom navigation — contextual tabs across domains" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+      <div style="position:absolute;bottom:4em;left:2.5em;z-index:2">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:0.8em">Design Principle</p>
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Same navigation.<br>Every context<br>knows where you are.</p>
+      </div>
+    </div>
+    <div class="split-asset__panel" style="min-height:120vh;position:relative">
+      <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/breaker-3.webp" alt="Sorted cross-domain cart — shared checkout across modules" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+      <div style="position:absolute;top:2em;left:2em;z-index:2">
+        <p class="caps-subheading" style="color:var(--charcoal);margin-bottom:0.3em">AI Voice Companion</p>
+        <p class="mono-text" style="color:var(--text-muted)">Start speaking from any screen</p>
+      </div>
+    </div>
+  </div>
+  <div style="height:35vh"></div>
+
+
+  <!-- ═══════ SMART WIDGETS ═══════ -->
+
+  <section id="cs-widgets" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">06</div>
+        <h3 class="flow-title">Smart<br>Widgets</h3>
+        <span class="flow-status">Live context on the homepage</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Why Widgets Matter</p>
+          <p class="flow-problem__body">In a super app, live context surfaces on the homepage without requiring the user to open a module. A cab is arriving in 5 minutes. A food order from Greggs is 17 minutes away. A cricket match is live. A news story is breaking. Each widget occupies the same slot on the homepage but shows different content depending on what is active. The user glances at the homepage and knows what is happening across every domain.</p>
+        </div>
+        <p class="flow-strip-label">Four widget states, one slot</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/widget-cab.webp" alt="Cab widget — live tracking, ETA 5 mins, driver OTP, call driver" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Cab arriving</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/widget-food.webp" alt="Food widget — Greggs order arriving in 17 mins, delivery partner, progress bar" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Food delivery</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/widget-score.webp" alt="Score widget — ICC World T20 Qualifier, India vs England, live score" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Live score</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/widget-news.webp" alt="News widget — breaking news headline with image on homepage" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Breaking news</span></div></div>
+          </div>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">One widget slot, multiple states. The homepage adapts to what is live — cab, food, sports, news — without the user opening each module to check status.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ TOURISM ═══════ -->
+
+  <section id="cs-tourism" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">07</div>
+        <h3 class="flow-title">Tourism</h3>
+        <span class="flow-status">Architecture stress test</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Testing the Platform Architecture</p>
+          <p class="flow-problem__body">Tourism was not planned as V1 scope. I designed it to stress-test whether the platform architecture — shared location, shared AI, shared checkout — could support a domain with very different discovery patterns. Culturally specific categories (Heritage, Spiritual, Handicrafts, Wildlife), trip management, saved places, and a proposed crowd heatmap. If the architecture held, the platform could extend beyond commerce.</p>
+        </div>
+        <p class="flow-strip-label">Browse → Intelligence → Plan</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/tourism-home.webp" alt="Tourism home — eight categories (Heritage, Adventure, Culture, Spiritual, Handicrafts, Events, Wildlife, Nature), trending destinations with ratings, exciting offers near you" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Tourism home</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/tourism-heatmap.webp" alt="Crowd heatmap — map overlay with venue density, restaurant tooltips, AI category radar, layer controls" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Crowd heatmap</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/tourism-my-trips.webp" alt="My Trips tab — saved itineraries with destination imagery and trip details" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">My Trips</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/tourism-saved-places.webp" alt="Saved Places tab — bookmarked venues with ratings, distance, and offers" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Saved Places</span></div></div>
+          </div>
+        </div>
+
+        <div class="flow-decision">
+          <p class="flow-decision__label">What the Heatmap Adds</p>
+          <p class="flow-decision__body">The heatmap overlays crowd density onto the map. Venue tooltips surface directly on the overlay with profile images and labels. A dashed radius circle marks the discovery zone around the user. The sidebar toggles layers — heatmap visibility, category tags, filters. At the bottom, an AI-driven radar visualises what is around you by category: Food, Top Deals, Ratings, Vegetarian, Budget-friendly, Local Must Try. The map becomes a decision surface rather than a navigation tool. You do not search for places — the system shows you what is here, how busy it is, and what matters to you.</p>
+        </div>
+
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Tourism reuses the location header and map infrastructure from Food, but adds trip management and a proposed crowd layer. The shared architecture held without modification.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ ONBOARDING PERSONALIZATION ═══════ -->
+
+  <section id="cs-onboarding" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">08</div>
+        <h3 class="flow-title">Onboarding</h3>
+        <span class="flow-status">Personalisation before content</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Why This Matters More in a Super App</p>
+          <p class="flow-problem__body">Deliveroo can launch straight into restaurants — it knows what you want. A super app with nine modules cannot assume anything. The onboarding introduces the AI assistant, offers flexible sign-in, and asks which categories matter to you. Fashion, grocery, electronics — those choices shape the homepage, the AI recommendations, and which modules surface first. Without personalisation upfront, the app would feel like noise.</p>
+        </div>
+        <p class="flow-strip-label">Brand → Access → Personalise → AI</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/onboarding-splash.webp" alt="Sorted splash screen — app logo on orange gradient background, first brand impression" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Brand splash</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/onboarding-login.webp" alt="Login — Begin your Journey with mobile, email, Google and WhatsApp sign-in, multilingual support" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Sign in</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/onboarding-personalize.webp" alt="Category personalization — AI asks what categories interest you, Fashion and Grocery cards with selection tags" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Pick your interests</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/onboarding-ai-intro.webp" alt="AI introduction — Hello, I'm Sortoo. Large AI avatar with orange glow on white" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Meet the AI</span></div></div>
+          </div>
+        </div>
+
+        <div class="flow-decision">
+          <p class="flow-decision__label">AI as the Last Step</p>
+          <p class="flow-decision__body">The onboarding ends with the AI introduction, not a dashboard. After signing in and picking categories, the user meets Sortoo: "Hello. I'm Sortoo." By this point the AI already knows their name and interests — "Hi Terry John, What categories are you most interested in?" — so the first interaction feels personal rather than cold. The relationship is established before the first transaction.</p>
+        </div>
+
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Multilingual support, four sign-in methods, swipeable category cards with visual previews. Personalisation is not a settings page buried later — it is the entry point. Every module downstream inherits these choices.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ MAP AS A DOMAIN ═══════ -->
+
+  <section id="cs-maps" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num">09</div>
+        <h3 class="flow-title">Map as<br>a Domain</h3>
+        <span class="flow-status">Location intelligence</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">Shared Capability, Not a Separate Module</p>
+          <p class="flow-problem__body">In most apps, the map is a utility — search, pin, navigate. I explored what happens when the map becomes a shared platform layer used differently by Food, Tourism, and Local Discovery. A street-level view overlays venue information onto the real world. A heatmap layer proposes crowd density filtered by radius. And the AI sits on top of it, answering questions about what you see. Food, Tourism, and Maps all use the same location infrastructure but surface it differently.</p>
+        </div>
+        <p class="flow-strip-label">See → Filter → Ask → Understand</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/map-street-view.webp" alt="Street view — immersive street-level view with venue info cards pinned to real-world locations, ratings and distances overlaid" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Street view</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/map-heatmap-filters.webp" alt="Heatmap with filters — crowd density overlay, category pills, 3km radius slider, restaurant cards in horizontal scroll" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Heatmap + filters</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/map-ai-bottomsheet.webp" alt="AI bottom sheet — contextual AI triggered from the map, place details and actions overlaid on conversation" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Ask the AI</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/map-ai-response.webp" alt="AI response — natural language answers about nearby places, recommendations based on map context" loading="lazy"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">AI responds</span></div></div>
+          </div>
+        </div>
+
+        <div class="flow-decision">
+          <p class="flow-decision__label">Street View as Discovery</p>
+          <p class="flow-decision__body">The street-level view is not Google Street View with pins dropped on it. Venue information is anchored to buildings — a restaurant's name, rating, and distance appear where the restaurant physically is. You look at a street and immediately understand what is there. The heatmap then adds a layer that no single-venue app can provide: where people would be clustering, across which categories, within what radius. These are two different ways of seeing the same place — one immersive, one analytical — and both feed into the AI when you ask a question.</p>
+        </div>
+
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Design decision</span>
+          <span class="evidence-signal__value">Maps use the same location and AI infrastructure as Food and Tourism. The platform layer is shared; only the surface — street view, heatmap, contextual prompts — changes per domain.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ CART RESEARCH ═══════ -->
+
+  <!-- Cart images first -->
+  <div style="height:15vh"></div>
+  <div class="split-asset" style="min-height:120vh">
+    <div class="split-asset__panel" style="min-height:120vh">
+      <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/cart-1.webp" alt="Sorted cart — cross-domain cart holding items from AI Chat, Search, and Shopping" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+      <div class="split-asset__label split-asset__label--bottom" style="background:linear-gradient(to top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);right:0;padding:1.6em 2em">
+        <p class="caps-subheading" style="color:var(--charcoal);margin-bottom:0.3em">Cross-Domain Cart</p>
+        <p class="mono-text" style="color:var(--text-muted)">One cart across six entry points</p>
+      </div>
+    </div>
+    <div class="split-asset__panel" style="min-height:120vh;overflow:hidden;position:relative">
+      <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/cart-2.webp" alt="Sorted order confirmation — multi-shipment across grocery, electronics, and fashion" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0" loading="lazy">
+      <div style="position:absolute;top:2em;left:2em;z-index:2">
+        <p class="caps-subheading" style="color:#fff;margin-bottom:0.3em;text-shadow:0 1px 4px rgba(0,0,0,0.3)">Order Confirmation</p>
+        <p class="mono-text" style="color:rgba(255,255,255,0.8);text-shadow:0 1px 4px rgba(0,0,0,0.3)">Multi-shipment across grocery, electronics, and fashion</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Then the story -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:46em">
+      <p class="mono-text" style="margin-bottom:1.6em">Cart Research</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">A super app cart is not<br>a normal cart.</h2>
+    </div>
+  </section>
+
+  <!-- Story: the constraint -->
+  <section class="content-section">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Constraint</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">One cart.<br>Six entry points.<br>Three product types.</h2>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">In a single-vertical app, the cart has one job: hold items from one store. In Sorted, the cart has to hold a restaurant booking from the AI Chat, a shirt from Smart Search, and groceries from the Shopping module — all at the same time, entered from different places in the app.</p>
+        <p class="body-copy">The user does not browse a catalogue and add items linearly. They arrive at the cart from a conversation, from a search result, from a map pin. The cart has to make sense regardless of the entry point or product mix.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story: the approach -->
+  <section class="content-section" style="padding-top:2em;padding-bottom:4em">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The Approach</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Start from<br>research,<br>not patterns.</h2>
+      </div>
+      <div class="content-right">
+        <p class="body-copy">I could not copy a Deliveroo cart, an Amazon cart, or a Monzo payment flow — each solves for one domain. Baymard Institute has tested cart and checkout UX across 250+ e-commerce sites. Their research is grounded in large-scale usability testing, not convention.</p>
+        <p class="body-copy">I used their guidelines as constraints, evaluating each against the cross-domain problem: does this principle hold when a cart contains items from three different verticals? Nine rules survived.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 Baymard rules: tabs -->
+  <section style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding:3em 8%;box-sizing:border-box;border-top:1px solid rgba(52,52,52,0.06)">
+    <div style="max-width:62em;margin:0 auto;width:100%">
+      <div style="margin-bottom:1.5em">
+        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;text-transform:uppercase;letter-spacing:0.02em;color:var(--text-muted);margin-bottom:0.6em">Principles Applied</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,4vw,3rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">9 Baymard rules mapped to Sorted.</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.3em;margin-bottom:1.5em" id="bymTabs" role="tablist" aria-label="Baymard cart principles">
+        <button class="bym-tab" id="bym-tab-0" data-idx="0" role="tab" aria-selected="true" aria-controls="bym-panel-0" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid var(--charcoal);background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s">Full Order Cost</button>
+        <button class="bym-tab" id="bym-tab-1" data-idx="1" role="tab" aria-selected="false" aria-controls="bym-panel-1" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Large Thumbnails</button>
+        <button class="bym-tab" id="bym-tab-2" data-idx="2" role="tab" aria-selected="false" aria-controls="bym-panel-2" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Save for Later</button>
+        <button class="bym-tab" id="bym-tab-3" data-idx="3" role="tab" aria-selected="false" aria-controls="bym-panel-3" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Plus / Minus</button>
+        <button class="bym-tab" id="bym-tab-4" data-idx="4" role="tab" aria-selected="false" aria-controls="bym-panel-4" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Image → PDP</button>
+        <button class="bym-tab" id="bym-tab-5" data-idx="5" role="tab" aria-selected="false" aria-controls="bym-panel-5" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Cart Toast</button>
+        <button class="bym-tab" id="bym-tab-6" data-idx="6" role="tab" aria-selected="false" aria-controls="bym-panel-6" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Cross-sell</button>
+        <button class="bym-tab" id="bym-tab-7" data-idx="7" role="tab" aria-selected="false" aria-controls="bym-panel-7" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Saved at Bottom</button>
+        <button class="bym-tab" id="bym-tab-8" data-idx="8" role="tab" aria-selected="false" aria-controls="bym-panel-8" style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:500;padding:0.4em 0.9em;border-radius:100px;border:1px solid rgba(52,52,52,0.15);background:transparent;color:var(--charcoal);cursor:pointer;transition:all 0.2s">Cart Changes</button>
+      </div>
+      <div id="bymPanels">
+        <div class="bym-panel" id="bym-panel-0" data-idx="0" role="tabpanel" aria-labelledby="bym-tab-0" style="display:flex;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/full-order-cost.webp" alt="Baymard: Full Order Cost" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">01 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">In a cross-domain cart, delivery, service fees, and taxes may come from different providers. Cost transparency is critical.</p></div></div>
+        <div class="bym-panel" id="bym-panel-1" data-idx="1" role="tabpanel" aria-labelledby="bym-tab-1" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/large-image-thumbnail.webp" alt="Baymard: Large Thumbnails" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">02 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">When a cart holds a shirt and a dish, large thumbnails help users distinguish between product types at a glance.</p></div></div>
+        <div class="bym-panel" id="bym-panel-2" data-idx="2" role="tabpanel" aria-labelledby="bym-tab-2" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/save-for-later.webp" alt="Baymard: Save for Later" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">03 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Someone adds an outfit from AI Chat but wants to finish ordering dinner first. Save-for-later preserves intent.</p></div></div>
+        <div class="bym-panel" id="bym-panel-3" data-idx="3" role="tabpanel" aria-labelledby="bym-tab-3" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/button-plus-minus.webp" alt="Baymard: Plus/Minus" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">04 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Grocery items need frequent quantity changes. Touch targets are sized for reliable mobile interaction.</p></div></div>
+        <div class="bym-panel" id="bym-panel-4" data-idx="4" role="tabpanel" aria-labelledby="bym-tab-4" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/link-image-to-pdp.webp" alt="Baymard: Image to PDP" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">05 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Items from AI Chat may not have a visited product page. Tappable thumbnails give users a path to verification.</p></div></div>
+        <div class="bym-panel" id="bym-panel-5" data-idx="5" role="tabpanel" aria-labelledby="bym-tab-5" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/item-to-cart-toast.webp" alt="Baymard: Cart Toast" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">06 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">In a conversational flow, the toast bridges "the AI recommended this" to "it is now in your cart."</p></div></div>
+        <div class="bym-panel" id="bym-panel-6" data-idx="6" role="tabpanel" aria-labelledby="bym-tab-6" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/cross-sell-in-cart.webp" alt="Baymard: Cross-sell" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">07 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Cross-sell can cross vertical boundaries: "ordering dinner — do you also need groceries for tomorrow?"</p></div></div>
+        <div class="bym-panel" id="bym-panel-7" data-idx="7" role="tabpanel" aria-labelledby="bym-tab-7" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/saved-item-bottom.webp" alt="Baymard: Saved at Bottom" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">08 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Active items first, saved items second. Prevents confusion about what is being purchased across domains.</p></div></div>
+        <div class="bym-panel" id="bym-panel-8" data-idx="8" role="tabpanel" aria-labelledby="bym-tab-8" style="display:none;gap:2em;align-items:flex-end"><div style="flex:1;max-height:45vh;overflow:hidden"><img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/baymard/inform-cart-changes.webp" alt="Baymard: Cart Changes" style="width:100%;height:auto;max-height:45vh;object-fit:contain;border-radius:6px;border:1px solid rgba(52,52,52,0.06)"></div><div style="width:30%;flex-shrink:0"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-ghost);margin-bottom:0.6em">09 / 09</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.78em;font-weight:400;line-height:1.5;color:var(--text-secondary)">Changes from multiple providers need visible notifications. Users cannot monitor three providers at once.</p></div></div>
+      </div>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.55em;font-weight:400;color:var(--text-ghost);margin-top:1.5em">Baymard Institute, Cart &amp; Checkout UX Research</p>
+    </div>
+  </section>
+
+  <!-- ═══════ BREAKER ═══════ -->
+  <div style="height:35vh"></div>
+  <div style="height:120vh;overflow:hidden;padding:0;margin:0;position:relative">
+    <dotlottie-player src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/sorted/breaker-lottie.json" background="transparent" speed="1" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:110%;min-height:110%;width:auto;height:auto" renderer="svg" loop autoplay></dotlottie-player>
+  </div>
+  <div style="height:35vh"></div>
+
+
+  <!-- ═══════ JUDGMENT: SCOPE + RISKS + TESTS ═══════ -->
+
+  <section style="padding:6em 8% 5em">
+    <div style="max-width:38em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:0.8em">Judgment</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:3em">What to build, what could break, what to test.</h2>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">Scope</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em"><strong style="color:var(--charcoal)">V1:</strong> AI chat + smart search, food discovery, shopping, shared checkout. Transactional, cross-domain, testable.</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-ghost)">Deferred: Transport, NHS, GOV.UK, insurance. Health data introduces consent constraints. 317 local authorities in England.</p>
+
+      <div style="height:1px;background:rgba(52,52,52,0.06);margin:2.5em 0"></div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">Risks</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:var(--charcoal)">Specialist app loyalty.</strong> 15.2M Monzo customers. <strong style="color:var(--charcoal)">Trust concentration.</strong> Cross-domain data burden. <strong style="color:var(--charcoal)">Regulatory complexity.</strong> Overlapping obligations. <strong style="color:var(--charcoal)">Cold start.</strong> No supply day one. <strong style="color:var(--charcoal)">AI latency.</strong> Speed is trust. <strong style="color:var(--charcoal)">Unit economics.</strong> Value beyond the transaction.</p>
+
+      <div style="height:1px;background:rgba(52,52,52,0.06);margin:2.5em 0"></div>
+
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">What I Would Test</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:var(--charcoal)">01.</strong> Cross-domain intent routing. <strong style="color:var(--charcoal)">02.</strong> Transactional trust. <strong style="color:var(--charcoal)">03.</strong> Location re-contextualisation. <strong style="color:var(--charcoal)">04.</strong> AI confirmation boundaries. <strong style="color:var(--charcoal)">05.</strong> Map vs list preference. <strong style="color:var(--charcoal)">06.</strong> Minimum viable ecosystem.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════ REFLECTION ═══════ -->
+
+  <section id="cs-reflection" style="padding:6em 8% 5em">
+    <div style="max-width:42em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:0.8em">Reflection</p>
+      <p style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:500;line-height:1.25;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:3em">Whether UK users genuinely want a cross-domain relationship with one product, or whether 17 specialist apps that each work well is actually the better outcome. This concept explores the former. The market has so far chosen the latter.</p>
+
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:#1a7a3c">Worked:</strong> Shared checkout held across Chat, Search, and Shopping. Platform-layers model proved shared infrastructure does not require identical surfaces.</p></div>
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:#996600">Would change:</strong> More home screen states. Stronger news module reasoning. AI Star icon validation.</p></div>
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06);border-bottom:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:var(--text-muted)">Concept work.</strong> Not shipped. Not validated. The value is in the decisions: what to unify, what to keep separate, where to stop, and why.</p></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════ LIGHTBOX ═══════ -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <div class="lb__top">
+      <span class="lb__flow" id="lbFlow"></span>
+      <button class="lb__close" id="lbClose" aria-label="Close">&#10005;</button>
+    </div>
+    <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Previous">&#8592;</button>
+    <div class="lb__img-wrap"><img id="lbImg" src="" alt=""></div>
+    <p class="lb__caption" id="lbCaption"></p>
+    <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Next">&#8594;</button>
+  </div>
+
+  </main>
+
+  <!-- ═══════ BOTTOM NAV ═══════ -->
+  <nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+    <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+    <a href="#cs-thesis" class="cs-nav-item" data-section="cs-thesis" aria-label="Thesis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v12H4z"/><path d="M6.5 5h3"/><path d="M6.5 7.5h3"/></svg><span>Thesis</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-landscape" class="cs-nav-item" data-section="cs-landscape" aria-label="Landscape"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5L14.5 5v6L8 14.5 1.5 11V5z"/><path d="M8 7.5v7"/><path d="M1.5 5L8 8.5 14.5 5"/></svg><span>Landscape</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-architecture" class="cs-nav-item" data-section="cs-architecture" aria-label="Flows"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12"/><path d="M2 8h12"/><path d="M2 12h8"/></svg><span>Flows</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-reflection" class="cs-nav-item" data-section="cs-reflection" aria-label="Reflection"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="1.5"/><circle cx="12" cy="4" r="1.5"/><circle cx="8" cy="12" r="1.5"/><path d="M5.2 5.2L7 10.5"/><path d="M10.8 5.2L9 10.5"/></svg><span>Reflection</span></a>
+  </nav>
+
+  <div style="height:20vh"></div>
+
+  <!-- ═══════ CTA + FOOTER ═══════ -->
+  <section id="cta">
+    <h2 class="cta-heading"><span class="h-reg">Still </span><em class="h-ital">here</em></h2>
+    <div class="cta-content">
+      <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer working across AI, commerce and fintech products. I'm looking for a permanent Product Design role in the UK and would require Skilled Worker sponsorship to relocate.</p>
+      <p class="cta-label">Open to permanent UK opportunities</p>
+      <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+        <span class="btn-mail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Get in touch
+      </a>
+    </div>
+  </section>
+  <footer id="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-left"><span>terryjohnpaul20@gmail.com</span><span>Designed and coded by me. · &copy; 2026 Terry John Paul</span></div>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        <a href="/resume/">Resume</a>
+        <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a>
+        <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter &#8599;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function focusTarget(el) { if (!el) return; if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); }
+      function safeQuery(s) { try { return document.querySelector(s); } catch (e) { return null; } }
+      if (reducedMotion) { document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function () { var h = this.getAttribute('href'); if (!h || h === '#') return; var t = safeQuery(h); if (t) setTimeout(function () { focusTarget(t); }, 50); }); }); return; }
+
+      var lenis = null;
+      if (typeof window.Lenis === 'function') {
+        try {
+          lenis = new Lenis({ duration: 1.1, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, orientation: 'vertical', gestureOrientation: 'vertical', smoothWheel: true, touchMultiplier: 1, infinite: false, autoResize: true });
+          document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function (e) { var h = this.getAttribute('href'); if (!h || h === '#') return; var t = safeQuery(h); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1.2, onComplete: function () { focusTarget(t); } }); history.pushState(null, '', h); }); });
+          if (window.location.hash) { var ht = safeQuery(window.location.hash); if (ht) requestAnimationFrame(function () { lenis.scrollTo(ht, { immediate: true }); }); }
+          document.addEventListener('visibilitychange', function () { if (document.hidden) lenis.stop(); else lenis.start(); });
+        } catch (e) { lenis = null; }
+      }
+      window.lenis = lenis;
+
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { if (lenis) { function lenisRaf(t) { lenis.raf(t); requestAnimationFrame(lenisRaf); } requestAnimationFrame(lenisRaf); } return; }
+      gsap.registerPlugin(ScrollTrigger);
+      if (lenis) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(function (t) { lenis.raf(t * 1000); }); gsap.ticker.lagSmoothing(0); }
+      window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
+      var dur = 0.75, ease = 'power2.out', isMobile = window.innerWidth < 768;
+      var ySmall = isMobile ? 16 : 24, yMed = isMobile ? 20 : 32, viewportH = window.innerHeight;
+      function isBelowFold(el) { return el.getBoundingClientRect().top > viewportH * 0.5; }
+
+      // Hero
+      var heroEyebrow = document.querySelector('.cs-hero-eyebrow'), heroProduct = document.querySelector('.cs-hero-product'), heroTitle = document.querySelector('.cs-hero-title'), heroMeta = document.querySelector('.cs-hero-meta');
+      if (heroEyebrow || heroTitle) { var ht = gsap.timeline(); if (heroEyebrow) ht.from(heroEyebrow, { opacity: 0, y: 16, duration: 0.5, ease: ease }); if (heroProduct) ht.from(heroProduct, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.35'); if (heroTitle) ht.from(heroTitle, { opacity: 0, y: 20, duration: 0.6, ease: ease }, '-=0.35'); if (heroMeta) ht.from(heroMeta, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.3'); }
+
+      // Viewport statements
+      document.querySelectorAll('section[style*="min-height:100vh"]').forEach(function (s) { if (!isBelowFold(s)) return; var e = s.querySelector('.mono-text'), h = s.querySelector('h2'); if (!e && !h) return; var tl = gsap.timeline({ scrollTrigger: { trigger: s, start: 'top 80%', once: true } }); if (e) tl.from(e, { opacity: 0, y: ySmall, duration: dur * 0.8, ease: ease }); if (h) tl.from(h, { opacity: 0, y: yMed, duration: dur, ease: ease }, e ? '-=0.55' : 0); });
+
+      // Content rows
+      document.querySelectorAll('.content-section').forEach(function (s) { if (!isBelowFold(s)) return; var l = s.querySelector('.content-left'), r = s.querySelector('.content-right'); if (!l && !r) return; var tl = gsap.timeline({ scrollTrigger: { trigger: s, start: 'top 85%', once: true } }); if (l) tl.from(l, { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (r) tl.from(r, { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Flow cards
+      document.querySelectorAll('.flow-card').forEach(function (c) { if (!isBelowFold(c)) return; var l = c.querySelector('.flow-left'), r = c.querySelector('.flow-right'); if (!l && !r) return; var tl = gsap.timeline({ scrollTrigger: { trigger: c, start: 'top 85%', once: true } }); if (l) tl.from(l, { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (r) tl.from(r, { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Phone strips
+      document.querySelectorAll('.phone-strip').forEach(function (s) { if (!isBelowFold(s)) return; gsap.from(s.querySelectorAll('.phone-item'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.08, scrollTrigger: { trigger: s, start: 'top 85%', once: true } }); });
+
+      // Full-screen assets
+      document.querySelectorAll('.full-screen-asset').forEach(function (a) { if (!isBelowFold(a)) return; gsap.from(a, { opacity: 0, scale: 0.985, duration: dur * 1.2, ease: ease, scrollTrigger: { trigger: a, start: 'top 90%', once: true } }); });
+
+      // System diagram
+      document.querySelectorAll('.system-diagram').forEach(function (d) { if (!isBelowFold(d)) return; gsap.from(d.querySelectorAll('.system-diagram__node, .system-diagram__branch-item'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.1, scrollTrigger: { trigger: d, start: 'top 85%', once: true } }); });
+
+      // Model grid
+      document.querySelectorAll('.model-grid').forEach(function (g) { if (!isBelowFold(g)) return; var tl = gsap.timeline({ scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); tl.from(g.children[0], { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (g.children[1]) tl.from(g.children[1], { opacity: 0, y: ySmall, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Statblock grid
+      document.querySelectorAll('.statblock-grid').forEach(function (g) { if (!isBelowFold(g)) return; gsap.from(g.querySelectorAll('.statblock-cell'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.06, scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); });
+
+      // Numbered list
+      document.querySelectorAll('.numbered-list').forEach(function (l) { if (!isBelowFold(l)) return; gsap.from(l.querySelectorAll('li'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.06, scrollTrigger: { trigger: l, start: 'top 85%', once: true } }); });
+
+      // Reflection grid
+      document.querySelectorAll('.reflection-grid').forEach(function (g) { if (!isBelowFold(g)) return; gsap.from(g.querySelectorAll('.reflection-card'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.08, scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); });
+
+      // Evidence stats
+      document.querySelectorAll('.evidence-row').forEach(function (r) { if (!isBelowFold(r)) return; gsap.from(r.querySelectorAll('.evidence-stat'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.1, scrollTrigger: { trigger: r, start: 'top 85%', once: true } }); });
+
+      // Inference row
+      document.querySelectorAll('.inference-row').forEach(function (r) { if (!isBelowFold(r)) return; gsap.from(r.querySelectorAll('.inference-step'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.1, scrollTrigger: { trigger: r, start: 'top 85%', once: true } }); });
+
+      // Versus table
+      document.querySelectorAll('.vs-table').forEach(function (t) { if (!isBelowFold(t)) return; gsap.from(t.querySelectorAll('tbody tr'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.06, scrollTrigger: { trigger: t, start: 'top 85%', once: true } }); });
+    });
+  </script>
+
+  <script>
+    // Bottom nav
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.getElementById('csBottomNav'), pill = document.getElementById('csNavPill'), items = nav ? Array.from(nav.querySelectorAll('.cs-nav-item')) : [];
+      if (!nav || !items.length) return;
+      var sectionIds = items.map(function (i) { return i.getAttribute('data-section'); }), sectionEls = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean), heroSection = document.querySelector('.cs-hero-section'), ctaSection = document.getElementById('cta'), currentIndex = -1, isVisible = false;
+      var sectionTops = [], pillOffsets = [], heroBottom = 400, ctaTop = Infinity, viewH = window.innerHeight;
+      function cachePositions() { viewH = window.innerHeight; sectionTops = sectionEls.map(function (el) { return el.offsetTop; }); heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 400; ctaTop = ctaSection ? ctaSection.offsetTop - viewH : Infinity; pillOffsets = items.map(function (i) { return { left: i.offsetLeft, width: i.offsetWidth }; }); }
+      cachePositions(); window.addEventListener('resize', cachePositions); window.addEventListener('load', cachePositions);
+      function setActive(index) { if (index === currentIndex) return; currentIndex = index; for (var i = 0; i < items.length; i++) { if (i === index) { items[i].classList.add('is-active'); if (pill && pillOffsets[i]) { pill.style.left = pillOffsets[i].left + 'px'; pill.style.width = pillOffsets[i].width + 'px'; } } else { items[i].classList.remove('is-active'); } } }
+      function updateNav() { var scrollY = window.scrollY || window.pageYOffset; var shouldShow = scrollY > heroBottom && scrollY < ctaTop; if (shouldShow !== isVisible) { isVisible = shouldShow; if (shouldShow) nav.classList.add('is-visible'); else nav.classList.remove('is-visible'); } var centre = scrollY + viewH * 0.4; var active = -1; for (var i = 0; i < sectionTops.length; i++) { if (sectionTops[i] <= centre) active = i; } if (active >= 0) setActive(active); }
+      if (window.lenis) window.lenis.on('scroll', updateNav); else window.addEventListener('scroll', updateNav, { passive: true });
+      items.forEach(function (item) { item.addEventListener('click', function (e) { e.preventDefault(); var t = document.getElementById(item.getAttribute('data-section')); if (!t) return; if (window.lenis) window.lenis.scrollTo(t, { offset: 0, duration: 1.2 }); else t.scrollIntoView({ behavior: 'smooth' }); history.pushState(null, '', '#' + item.getAttribute('data-section')); }); });
+      updateNav();
+    });
+  </script>
+
+  <script>
+    // Lightbox — groups phone-items by their parent phone-strip
+    (function() {
+      var lb = document.getElementById('lb');
+      var lbImg = document.getElementById('lbImg');
+      var lbFlow = document.getElementById('lbFlow');
+      var lbCaption = document.getElementById('lbCaption');
+      var lbClose = document.getElementById('lbClose');
+      var lbPrev = document.getElementById('lbPrev');
+      var lbNext = document.getElementById('lbNext');
+      var currentGroup = [];
+      var currentIndex = 0;
+      var triggerElement = null;
+      var focusableEls = [lbPrev, lbClose, lbNext];
+
+      function getFlowName(item) {
+        var card = item.closest('.flow-card');
+        if (card) {
+          var title = card.querySelector('.flow-title');
+          if (title) return title.textContent.replace(/\n/g, ' ').trim();
+        }
+        return '';
+      }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var first = focusableEls[0], last = focusableEls[focusableEls.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      }
+
+      function open(group, idx) {
+        currentGroup = group;
+        currentIndex = idx;
+        var item = currentGroup[currentIndex];
+        var img = item.querySelector('img');
+        var caption = item.querySelector('.phone-item__caption');
+        var flow = getFlowName(item);
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbFlow.innerHTML = flow ? '<strong>' + flow + '</strong> &middot; ' + (currentIndex + 1) + ' of ' + currentGroup.length : (currentIndex + 1) + ' of ' + currentGroup.length;
+        lbCaption.textContent = caption ? caption.textContent : '';
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function close() {
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+        if (triggerElement) { triggerElement.focus(); triggerElement = null; }
+      }
+      function nav(dir) { currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length; open(currentGroup, currentIndex); }
+
+      document.querySelectorAll('.phone-strip').forEach(function(strip) {
+        var items = Array.from(strip.querySelectorAll('.phone-item'));
+        items.forEach(function(item, i) {
+          item.addEventListener('click', function() { triggerElement = item; open(items, i); });
+        });
+      });
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click', function() { nav(-1); });
+      lbNext.addEventListener('click', function() { nav(1); });
+      lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function(e) {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') nav(-1);
+        if (e.key === 'ArrowRight') nav(1);
+        trapFocus(e);
+      });
+    })();
+  </script>
+
+  <script>
+    // Baymard tabs
+    (function() {
+      var tabs = Array.from(document.querySelectorAll('.bym-tab'));
+      var panels = document.querySelectorAll('.bym-panel');
+      if (!tabs.length) return;
+      function activate(tab) {
+        var idx = parseInt(tab.getAttribute('data-idx'));
+        tabs.forEach(function(t) { t.style.background = 'transparent'; t.style.color = 'var(--charcoal)'; t.style.borderColor = 'rgba(52,52,52,0.15)'; t.setAttribute('aria-selected', 'false'); t.setAttribute('tabindex', '-1'); });
+        tab.style.background = 'var(--charcoal)'; tab.style.color = '#fff'; tab.style.borderColor = 'var(--charcoal)'; tab.setAttribute('aria-selected', 'true'); tab.setAttribute('tabindex', '0');
+        panels.forEach(function(p) { p.style.display = parseInt(p.getAttribute('data-idx')) === idx ? 'flex' : 'none'; });
+      }
+      tabs.forEach(function(tab) { tab.addEventListener('click', function() { activate(tab); }); });
+      document.getElementById('bymTabs').addEventListener('keydown', function(e) {
+        var current = tabs.indexOf(document.activeElement); if (current < 0) return;
+        var next = -1;
+        if (e.key === 'ArrowRight') next = (current + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next >= 0) { e.preventDefault(); tabs[next].focus(); activate(tabs[next]); }
+      });
+      tabs.forEach(function(t, i) { t.setAttribute('tabindex', i === 0 ? '0' : '-1'); });
+    })();
+  </script>
+</body>
+</html>

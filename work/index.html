@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work — Terry John Paul | Senior Product Designer</title>
+  <meta name="description" content="Selected product design work across AI platforms, fintech, design systems, AR, and SaaS. Case studies from PixelBin, Swadesh, Sorted, Settle Club, Glam AR, and Studio OS.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://terryjohn.me/work/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Fonts -->
+  <style>
+    @font-face { font-family:'Helvetica Now Display'; src:url('/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'); font-weight:300; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Helvetica Now Display'; src:url('/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Helvetica Now Display'; src:url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Helvetica Now Display'; src:url('/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+    @font-face { font-family:'Geist'; src:url('/fonts/gyByhwUxId8gMEwcGFU.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  </style>
+
+  <style>
+    /* ── Design tokens ── */
+    :root {
+      --font-display: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+      --font-mono: 'Geist', 'Courier New', monospace;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --text-primary: #111;
+      --text-muted: #777;
+      --text-faint: #bbb;
+      --surface: #f2f2f2;
+      --border: #e8e8e8;
+      --border-light: #f0f0f0;
+      --bg: #fff;
+    }
+
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 10px; cursor: none; }
+    body {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg);
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; max-width: 100%; height: auto; }
+
+    /* ── Custom cursor ── */
+    #site-cursor {
+      position: fixed; top: 0; left: 0;
+      width: 14px; height: 14px;
+      border-radius: 3px;
+      background: #fff;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      z-index: 99999;
+      opacity: 0;
+      transition:
+        width .32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        height .32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        border-radius .32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity .18s ease;
+    }
+    #site-cursor.visible { opacity: 1; }
+    #site-cursor.on-big { width: 48px; height: 48px; }
+    @media (hover: none) { #site-cursor { display: none; } html, body { cursor: auto; } }
+
+    /* ── Wordmark ── */
+    #site-wordmark {
+      position: fixed; top: 18px; left: 24px; z-index: 9999;
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+      z-index: 9998;
+      display: inline-flex; align-items: center; gap: 0;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 1000px; padding: 3px;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .site-nav-item {
+      position: relative; padding: 6px 14px;
+      border-radius: 1000px;
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 400;
+      letter-spacing: .01rem;
+      color: rgba(0,0,0,0.58);
+      background: transparent; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: color 0.2s ease;
+      z-index: 1; line-height: 1.4;
+    }
+    .site-nav-item.active { color: #111; font-weight: 500; background: rgba(0,0,0,0.07); }
+    .site-nav-item:not(.active):hover { color: rgba(0,0,0,0.8); }
+    .site-nav-item:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+    .nav-divider {
+      width: 1px; height: 16px; background: rgba(0,0,0,0.1);
+      margin: 0 4px; flex-shrink: 0;
+    }
+    .site-nav-link { display: inline-flex; align-items: center; gap: 2px; }
+
+    /* ── Page layout ── */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 140px clamp(24px, 5vw, 72px) 80px;
+    }
+
+    /* ── Page header ── */
+    .page-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .page-subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    /* ── Sentence filter ── */
+    .sentence-filter {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 400;
+      color: var(--text-faint);
+      margin-bottom: 48px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+    }
+    .sentence-filter select {
+      font-family: var(--font-display);
+      font-size: inherit;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--text-primary);
+      appearance: none; -webkit-appearance: none;
+      cursor: pointer;
+      padding: 0 0 4px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      width: auto;
+    }
+    .sentence-filter select:focus { outline: none; }
+
+    /* ── Project grid ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 768px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .sentence-filter {
+        font-size: 22px;
+        line-height: 1.8;
+      }
+      .sentence-filter select {
+        font-size: 22px;
+      }
+      .top-nav {
+        gap: 0;
+        padding: 2px;
+        max-width: calc(100vw - 16px);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .top-nav::-webkit-scrollbar { display: none; }
+      .site-nav-item {
+        font-size: 1.15rem;
+        padding: 5px 11px;
+      }
+      #site-wordmark { display: none; }
+    }
+
+    /* ── Project card ── */
+    .project-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: none;
+      transition: transform 0.25s ease, opacity 0.3s ease;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+    }
+    .project-card a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-card-media {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--surface);
+      position: relative;
+      border-radius: 8px;
+    }
+    .project-card-media img,
+    .project-card-media video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .project-card-info {
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .project-card-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .project-card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .project-card-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tag-ai { background: #eef2ff; color: #4f46e5; }
+    .tag-fintech { background: #ecfdf5; color: #059669; }
+    .tag-design-system { background: #fffbeb; color: #d97706; }
+    .tag-ar { background: #fdf2f8; color: #db2777; }
+    .tag-saas { background: #f5f3ff; color: #7c3aed; }
+    .tag-commerce { background: #ecfeff; color: #0891b2; }
+    .tag-fitness { background: #fef2f2; color: #dc2626; }
+    .project-card-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+    .project-card-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 100px;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .status-published { background: #e8f5e9; color: #2e7d32; }
+    .status-wip { background: #f5f5f5; color: #999; }
+
+    /* Card fade for filtering */
+    .project-card.fade-out {
+      opacity: 0; transform: scale(0.97);
+      pointer-events: none;
+    }
+
+    /* ── Cursor pill on cards ── */
+    .card-cursor-pill {
+      position: absolute; z-index: 10;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.2s ease, transform 0.25s ease;
+      will-change: left, top, opacity, transform;
+    }
+    .card-cursor-pill.is-visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .card-cursor-pill span {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      white-space: nowrap;
+      padding: 10px 20px; border-radius: 100px;
+      background: rgba(0,0,0,0.8); color: #fff;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      display: block;
+    }
+    .card-cursor-pill span.is-disabled {
+      background: rgba(0,0,0,0.5);
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Footer ── */
+    #site-footer {
+      background: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 60px 48px;
+    }
+    .footer-case-studies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-case-studies a {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-case-studies a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-left span {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-right a {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-right a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ── CTA Section ── */
+    @font-face { font-family:'Redaction 10 Regular'; src:url('https://framerusercontent.com/assets/qf6DB7WGDdEjcTvrw5e5SlRp4w.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Redaction 50 Italic'; src:url('https://framerusercontent.com/assets/kqyAfMmZA5vP4G3u2iu7WJdY.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+
+    #cta {
+      background: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 160px 0;
+    }
+    .cta-heading {
+      font-size: 48px; font-weight: 400;
+      color: rgb(238,238,238);
+      letter-spacing: -1.2px; line-height: 1;
+      text-align: center; margin-bottom: 40px;
+    }
+    .cta-heading .h-reg { font-family: 'Redaction 10 Regular', Georgia, serif; }
+    .cta-heading .h-ital { font-family: 'Redaction 50 Italic', Georgia, serif; font-style: italic; }
+    .cta-content { text-align: center; max-width: 560px; padding: 0 48px; }
+    .cta-label {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+      letter-spacing: 0.03em; color: rgba(255,255,255,0.65); margin-bottom: 32px;
+    }
+    .cta-description {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 400;
+      line-height: 1.65; letter-spacing: -0.015em;
+      color: rgba(255,255,255,0.82); margin-bottom: 48px;
+    }
+    .cta-reveal-wrap {
+      position: relative; display: block;
+      width: 100%; max-width: 280px; aspect-ratio: 3/4;
+      border-radius: 12px; margin: 0 auto 64px;
+      overflow: hidden;
+    }
+    .cta-reveal-image, .cta-photo-image {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 12px;
+    }
+    .cta-reveal-image { z-index: 1; }
+    .cta-photo-image { z-index: 2; opacity: 0; transition: opacity 0.3s ease; }
+    .cta-reveal-wrap:hover .cta-photo-image { opacity: 1; }
+    .footer-cta-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0; padding: 18px 52px;
+      background: #fff; color: #000;
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 400;
+      text-decoration: none; border-radius: 100px;
+      transition: background 0.22s ease, gap 0.26s var(--ease-out-expo);
+    }
+    .footer-cta-btn:hover { background: rgba(255,255,255,0.88); gap: 10px; }
+    .footer-cta-btn .btn-mail-icon {
+      display: inline-flex; align-items: center;
+      width: 0; overflow: hidden; opacity: 0;
+      transform: scale(0.6) translateX(-4px);
+      transition: width 0.26s var(--ease-out-expo), opacity 0.2s ease, transform 0.26s var(--ease-out-expo);
+    }
+    .footer-cta-btn:hover .btn-mail-icon { width: 18px; opacity: 1; transform: scale(1) translateX(0); }
+
+    @media (max-width: 768px) {
+      main { padding-top: 100px; }
+      #cta { padding: 80px 24px 100px; }
+      .cta-content { padding: 0; }
+      .cta-heading { font-size: clamp(28px, 9vw, 44px); }
+      .cta-description { font-size: 1.4rem; margin-bottom: 40px; }
+      .cta-reveal-wrap { max-width: 200px; margin-bottom: 48px; }
+      #site-footer { padding: 60px 24px 40px; }
+      .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-cta-btn { font-size: 1.6rem; padding: 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Wordmark -->
+  <div id="site-wordmark">Terry John</div>
+
+  <!-- Nav -->
+  <nav class="top-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-item"><span>Portfolio</span></a>
+    <a href="/about/" class="site-nav-item"><span>About</span></a>
+    <a href="/first-take/" class="site-nav-item"><span>First Take</span></a>
+    <div class="nav-divider"></div>
+    <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener" class="site-nav-item site-nav-link"><span>LinkedIn</span> <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2.3 7.7L7.4 2.6" stroke="currentColor" stroke-linecap="square"/><path d="M2.3 2.1H7.9V7.7" stroke="currentColor" stroke-linecap="square"/></svg></a>
+    <a href="/resume/" class="site-nav-item"><span>Resume</span></a>
+  </nav>
+
+  <!-- Cursor -->
+  <div id="site-cursor" aria-hidden="true"></div>
+
+  <main id="main-content">
+
+    <!-- Sentence filter -->
+    <div class="sentence-filter">
+      I design <select id="project-filter">
+        <option value="all">everything</option>
+        <option value="ai">AI products</option>
+        <option value="fin">fintech</option>
+        <option value="sys">design systems</option>
+        <option value="ops">SaaS and tools</option>
+      </select> across <select id="domain-filter">
+        <option value="all">every domain</option>
+        <option value="commerce">commerce</option>
+        <option value="finance">finance</option>
+        <option value="media">media</option>
+        <option value="operations">operations</option>
+      </select>
+    </div>
+    <p class="page-subtitle">Product design across AI, commerce, fintech, and tools. Six years of shipping products people use.</p>
+
+    <!-- Project grid -->
+    <div class="project-grid" id="project-grid">
+
+      <!-- PixelBin -->
+      <div class="project-card" data-type="ai" data-domain="media">
+        <a href="/pixelbin/">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <video autoplay muted loop playsinline preload="metadata"><source src="/pixelbin/assets/mc/magic-canvas-frames.mp4" type="video/mp4"></video>
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">PixelBin</div>
+              <div class="project-card-desc">AI image and video platform. 9 shipped products across 4 major versions over 3 years.</div>
+            </div>
+            <span class="project-card-tag tag-ai">AI</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sorted -->
+      <div class="project-card" data-type="ai" data-domain="commerce">
+        <a href="/sorted/">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <img src="/assets/sw/bharat-app.webp" alt="Sorted — AI super app concept" loading="lazy">
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Sorted</div>
+              <div class="project-card-desc">One app for commerce, food, and local services, driven by conversational AI.</div>
+            </div>
+            <span class="project-card-tag tag-ai">AI</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Swadesh -->
+      <div class="project-card" data-type="sys" data-domain="commerce">
+        <a href="/swadesh/">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <video autoplay muted loop playsinline preload="metadata"><source src="/assets/sw/swadesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Swadesh</div>
+              <div class="project-card-desc">Luxury marketplace design system. 35 components, 510 variants, six product verticals.</div>
+            </div>
+            <span class="project-card-tag tag-design-system">Design System</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Settle Club -->
+      <div class="project-card" data-type="fin" data-domain="finance">
+        <a href="/settle-club/">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <img src="/assets/sw/settle-club.webp" alt="Settle Club — BNPL for first-time borrowers" loading="lazy">
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Settle Club</div>
+              <div class="project-card-desc">Credit product for first-time borrowers in India. 55% checkout, 68% KYC pass rate.</div>
+            </div>
+            <span class="project-card-tag tag-fintech">Fintech</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Glam AR -->
+      <div class="project-card" data-type="ai" data-domain="commerce">
+        <a href="#">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
+            <video autoplay muted loop playsinline preload="metadata"><source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/glamar.mp4" type="video/mp4"></video>
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Glam AR</div>
+              <div class="project-card-desc">AR-powered virtual try-on for cosmetics with real-time face tracking.</div>
+            </div>
+            <span class="project-card-tag tag-ar">AR</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- fynd.com -->
+      <div class="project-card" data-type="ops" data-domain="commerce">
+        <a href="#">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
+            <img src="/assets/sw/fynd.webp" alt="fynd.com — omnichannel commerce platform" loading="lazy">
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">fynd.com</div>
+              <div class="project-card-desc">Omnichannel commerce platform unifying online and offline retail.</div>
+            </div>
+            <span class="project-card-tag tag-commerce">Commerce</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Tip4Fit -->
+      <div class="project-card" data-type="ops" data-domain="commerce">
+        <a href="/tips4fit/">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <img src="/assets/sw/tip4fit.webp" alt="Tip4Fit — fitness app" loading="lazy">
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Tip4Fit</div>
+              <div class="project-card-desc">Fitness app connecting users with certified trainers for guided workouts.</div>
+            </div>
+            <span class="project-card-tag tag-fitness">Fitness</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Studio OS -->
+      <div class="project-card" data-type="ops" data-domain="operations">
+        <a href="#">
+          <div class="project-card-media">
+            <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
+            <img src="/assets/sw/studio-s.webp" alt="Studio OS — studio operations platform" loading="lazy">
+          </div>
+          <div class="project-card-info">
+            <div>
+              <div class="project-card-title">Studio OS</div>
+              <div class="project-card-desc">Operations platform for creative studios. Pipeline, finances, and task management.</div>
+            </div>
+            <span class="project-card-tag tag-saas">SaaS</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- CTA Section -->
+  <section id="cta">
+    <h2 class="cta-heading">
+      <span class="h-reg">Still </span><em class="h-ital">here</em>
+    </h2>
+    <div class="cta-content">
+      <div class="cta-reveal-wrap">
+        <img class="cta-reveal-image" src="/assets/footer_profile.webp" alt="Terry John Paul — illustration" loading="lazy">
+        <img class="cta-photo-image" id="cta-photo" src="/assets/footer_profile_real.webp" alt="Terry John Paul — photo" loading="lazy">
+      </div>
+      <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer. I work with founders on products where the design is the hard part. AI tools. Commerce platforms. Fintech at speed. Pre-launch or mid-scale, moving fast. That's the work I take on. Also considering the right permanent role in the UK — happy to relocate, visa sponsorship is straightforward.</p>
+      <p class="cta-label">Taking on projects · Open to permanent roles</p>
+      <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+        <span class="btn-mail-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="site-footer">
+    <nav class="footer-case-studies" aria-label="Case studies">
+      <a href="/settle-club/">Settle Club</a>
+      <a href="/pixelbin/">PixelBin</a>
+      <a href="/pixelbin/checkout/">PixelBin Checkout</a>
+      <a href="/pixelbin/magic-canvas/">Magic Canvas</a>
+      <a href="/pixelbin/pixelbin-app/">PixelBin App</a>
+      <a href="/about/">About</a>
+      <a href="/first-take/">First Take</a>
+    </nav>
+    <div class="footer-bottom">
+      <div class="footer-left">
+        <span>terryjohnpaul20@gmail.com</span>
+        <span>Designed and coded by me. · © 2026 Terry John Paul</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="/resume/">Resume</a>
+        <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Cursor ── */
+    (function () {
+      var cur = document.getElementById('site-cursor');
+      if (!cur || window.matchMedia('(hover: none)').matches) return;
+      document.addEventListener('mousemove', function (e) {
+        cur.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px) translate(-50%,-50%)';
+        cur.classList.add('visible');
+      }, { passive: true });
+      document.addEventListener('mouseleave', function () { cur.classList.remove('visible'); });
+    })();
+
+    /* ── Sentence filter ── */
+    function applyFilter() {
+      var type = document.getElementById('project-filter').value;
+      var domain = document.getElementById('domain-filter').value;
+      document.querySelectorAll('#project-grid .project-card').forEach(function (card) {
+        var matchType = type === 'all' || card.getAttribute('data-type') === type;
+        var matchDomain = domain === 'all' || card.getAttribute('data-domain') === domain;
+        if (matchType && matchDomain) {
+          card.classList.remove('fade-out');
+          setTimeout(function () { card.style.display = ''; }, 10);
+        } else {
+          card.classList.add('fade-out');
+          setTimeout(function () { card.style.display = 'none'; }, 280);
+        }
+      });
+    }
+    document.getElementById('project-filter').addEventListener('change', applyFilter);
+    document.getElementById('domain-filter').addEventListener('change', applyFilter);
+
+    /* ── Auto-size selects to fit current value ── */
+    function autoSizeSelect(sel) {
+      var tmp = document.createElement('span');
+      tmp.style.font = window.getComputedStyle(sel).font;
+      tmp.style.letterSpacing = window.getComputedStyle(sel).letterSpacing;
+      tmp.style.visibility = 'hidden';
+      tmp.style.position = 'absolute';
+      tmp.style.whiteSpace = 'nowrap';
+      tmp.textContent = sel.options[sel.selectedIndex].text;
+      document.body.appendChild(tmp);
+      sel.style.width = (tmp.offsetWidth + 4) + 'px';
+      document.body.removeChild(tmp);
+    }
+    document.querySelectorAll('.sentence-filter select').forEach(function(sel) {
+      autoSizeSelect(sel);
+      sel.addEventListener('change', function() { autoSizeSelect(sel); });
+    });
+
+    /* ── Prevent # links from jumping ── */
+    document.querySelectorAll('a[href="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); });
+    });
+
+    /* ── Cursor-following pill on cards ── */
+    (function () {
+      if (window.innerWidth < 1024 || window.matchMedia('(hover: none)').matches) return;
+      document.querySelectorAll('.project-card-media').forEach(function (media) {
+        var pill = media.querySelector('.card-cursor-pill');
+        if (!pill) return;
+        var tx = 0, ty = 0, cx = 0, cy = 0, active = false, raf = null;
+        function lerp(a, b, t) { return a + (b - a) * t; }
+        function tick() {
+          if (!active) return;
+          cx = lerp(cx, tx, 0.15);
+          cy = lerp(cy, ty, 0.15);
+          pill.style.left = cx + 'px';
+          pill.style.top = cy + 'px';
+          raf = requestAnimationFrame(tick);
+        }
+        media.addEventListener('mouseenter', function (e) {
+          var r = media.getBoundingClientRect();
+          tx = e.clientX - r.left; ty = e.clientY - r.top;
+          cx = tx; cy = ty;
+          pill.style.left = cx + 'px'; pill.style.top = cy + 'px';
+          pill.classList.add('is-visible');
+          active = true;
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(tick);
+        });
+        media.addEventListener('mousemove', function (e) {
+          var r = media.getBoundingClientRect();
+          tx = e.clientX - r.left; ty = e.clientY - r.top;
+        });
+        media.addEventListener('mouseleave', function () {
+          pill.classList.remove('is-visible');
+          active = false;
+          if (raf) { cancelAnimationFrame(raf); raf = null; }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

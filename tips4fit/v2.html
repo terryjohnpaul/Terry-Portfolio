@@ -123,8 +123,8 @@
     .flow-decision { max-width: 36em; margin-top: 2.5em; }
     .flow-decision__label { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.7em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-muted); margin-bottom: 0.8em; }
     .flow-decision__body { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.8em; font-weight: 400; line-height: 1.45; color: var(--charcoal); opacity: 0.85; }
-    .phone-strip { display: flex; flex-wrap: wrap; gap: 3.5em 2em; padding: 1em 0 2em 0; }
-    .phone-item { flex: 0 0 calc((100% - 6em) / 4); min-width: 140px; cursor: pointer; }
+    .phone-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2em; padding: 1em 0 2em 0; }
+    .phone-item { cursor: pointer; }
     .phone-item__frame img { width: 100%; height: auto; border: 1px solid rgba(52,52,52,0.08); border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .phone-item:hover img { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
     .phone-item__meta { display: flex; align-items: baseline; gap: 0.4em; margin-top: 1.2em; }
@@ -174,12 +174,6 @@
       .inference-row { grid-template-columns: 1fr; }
     }
 
-    /* ── Statblock Grid ── */
-    .statblock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em; }
-    .statblock-cell { padding: 2em; border: 1px solid rgba(52,52,52,0.08); }
-    .statblock-badge { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.6em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-ghost); border: 1px solid rgba(52,52,52,0.12); display: inline-block; padding: 0.15em 0.5em; margin-bottom: 1.2em; line-height: 1.4; }
-    .statblock-keyword { font-family: 'Helvetica Now Display', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.4em; }
-    .statblock-body { font-family: 'Helvetica Now Display', sans-serif; font-size: 0.8em; font-weight: 400; line-height: 1.5; color: var(--text-secondary); }
 
     /* ── Numbered List ── */
     .numbered-list { list-style: none; margin-top: 1.5em; }
@@ -228,10 +222,8 @@
       .flow-num { font-size: 3em; margin-bottom: 0.2em; }
       .flow-title { font-size: 1.2em; }
       .flow-right { padding-top: 0; }
-      .phone-strip { gap: 1em 1em; }
-      .phone-item { flex: 0 0 calc((100% - 1em) / 2); }
+      .phone-strip { grid-template-columns: repeat(2, 1fr); gap: 1em; }
       .model-grid { grid-template-columns: 1fr; }
-      .statblock-grid { grid-template-columns: 1fr; }
       .reflection-grid { grid-template-columns: 1fr; }
       .vs-table th, .vs-table td { padding: 0.8em 0.6em; font-size: 0.7em; }
       .cs-hero-meta .mono-text { font-size: 0.6em; }
@@ -244,7 +236,6 @@
       :root { --cs-gutter: 5%; }
       .flow-card { padding: 3em 5%; }
       .phone-strip { gap: 0.8em; }
-      .phone-item { flex: 0 0 calc((100% - 0.8em) / 2); }
       .flow-num { font-size: 2.4em; }
       .flow-title { font-size: 1em; }
     }
@@ -384,7 +375,7 @@
         </div>
         <div class="cs-hero-meta-group">
           <p class="cs-hero-meta-label">Scope</p>
-          <p class="mono-text" style="color:var(--text-muted)">0-to-1 concept · End-to-end product design · 6 modules · 24 screens</p>
+          <p class="mono-text" style="color:var(--text-muted)">0-to-1 concept · End-to-end concept design · 6 modules · 24 screens</p>
         </div>
       </div>
     </div>
@@ -439,20 +430,18 @@
         <div class="model-col v1">
           <h3>What I knew</h3>
           <ul style="list-style:none;padding:0;margin:0">
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.06)">Fitness behaviour is already distributed across specialist products.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.06)">Training, nutrition and activity information often lives in separate experiences.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.06)">Existing products demonstrate demand for individual fitness activities.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0">Those disconnected activities create an opportunity to test whether shared context adds value.</li>
+            <li class="cs-body" style="padding:0.6em 0;border-bottom:var(--cs-rule)">Fitness behaviour is distributed across specialist products.</li>
+            <li class="cs-body" style="padding:0.6em 0;border-bottom:var(--cs-rule)">Training, nutrition and activity information lives in separate experiences.</li>
+            <li class="cs-body" style="padding:0.6em 0">Disconnected activities create an opportunity to test whether shared context adds value.</li>
           </ul>
         </div>
         <div class="model-col later">
           <h3>What I assumed</h3>
           <ul style="list-style:none;padding:0;margin:0">
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.04)">People would want one product to connect or replace specialist tools.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.04)">A unified dashboard would help people understand their progress.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.04)">People would trust recommendations informed by their goals.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0;border-bottom:1px solid rgba(52,52,52,0.04)">Users would want training, expert access and commerce in one experience.</li>
-            <li style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);padding:0.6em 0">The value of connection would outweigh the specialist depth of existing products.</li>
+            <li class="cs-body" style="padding:0.6em 0;border-bottom:var(--cs-rule)">People would want one product to connect specialist tools.</li>
+            <li class="cs-body" style="padding:0.6em 0;border-bottom:var(--cs-rule)">A unified dashboard would help people understand their progress.</li>
+            <li class="cs-body" style="padding:0.6em 0;border-bottom:var(--cs-rule)">People would trust recommendations informed by their goals.</li>
+            <li class="cs-body" style="padding:0.6em 0">The value of connection would outweigh specialist depth.</li>
           </ul>
         </div>
       </div>
@@ -556,28 +545,9 @@
     </div>
   </div>
 
-  <div style="padding:1.5em 8% 0;max-width:72em;margin:0 auto">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(52,52,52,0.04)">
-      <div style="padding:1em 1.2em;border-right:1px solid rgba(52,52,52,0.04)">
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.5"><strong style="color:var(--text-muted)">11.5M</strong> · ukactive · UK, 2024 data</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.45;margin-top:0.4em">UK Health &amp; Fitness Market Report 2025. Club memberships across public and private sector. Does not measure fitness-app usage.</p>
-      </div>
-      <div style="padding:1em 1.2em;border-right:1px solid rgba(52,52,52,0.04)">
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.5"><strong style="color:var(--text-muted)">£5.7B</strong> · ukactive · UK, 2024 data</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.45;margin-top:0.4em">Total sector revenue including gym, leisure and studio. Same report. Does not cover digital fitness products specifically.</p>
-      </div>
-      <div style="padding:1em 1.2em">
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.5"><strong style="color:var(--text-muted)">29.5M</strong> · Sport England · England, Nov 2022–23</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.6em;font-weight:400;color:var(--text-ghost);line-height:1.45;margin-top:0.4em">Active Lives Adult Survey. Adults meeting 150+ min moderate-intensity activity per week. Covers England, not full UK. Publicly accessible.</p>
-      </div>
-    </div>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);line-height:1.5;margin-top:1.2em;text-align:center">Market participation establishes category context. It does not prove demand for the Tips4Fit proposition.</p>
-  </div>
-
-  <div class="cs-section--compact cs-center">
-    <div class="cs-container cs-container--reading">
-      <p class="mono-text cs-center" style="margin-bottom:1em">Interpretation</p>
-      <p class="cs-body" style="font-size:0.85em;line-height:1.55">These figures establish that fitness is a large, established category with sustained consumer participation. They do not show that people want one product to replace specialist services, nor do they validate demand for Tips4Fit. The value of connecting training, nutrition and activity remains the hypothesis this concept would need to test.</p>
+  <div class="cs-section--compact">
+    <div class="cs-shell cs-shell--reading cs-center">
+      <p class="cs-disclosure">These figures establish category scale, not product demand. They do not validate the Tips4Fit proposition. Whether connecting training, nutrition and activity creates enough value remains the hypothesis to test.</p>
     </div>
   </div>
 
@@ -627,7 +597,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Product Principles</p>
-        <h2 class="cs-heading cs-heading--section">Four rules<br>for the<br>concept.</h2>
+        <h2 class="cs-heading cs-heading--section">Four rules for the concept.</h2>
       </div>
       <div class="content-right">
         <ul class="numbered-list">
@@ -664,7 +634,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">The Spine</p>
-        <h2 class="cs-heading cs-heading--section">One profile<br>feeds every<br>module.</h2>
+        <h2 class="cs-heading cs-heading--section">One profile feeds every module.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy">The user profile is not a settings page. It is the data layer that connects every module in the app. When you set a goal during onboarding, the dashboard reorganises, the training module filters programmes, and the shop surfaces relevant products. When you log a meal, the dashboard updates. When you complete a workout, your progress feeds back into the profile.</p>
@@ -685,7 +655,7 @@
   <!-- ═══════ HOW THE DATA CONNECTS ═══════ -->
 
   <section id="cs-data-flow" style="padding:5em 0 2em">
-    <div style="max-width:72em;margin:0 auto;padding:0 8%;margin-bottom:2em">
+    <div class="cs-shell" style="margin-bottom:2em">
       <p class="mono-text" style="margin-bottom:0.6em">How the Data Connects</p>
       <h2 class="cs-heading cs-heading--sub" style="max-width:18em">What flows in, what sits in the middle, what comes out.</h2>
     </div>
@@ -785,33 +755,30 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Deep Dive</p>
-        <h2 class="cs-heading cs-heading--section">Ask less now.<br>Earn more<br>later.</h2>
+        <h2 class="cs-heading cs-heading--section">Ask less now. Earn more later.</h2>
       </div>
       <div class="content-right">
-        <p class="body-copy">Personalisation improves the first experience. It also increases the chance someone leaves before finishing onboarding. Every additional question is a decision point where a new user can decide the app is not worth the effort. The goal is to collect the minimum information needed to make the dashboard and training module useful on day one, and defer everything else until the user sees why it matters.</p>
-        <p class="body-copy">Three questions are essential at signup: primary fitness goal, current experience level and preferred training type. These shape the dashboard layout, filter training programmes by difficulty, and select the first recommended workout. Without them, the product falls back to a generic view that looks the same for every user.</p>
-        <p class="body-copy">Everything else can wait. Detailed body measurements are useful for progress tracking but not required to show a first dashboard. Nutrition history builds naturally through meal logging. Wearable connections involve device permissions that add friction during signup. Location is only relevant when the user opens the gym finder for the first time. Professional-access permissions should be prompted when booking a session, not speculatively during onboarding.</p>
-        <p class="body-copy">Optional questions appear with a short explanation of what they unlock. A user who skips body measurements still sees training and nutrition data on the dashboard. Missing widgets do not appear as empty placeholders; the layout adjusts to show what it has. Users can return to any deferred question from their profile at any time.</p>
-        <p class="body-copy">Whether this balance is right would need to be tested. The risk of asking too little is a bland first experience. The risk of asking too much is abandonment before the dashboard loads.</p>
+        <p class="body-copy">Every onboarding question is a decision point where a new user can leave. I aimed to collect the minimum needed to make the dashboard useful on day one — fitness goal, experience level and training type — and defer everything else until the user understands why it matters.</p>
+        <p class="body-copy">Body measurements, nutrition history, wearable connections and location are all useful but not essential for a first dashboard. Optional questions explain what they unlock, and the layout adjusts around missing data rather than showing empty placeholders.</p>
+        <p class="body-copy">The risk of asking too little is a generic first experience. The risk of asking too much is abandonment before the dashboard loads. This balance would need testing.</p>
       </div>
     </div>
   </section>
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:5em">
     <div class="model-grid">
       <div class="model-col v1">
         <h3>Essential now</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--charcoal)">Primary fitness goal</strong> — shapes dashboard layout and training filters</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--charcoal)">Current experience level</strong> — determines programme difficulty and safety guidance</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)"><strong style="color:var(--charcoal)">Preferred training type</strong> — personalises the first recommended programme</p>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Primary fitness goal</strong> — shapes dashboard layout and training filters</p>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Experience level</strong> — determines programme difficulty and safety</p>
+        <p class="cs-body"><strong>Training type</strong> — personalises the first recommended programme</p>
       </div>
       <div class="model-col later">
         <h3>Ask later</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--text-muted)">Detailed body measurements</strong> — useful but not required for initial experience</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--text-muted)">Nutrition history</strong> — can be built over time through meal logging</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--text-muted)">Wearable connections</strong> — deferred to avoid permission fatigue during signup</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:0.8em"><strong style="color:var(--text-muted)">Location</strong> — requested when the user first opens the gym finder</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)"><strong style="color:var(--text-muted)">Professional-access permissions</strong> — prompted when booking an expert, not before</p>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Body measurements</strong> — useful but not required initially</p>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Nutrition history</strong> — built through meal logging</p>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Wearable connections</strong> — deferred to avoid permission fatigue</p>
+        <p class="cs-body"><strong>Location and professional access</strong> — prompted at first use, not during signup</p>
       </div>
     </div>
     <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);margin-top:1.5em;line-height:1.4;text-align:center">These are proposed product decisions. They have not been tested with users.</p>
@@ -821,7 +788,7 @@
   <!-- ═══════ ANNOTATED ONBOARDING EVIDENCE ═══════ -->
 
   <div style="padding:3em 0 5em">
-    <div style="max-width:72em;margin:0 auto;padding:0 8% 1.5em">
+    <div class="cs-shell" style="padding-bottom:1.5em">
       <p class="mono-text" style="margin-bottom:0.6em">Annotated Screen</p>
       <h3 class="cs-heading cs-heading--sub" style="margin-bottom:0.3em">What the personalisation screen captures and what it defers.</h3>
     </div>
@@ -883,19 +850,17 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Deep Dive</p>
-        <h2 class="cs-heading cs-heading--section">One screen.<br>Three data<br>streams.</h2>
+        <h2 class="cs-heading cs-heading--section">One screen. Three data streams.</h2>
       </div>
       <div class="content-right">
-        <p class="body-copy">The dashboard answers one question: how is my fitness progressing across training, nutrition and activity? Everything on the screen exists to serve that question. If a card or metric does not contribute, it does not belong on the home view.</p>
-        <p class="body-copy">The hierarchy places training activity first because it is the most actionable. A user opens the app to decide what to do today, and recent sessions or a scheduled workout answer that immediately. Nutrition sits second because it is the most frequently logged data stream. Activity metrics (steps, heart rate, sleep) appear third because they are mostly passive and collected automatically through device integrations.</p>
-        <p class="body-copy">The layout adapts to the user's primary goal. A strength-focused dashboard emphasises sets, reps and weight progression. A weight-loss dashboard leads with calorie balance and deficit tracking. An endurance dashboard foregrounds distance, pace and session duration trends. The underlying data is the same; the presentation hierarchy changes.</p>
-        <p class="body-copy">Recommendations on the dashboard explain their source. A suggested workout card would show why it appeared: "Suggested because your goal is strength and you completed 3 sessions this week." A shop recommendation would disclose its trigger: "Recommended for strength training." The user should never wonder why something is on their screen.</p>
-        <p class="body-copy">When information is missing, the dashboard shows what it has rather than displaying empty widgets. A user who has not logged meals sees training and activity data. A user without a wearable sees training and nutrition. Blank cards with "no data" labels waste space and erode confidence. Instead, clear prompts invite the user to add the missing data stream when they are ready.</p>
+        <p class="body-copy">The dashboard answers one question: how is my fitness progressing? Training appears first because it is the most actionable. Nutrition sits second as the most frequently logged stream. Activity metrics appear third, mostly passive and collected through device integrations.</p>
+        <p class="body-copy">The layout adapts to the user's primary goal: strength shows sets and weight progression, weight loss leads with calorie balance, endurance foregrounds distance and pace. Recommendations explain their source — the user should understand why every card appears.</p>
+        <p class="body-copy">When information is missing, the dashboard shows what it has and offers clear prompts rather than empty widgets.</p>
       </div>
     </div>
   </section>
 
-  <div style="padding:0 8% 2em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:2em">
     <p class="mono-text" style="margin-bottom:1em">Dashboard Decision Framework</p>
     <table class="vs-table">
       <caption class="sr-only">Dashboard decision framework showing user questions, available information, interface responses and proposed tests</caption>
@@ -940,62 +905,51 @@
 
   <!-- ═══════ PROPOSED DASHBOARD MODELS ═══════ -->
 
-  <div style="padding:3em 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-top:3em;padding-bottom:5em">
     <p class="mono-text" style="margin-bottom:0.6em">Proposed Alternatives</p>
     <h3 class="cs-heading cs-heading--sub" style="margin-bottom:2em">Three hierarchy models I would compare next.</h3>
-    <div class="statblock-grid">
-      <div class="statblock-cell">
-        <span class="statblock-badge">Model A</span>
-        <p class="statblock-keyword">Activity-<br>First</p>
-        <p class="statblock-body"><strong style="color:var(--charcoal)">Primary question:</strong> "What should I do today?"<br><strong style="color:var(--charcoal)">First visible:</strong> Today's session and immediate actions.<br><strong style="color:var(--charcoal)">Advantage:</strong> Directly actionable on open.<br><strong style="color:var(--charcoal)">Risk:</strong> Nutrition and recovery remain secondary.<br><strong style="color:var(--charcoal)">Data dependency:</strong> Training schedule required.<br><strong style="color:var(--charcoal)">Prototype signal:</strong> Whether users find today's session immediately and describe the layout as actionable.<br><strong style="color:var(--charcoal)">Longitudinal signal:</strong> Whether action-first drives daily engagement and repeat opens.</p>
-        <div class="wireframe-model" role="img" aria-label="Activity-first dashboard layout: large today's-session card at top, training schedule below, then nutrition and recovery side by side">
-          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:68px">Today's session</div>
-          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:36px">Training schedule</div>
+    <div class="profile-grid">
+      <div>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Activity-first.</strong> "What should I do today?" Today's session at the top, training schedule below, nutrition and recovery secondary. Directly actionable but risks deprioritising nutrition context.</p>
+        <div class="wireframe-model" role="img" aria-label="Activity-first layout: session card at top, schedule below, nutrition and recovery side by side">
+          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:56px">Today's session</div>
+          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:30px">Training schedule</div>
           <div class="wireframe-model__row">
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:30px">Nutrition</div>
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:30px">Recovery</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Nutrition</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Recovery</div>
           </div>
-          <p class="wireframe-model__label">Proposed structural model</p>
         </div>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Model B</span>
-        <p class="statblock-keyword">Goal-<br>First</p>
-        <p class="statblock-body"><strong style="color:var(--charcoal)">Primary question:</strong> "How close am I to my goal?"<br><strong style="color:var(--charcoal)">First visible:</strong> Progress towards primary fitness goal.<br><strong style="color:var(--charcoal)">Advantage:</strong> Long-term motivation and context.<br><strong style="color:var(--charcoal)">Risk:</strong> Less useful during the daily workout moment.<br><strong style="color:var(--charcoal)">Data dependency:</strong> Goal + multi-week history.<br><strong style="color:var(--charcoal)">Prototype signal:</strong> Whether users understand their progress and describe the goal view as motivating.<br><strong style="color:var(--charcoal)">Longitudinal signal:</strong> Whether goal visibility increases weekly return and retention over time.</p>
-        <div class="wireframe-model" role="img" aria-label="Goal-first dashboard layout: goal progress with bar at top, trend towards target, training and nutrition contributions side by side, daily action at bottom">
-          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:46px;flex-direction:column">Goal progress<div class="wireframe-model__progress"><div class="wireframe-model__progress-fill"></div></div></div>
-          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:32px">Trend towards target</div>
+      <div>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Goal-first.</strong> "How close am I?" Goal progress at the top with trend data. Long-term motivation but less useful for the daily workout moment.</p>
+        <div class="wireframe-model" role="img" aria-label="Goal-first layout: progress bar at top, trend below, training and nutrition side by side, daily action at bottom">
+          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:40px;flex-direction:column">Goal progress<div class="wireframe-model__progress"><div class="wireframe-model__progress-fill"></div></div></div>
+          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:28px">Trend</div>
           <div class="wireframe-model__row">
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:28px">Training</div>
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:28px">Nutrition</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Training</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Nutrition</div>
           </div>
-          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:22px">Daily action</div>
-          <p class="wireframe-model__label">Proposed structural model</p>
         </div>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Model C</span>
-        <p class="statblock-keyword">Insight-<br>First</p>
-        <p class="statblock-body"><strong style="color:var(--charcoal)">Primary question:</strong> "What pattern connects my training and nutrition?"<br><strong style="color:var(--charcoal)">First visible:</strong> A relationship discovered across data streams.<br><strong style="color:var(--charcoal)">Advantage:</strong> Proves the connected-data proposition.<br><strong style="color:var(--charcoal)">Risk:</strong> Weak or incomplete data produces an empty first experience.<br><strong style="color:var(--charcoal)">Data dependency:</strong> Training + nutrition + time.<br><strong style="color:var(--charcoal)">Prototype signal:</strong> Whether users identify and value a cross-stream insight they could not see in their current tools.<br><strong style="color:var(--charcoal)">Longitudinal signal:</strong> Whether insight-first drives deeper engagement and data contribution over time.</p>
-        <div class="wireframe-model" role="img" aria-label="Insight-first dashboard layout: cross-stream insight card linking training and nutrition at top, contributing data and relationship side by side, suggested action, dashed missing-data fallback at bottom">
-          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:46px;flex-direction:column">Cross-stream insight<span class="wireframe-model__sub">Training × Nutrition</span></div>
+      <div>
+        <p class="cs-body" style="margin-bottom:0.8em"><strong>Insight-first.</strong> "What connects my training and nutrition?" Cross-stream insight at the top. Proves the connected-data proposition but risks an empty experience with incomplete data.</p>
+        <div class="wireframe-model" role="img" aria-label="Insight-first layout: cross-stream insight at top, data and relationship side by side, action below, dashed fallback">
+          <div class="wireframe-model__block wireframe-model__block--primary" style="min-height:40px;flex-direction:column">Cross-stream insight<span class="wireframe-model__sub">Training × Nutrition</span></div>
           <div class="wireframe-model__row">
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:30px">Contributing data</div>
-            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:30px">Relationship</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Data</div>
+            <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:24px">Relationship</div>
           </div>
-          <div class="wireframe-model__block wireframe-model__block--secondary" style="min-height:32px">Suggested action</div>
-          <div class="wireframe-model__block wireframe-model__block--dashed" style="min-height:24px">Missing data fallback</div>
-          <p class="wireframe-model__label">Proposed structural model</p>
+          <div class="wireframe-model__block wireframe-model__block--dashed" style="min-height:22px">Fallback</div>
         </div>
       </div>
     </div>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);margin-top:1.5em;line-height:1.4">These are proposed directions for future evaluation, not reconstructed historical iterations.</p>
+    <p class="cs-disclosure" style="margin-top:var(--cs-space-m)">Proposed directions for future evaluation, not historical iterations.</p>
   </div>
 
 
   <!-- ═══════ ANNOTATED DASHBOARD EVIDENCE ═══════ -->
 
-  <div style="padding:3em 8% 2em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-top:3em;padding-bottom:2em">
     <p class="mono-text" style="margin-bottom:0.6em">Dashboard Evidence</p>
     <h3 class="cs-heading cs-heading--sub" style="margin-bottom:2em;max-width:18em">What the current screen shows. What it would need next.</h3>
     <div class="annotated-screen">
@@ -1016,27 +970,26 @@
     </div>
   </div>
 
-  <div style="padding:3em 8% 5em;max-width:72em;margin:0 auto">
-    <p class="mono-text" style="margin-bottom:0.4em">Proposed States</p>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);line-height:1.4;margin-bottom:1.5em">These states have not been designed as screens. They describe the proposed behaviour for future prototyping.</p>
+  <div class="cs-shell" style="padding-top:var(--cs-space-l);padding-bottom:var(--cs-space-2xl)">
+    <p class="mono-text" style="margin-bottom:var(--cs-space-m)">Proposed empty states</p>
     <div class="model-grid">
       <div class="model-col v1">
         <h3>No nutrition data</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)">Dashboard shows training and activity. Nutrition section replaced with a single prompt: "Log your first meal to see nutrition alongside training." No empty charts or zero-state widgets.</p>
+        <p class="cs-body">Show training and activity. Replace nutrition with a prompt to log a first meal.</p>
       </div>
       <div class="model-col later">
-        <h3>No wearable connected</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)">Activity metrics section hidden. Dashboard layout reflows to emphasise training and nutrition. Wearable prompt appears in profile settings, not on the dashboard.</p>
+        <h3>No wearable</h3>
+        <p class="cs-body">Hide activity metrics. Reflow to emphasise training and nutrition.</p>
       </div>
     </div>
     <div class="model-grid" style="margin-top:0">
       <div class="model-col v1">
-        <h3>New user, no history</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)">Dashboard shows onboarding goal and first recommended workout. No trend lines or historical charts. Progress section appears after the first completed week.</p>
+        <h3>New user</h3>
+        <p class="cs-body">Show onboarding goal and first workout. No trend lines until the first completed week.</p>
       </div>
       <div class="model-col later">
-        <h3>Conflicting information</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary)">If goal is weight loss but calorie intake exceeds target consistently, dashboard surfaces an observation, not a warning. "Your intake has exceeded your target for 5 days." No judgmental language.</p>
+        <h3>Conflicting data</h3>
+        <p class="cs-body">Surface an observation, not a warning. No judgmental language.</p>
       </div>
     </div>
   </div>
@@ -1206,42 +1159,33 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Responsible Design</p>
-        <h2 class="cs-heading cs-heading--section">What this<br>product must<br>get right.</h2>
+        <h2 class="cs-heading cs-heading--section">What this product must get right.</h2>
       </div>
       <div class="content-right">
-        <p class="body-copy"><strong style="color:var(--charcoal)">Fitness guidance versus medical advice.</strong> The product offers wellness suggestions, not clinical diagnoses. Any feature that flags nutritional deficiencies or health risks would need clinical validation before display. Tips4Fit is a fitness tool, not a medical device.</p>
-        <p class="body-copy"><strong style="color:var(--charcoal)">Expert verification.</strong> Trainers, nutritionists and doctors must have verifiable credentials before appearing in the directory. The concept proposes a verification badge, but the actual validation process would need specialist legal review before any professional could be listed.</p>
-        <p class="body-copy"><strong style="color:var(--charcoal)">Consent before sharing.</strong> No trainer or doctor sees user information until the user explicitly grants access for a specific session or relationship. Blanket permissions do not exist. Each professional relationship requires its own consent.</p>
-        <p class="body-copy"><strong style="color:var(--charcoal)">Commercial transparency.</strong> When a recommendation has a commercial relationship — sponsored product, affiliate link, promoted listing — the product must disclose it. "Suggested for you" and "Sponsored" are different categories and must be labelled differently.</p>
-        <p class="body-copy"><strong style="color:var(--charcoal)">Explainable recommendations.</strong> Users should see why a product or service was recommended and which inputs influenced the suggestion. A protein supplement recommendation should trace back to the user's strength training goal, not appear without context.</p>
-        <p class="body-copy"><strong style="color:var(--charcoal)">User correction.</strong> Users can edit the information that shapes their recommendations. Changing a goal should immediately update what appears in the dashboard, shop and training modules. Stale recommendations erode trust.</p>
+        <p class="body-copy"><strong>Fitness guidance, not medical advice.</strong> The product offers wellness suggestions, not diagnoses. Any feature flagging health risks would need clinical validation. Tips4Fit is a fitness tool, not a medical device.</p>
+        <p class="body-copy"><strong>Expert verification.</strong> Professionals must have verifiable credentials before being listed. The validation process would need specialist legal review.</p>
+        <p class="body-copy"><strong>Consent before sharing.</strong> No professional sees user information without explicit, per-relationship consent.</p>
+        <p class="body-copy"><strong>Commercial transparency.</strong> Sponsored and organic recommendations must be labelled differently. "Suggested for you" and "Sponsored" are distinct categories.</p>
+        <p class="body-copy"><strong>Explainable recommendations.</strong> Users see why something was recommended and what information influenced the suggestion.</p>
+        <p class="body-copy"><strong>User correction.</strong> Changing a goal immediately updates recommendations across the product.</p>
       </div>
     </div>
   </section>
 
-  <div style="padding:0 8% 2em;max-width:72em;margin:0 auto">
-    <p class="mono-text" style="margin-bottom:1.2em">User Control</p>
-    <div class="statblock-grid">
-      <div class="statblock-cell">
-        <span class="statblock-badge">View</span>
-        <p class="statblock-keyword">See Your<br>Data</p>
-        <p class="statblock-body">View the information used to generate recommendations, including goals, training history and nutrition entries. Understand what the product knows and how it uses that information.</p>
+  <div class="cs-shell" style="padding-bottom:var(--cs-space-2xl)">
+    <p class="mono-text" style="margin-bottom:1.2em">User control</p>
+    <div class="profile-grid">
+      <div>
+        <p class="cs-body"><strong>View.</strong> See what information shapes recommendations — goals, training history and nutrition entries.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Change</span>
-        <p class="statblock-keyword">Edit or<br>Revoke</p>
-        <p class="statblock-body">Update preferences, change goals, revoke professional access or hide specific recommendations at any time. Controls must be findable, not buried in a settings submenu.</p>
+      <div>
+        <p class="cs-body"><strong>Change.</strong> Edit preferences, revoke professional access or hide recommendations. Controls must be findable.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Remove</span>
-        <p class="statblock-keyword">Export or<br>Delete</p>
-        <p class="statblock-body">Export personal data in a portable format or request complete deletion. Report unsafe content, advice or professionals through a clear reporting flow.</p>
+      <div>
+        <p class="cs-body"><strong>Remove.</strong> Export data or request deletion. Report unsafe content or professionals.</p>
       </div>
     </div>
-  </div>
-
-  <div style="padding:2em 8% 5em;max-width:42em;margin:0 auto;text-align:center">
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-ghost)">These are requirements for any future build. Compliance with specific regulations would need formal legal review.</p>
+    <p class="cs-disclosure" style="margin-top:var(--cs-space-m)">These are design requirements. Regulatory compliance would need formal legal review.</p>
   </div>
 
 
@@ -1258,7 +1202,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Visual System</p>
-        <h2 class="cs-heading cs-heading--section">Why dark,<br>why minimal.</h2>
+        <h2 class="cs-heading cs-heading--section">Why dark, why minimal.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy">Most fitness and health apps default to white backgrounds with clinical styling. I chose dark surfaces for three reasons: to create contrast for data visualisation (charts and progress indicators against a dark canvas), to reduce visual competition (the UI recedes so content comes forward), and to differentiate from the clinical white look most health apps default to.</p>
@@ -1267,22 +1211,16 @@
     </div>
   </section>
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
-    <div class="statblock-grid">
-      <div class="statblock-cell">
-        <span class="statblock-badge">Colour</span>
-        <p class="statblock-keyword">Dark<br>Canvas</p>
-        <p class="statblock-body">Near-black backgrounds (#1A1A1A range) with white text for primary content. The coral accent (#FF5E39) marks CTAs, active tabs, and data highlights. Muted tones for secondary information. The interface does not compete with the data it displays.</p>
+  <div class="cs-shell" style="padding-bottom:var(--cs-space-2xl)">
+    <div class="profile-grid">
+      <div>
+        <p class="cs-body"><strong>Colour.</strong> Near-black backgrounds with white primary text. Coral accent (#FF5E39) reserved for CTAs, active states and data highlights. The interface does not compete with the data.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Typography</span>
-        <p class="statblock-keyword">One<br>Family</p>
-        <p class="statblock-body">Single sans-serif typeface across the entire app. Weight variation (regular, medium, bold) creates hierarchy without introducing visual noise. Numbers use tabular figures for alignment in dashboards and progress indicators. No decorative type.</p>
+      <div>
+        <p class="cs-body"><strong>Typography.</strong> Single sans-serif family. Weight variation creates hierarchy without visual noise. Tabular figures for dashboard alignment.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Components</span>
-        <p class="statblock-keyword">Cards,<br>Not Pages</p>
-        <p class="statblock-body">Content is organised in cards with consistent corner radii and spacing. Training programmes, nutrition entries, shop products, and expert profiles all follow the same card pattern. Familiar structure across six different modules reduces the learning curve.</p>
+      <div>
+        <p class="cs-body"><strong>Components.</strong> Consistent card structure across all six modules. Same corner radii, spacing and interaction patterns throughout.</p>
       </div>
     </div>
   </div>
@@ -1294,7 +1232,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Brand Application</p>
-        <h2 class="cs-heading cs-heading--section">Identity<br>through<br>interaction.</h2>
+        <h2 class="cs-heading cs-heading--section">Identity through interaction.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy">A visual identity that only appears in marketing materials and splash screens is decoration. In Tips4Fit, the brand is expressed through how the product behaves: which elements demand attention, which recede, how progress feels, and whether the experience remains consistent across six different modules. The identity lives in the interaction patterns, not just the colour palette.</p>
@@ -1312,7 +1250,7 @@
 
   <!-- ═══════ BRAND-TO-PRODUCT EVIDENCE MAP ═══════ -->
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:5em">
     <p class="mono-text" style="margin-bottom:1em">Brand-to-Product Evidence</p>
     <table class="vs-table">
       <caption class="sr-only">How each brand principle maps to a specific product decision and its constraint</caption>
@@ -1361,7 +1299,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Accessibility</p>
-        <h2 class="cs-heading cs-heading--section">Built for<br>gyms, not<br>just desks.</h2>
+        <h2 class="cs-heading cs-heading--section">Built for gyms, not just desks.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy">Fitness apps are used while moving, in low-light gym environments, one-handed between sets, and mid-workout with elevated heart rates. Accessibility here means both meeting interface standards (contrast, screen readers, keyboard navigation) and designing for the physical reality of exercise. A button that passes WCAG but cannot be tapped with a sweaty thumb during a deadlift set has not solved the problem.</p>
@@ -1369,7 +1307,7 @@
     </div>
   </section>
 
-  <div style="padding:0 8% 2em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:2em">
     <div class="model-grid">
       <div class="model-col v1">
         <h3>Interface Requirements</h3>
@@ -1393,90 +1331,8 @@
     </div>
   </div>
 
-  <div style="padding:2em 8% 5em;max-width:42em;margin:0 auto;text-align:center">
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-ghost)">Contrast ratios have not been formally audited. These are requirements for validation, not confirmed achievements.</p>
-  </div>
-
-
-  <!-- ═══════ ACCESSIBILITY EVIDENCE ═══════ -->
-
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
-    <p class="mono-text" style="margin-bottom:0.6em">Accessibility Status</p>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:1.5em">Checked against the case-study implementation and available screen assets. Product screens are static image exports and cannot be programmatically inspected.</p>
-    <table class="vs-table">
-      <caption class="sr-only">Accessibility audit status for the Tips4Fit case study and product screens</caption>
-      <thead>
-        <tr>
-          <th>Requirement</th>
-          <th>Status</th>
-          <th>Evidence</th>
-          <th>Next action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Text contrast (case study)</td>
-          <td>Pass</td>
-          <td>Measured: charcoal #343434 on #fff = 12.45:1, secondary #5a5a56 = 6.93:1, muted #636360 = 6.03:1, ghost #767672 = 4.56:1</td>
-          <td>Ghost text (4.56:1) passes but is marginal at very small sizes</td>
-        </tr>
-        <tr>
-          <td>Text contrast (product screens)</td>
-          <td>Not verifiable</td>
-          <td>Screens are raster image exports</td>
-          <td>Requires production implementation inspection</td>
-        </tr>
-        <tr>
-          <td>Coral table-header contrast</td>
-          <td>Corrected</td>
-          <td>Original #FF5E39 on #fff = 3.04:1 (fail). Darkened to #C74A2D = 4.55:1 (pass)</td>
-          <td>Product-screen coral requires verification in production</td>
-        </tr>
-        <tr>
-          <td>Non-colour chart encoding</td>
-          <td>Not verifiable</td>
-          <td>Dashboard charts visible but encoding method unclear</td>
-          <td>Add labels, patterns or shapes alongside colour</td>
-        </tr>
-        <tr>
-          <td>Touch targets (44×44px)</td>
-          <td>Not verifiable</td>
-          <td>Screen exports do not include measurement data</td>
-          <td>Verify in production implementation</td>
-        </tr>
-        <tr>
-          <td>Reduced motion</td>
-          <td>Present</td>
-          <td>prefers-reduced-motion media query in case-study CSS</td>
-          <td>Extend to product animation if built</td>
-        </tr>
-        <tr>
-          <td>Screen-reader labels</td>
-          <td>Partial</td>
-          <td>aria-label on nav, dialog and diagram elements</td>
-          <td>Product screens require comprehensive labelling</td>
-        </tr>
-        <tr>
-          <td>Dynamic text (200%)</td>
-          <td>Not tested</td>
-          <td>Case study uses relative units (em, clamp)</td>
-          <td>Verify at 200% zoom across breakpoints</td>
-        </tr>
-        <tr>
-          <td>Keyboard navigation</td>
-          <td>Present</td>
-          <td>Lightbox includes focus trap and tab management</td>
-          <td>Extend to all interactive product elements</td>
-        </tr>
-        <tr>
-          <td>Mobile overflow</td>
-          <td>Pass</td>
-          <td>No horizontal scroll at 390px and 320px</td>
-          <td>Monitor as content is added</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);line-height:1.5;margin-top:1.5em">Most product-screen requirements cannot be verified from static exports. This table documents what can be checked now and what requires a production build.</p>
+  <div class="cs-shell" style="padding-bottom:var(--cs-space-2xl)">
+    <p class="cs-disclosure">Case-study page contrast has been measured against WCAG 2.2 AA. Product-screen accessibility cannot be verified from static exports and would require a production implementation.</p>
   </div>
 
 
@@ -1506,10 +1362,10 @@
 
   <!-- ═══════ FIRST EXPERIMENT CLARIFICATION ═══════ -->
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:5em">
     <div style="height:1px;background:rgba(52,52,52,0.06);margin-bottom:2.5em"></div>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">The first experiment is smaller than the product vision.</p>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:2em">The six-module V1 above describes the product direction. But the first product principle is "connect before expanding." Testing the entire ecosystem at once would make it impossible to isolate what works. The first experiment focuses on the smallest loop that proves the core hypothesis: does connected information create clearer fitness understanding?</p>
+    <p class="cs-label" style="margin-bottom:0.8em">The first experiment is smaller than the product vision</p>
+    <p class="cs-body" style="margin-bottom:2em">Testing the full ecosystem at once would make it impossible to isolate what works. The first experiment focuses on the smallest loop that proves the core hypothesis.</p>
     <div class="inference-row">
       <div class="inference-step">
         <p class="inference-step__label">Core Experiment</p>
@@ -1524,7 +1380,6 @@
         <p class="inference-step__body">Wearables · Professional verification · Content operations · Moderation · Advanced data portability</p>
       </div>
     </div>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.75em;font-weight:400;line-height:1.5;color:var(--text-ghost);margin-top:2em">The first experiment tests whether connected information creates clearer fitness understanding. It does not attempt to validate the entire six-module ecosystem at once.</p>
   </div>
 
 
@@ -1541,7 +1396,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Study Design</p>
-        <h2 class="cs-heading cs-heading--section">What I would<br>test first.</h2>
+        <h2 class="cs-heading cs-heading--section">What I would test first.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy"><strong style="color:var(--charcoal)">Participants:</strong> 5–7 people who currently use at least two fitness, nutrition, activity or wearable services. They should regularly review their fitness progress and represent a mix of structured and less structured routines. Recruitment would prioritise people already experiencing the fragmentation problem, not fitness novices.</p>
@@ -1564,31 +1419,7 @@
   </section>
 
 
-  <!-- ═══════ TWO-ROUND VALIDATION ═══════ -->
-
-  <div style="padding:3em 8% 2em;max-width:72em;margin:0 auto">
-    <p class="mono-text" style="margin-bottom:1.5em;text-align:center">Two rounds, two different questions.</p>
-    <div class="model-grid">
-      <div class="model-col v1">
-        <h3>Round 1 — Core Value</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--charcoal)">Purpose:</strong> Test whether the connected experience is understandable and useful.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--charcoal)">Tasks:</strong> Complete goal-based onboarding · Interpret the unified dashboard · Explain why a recommendation appeared · Change or revoke a permission.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--charcoal)">Signals:</strong> Task completion · Dashboard comprehension · Recommendation understanding · Permission-control findability · Perceived value versus current tools.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:500;line-height:1.55;color:var(--charcoal)">This would determine: Whether the connected-dashboard proposition is worth developing further.</p>
-      </div>
-      <div class="model-col later">
-        <h3>Round 2 — Ecosystem Trust</h3>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--text-muted)">Purpose:</strong> Test whether users trust the broader platform proposition.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--text-muted)">Tasks:</strong> Find an appropriate professional · Understand professional verification · Review a contextual product recommendation · Distinguish organic and sponsored recommendations · Report unsuitable advice or content.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);margin-bottom:1em"><strong style="color:var(--text-muted)">Signals:</strong> Professional trust · Commercial recommendation trust · Sponsored-content comprehension · Perceived product overreach · Reporting-flow findability.</p>
-        <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:500;line-height:1.55;color:var(--text-muted)">This would determine: Whether expert access and commerce belong inside the same product or should remain separate services.</p>
-      </div>
-    </div>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.55;color:var(--text-secondary);text-align:center;margin-top:2em;max-width:42em;margin-left:auto;margin-right:auto">Combining every question into one session would create fatigue and weak evidence. The first round tests the central proposition; the second tests whether the broader ecosystem earns trust.</p>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);text-align:center;margin-top:0.8em">Neither round has been conducted.</p>
-  </div>
-
-  <div style="padding:2em 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-top:var(--cs-space-l);padding-bottom:var(--cs-space-2xl)">
     <p class="mono-text" style="margin-bottom:1em">Method Fit</p>
     <table class="vs-table">
       <caption class="sr-only">Which research method fits each validation question</caption>
@@ -1611,7 +1442,7 @@
     <div class="content-row">
       <div class="content-left">
         <p class="mono-text" style="margin-bottom:0.6em">Success Criteria</p>
-        <h2 class="cs-heading cs-heading--section">How I would<br>judge the<br>concept.</h2>
+        <h2 class="cs-heading cs-heading--section">How I would judge the concept.</h2>
       </div>
       <div class="content-right">
         <p class="body-copy">These are measures I would use to evaluate the concept if it were built and tested. They are not results from a live product.</p>
@@ -1619,22 +1450,16 @@
     </div>
   </section>
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
-    <div class="statblock-grid">
-      <div class="statblock-cell">
-        <span class="statblock-badge">User Value</span>
-        <p class="statblock-keyword">Under-<br>standing</p>
-        <p class="statblock-body">Users correctly interpret the relationship between training and nutrition information. Users can identify why recommendations appear. Users perceive less need to manually compare separate tools. Users remain in control of sensitive information.</p>
+  <div class="cs-shell" style="padding-bottom:var(--cs-space-2xl)">
+    <div class="profile-grid">
+      <div>
+        <p class="cs-body"><strong>User value.</strong> Users interpret the relationship between training and nutrition. They identify why recommendations appear and feel in control of their information.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Product Behaviour</span>
-        <p class="statblock-keyword">Engage-<br>ment</p>
-        <p class="statblock-body">Continued training and nutrition logging after initial setup. Return visits to the unified dashboard. Use of recommendations across more than one session. Permission settings successfully located and understood.</p>
+      <div>
+        <p class="cs-body"><strong>Product behaviour.</strong> Continued logging after setup. Return visits to the dashboard. Recommendations used across sessions. Permission controls located without difficulty.</p>
       </div>
-      <div class="statblock-cell">
-        <span class="statblock-badge">Business Signals</span>
-        <p class="statblock-keyword">Viabi-<br>lity</p>
-        <p class="statblock-body">Retention after the initial setup period. Expert-profile to booking intent conversion. Contextual versus generic commerce engagement. Trust impact of commercial recommendation disclosure.</p>
+      <div>
+        <p class="cs-body"><strong>Business signals.</strong> Retention after setup. Expert-to-booking conversion. Contextual versus generic commerce engagement. Trust impact of commercial disclosure.</p>
       </div>
     </div>
   </div>
@@ -1642,7 +1467,7 @@
 
   <!-- ═══════ PROPOSED SUCCESS THRESHOLDS ═══════ -->
 
-  <div style="padding:0 8% 5em;max-width:72em;margin:0 auto">
+  <div class="cs-shell" style="padding-bottom:5em">
     <p class="mono-text" style="margin-bottom:0.4em">Proposed thresholds for the first study</p>
     <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);line-height:1.4;margin-bottom:1.5em">These thresholds are decision criteria for a future study, not measured results.</p>
     <ul class="numbered-list">
@@ -1654,7 +1479,6 @@
       <li><span class="num">06</span><span class="text">Any interpretation of the product as providing a medical diagnosis is treated as a critical comprehension failure.</span></li>
       <li><span class="num">07</span><span class="text">At least 5 of 7 participants describe the unified view as more useful than manually comparing their current tools and can explain why.</span></li>
     </ul>
-    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.7em;font-weight:400;color:var(--text-ghost);line-height:1.5;margin-top:1.5em">These thresholds are directional decision criteria for an early qualitative study. They are not statistically representative product benchmarks.</p>
   </div>
 
 

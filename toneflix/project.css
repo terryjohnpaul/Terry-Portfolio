@@ -170,3 +170,8 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible { outline: 
 .footer-right [data-privacy-settings] { color: #b8b8b8; min-height: 44px; }
 
 .cs-nav-item.is-active span { color: #343434; }
+
+/* Align links and the consent button on the same baseline and touch area. */
+.footer-right { align-items: center; row-gap: 8px; }
+.footer-right > a, .footer-right > [data-privacy-settings] { display: inline-flex; align-items: center; min-height: 44px; font-family: 'Helvetica Now Display', sans-serif; font-size: 12px; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: #b8b8b8; white-space: nowrap; }
+.footer-right > [data-privacy-settings]:hover { color: #fff; }

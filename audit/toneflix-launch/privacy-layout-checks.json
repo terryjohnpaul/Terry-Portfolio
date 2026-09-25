@@ -1,0 +1,152 @@
+[
+  {
+    "width": 320,
+    "dialogFits": true,
+    "overflow": false,
+    "checked": false
+  },
+  [
+    {
+      "text": "Back to work",
+      "size": "12px",
+      "height": 44,
+      "top": 711.78125
+    },
+    {
+      "text": "Privacy",
+      "size": "12px",
+      "height": 44,
+      "top": 711.78125
+    },
+    {
+      "text": "Cookie preferences",
+      "size": "12px",
+      "height": 44,
+      "top": 711.78125
+    },
+    {
+      "text": "LinkedIn ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 763.78125
+    },
+    {
+      "text": "Resume",
+      "size": "12px",
+      "height": 44,
+      "top": 763.78125
+    },
+    {
+      "text": "Instagram ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 763.78125
+    },
+    {
+      "text": "Twitter ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 815.78125
+    }
+  ],
+  {
+    "width": 390,
+    "dialogFits": true,
+    "overflow": false,
+    "checked": false
+  },
+  [
+    {
+      "text": "Back to work",
+      "size": "12px",
+      "height": 44,
+      "top": 764
+    },
+    {
+      "text": "Privacy",
+      "size": "12px",
+      "height": 44,
+      "top": 764
+    },
+    {
+      "text": "Cookie preferences",
+      "size": "12px",
+      "height": 44,
+      "top": 764
+    },
+    {
+      "text": "LinkedIn ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 764
+    },
+    {
+      "text": "Resume",
+      "size": "12px",
+      "height": 44,
+      "top": 816
+    },
+    {
+      "text": "Instagram ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 816
+    },
+    {
+      "text": "Twitter ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 816
+    }
+  ],
+  {
+    "width": 1440,
+    "dialogFits": true,
+    "overflow": false,
+    "checked": false
+  },
+  [
+    {
+      "text": "Back to work",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "Privacy",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "Cookie preferences",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "LinkedIn ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "Resume",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "Instagram ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    },
+    {
+      "text": "Twitter ↗",
+      "size": "12px",
+      "height": 44,
+      "top": 796.46875
+    }
+  ]
+]

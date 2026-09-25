@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toneflix: Fitness App UX Case Study | Terry John Paul</title>
+  <meta name="description" content="A fitness app concept for a 2024 funding pitch, exploring connected workouts, nutrition and progress. UX design and prototyping by Terry John Paul.">
+  <link rel="canonical" href="https://terryjohn.me/toneflix/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Toneflix: Fitness App UX Case Study | Terry John Paul">
+  <meta property="og:description" content="A fitness app concept for a 2024 funding pitch, exploring connected workouts, nutrition and progress. UX design and prototyping by Terry John Paul.">
+  <meta property="og:url" content="https://terryjohn.me/toneflix/">
+  <meta property="og:image" content="https://terryjohn.me/toneflix/assets/optimised/social-dc70a996fd940e6e.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Toneflix brand artwork with an athlete stretching and bright yellow lettering">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Terry John Paul">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Toneflix: Fitness App UX Case Study | Terry John Paul">
+  <meta name="twitter:description" content="A fitness app concept for a 2024 funding pitch, exploring connected workouts, nutrition and progress. UX design and prototyping by Terry John Paul.">
+  <meta name="twitter:image" content="https://terryjohn.me/toneflix/assets/optimised/social-dc70a996fd940e6e.jpg">
+  <meta name="twitter:image:alt" content="Toneflix brand artwork with an athlete stretching and bright yellow lettering">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/HelveticaNowDisplay-Regular.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <link rel="stylesheet" href="../pixelbin/css/base.css">
+  <link rel="stylesheet" href="../pixelbin/css/chapter1.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://terryjohn.me/toneflix/","name":"Toneflix: Fitness App Design Case Study","headline":"Tracking your fitness shouldn’t mean piecing it together","author":{"@type":"Person","@id":"https://terryjohn.me/#person","name":"Terry John Paul","url":"https://terryjohn.me","jobTitle":"Senior Product Designer"},"description":"A fitness app concept for a 2024 funding pitch, exploring connected workouts, nutrition and progress. UX design and prototyping by Terry John Paul.","url":"https://terryjohn.me/toneflix/","image":"https://terryjohn.me/toneflix/assets/optimised/social-dc70a996fd940e6e.jpg","inLanguage":"en-GB","keywords":["Fitness App UX Case Study","Fitness Dashboard Design","Mobile Product Design","Fitness App Concept"],"about":[{"@type":"Thing","name":"Fitness App Design"},{"@type":"Thing","name":"Mobile Product Design"},{"@type":"Thing","name":"Fitness Tracking"}]}</script>
+  <link rel="stylesheet" href="sorted-template.css"><link rel="stylesheet" href="project.css?v=launch-20260925-r1">
+  <link rel="stylesheet" href="/assets/vendor/lenis-1.1.18.css">
+  <script src="/assets/vendor/gsap-3.12.5.min.js" defer=""></script>
+  <script src="/assets/vendor/ScrollTrigger-3.12.5.min.js" defer=""></script>
+  <script src="/assets/vendor/lenis-1.1.18.min.js" defer=""></script>
+<link rel="stylesheet" href="roadmap.css?v=white-20260920">
+<link rel="stylesheet" href="/assets/css/privacy-controls.css?v=1">
+<script src="/assets/js/privacy-controls.js?v=1" defer></script>
+</head>
+<body class="overflow-clip">
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <main id="main-content"><section class="cs-hero-section">
+    <div class="cs-hero-inner">
+      <p class="mono-text cs-hero-eyebrow">/Work/Toneflix</p>
+      <p class="cs-hero-product">Toneflix</p>
+      <h1 class="cs-hero-title">Tracking your fitness shouldn’t<br>mean piecing it together.</h1>
+      <p class="cs-hero-intro">Workouts, meals and progress in one place. A fitness app concept exploring how they connect.</p>
+      <div class="divider" style="margin-bottom:1.6em"></div>
+      <div class="cs-hero-meta" style="flex-direction:column;gap:1.2em">
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Role</p>
+          <p class="mono-text" style="color:var(--text-muted);text-transform:none">Product designer · UX, UI and research planning</p>
+        </div>
+        <div class="cs-hero-meta-group">
+          <p class="cs-hero-meta-label">Context</p>
+          <p class="mono-text" style="color:var(--text-muted);text-transform:none">2024 client pitch · Concept, not shipped</p>
+        </div>
+      </div>
+    </div>
+  </section><div class="full-screen-asset toneflix-artwork"><img alt="Toneflix brand artwork: an athlete stretching beneath bright yellow Toneflix lettering" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block" src="/toneflix/assets/optimised/hero-new-2400-4e2cc8c806778ce0.webp" width="2400" height="1765" data-full-src="/toneflix/assets/optimised/hero-new-2400-4e2cc8c806778ce0.webp" srcset="/toneflix/assets/optimised/hero-new-640-b8f8d8e0f93819a8.webp 640w, /toneflix/assets/optimised/hero-new-1280-d4d30c5dc35c1440.webp 1280w, /toneflix/assets/optimised/hero-new-2400-4e2cc8c806778ce0.webp 2400w" sizes="100vw"></div><section id="cs-thesis" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:46em">
+      <p class="mono-text" style="margin-bottom:1.6em">01 / The problem</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.15;letter-spacing:-0.03em;color:var(--charcoal)">You can log a workout and every meal, then still struggle to see how your routine is going.</h2>
+    </div>
+  </section><div style="padding:0 8% 2em;max-width:62em;margin:0 auto;text-align:center">
+    <p style="font-size:0.7em;color:var(--text-ghost);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:1em">Illustrative fitness tools and services</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.3em;justify-content:center;max-width:40em;margin:0 auto"><span class="app-pill">MyFitnessPal</span><span class="app-pill">Nike Training Club</span><span class="app-pill">Strava</span><span class="app-pill">Apple Health</span><span class="app-pill">Fitbit</span><span class="app-pill">Peloton</span><span class="app-pill">Gymshark</span><span class="app-pill">MyProtein</span><span class="app-pill">Google Maps</span><span class="app-pill">YouTube Fitness</span><span class="app-pill">Headspace</span><span class="app-pill">Sleep Cycle</span></div>
+  </div><section class="content-section" style="padding-top:4em">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">The brief</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Bring a whole fitness<br>routine into one app.</h2>
+      </div>
+      <div class="content-right"><p class="body-copy">The client brief came over a call: design a fitness app for a 2024 venture-capital pitch. It was a broad request. Along with training, nutrition and activity tracking, the app needed to include shopping and help people find a gym.</p><p class="body-copy">Some basic research took place within the gym community. I can no longer confirm the methods, how many people took part or the specific findings. The design reasoning below therefore describes my choices, without presenting them as conclusions from that research.</p><p class="body-copy">I handled all the design work and research planning across six modules. My design question was how someone’s goals and progress could carry through the app, from choosing a workout to reviewing their day. Toneflix remained a concept and was never shipped.</p></div>
+    </div>
+  </section><section id="cs-evidence" style="padding:6em 8% 2em">
+    <div style="max-width:62em;margin:0 auto;text-align:center">
+      <p class="mono-text" style="margin-bottom:0.6em;text-align:center">02 / Category context</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin:0 auto 1.5em;max-width:16em;text-align:center">Millions of people are active.<br>What would another app help with?</h2>
+    </div>
+  </section><div style="padding:0 8%;max-width:62em;margin:0 auto">
+    <div class="evidence-row">
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">11.5M</p>
+        <p class="evidence-stat__label">UK health and fitness club members during 2024</p>
+        <p class="evidence-stat__source"><a href="https://ukactive.com/news/uk-health-and-fitness-market-report-reveals-exponential-growth-as-penetration-rate-hits-16-9-and-revenue-grows-8-8/" target="_blank" rel="noopener noreferrer">ukactive UK Health &amp; Fitness Market Report 2025, reporting 2024 data</a></p>
+      </div>
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">£5.7B</p>
+        <p class="evidence-stat__label">UK health and fitness club-sector revenue during 2024</p>
+        <p class="evidence-stat__source"><a href="https://ukactive.com/news/uk-health-and-fitness-market-report-reveals-exponential-growth-as-penetration-rate-hits-16-9-and-revenue-grows-8-8/" target="_blank" rel="noopener noreferrer">ukactive UK Health &amp; Fitness Market Report 2025, reporting 2024 data</a></p>
+      </div>
+      <div class="evidence-stat">
+        <p class="evidence-stat__number">29.5M</p>
+        <p class="evidence-stat__label">adults in England meeting 150+ minutes of activity per week</p>
+        <p class="evidence-stat__source"><a href="https://www.sportengland.org/news-and-inspiration/long-term-increase-activity-levels-positive-further-action-needed-tackle" target="_blank" rel="noopener noreferrer">Sport England, Active Lives Adult Survey, November 2022 to 2023</a></p>
+      </div>
+    </div>
+  </div><div style="padding:3em 8% 2em;max-width:42em;margin:0 auto;text-align:center">
+    <p class="mono-text" style="margin-bottom:1em">Interpretation</p>
+    <p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.85em;font-weight:400;line-height:1.55;color:var(--text-secondary)">These figures help put the project in context today. The ukactive report came out in 2025, after the pitch; neither source proves demand for Toneflix or describes our research participants. What I would need to find out is whether people struggle to make sense of their records across tools, even when those tools already share data.</p>
+  </div><section id="cs-landscape" style="padding:6em 8% 2em">
+    <div style="max-width:72em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:0.6em">03 / Existing options</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);max-width:14em;margin-bottom:1.5em">Each tool covers a task.<br>Comparing the records takes work.</h2>
+      <table class="vs-table">
+        <caption class="sr-only">Illustrative product categories covered by the Toneflix concept; not a feature audit</caption>
+        <thead><tr><th>Model</th><th>Illustrative examples</th><th>Toneflix concept</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Model">Workout apps</td><td data-label="Illustrative examples">Nike Training Club, Peloton</td><td data-label="Toneflix concept">Browse programmes and review training alongside daily activity.</td></tr>
+          <tr><td data-label="Model">Nutrition trackers</td><td data-label="Illustrative examples">MyFitnessPal</td><td data-label="Toneflix concept">See meals and nutrition beside the day’s training.</td></tr>
+          <tr><td data-label="Model">Fitness commerce</td><td data-label="Illustrative examples">Gymshark, MyProtein</td><td data-label="Toneflix concept">Browse fitness products, with suggestions that could use someone’s goals.</td></tr>
+          <tr><td data-label="Model">Gym discovery</td><td data-label="Illustrative examples">Google Maps</td><td data-label="Toneflix concept">Find nearby gyms, read professional profiles and explore booking.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section><div class="full-screen-asset toneflix-artwork"><img alt="" loading="lazy" style="width: 100%; height: auto; display: block;" src="/toneflix/assets/optimised/breaker-new-2400-1ad2c77a7a53fd28.webp" width="2400" height="871" data-full-src="/toneflix/assets/optimised/breaker-new-2400-1ad2c77a7a53fd28.webp" srcset="/toneflix/assets/optimised/breaker-new-640-e097667fddeb6a2b.webp 640w, /toneflix/assets/optimised/breaker-new-1280-91526c0ecc5f6150.webp 1280w, /toneflix/assets/optimised/breaker-new-2400-1ad2c77a7a53fd28.webp 2400w" sizes="(max-width: 768px) 100vw, 80vw"></div><section id="cs-architecture" style="min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:6em 8%;text-align:center">
+    <div style="max-width:52em">
+      <p class="mono-text" style="margin-bottom:1.6em">04 / How it works</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">A goal set at the start<br>should still matter later.</h2>
+    </div>
+  </section><section class="content-section" id="cs-spine">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">Connecting the app</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Carry the same goals<br>through each part of the app.</h2>
+      </div>
+      <div class="content-right"><p class="body-copy">I used a shared profile to connect onboarding, training, tracking and shopping. The idea was that a goal entered at the start could guide programme suggestions, while logged activity would appear in the dashboard. These connections describe how I intended the app to work; the backend needed to support them has not been built.</p><ul class="numbered-list">
+          <li><span class="num">01</span><span class="text"><strong>Onboarding</strong>: goals, optional body information and preferences.</span></li>
+          <li><span class="num">02</span><span class="text"><strong>Dashboard</strong>: a view of training, nutrition and activity.</span></li>
+          <li><span class="num">03</span><span class="text"><strong>Training</strong>: programmes, classes and session history.</span></li>
+          <li><span class="num">04</span><span class="text"><strong>Explore</strong>: location-based discovery and professional profiles.</span></li>
+          <li><span class="num">05</span><span class="text"><strong>Shop</strong>: product browsing and proposed goal-based suggestions.</span></li>
+          <li><span class="num">06</span><span class="text"><strong>Profile</strong>: goals, history, bookings and account controls.</span></li>
+        </ul></div>
+    </div>
+  </section>
+  <section id="cs-app-map" aria-label="Toneflix app map">
+    <div class="app-map__diagram"><img alt="Toneflix app map showing Home, Arena, Explore, Shop and Profile and their related screens" loading="lazy" decoding="async" src="/toneflix/assets/optimised/app-map-centered-20260925-2260-5a3b7a7dc1d0a62c.webp" width="2260" height="1028" data-full-src="/toneflix/assets/optimised/app-map-centered-20260925-2260-5a3b7a7dc1d0a62c.webp" srcset="/toneflix/assets/optimised/app-map-centered-20260925-640-c2f9c1fbd436fb03.webp 640w, /toneflix/assets/optimised/app-map-centered-20260925-1280-4e8d656ab719a5d7.webp 1280w, /toneflix/assets/optimised/app-map-centered-20260925-2260-5a3b7a7dc1d0a62c.webp 2260w" sizes="(max-width: 768px) 100vw, 80vw"></div>
+  </section>
+  <section id="cs-dashboard" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">01</div><h3 class="flow-title">Your workout and meals only tell part of the story.</h3>
+      <span class="flow-status">Shared tracking</span></div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em"><p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">When training and food records are separate, you have to do the comparison yourself.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">I brought workouts, nutrition and activity into the same dashboard and explored different ways to arrange them. The meal screen adds detail behind the daily totals. These alternatives are a way to test whether seeing the records together actually makes them easier to understand.</p>
+        </div>
+        <p class="flow-strip-label">Home and nutrition · Dashboard alternatives</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix dashboard with a workout, activity metrics, food suggestions and daily activity chart" loading="lazy" src="/toneflix/assets/optimised/dashboard-food-20260925-360-2848d9913deca835.webp" width="360" height="1042" data-full-src="/toneflix/assets/optimised/dashboard-food-20260925-360-2848d9913deca835.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Activity and food overview</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix dashboard with calories, steps, water, sleep, meals and workout plans" loading="lazy" src="/toneflix/assets/optimised/dashboard-home-20260924-r2-2-360-72a83b5e3bbf1d90.webp" width="360" height="1042" data-full-src="/toneflix/assets/optimised/dashboard-home-20260924-r2-2-360-72a83b5e3bbf1d90.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Combined daily overview</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix nutrition screen with calorie totals and breakfast and lunch entries" loading="lazy" src="/toneflix/assets/optimised/meal-tracking-foods-20260925-360-69c88a1233d6d9ee.webp" width="360" height="1042" data-full-src="/toneflix/assets/optimised/meal-tracking-foods-20260925-360-69c88a1233d6d9ee.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Meal tracking</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix dashboard with calorie, hydration, workout, step and meal statistics" loading="lazy" src="/toneflix/assets/optimised/dashboard-home-20260924-r2-4-1080-4fc3609b29abd632.webp" width="1080" height="3126" data-full-src="/toneflix/assets/optimised/dashboard-home-20260924-r2-4-1080-4fc3609b29abd632.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Daily statistics</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="cs-tracking" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">02</div><h3 class="flow-title">A daily total can hide what happened during the day.</h3>
+        <span class="flow-status">Tracking · later design exploration</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A headline number gives a quick update, but leaves out the changes behind it.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">In these later designs, I paired activity, heart-rate and sleep totals with charts and supporting summaries. The calorie tracker brings the daily balance, macros, meal log and weekly view together, while keeping activity calories separate. All four screens use sample data; live tracking is not connected.</p>
+        </div>
+        <p class="flow-strip-label">Activity · Heart rate · Sleep · Calories</p>
+        <div class="strip-wrap"><div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix activity tracking concept with activity chart, weight trend and daily activity summary" loading="lazy" src="/toneflix/assets/optimised/tracking-refined-20260924-1-1656-f707d4817ced2a1d.webp" width="1656" height="3692" data-full-src="/toneflix/assets/optimised/tracking-refined-20260924-1-1656-f707d4817ced2a1d.webp" srcset="/toneflix/assets/optimised/tracking-refined-20260924-1-640-74b4d3f3ae63cd41.webp 640w, /toneflix/assets/optimised/tracking-refined-20260924-1-1280-9eee2c746393ae93.webp 1280w, /toneflix/assets/optimised/tracking-refined-20260924-1-1656-f707d4817ced2a1d.webp 1656w" sizes="(max-width: 768px) 100vw, 80vw"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Activity and weight</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix heart-rate concept with daily trend, resting readings and a labelled overnight range showing the lowest, highest and average pulse" loading="lazy" src="/toneflix/assets/optimised/heart-rate-overnight-20260925-828-65737cff8d502db6.webp" width="828" height="1846" data-full-src="/toneflix/assets/optimised/heart-rate-overnight-20260925-828-65737cff8d502db6.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Heart-rate trends</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix sleep concept with monitoring chart, bedtime history and last-night summary" loading="lazy" src="/toneflix/assets/optimised/tracking-refined-20260924-3-828-fd40b757d4b9a6dd.webp" width="828" height="1846" data-full-src="/toneflix/assets/optimised/tracking-refined-20260924-3-828-fd40b757d4b9a6dd.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Sleep and routine</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix redesigned calorie tracker with remaining calories, macros, meal log and weekly trend" loading="lazy" src="/toneflix/assets/optimised/tracking-refined-20260924-4-828-948a629353861c4f.webp" width="828" height="1846" data-full-src="/toneflix/assets/optimised/tracking-refined-20260924-4-828-948a629353861c4f.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Calories and meals</span></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+  <section id="cs-nutrition-routine" class="flow-card" aria-labelledby="nutrition-routine-title">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">03</div><h3 id="nutrition-routine-title" class="flow-title">The same breakfast. The same logging, again.</h3>
+        <span class="flow-status">Nutrition habits · later design exploration</span>
+      </div>
+      <div class="flow-right">
+        <div class="feature-story">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">Eating the same meals can make a routine easier. Entering every ingredient again adds work without telling you anything new. And once the food is logged, a calorie total alone offers little help with deciding what to change.</p>
+          <p class="flow-problem__label feature-story__label">The solution</p>
+          <p class="flow-problem__body">I paired an optional coaching introduction with a daily view of calories, macros and meals. A weekly check-in gives guidance a place without taking choices away. The food library lets someone reuse a saved meal; the final screen confirms the foods and portions copied to tomorrow’s breakfast. These four screens show the concept using sample data, with guidance and meal copying still to be implemented.</p>
+        </div>
+        <p class="flow-strip-label">Choose support · Review today · Reuse a meal · Confirm</p>
+        <div class="strip-wrap"><div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix guided nutrition introduction with a food illustration, weekly guidance and a rounded start button" loading="lazy" decoding="async" src="/toneflix/assets/optimised/nutrition-routine-20260925-1-360-be7328515bf60cf2.webp" width="360" height="811" data-full-src="/toneflix/assets/optimised/nutrition-routine-20260925-1-360-be7328515bf60cf2.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Choose guided coaching</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix daily nutrition dashboard showing calories, macros, a weekly check-in and three meal entries" loading="lazy" decoding="async" src="/toneflix/assets/optimised/nutrition-routine-20260925-2-360-fb872ed12d3cb741.webp" width="360" height="811" data-full-src="/toneflix/assets/optimised/nutrition-routine-20260925-2-360-fb872ed12d3cb741.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Review today’s nutrition</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix food library with scan, quick add, saved meals and a rounded copy-meal button" loading="lazy" decoding="async" src="/toneflix/assets/optimised/nutrition-routine-20260925-3-360-340af7eb48a7aa72.webp" width="360" height="811" data-full-src="/toneflix/assets/optimised/nutrition-routine-20260925-3-360-340af7eb48a7aa72.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Reuse a saved meal</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix copied-meal confirmation showing tomorrow’s breakfast, its three foods and portions" loading="lazy" decoding="async" src="/toneflix/assets/optimised/nutrition-routine-20260925-4-360-2644f39ea402cc2f.webp" width="360" height="811" data-full-src="/toneflix/assets/optimised/nutrition-routine-20260925-4-360-2644f39ea402cc2f.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Confirm tomorrow’s breakfast</span></div></div>
+        </div></div>
+
+      </div>
+    </div>
+  </section>
+  <section id="cs-milestones" class="flow-card" aria-labelledby="milestones-title">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">04</div><h3 id="milestones-title" class="flow-title">The goal is months away. Progress can be hard to see.</h3>
+        <span class="flow-status">Weight milestones · later design exploration</span>
+      </div>
+      <div class="flow-right">
+        <div class="feature-story">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">If the app only shows your final weight target, steady progress can still look like a long way to go. A single weigh-in gives little reassurance either. I wanted to give smaller steps a place in the experience, so there is something closer to work towards.</p>
+          <p class="flow-problem__label feature-story__label">The solution</p>
+          <p class="flow-problem__body">I broke the journey into milestones that people can space to suit themselves. The journey screen shows the next step; the detail screen shows the weight trend behind it. Reaching a milestone gets its own moment, with a choice to share it. The four screens cover setting up, following and recognising progress.</p>
+        </div>
+        <p class="flow-strip-label">Journey · Personalise · Understand · Celebrate</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix milestone journey showing a completed 81 kg milestone, the next 80 kg milestone and a future 79 kg milestone" loading="lazy" decoding="async" src="/toneflix/assets/optimised/milestones-compact-20260925-1-360-110dee52faf7cbb4.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/milestones-compact-20260925-1-360-110dee52faf7cbb4.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">See the next milestone</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix milestone setup with selectable weight intervals, a journey preview and the seven-day average achievement rule" loading="lazy" decoding="async" src="/toneflix/assets/optimised/milestones-compact-20260925-2-360-05460f6c7855bb18.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/milestones-compact-20260925-2-360-05460f6c7855bb18.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Choose milestone spacing</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix milestone detail showing a weight trend chart, the 80 kg target and recent weigh-ins" loading="lazy" decoding="async" src="/toneflix/assets/optimised/milestones-compact-20260925-3-360-707ca533efce3f95.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/milestones-compact-20260925-3-360-707ca533efce3f95.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Understand the progress</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix achievement screen with a charcoal, orange and lime medallion celebrating a reached milestone and a private share preview" loading="lazy" decoding="async" src="/toneflix/assets/optimised/milestones-compact-20260925-4-360-2aed895cc5a0b874.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/milestones-compact-20260925-4-360-2aed895cc5a0b874.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Recognise the achievement</span></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="cs-weigh-in-routine" class="flow-card" aria-labelledby="weigh-in-routine-title">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">05</div><h3 id="weigh-in-routine-title" class="flow-title">It’s easy to forget a weigh-in on a busy day.</h3>
+        <span class="flow-status">Weigh-in reminders · later design exploration</span>
+      </div>
+      <div class="flow-right">
+        <div class="feature-story">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">Even when someone wants to keep a weight record, remembering to weigh in and then logging it are two more things to do. Missed entries leave gaps, and a lengthy form makes catching up less appealing. The check-in needed to fit around someone’s day and remain their choice.</p>
+          <p class="flow-problem__label feature-story__label">The solution</p>
+          <p class="flow-problem__body">People choose the days and time that work for them, then see confirmation that the reminder is on. I kept weight entry focused on the reading. Once saved, it appears in the trend alongside milestone progress, with an edit option if the number is wrong. The saved screen shows where the reading went, without making someone find it elsewhere.</p>
+        </div>
+        <p class="flow-strip-label">Choose a routine · Confirm · Record · Review</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix weigh-in routine setup with Monday, Wednesday and Friday selected, a calendar preview and a 7:30 AM reminder time" loading="lazy" decoding="async" src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-1-360-1345d2c67c8a873f.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-1-360-1345d2c67c8a873f.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Choose days and time</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix reminder confirmation with a private notification preview, enabled status and the selected weekly schedule" loading="lazy" decoding="async" src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-2-360-18c3b27091a18904.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-2-360-18c3b27091a18904.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Confirm the reminder</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix quick weigh-in entry with a 79.6 kg sample reading, unit selector, date, numeric keypad and save action" loading="lazy" decoding="async" src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-3-360-203d2b9c8e8105a9.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-3-360-203d2b9c8e8105a9.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Record a quick check-in</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix saved weigh-in showing the updated weight trend, a newly reached milestone, the next reminder and an edit-reading action" loading="lazy" decoding="async" src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-4-360-3d61d99141568856.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/weigh-in-reviewed-20260925-4-360-3d61d99141568856.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">See progress update</span></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="cs-data-clarity" hidden class="data-story" aria-labelledby="data-story-title">
+    <header class="data-story__intro">
+      <p class="flow-problem__label">Concept refinement · 2026</p>
+      <h2 id="data-story-title">One weigh-in doesn’t tell the whole story.</h2>
+      <p>I revisited the progress screen to explore how it could explain recorded values, calculations and missing entries. This demonstration uses fictional data.</p>
+    </header>
+    <div class="data-story__layout">
+      <div class="data-demo" aria-label="Interactive weight-record concept">
+        <div class="data-demo__top"><span>Toneflix / Progress</span><span class="data-marker">01</span></div>
+        <div class="data-demo__metrics"><div><span>Latest reading</span><strong id="data-latest">79.6 <small>kg</small></strong><span>20 September</span></div><div><span>Average of readings</span><strong id="data-average">79.8 <small>kg</small></strong><span id="data-count">6 readings this week</span></div></div>
+        <div class="data-demo__period"><span>14–20 September 2026 · kg</span><span class="data-marker">02</span></div>
+        <div id="data-chart" class="data-demo__chart"></div>
+        <div class="data-demo__legend"><span>● Recorded weight</span><span>┄ Average of readings</span></div>
+        <p class="data-demo__hint">Choose a day to inspect its reading.</p>
+        <div id="data-days" class="data-demo__days" aria-label="Select a day"></div>
+        <form id="data-edit" class="data-demo__edit">
+          <div class="data-demo__period"><strong id="data-selected">Sunday, 20 September</strong><span class="data-marker">03</span></div>
+          <p id="data-source">Manually entered · Fictional reading</p>
+          <label for="data-weight">Weight (kg)</label>
+          <div class="data-demo__input"><input id="data-weight" type="number" min="20" max="400" step="0.1" value="79.6" required><button type="submit">Save reading</button></div>
+          <p id="data-feedback" role="status" aria-live="polite"></p>
+        </form>
+        <details class="data-demo__calculation"><summary>How is this calculated? <span class="data-marker">04</span></summary><p>The average is the sum of recorded weights divided by the number of readings in this selected week. Missing days are excluded. It is a simple average, not a prediction or a validated weight-trend algorithm.</p></details>
+        <button id="data-reset" class="data-demo__reset" type="button">Reset sample</button>
+      </div>
+      <ol class="data-story__notes">
+        <li><span class="data-story__number">01</span><div><h3>A reading and an average are different things.</h3><p>The latest entry stays visible beside the calculated average. Both have explicit labels, so the app’s calculation doesn’t replace what someone recorded.</p></div></li>
+        <li><span class="data-story__number">02</span><div><h3>Give every number a time frame.</h3><p>The dates and unit stay beside the chart. A dashed line represents the average; dots show individual readings.</p></div></li>
+        <li><span class="data-story__number">03</span><div><h3>Let people check and correct a reading.</h3><p>Select a day, change its value and save. The chart and average update together. Choose Wednesday to try adding a missing entry.</p></div></li>
+        <li><span class="data-story__number">04</span><div><h3>Explain the calculation.</h3><p>The explanation names which readings are included and how gaps are handled. It makes no claim about health or future progress.</p></div></li>
+      </ol>
+    </div>
+    <div class="data-story__missing">
+      <div class="data-missing-card"><span>Wednesday, 16 September</span><strong>No reading recorded</strong><div class="data-missing-card__sequence" aria-hidden="true"><span>●<small>Tue</small></span><span class="data-missing-card__gap">—<small>Wed</small></span><span>●<small>Thu</small></span></div><p>No value plotted. No zero added.</p></div>
+      <div><p class="flow-problem__label">When a reading is missing</p><h3>A gap should look like a gap.</h3><p>In the starting sample, Wednesday has no entry. The chart leaves that day blank and calculates the average from the six available readings. The saved records remain available to inspect.</p><p>This example doesn’t infer a reading or treat a missing day as a failed goal.</p></div>
+    </div>
+    <p class="data-story__disclosure">Interactive concept · Fictional readings · No live health integration. Changes stay on this page and reset when you reload.</p>
+  </section>
+  <section id="cs-sleep-insights" class="flow-card" aria-labelledby="sleep-insights-title">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">06</div><h3 id="sleep-insights-title" class="flow-title">Hours slept don’t show the whole sleep routine.</h3>
+        <span class="flow-status">Sleep insights · later design exploration</span>
+      </div>
+      <div class="flow-right">
+        <div class="feature-story">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A sleep total tells you how long you slept, but says less about when you went to bed or how consistent the week was. When workouts sit in another log, comparing the two means checking dates and piecing together the week yourself.</p>
+          <p class="flow-problem__label feature-story__label">The solution</p>
+          <p class="flow-problem__body">The four screens show connecting a sleep source, reviewing last night, checking the week and comparing sleep with training on matching dates. I used timelines to show bedtime and wake time, and left missing nights visible. The comparison helps someone inspect a pattern; it does not say that a workout caused a change in sleep.</p>
+        </div>
+        <p class="flow-strip-label">Connect · Review · Find a rhythm · Compare</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix sleep connection concept with a moon illustration, Apple Health connection and read-only permission explanation" loading="lazy" decoding="async" src="/toneflix/assets/optimised/sleep-insights-compact-20260925-1-360-dffcfbff63de72fa.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/sleep-insights-compact-20260925-1-360-dffcfbff63de72fa.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Connect recorded sleep</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix last-night view with an overnight sleep timeline, time asleep, awake periods and source sync information" loading="lazy" decoding="async" src="/toneflix/assets/optimised/sleep-aligned-20260925-2-360-d5b7a7e4421f6f44.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/sleep-aligned-20260925-2-360-d5b7a7e4421f6f44.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Understand last night</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix weekly sleep rhythm with bedtime and wake-time bars, target windows and an explicit missing-night record" loading="lazy" decoding="async" src="/toneflix/assets/optimised/sleep-aligned-20260925-3-360-0258fa050bbb3890.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/sleep-aligned-20260925-3-360-0258fa050bbb3890.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">See the weekly rhythm</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix comparison of daily sleep duration and training minutes with aligned dates and a note that patterns do not establish cause and effect" loading="lazy" decoding="async" src="/toneflix/assets/optimised/sleep-aligned-20260925-4-360-d6d8597688fb844c.webp" width="360" height="860" data-full-src="/toneflix/assets/optimised/sleep-aligned-20260925-4-360-d6d8597688fb844c.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Compare sleep and training</span></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><section id="cs-flexible-workout" class="flow-card" aria-labelledby="flexible-workout-title">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">07</div>
+        <h3 id="flexible-workout-title" class="flow-title">Some days need a different workout.</h3>
+        <span class="flow-status">Recovery check-in · Flexible training</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A saved workout can make sense when you plan it, then feel hard to fit into the day. Your energy may be lower, time may be short, or the equipment you need may be taken.</p>
+          <p class="flow-problem__label">The solution</p>
+          <p class="flow-problem__body">The flow starts with a quick check-in and shows the inputs behind the summary. People can keep their plan, choose a shorter session or replace an exercise using the equipment available. Changes apply to today’s session, while the saved programme stays intact. These concept screens use sample data; the check-in is not a measured readiness score.</p>
+        </div>
+        <p class="flow-strip-label">Check in → Review options → Adjust → Replace</p>
+        <div class="strip-wrap"><div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix pre-workout check-in showing a sleep-log summary and energy and muscle-soreness choices" loading="lazy" decoding="async" src="/toneflix/assets/optimised/recovery-flexible-20260925-1-360-9f233d45942b5fe8.webp" width="360" height="900" data-full-src="/toneflix/assets/optimised/recovery-flexible-20260925-1-360-9f233d45942b5fe8.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Check in before training</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix check-in summary showing its inputs, a lighter-session option and the choice to keep the original plan" loading="lazy" decoding="async" src="/toneflix/assets/optimised/recovery-flexible-20260925-2-360-846d6834cff4661e.webp" width="360" height="900" data-full-src="/toneflix/assets/optimised/recovery-flexible-20260925-2-360-846d6834cff4661e.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Review today’s options</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix flexible workout with duration choices, an exercise list and a replacement action" loading="lazy" decoding="async" src="/toneflix/assets/optimised/recovery-flexible-20260925-3-360-9d8565c68ef55c1a.webp" width="360" height="900" data-full-src="/toneflix/assets/optimised/recovery-flexible-20260925-3-360-9d8565c68ef55c1a.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Adjust the session</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix exercise replacement showing dumbbell floor press and push-up alternatives, with changes limited to today" loading="lazy" decoding="async" src="/toneflix/assets/optimised/recovery-flexible-20260925-4-360-ad407a5944496ef5.webp" width="360" height="900" data-full-src="/toneflix/assets/optimised/recovery-flexible-20260925-4-360-ad407a5944496ef5.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Choose a replacement</span></div></div>
+        </div></div>
+
+      </div>
+    </div>
+  </section><section id="cs-training" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">08</div><h3 class="flow-title">Before choosing a workout, you need to know what’s involved.</h3>
+      <span class="flow-status">Training programmes</span></div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em"><p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A challenge, a programme and a live class each ask for a different commitment.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">I used progress cards to show where someone stands in a challenge, session breakdowns to explain a programme, and schedules for live classes. The aim is to make the commitment clear before someone chooses what to join.</p>
+        </div>
+        <p class="flow-strip-label">Challenges → Classes → Programme detail → Live call</p>
+        <div class="strip-wrap">
+          <div class="phone-strip">
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix Arena challenges screen with reward progress and available challenges" loading="lazy" src="/toneflix/assets/optimised/arena-20260924-1-1080-fafc1b071c60e368.webp" width="1080" height="2385" data-full-src="/toneflix/assets/optimised/arena-20260924-1-1080-fafc1b071c60e368.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Challenges and rewards</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix Arena classes screen with programmes to start or resume" loading="lazy" src="/toneflix/assets/optimised/arena-20260924-2-1080-e8309595d2c13c82.webp" width="1080" height="2385" data-full-src="/toneflix/assets/optimised/arena-20260924-2-1080-e8309595d2c13c82.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Training classes</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix programme overview with workout information, equipment, schedule and exercise breakdown" loading="lazy" src="/toneflix/assets/optimised/arena-20260924-3-1080-21a3aea717c32d81.webp" width="1080" height="2385" data-full-src="/toneflix/assets/optimised/arena-20260924-3-1080-21a3aea717c32d81.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Programme detail</span></div></div>
+            <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix live-session concept with instructor video and call controls" loading="lazy" src="/toneflix/assets/optimised/arena-20260924-4-1080-03c024bb372c0ff1.webp" width="1080" height="2385" data-full-src="/toneflix/assets/optimised/arena-20260924-4-1080-03c024bb372c0ff1.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Live session</span></div></div>
+          </div>
+        </div>
+        <div class="flow-decision">
+          <p class="flow-decision__label">Joining a live session</p>
+          <p class="flow-decision__body">I also designed group and one-to-one call screens to show what joining a session could look like. Video calling and booking are not available in the coded prototype.</p>
+        </div>
+        <div class="evidence-signal">
+          <span class="evidence-signal__label">Current assessment</span>
+          <span class="evidence-signal__value">Each format needs people to create or deliver it. I would start by testing programme discovery before committing to the extra work of running live sessions.</span>
+        </div>
+      </div>
+    </div>
+  </section><div class="split-asset toneflix-artwork-pair" hidden style="display:none"><div class="split-asset__panel"><img alt="" style="width:100%;height:auto;display:block" loading="lazy" src="/toneflix/assets/optimised/split-left-1512-6d4147b149743f6e.webp" width="1512" height="2220" data-full-src="/toneflix/assets/optimised/split-left-1512-6d4147b149743f6e.webp" srcset="/toneflix/assets/optimised/split-left-640-eaaf5cb07a670097.webp 640w, /toneflix/assets/optimised/split-left-1280-0c620a54b54aaad3.webp 1280w, /toneflix/assets/optimised/split-left-1512-6d4147b149743f6e.webp 1512w" sizes="(max-width: 768px) 100vw, 80vw"></div><div class="split-asset__panel"><img alt="" style="width:100%;height:auto;display:block" loading="lazy" src="/toneflix/assets/optimised/split-right-new-1512-e1946d0dcf0053bd.webp" width="1512" height="2220" data-full-src="/toneflix/assets/optimised/split-right-new-1512-e1946d0dcf0053bd.webp" srcset="/toneflix/assets/optimised/split-right-new-640-67bf57f1bbe40109.webp 640w, /toneflix/assets/optimised/split-right-new-1280-96e57cf6fee090d9.webp 1280w, /toneflix/assets/optimised/split-right-new-1512-e1946d0dcf0053bd.webp 1512w" sizes="(max-width: 768px) 100vw, 80vw"></div></div><section id="cs-explore-discovery" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">09</div><h3 class="flow-title">Choosing a trainer takes more than a name and photo.</h3>
+        <span class="flow-status">Explore · professional discovery</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">Choosing a trainer or doctor means looking beyond a name and photo.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">I focused discovery on finding support, with search, speciality filters and consistent cards for comparing professionals. Profiles bring their approach, session information and the next step together. Availability is the primary action, with a call offered as a quieter alternative. These revised screens use illustrative profile details; search and booking are design concepts.</p>
+        </div>
+        <p class="flow-strip-label">Find support → Compare professionals → Review a profile</p>
+        <div class="strip-wrap"><div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix nutrition discovery with search, category tabs and professional comparison cards" loading="lazy" src="/toneflix/assets/optimised/explore-updated-3c1a595c27-1-360-1d0263865335ed14.webp" width="360" height="881" data-full-src="/toneflix/assets/optimised/explore-updated-3c1a595c27-1-360-1d0263865335ed14.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Find nutrition support</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix Explore screen listing personal trainers" loading="lazy" src="/toneflix/assets/optimised/explore-updated-22262eeaeb-2-360-940e1bfb75bacfa5.webp" width="360" height="881" data-full-src="/toneflix/assets/optimised/explore-updated-22262eeaeb-2-360-940e1bfb75bacfa5.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Browse trainers</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix nutrition professional profile with expertise, discussion topics and consultation options" loading="lazy" src="/toneflix/assets/optimised/explore-updated-21fba67ae3-3-360-d8bc9d31528d5119.webp" width="360" height="881" data-full-src="/toneflix/assets/optimised/explore-updated-21fba67ae3-3-360-d8bc9d31528d5119.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Nutrition profile</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix trainer profile with approach, coaching details, monthly price and availability action" loading="lazy" src="/toneflix/assets/optimised/explore-updated-aa465daa71-4-360-62540cca009329bd.webp" width="360" height="881" data-full-src="/toneflix/assets/optimised/explore-updated-aa465daa71-4-360-62540cca009329bd.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Trainer profile</span></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section><section id="cs-workout-personalisation" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">10</div><h3 class="flow-title">A workout plan has to fit the time you actually have.</h3>
+        <span class="flow-status">Workout personalisation</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A plan is hard to follow if it ignores your available time, preferred exercises or where you can train.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">These screens let someone choose a session slot, set a goal and record exercise preferences, timing, frequency and reminders. Nearby gym discovery helps with where to train. The activity screen then shows distance, calories, heart rate, routes and challenge progress. The designs capture those preferences; generating a personalised plan from them still needs to be built.</p>
+        </div>
+        <p class="flow-strip-label">Session booking · Workout preferences · Gym discovery · Activity feedback</p>
+        <div class="strip-wrap"><div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix session booking concept with date, time slots and chosen programme" loading="lazy" src="/toneflix/assets/optimised/workout-personalisation-20260924-1-720-9c948ceb722a32e0.webp" width="720" height="1802" data-full-src="/toneflix/assets/optimised/workout-personalisation-20260924-1-720-9c948ceb722a32e0.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Choose a session slot</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix workout preferences for goals, exercises, available time, frequency, reminders and duration" loading="lazy" src="/toneflix/assets/optimised/workout-personalisation-20260924-2-360-94096013b135ad0a.webp" width="360" height="901" data-full-src="/toneflix/assets/optimised/workout-personalisation-20260924-2-360-94096013b135ad0a.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Set workout preferences</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix gym discovery concept with a map and nearby gym cards" loading="lazy" src="/toneflix/assets/optimised/workout-personalisation-20260924-3-360-a7b928b412586e6d.webp" width="360" height="901" data-full-src="/toneflix/assets/optimised/workout-personalisation-20260924-3-360-a7b928b412586e6d.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Find a nearby gym</span></div></div>
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix activity statistics concept with distance, calories, heart rate, routes and challenge progress" loading="lazy" src="/toneflix/assets/optimised/workout-personalisation-20260924-4-360-8072a8230676499c.webp" width="360" height="901" data-full-src="/toneflix/assets/optimised/workout-personalisation-20260924-4-360-8072a8230676499c.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Review activity statistics</span></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section><section id="cs-merchandise" class="flow-card">
+    <div class="flow-inner">
+      <div class="flow-left">
+        <div class="flow-num" aria-hidden="true">11</div><h3 class="flow-title">The right product still needs the right size and price.</h3>
+        <span class="flow-status">Shop · merchandise</span>
+      </div>
+      <div class="flow-right">
+        <div style="max-width:36em;margin-bottom:2em">
+          <p class="flow-problem__label">The problem</p>
+          <p class="flow-problem__body">A product photo alone cannot tell someone whether an item is available in their size or fits their budget. Shopping was part of the client’s brief, so these decisions needed a place in the app.</p><p class="flow-problem__label" style="margin-top:1.2em">The solution</p><p class="flow-problem__body">I designed a path from categories and filters to footwear details and basket review. Shoppers can narrow the choice, check the size and price, then review their basket before checkout. The screens cover those decisions; the coded prototype does not process purchases.</p>
+        </div>
+        <p class="flow-strip-label">Browse → Filter → Product detail → Basket</p>
+        <div class="strip-wrap"><div class="phone-strip">
+          <div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix shop with merchandise categories and footwear listings" loading="lazy" src="/toneflix/assets/optimised/merchandise-20260924-1-1080-bf6b5935ddf2c399.webp" width="1080" height="2823" data-full-src="/toneflix/assets/optimised/merchandise-20260924-1-1080-bf6b5935ddf2c399.webp"></div><div class="phone-item__meta"><span class="phone-item__step">01</span><span class="phone-item__caption">Browse merchandise</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix product filters for gender, style, category, brand and size" loading="lazy" src="/toneflix/assets/optimised/merchandise-20260924-2-360-bb07022bfc01ef67.webp" width="360" height="941" data-full-src="/toneflix/assets/optimised/merchandise-20260924-2-360-bb07022bfc01ef67.webp"></div><div class="phone-item__meta"><span class="phone-item__step">02</span><span class="phone-item__caption">Filter products</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix footwear product detail with price and size selection" loading="lazy" src="/toneflix/assets/optimised/merchandise-20260924-3-1080-fb34b0660a895c08.webp" width="1080" height="2823" data-full-src="/toneflix/assets/optimised/merchandise-20260924-3-1080-fb34b0660a895c08.webp"></div><div class="phone-item__meta"><span class="phone-item__step">03</span><span class="phone-item__caption">Choose a product</span></div></div>
+<div class="phone-item"><div class="phone-item__frame"><img alt="Toneflix shopping basket with products and order summary" loading="lazy" src="/toneflix/assets/optimised/merchandise-20260924-4-360-168b56ea970f5ccb.webp" width="360" height="941" data-full-src="/toneflix/assets/optimised/merchandise-20260924-4-360-168b56ea970f5ccb.webp"></div><div class="phone-item__meta"><span class="phone-item__step">04</span><span class="phone-item__caption">Review your basket</span></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section><div class="split-asset toneflix-artwork-pair" hidden style="display:none"><div class="split-asset__panel"><img alt="Toneflix website design showing the fitness platform marketing page" style="width:100%;height:auto;display:block" loading="lazy" src="/toneflix/assets/optimised/breaker-left-1512-c432006a220f66ca.webp" width="1512" height="2220" data-full-src="/toneflix/assets/optimised/breaker-left-1512-c432006a220f66ca.webp" srcset="/toneflix/assets/optimised/breaker-left-640-95457889f9073fd5.webp 640w, /toneflix/assets/optimised/breaker-left-1280-6ab50ba9a21aa854.webp 1280w, /toneflix/assets/optimised/breaker-left-1512-c432006a220f66ca.webp 1512w" sizes="(max-width: 768px) 100vw, 80vw"></div><div class="split-asset__panel"><img alt="Toneflix app screens showing training and nutrition features across multiple views" style="width:100%;height:auto;display:block" loading="lazy" src="/toneflix/assets/optimised/breaker-right-1512-0712889a12897deb.webp" width="1512" height="2220" data-full-src="/toneflix/assets/optimised/breaker-right-1512-0712889a12897deb.webp" srcset="/toneflix/assets/optimised/breaker-right-640-6026ddd29b89b71f.webp 640w, /toneflix/assets/optimised/breaker-right-1280-af94fa3dad246e43.webp 1280w, /toneflix/assets/optimised/breaker-right-1512-0712889a12897deb.webp 1512w" sizes="(max-width: 768px) 100vw, 80vw"></div></div><div class="full-screen-asset toneflix-artwork"><img alt="" loading="lazy" style="width: 100%; height: auto; display: block;" src="/toneflix/assets/optimised/breaker-toneflix-2400-ce53d82a6fe6541a.webp" width="2400" height="1211" data-full-src="/toneflix/assets/optimised/breaker-toneflix-2400-ce53d82a6fe6541a.webp" srcset="/toneflix/assets/optimised/breaker-toneflix-640-3d0ed63f2f7677a1.webp 640w, /toneflix/assets/optimised/breaker-toneflix-1280-4d6ff3341ac1e314.webp 1280w, /toneflix/assets/optimised/breaker-toneflix-2400-ce53d82a6fe6541a.webp 2400w" sizes="(max-width: 768px) 100vw, 80vw"></div><section class="content-section" id="cs-data-flow">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">Coded prototype</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Screens show the idea.<br>A prototype lets you try it.</h2>
+      </div>
+      <div class="content-right"><p class="body-copy">I built the <a href="research-prototype/">coded research prototype</a> with AI assistance to make parts of the design interactive. It includes onboarding, three dashboard layouts, missing-data states and simulated permission controls, all using fictional data.</p><p class="body-copy">You can explore those interactions, but the prototype has no backend, sign-in system or live integrations. I also cannot confirm whether it was built before or after the 2024 pitch.</p></div>
+    </div>
+  </section><section class="content-section" id="cs-consent">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">Consent boundaries</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Sharing with a trainer<br>should be your decision.</h2>
+      </div>
+      <div class="content-right"><ul class="numbered-list">
+          <li><span class="num">01</span><span class="text"><strong>Professional access</strong> would need your permission for each person you choose to share with.</span></li>
+          <li><span class="num">02</span><span class="text"><strong>Location</strong> would be requested when you use nearby discovery, with a reason for asking.</span></li>
+          <li><span class="num">03</span><span class="text"><strong>Data controls</strong> should be easy to find, with options to change preferences, revoke access and request an export or deletion.</span></li>
+        </ul></div>
+    </div>
+  </section><section class="content-section" id="cs-trust-privacy">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">Trust and recommendations</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Is this advice for me,<br>or a product being sold?</h2>
+      </div>
+      <div class="content-right"><p class="body-copy">I kept the intended scope to fitness guidance. Any feature dealing with health risks would need specialist review before deciding what it could responsibly offer; the app is not a diagnostic tool.</p><p class="body-copy">Before anyone could offer professional guidance through Toneflix, their credentials would need to be checked.</p><p class="body-copy">Sponsored recommendations would need a clear label. When an app gives fitness guidance and sells products, people should be able to tell whether a suggestion is paid for.</p><p class="body-copy">A recommendation should also show which goals or entries it uses. If those inputs are wrong or out of date, someone needs a way to change them.</p><p class="body-copy">These are requirements I would carry into development. They are not safeguards implemented in the prototype.</p></div>
+    </div>
+  </section><section class="content-section" id="cs-visual-system">
+    <div class="content-row">
+      <div class="content-left">
+        <p class="mono-text" style="margin-bottom:0.6em">Design language</p>
+        <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:2em;font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal)">Six modules should still<br>feel like the same app.</h2>
+      </div>
+      <div class="content-right"><p class="body-copy">A workout, a meal log and a product page need different information, but moving between them should feel familiar. I used the same visual language across all six modules.</p><p class="body-copy">Near-black surfaces give the screens a consistent base. White text carries the content, with orange accents drawing attention to actions and selected details.</p><p class="body-copy">I kept to one sans-serif family and varied the weight to separate headings, important readings and supporting information.</p><p class="body-copy">Cards, spacing and navigation repeat across modules, so the layout stays familiar even when the content changes.</p></div>
+    </div>
+  </section><div class="full-screen-asset toneflix-artwork"><img alt="Toneflix app screens showcasing the complete fitness platform experience" loading="lazy" style="width: 100%; height: auto; display: block;" src="/toneflix/assets/optimised/pre-footer-2400-e1c0f795aaef9a16.webp" width="2400" height="1800" data-full-src="/toneflix/assets/optimised/pre-footer-2400-e1c0f795aaef9a16.webp" srcset="/toneflix/assets/optimised/pre-footer-640-7d438d0f71298fde.webp 640w, /toneflix/assets/optimised/pre-footer-1280-f210379896eaf33c.webp 1280w, /toneflix/assets/optimised/pre-footer-2400-e1c0f795aaef9a16.webp 2400w" sizes="(max-width: 768px) 100vw, 80vw"></div><section class="roadmap" id="cs-accessibility"><header class="section-heading"><div><p class="eyebrow">Process &amp; requirements / Toneflix</p><h2>What it would take<br>to move beyond the screens.</h2></div></header><p class="disclosure"><strong>This roadmap is an illustration of the work involved.</strong> September to December 2024 is a placeholder range. The order, overlaps and bar lengths are examples, not a record of when the work happened or how long it took. I cannot confirm the prototype’s timing relative to the pitch, and the evaluation shown here has not been carried out.</p><div class="phases"><article class="phase brief"><p class="kicker">01 / Client context</p><h3>Brief</h3><p class="phase-copy">A call with the client set the scope for the fitness concept and funding pitch.</p><p class="phase-note">Client request</p></article><article class="phase research"><p class="kicker">02 / Research planning</p><h3>Understand</h3><p class="phase-copy">Basic gym-community research took place. The detailed methods and findings remain unconfirmed.</p><p class="phase-note">Methods unconfirmed</p></article><article class="phase define"><p class="kicker">03 / Product structure</p><h3>Define</h3><p class="phase-copy">Organise six modules around a shared profile, including shopping and gym discovery.</p><p class="phase-note">Scope exploration</p></article><article class="phase design"><p class="kicker">04 / Interaction &amp; UI</p><h3>Design</h3><p class="phase-copy">Design onboarding, the dashboard and training, alongside Explore, Shop and Profile.</p><p class="phase-note">Product screen designs</p></article><article class="phase prototype"><p class="kicker">05 / Coded exploration</p><h3>Prototype</h3><p class="phase-copy">Build with AI assistance to try dashboard layouts and permission states using fictional data.</p><p class="phase-note">Timing unconfirmed</p></article><article class="phase evaluate"><p class="kicker">06 / Proposed next step</p><h3>Evaluate</h3><p class="phase-copy">Compare the views through tasks, review missing data and check accessibility.</p><p class="phase-note">Proposed, not completed</p></article></div><div class="timeline-heading"><strong>September → December 2024</strong></div><div class="calendar"><div class="month"><strong>September 2024</strong><div class="weeks"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div></div><div class="month"><strong>October 2024</strong><div class="weeks"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div></div><div class="month"><strong>November 2024</strong><div class="weeks"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div></div><div class="month"><strong>December 2024</strong><div class="weeks"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div></div></div><div class="timeline"><div class="timeline-row"><span class="row-label">Brief</span><div class="track"><span class="bar brief" style="--start:1;--span:1" aria-label="Illustrative placement only">Brief</span></div></div><div class="timeline-row"><span class="row-label">Understand</span><div class="track"><span class="bar research" style="--start:2;--span:4" aria-label="Illustrative placement only">Understand</span></div></div><div class="timeline-row"><span class="row-label">Define</span><div class="track"><span class="bar define" style="--start:4;--span:3" aria-label="Illustrative placement only">Define</span></div></div><div class="timeline-row"><span class="row-label">Design</span><div class="track"><span class="bar design" style="--start:6;--span:5" aria-label="Illustrative placement only">Design</span></div></div><div class="timeline-row"><span class="row-label">Prototype</span><div class="track"><span class="bar prototype" style="--start:9;--span:5" aria-label="Illustrative placement only">Prototype</span></div></div><div class="timeline-row"><span class="row-label">Evaluate</span><div class="track"><span class="bar evaluate" style="--start:13;--span:4" aria-label="Illustrative placement only">Evaluate</span></div></div></div><div class="details"><div class="detail-right"><div class="requirement-group"><h3>Interface design requirements</h3><ul><li>WCAG 2.2 AA contrast against dark backgrounds</li><li>Charts with labels and shapes alongside colour</li><li>Minimum 44×44px touch targets</li><li>Dynamic text support up to 200%</li><li>Screen-reader labels for all controls</li><li>Visible focus states for keyboard navigation</li><li>Explain errors with text as well as colour</li></ul></div><div class="requirement-group"><h3>Use during exercise</h3><ul><li>Respect reduced-motion preferences with prefers-reduced-motion</li><li>High-contrast readability in low light</li><li>One-handed interaction during workouts</li><li>Large tap targets during active exercise</li><li>Audio or haptic feedback for timers (proposed)</li><li>Keep key information visible without scrolling</li></ul></div><div class="requirement-group"><h3>Development scope &amp; evaluation</h3><ul><li><strong>Prototype scope</strong>Onboarding, three dashboard variants and missing-data states using fictional data.</li><li><strong>Implementation limits</strong>Permission controls are simulated; the prototype has no backend, authentication or live integrations.</li><li><strong>Before production</strong>Before building for real use, define what data the app needs, how consent works and which services it connects to.</li><li><strong>Proposed evaluation</strong>Test separate and combined views, then ask people to explain recommendations and gaps in the data.</li></ul></div></div></div></section><div class="full-screen-asset toneflix-artwork"><img alt="" style="width: 100%; height: auto; display: block;" loading="lazy" src="/toneflix/assets/optimised/breaker-validation-2400-8f9c813d2857294f.webp" width="2400" height="1207" data-full-src="/toneflix/assets/optimised/breaker-validation-2400-8f9c813d2857294f.webp" srcset="/toneflix/assets/optimised/breaker-validation-640-57247b4324cea2ac.webp 640w, /toneflix/assets/optimised/breaker-validation-1280-3e3bc3c668b6dd62.webp 1280w, /toneflix/assets/optimised/breaker-validation-2400-8f9c813d2857294f.webp 2400w" sizes="(max-width: 768px) 100vw, 80vw"></div><section style="padding:6em 8% 5em" id="cs-judgement">
+    <div style="max-width:38em;margin:0 auto"><p class="mono-text" style="margin-bottom:0.8em">Judgement</p><h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--charcoal);margin-bottom:3em">Would this actually make<br>a routine easier to understand?</h2><div id="cs-scope"><h3 style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">Historical scope</h3><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em"><strong>Client brief:</strong> The client asked for shopping and gym discovery alongside tracking. Technical constraints changed the Tracker scope as well, with some features removed and others added.</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">Two years later, I cannot reliably say which changes happened in what order, or exactly which technical constraints caused them.</p></div><div style="height:1px;background:rgba(52,52,52,0.06);margin:2.5em 0"></div><div id="cs-primary-opportunity"><h3 style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">My focus today</h3><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">If I picked this up today, I would start with tracking and people who already compare records across fitness tools. They have a routine to compare it with, and could tell me whether this view helps enough to make changing that routine worthwhile.</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">That is where I would focus now. I cannot reliably reconstruct the original strategy from 2024.</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">The breadth of the app would also need support beyond design and engineering: people to manage training content, check professional credentials and run the shop.</p></div><div style="height:1px;background:rgba(52,52,52,0.06);margin:2.5em 0"></div><div id="cs-validation"><h3 style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">Proposed validation</h3><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em"><strong>Proposed participants:</strong> I would recruit 5 to 7 people who use at least two fitness or activity services and regularly check their progress. This is the size of the study I would run next, not the number who took part in the original gym-community research.</p><ul class="numbered-list">
+          <li><span class="num">01</span><span class="text">Set a goal and complete the prototype onboarding.</span></li>
+          <li><span class="num">02</span><span class="text">Compare the same fictional training and nutrition information in separate views and a combined dashboard.</span></li>
+          <li><span class="num">03</span><span class="text">Explain why a recommendation appeared and distinguish sponsored content.</span></li>
+          <li><span class="num">04</span><span class="text">Find the control for revoking professional access in the prototype.</span></li>
+          <li><span class="num">05</span><span class="text">Compare dashboard layouts and explain what each makes easier to understand.</span></li>
+          <li><span class="num">06</span><span class="text">Review a missing-data state and describe what can and cannot be concluded.</span></li>
+        </ul></div><div style="height:1px;background:rgba(52,52,52,0.06);margin:2.5em 0"></div><div id="cs-success"><h3 style="font-family:'Helvetica Now Display',sans-serif;font-size:0.65em;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:0.8em">What I would need to learn</h3><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">I would watch whether people can understand the combined view, explain a recommendation and revoke access without help. If they get stuck, I would revisit those interactions before adding more to the app.</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">I would also compare what people understand from each version. If combining the records tells them nothing useful beyond the separate views, I would rethink which information belongs together.</p><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary);margin-bottom:0.5em">Whether people return, keep logging, book sessions or buy products would take longer to learn. Those questions need a working product and observation over time; one prototype session cannot establish retention or conversion.</p></div></div>
+  </section><section id="cs-reflection" style="padding:6em 8% 5em">
+    <div style="max-width:42em;margin:0 auto">
+      <p class="mono-text" style="margin-bottom:0.8em">Reflection</p>
+      <h2 style="font-family:'Helvetica Now Display',sans-serif;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:500;line-height:1.25;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:3em">The pitch did not secure funding. I still want to know whether the shared view would have helped people.</h2>
+
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:#1a7a3c">My contribution:</strong> I designed all six modules, handled the research planning and built a coded prototype with AI assistance. That made parts of the concept possible to try, though it remained a prototype rather than a production app.</p></div>
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:#996600">Still unconfirmed:</strong> I do not know why the 2024 pitch did not secure investment. I also cannot confirm the detailed Tracker changes, research methods and findings, or when the prototype was built relative to the pitch.</p></div>
+      <div style="padding:1em 0;border-top:1px solid rgba(52,52,52,0.06);border-bottom:1px solid rgba(52,52,52,0.06)"><p style="font-family:'Helvetica Now Display',sans-serif;font-size:0.8em;font-weight:400;line-height:1.5;color:var(--text-secondary)"><strong style="color:var(--text-muted)">Concept work.</strong> Toneflix was never shipped. Some basic gym-community research took place, but the final concept has not been shown to work for users. The proposed usability study is still the next step; the funding outcome alone cannot answer that question.</p></div>
+    </div>
+  </section><div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <div class="lb__top">
+      <span class="lb__flow" id="lbFlow"></span>
+      <button class="lb__close" id="lbClose" aria-label="Close">✕</button>
+    </div>
+    <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Previous">←</button>
+    <div class="lb__img-wrap"><img id="lbImg" src="" alt=""></div>
+    <p class="lb__caption" id="lbCaption"></p>
+    <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Next">→</button>
+  </div></main>
+
+  <!-- ═══════ BOTTOM NAV ═══════ -->
+  <nav class="cs-bottom-nav" id="csBottomNav" role="navigation" aria-label="Case study sections">
+    <div class="cs-nav-pill" id="csNavPill" aria-hidden="true"></div>
+    <a href="#cs-thesis" class="cs-nav-item" data-section="cs-thesis" aria-label="Thesis"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v12H4z"></path><path d="M6.5 5h3"></path><path d="M6.5 7.5h3"></path></svg><span>Thesis</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-landscape" class="cs-nav-item" data-section="cs-landscape" aria-label="Landscape"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5L14.5 5v6L8 14.5 1.5 11V5z"></path><path d="M8 7.5v7"></path><path d="M1.5 5L8 8.5 14.5 5"></path></svg><span>Landscape</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-architecture" class="cs-nav-item" data-section="cs-architecture" aria-label="Flows"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12"></path><path d="M2 8h12"></path><path d="M2 12h8"></path></svg><span>Flows</span></a>
+    <div class="cs-nav-sep" aria-hidden="true"></div>
+    <a href="#cs-reflection" class="cs-nav-item" data-section="cs-reflection" aria-label="Reflection"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="1.5"></circle><circle cx="12" cy="4" r="1.5"></circle><circle cx="8" cy="12" r="1.5"></circle><path d="M5.2 5.2L7 10.5"></path><path d="M10.8 5.2L9 10.5"></path></svg><span>Reflection</span></a>
+  </nav>
+
+  <div style="height:20vh"></div>
+
+  <!-- ═══════ CTA + FOOTER ═══════ -->
+  <section id="cta" aria-label="Contact Terry John Paul">
+    <h2 class="cta-heading"><span class="h-reg">Still </span><em class="h-ital">here</em></h2>
+    <div class="cta-content">
+      <p class="cta-description">I’m Terry, a senior product designer working across AI, commerce and fintech. If you’re hiring for a permanent product design role in the UK, I’d like to hear about the work. I would need Skilled Worker sponsorship to relocate.</p>
+      <p class="cta-label">Open to permanent UK opportunities</p>
+      <a href="mailto:terryjohnpaul20@gmail.com" class="footer-cta-btn">
+        <span class="btn-mail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="3.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"></rect><path d="M1.5 5L9 10.5L16.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        Get in touch
+      </a>
+    </div>
+  </section>
+  <footer id="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-left"><span>terryjohnpaul20@gmail.com</span><span>Case study by Terry John Paul · © 2026</span></div>
+      <div class="footer-right">
+        <a href="/#featured-works">Back to work</a>
+        <a href="/privacy/">Privacy</a>
+        <button type="button" data-privacy-settings>Cookie preferences</button>
+        <a href="https://www.linkedin.com/in/terryjohnpaul/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="/resume/">Resume</a>
+        <a href="https://www.instagram.com/ux.zeldman/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://x.com/UXZeldman" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ SCRIPTS ═══════ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function focusTarget(el) { if (!el) return; if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); }
+      function safeQuery(s) { try { return document.querySelector(s); } catch (e) { return null; } }
+      if (reducedMotion) { document.querySelectorAll('a[href^="#"]:not(.cs-nav-item)').forEach(function (a) { a.addEventListener('click', function () { var h = this.getAttribute('href'); if (!h || h === '#') return; var t = safeQuery(h); if (t) setTimeout(function () { focusTarget(t); }, 50); }); }); return; }
+
+      var lenis = null;
+      if (typeof window.Lenis === 'function') {
+        try {
+          lenis = new Lenis({ duration: 1.1, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, orientation: 'vertical', gestureOrientation: 'vertical', smoothWheel: true, touchMultiplier: 1, infinite: false, autoResize: true });
+          document.querySelectorAll('a[href^="#"]:not(.cs-nav-item)').forEach(function (a) { a.addEventListener('click', function (e) { var h = this.getAttribute('href'); if (!h || h === '#') return; var t = safeQuery(h); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1.2, onComplete: function () { focusTarget(t); } }); history.pushState(null, '', h); }); });
+          if (window.location.hash) { var ht = safeQuery(window.location.hash); if (ht) requestAnimationFrame(function () { lenis.scrollTo(ht, { immediate: true }); }); }
+          document.addEventListener('visibilitychange', function () { if (document.hidden || document.getElementById('lb').classList.contains('active')) lenis.stop(); else lenis.start(); });
+        } catch (e) { lenis = null; }
+      }
+      window.lenis = lenis;
+
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { if (lenis) { function lenisRaf(t) { lenis.raf(t); requestAnimationFrame(lenisRaf); } requestAnimationFrame(lenisRaf); } return; }
+      gsap.registerPlugin(ScrollTrigger);
+      if (lenis) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(function (t) { lenis.raf(t * 1000); }); gsap.ticker.lagSmoothing(0); }
+      window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
+      var dur = 0.75, ease = 'power2.out', isMobile = window.innerWidth < 768;
+      var ySmall = isMobile ? 16 : 24, yMed = isMobile ? 20 : 32, viewportH = window.innerHeight;
+      function isBelowFold(el) { return el.getBoundingClientRect().top > viewportH * 0.5; }
+
+      // Hero
+      var heroEyebrow = document.querySelector('.cs-hero-eyebrow'), heroProduct = document.querySelector('.cs-hero-product'), heroTitle = document.querySelector('.cs-hero-title'), heroMeta = document.querySelector('.cs-hero-meta');
+      if (heroEyebrow || heroTitle) { var ht = gsap.timeline(); if (heroEyebrow) ht.from(heroEyebrow, { opacity: 0, y: 16, duration: 0.5, ease: ease }); if (heroProduct) ht.from(heroProduct, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.35'); if (heroTitle) ht.from(heroTitle, { opacity: 0, y: 20, duration: 0.6, ease: ease }, '-=0.35'); if (heroMeta) ht.from(heroMeta, { opacity: 0, y: 16, duration: 0.5, ease: ease }, '-=0.3'); }
+
+      // Viewport statements
+      document.querySelectorAll('section[style*="min-height:100vh"]').forEach(function (s) { if (!isBelowFold(s)) return; var e = s.querySelector('.mono-text'), h = s.querySelector('h2'); if (!e && !h) return; var tl = gsap.timeline({ scrollTrigger: { trigger: s, start: 'top 80%', once: true } }); if (e) tl.from(e, { opacity: 0, y: ySmall, duration: dur * 0.8, ease: ease }); if (h) tl.from(h, { opacity: 0, y: yMed, duration: dur, ease: ease }, e ? '-=0.55' : 0); });
+
+      // Content rows
+      document.querySelectorAll('.content-section').forEach(function (s) { if (!isBelowFold(s)) return; var l = s.querySelector('.content-left'), r = s.querySelector('.content-right'); if (!l && !r) return; var tl = gsap.timeline({ scrollTrigger: { trigger: s, start: 'top 85%', once: true } }); if (l) tl.from(l, { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (r) tl.from(r, { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Flow cards
+      document.querySelectorAll('.flow-card').forEach(function (c) { if (!isBelowFold(c)) return; var l = c.querySelector('.flow-left'), r = c.querySelector('.flow-right'); if (!l && !r) return; var tl = gsap.timeline({ scrollTrigger: { trigger: c, start: 'top 85%', once: true } }); if (l) tl.from(l, { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (r) tl.from(r, { opacity: 0, y: yMed, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Phone strips
+      document.querySelectorAll('.phone-strip').forEach(function (s) { if (!isBelowFold(s)) return; gsap.from(s.querySelectorAll('.phone-item'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.08, scrollTrigger: { trigger: s, start: 'top 85%', once: true } }); });
+
+      // Full-screen assets
+      document.querySelectorAll('.full-screen-asset').forEach(function (a) { if (!isBelowFold(a)) return; gsap.from(a, { opacity: 0, scale: 0.985, duration: dur * 1.2, ease: ease, scrollTrigger: { trigger: a, start: 'top 90%', once: true } }); });
+
+      // System diagram
+      document.querySelectorAll('.system-diagram').forEach(function (d) { if (!isBelowFold(d)) return; gsap.from(d.querySelectorAll('.system-diagram__node, .system-diagram__branch-item'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.1, scrollTrigger: { trigger: d, start: 'top 85%', once: true } }); });
+
+      // Model grid
+      document.querySelectorAll('.model-grid').forEach(function (g) { if (!isBelowFold(g)) return; var tl = gsap.timeline({ scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); tl.from(g.children[0], { opacity: 0, y: ySmall, duration: dur, ease: ease }); if (g.children[1]) tl.from(g.children[1], { opacity: 0, y: ySmall, duration: dur, ease: ease }, '-=0.55'); });
+
+      // Statblock grid
+      document.querySelectorAll('.statblock-grid').forEach(function (g) { if (!isBelowFold(g)) return; gsap.from(g.querySelectorAll('.statblock-cell'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.06, scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); });
+
+      // Numbered list
+      document.querySelectorAll('.numbered-list').forEach(function (l) { if (!isBelowFold(l)) return; gsap.from(l.querySelectorAll('li'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.06, scrollTrigger: { trigger: l, start: 'top 85%', once: true } }); });
+
+      // Reflection grid
+      document.querySelectorAll('.reflection-grid').forEach(function (g) { if (!isBelowFold(g)) return; gsap.from(g.querySelectorAll('.reflection-card'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.08, scrollTrigger: { trigger: g, start: 'top 85%', once: true } }); });
+
+      // Evidence stats
+      document.querySelectorAll('.evidence-row').forEach(function (r) { if (!isBelowFold(r)) return; gsap.from(r.querySelectorAll('.evidence-stat'), { opacity: 0, y: ySmall, duration: dur * 0.9, ease: ease, stagger: 0.1, scrollTrigger: { trigger: r, start: 'top 85%', once: true } }); });
+
+      // Inference row
+      document.querySelectorAll('.inference-row').forEach(function (r) { if (!isBelowFold(r)) return; gsap.from(r.querySelectorAll('.inference-step'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.1, scrollTrigger: { trigger: r, start: 'top 85%', once: true } }); });
+
+      // Versus table
+      document.querySelectorAll('.vs-table').forEach(function (t) { if (!isBelowFold(t)) return; gsap.from(t.querySelectorAll('tbody tr'), { opacity: 0, y: 12, duration: 0.5, ease: ease, stagger: 0.06, scrollTrigger: { trigger: t, start: 'top 85%', once: true } }); });
+    });
+  </script>
+
+  <script>
+    // Bottom nav
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.getElementById('csBottomNav'), pill = document.getElementById('csNavPill'), items = nav ? Array.from(nav.querySelectorAll('.cs-nav-item')) : [];
+      if (!nav || !items.length) return;
+      var sectionIds = items.map(function (i) { return i.getAttribute('data-section'); }), sectionEls = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean), heroSection = document.querySelector('.cs-hero-section'), ctaSection = document.getElementById('cta'), currentIndex = -1, isVisible = false;
+      var sectionTops = [], pillOffsets = [], heroBottom = 400, ctaTop = Infinity, viewH = window.innerHeight;
+      function cachePositions() { viewH = window.innerHeight; sectionTops = sectionEls.map(function (el) { return el.offsetTop; }); heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 400; ctaTop = ctaSection ? ctaSection.offsetTop - viewH : Infinity; pillOffsets = items.map(function (i) { return { left: i.offsetLeft, width: i.offsetWidth }; }); }
+      cachePositions(); window.addEventListener('resize', cachePositions); window.addEventListener('load', cachePositions); if (window.ResizeObserver) new ResizeObserver(function() { cachePositions(); updateNav(); }).observe(document.body);
+      function setActive(index) { if (index === currentIndex) return; currentIndex = index; for (var i = 0; i < items.length; i++) { if (i === index) { items[i].classList.add('is-active'); if (pill && pillOffsets[i]) { pill.style.left = pillOffsets[i].left + 'px'; pill.style.width = pillOffsets[i].width + 'px'; } } else { items[i].classList.remove('is-active'); } } }
+      function updateNav() { var scrollY = window.scrollY || window.pageYOffset; var shouldShow = scrollY > heroBottom && scrollY < ctaTop; if (shouldShow !== isVisible) { isVisible = shouldShow; if (shouldShow) nav.classList.add('is-visible'); else nav.classList.remove('is-visible'); } var centre = scrollY + viewH * 0.4; var active = -1; for (var i = 0; i < sectionTops.length; i++) { if (sectionTops[i] <= centre) active = i; } if (active >= 0) setActive(active); }
+      if (window.lenis) window.lenis.on('scroll', updateNav); else window.addEventListener('scroll', updateNav, { passive: true });
+      items.forEach(function (item) { item.addEventListener('click', function (e) { e.preventDefault(); var t = document.getElementById(item.getAttribute('data-section')); if (!t) return; function focusSection() { if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true }); } if (window.lenis) window.lenis.scrollTo(t, { offset: 0, duration: 1.2, onComplete: focusSection }); else { t.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); focusSection(); } history.pushState(null, '', '#' + item.getAttribute('data-section')); }); });
+      updateNav();
+    });
+  </script>
+
+  <script>
+    // Lightbox — groups phone-items by their parent phone-strip
+    (function() {
+      var lb = document.getElementById('lb');
+      var lbImg = document.getElementById('lbImg');
+      var lbFlow = document.getElementById('lbFlow');
+      var lbCaption = document.getElementById('lbCaption');
+      var lbClose = document.getElementById('lbClose');
+      var lbPrev = document.getElementById('lbPrev');
+      var lbNext = document.getElementById('lbNext');
+      var currentGroup = [];
+      var currentIndex = 0;
+      var triggerElement = null;
+      var focusableEls = [lbClose, lbPrev, lbNext];
+      var inertNodes = [];
+      var previousOverflow = '';
+      var wasLenisStopped = false;
+
+      function getFlowName(item) {
+        var card = item.closest('.flow-card');
+        if (card) {
+          var title = card.querySelector('.flow-title');
+          if (title) return title.textContent.replace(/\n/g, ' ').trim();
+        }
+        return '';
+      }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var first = focusableEls[0], last = focusableEls[focusableEls.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      }
+
+      function open(group, idx) {
+        currentGroup = group;
+        currentIndex = idx;
+        var item = currentGroup[currentIndex];
+        var img = item.querySelector('img');
+        var caption = item.querySelector('.phone-item__caption');
+        var flow = getFlowName(item);
+        lbImg.src = img.dataset.fullSrc || img.src;
+        lbImg.alt = img.alt;
+        lbFlow.innerHTML = flow ? '<strong>' + flow + '</strong> &middot; ' + (currentIndex + 1) + ' of ' + currentGroup.length : (currentIndex + 1) + ' of ' + currentGroup.length;
+        lbCaption.textContent = caption ? caption.textContent : '';
+        if (!lb.classList.contains('active')) {
+          previousOverflow = document.body.style.overflow;
+          wasLenisStopped = !!window.lenis?.isStopped;
+          if (window.lenis) window.lenis.stop();
+          inertNodes = Array.from(document.querySelectorAll('main > :not(#lb), body > nav, body > footer, body > #cta')).filter(function(n) { return !n.inert; });
+          inertNodes.forEach(function(n) { n.inert = true; });
+        }
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function close() {
+        lb.classList.remove('active');
+        document.body.style.overflow = previousOverflow;
+        inertNodes.forEach(function(n) { n.inert = false; }); inertNodes = [];
+        if (window.lenis && !wasLenisStopped && !document.hidden) window.lenis.start();
+        if (triggerElement) { triggerElement.focus({ preventScroll: true }); triggerElement = null; }
+      }
+      function nav(dir) { currentIndex = (currentIndex + dir + currentGroup.length) % currentGroup.length; open(currentGroup, currentIndex); }
+
+      document.querySelectorAll('.phone-strip').forEach(function(strip) {
+        var items = Array.from(strip.querySelectorAll('.phone-item'));
+        items.forEach(function(item, i) {
+          item.setAttribute('tabindex', '0'); item.setAttribute('role', 'button'); item.setAttribute('aria-label', 'Open ' + (item.querySelector('.phone-item__caption')?.textContent || 'screen'));
+          item.addEventListener('click', function() { triggerElement = item; open(items, i); });
+          item.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); triggerElement = item; open(items, i); } });
+        });
+      });
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click', function() { nav(-1); });
+      lbNext.addEventListener('click', function() { nav(1); });
+      lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function(e) {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        if (e.key === 'ArrowLeft') nav(-1);
+        if (e.key === 'ArrowRight') nav(1);
+        trapFocus(e);
+      });
+    })();
+  </script>
+
+  
+
+
+<script src="data-clarity.js?v=1" defer></script>
+</body></html>

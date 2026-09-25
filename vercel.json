@@ -2,6 +2,66 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about/index.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/work/index.html",
+      "destination": "/work/",
+      "permanent": true
+    },
+    {
+      "source": "/resume/index.html",
+      "destination": "/resume/",
+      "permanent": true
+    },
+    {
+      "source": "/first-take/index.html",
+      "destination": "/first-take/",
+      "permanent": true
+    },
+    {
+      "source": "/pixelbin/index.html",
+      "destination": "/pixelbin/",
+      "permanent": true
+    },
+    {
+      "source": "/pixelbin/magic-canvas/index.html",
+      "destination": "/pixelbin/magic-canvas/",
+      "permanent": true
+    },
+    {
+      "source": "/pixelbin/pixelbin-app/index.html",
+      "destination": "/pixelbin/pixelbin-app/",
+      "permanent": true
+    },
+    {
+      "source": "/pixelbin/checkout/index.html",
+      "destination": "/pixelbin/checkout/",
+      "permanent": true
+    },
+    {
+      "source": "/swadesh/index.html",
+      "destination": "/swadesh/",
+      "permanent": true
+    },
+    {
+      "source": "/sorted/index.html",
+      "destination": "/sorted/",
+      "permanent": true
+    },
+    {
+      "source": "/settle-club/index.html",
+      "destination": "/settle-club/",
+      "permanent": true
+    },
+    {
       "source": "/pixelbin/magic-canvas.html",
       "destination": "/pixelbin/magic-canvas/",
       "permanent": true
@@ -17,15 +77,168 @@
       "permanent": true
     },
     {
+      "source": "/bharat-app",
+      "destination": "/sorted/",
+      "permanent": true
+    },
+    {
+      "source": "/bharat-app/",
+      "destination": "/sorted/",
+      "permanent": true
+    },
+    {
+      "source": "/bharat-app/index.html",
+      "destination": "/sorted/",
+      "permanent": true
+    },
+    {
       "source": "/bharat-app/v2.html",
       "destination": "/sorted/",
       "permanent": true
+    },
+    {
+      "source": "/bharat-app/:path*",
+      "destination": "/sorted/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sorted/v2.html",
+      "destination": "/sorted/",
+      "permanent": true
+    },
+    {
+      "source": "/assets/sw/bharat-app.webp",
+      "destination": "/assets/sw/sorted.webp",
+      "permanent": true
+    },
+    {
+      "source": "/tips4fit",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tips4fit/",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tips4fit/index.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tips4fit/v2.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tips4fit/:path*",
+      "destination": "/toneflix/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tipsforfit",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tipsforfit/",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tipsforfit/index.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tipsforfit/v2.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tipsforfit/:path*",
+      "destination": "/toneflix/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tip4fit",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tip4fit/",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tip4fit/index.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tip4fit/v2.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/tip4fit/:path*",
+      "destination": "/toneflix/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/toneflix/v2.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/toneflix/index.html",
+      "destination": "/toneflix/",
+      "permanent": true
+    },
+    {
+      "source": "/assets/sw/tip4fit.webp",
+      "destination": "/assets/sw/toneflix.webp",
+      "permanent": true
+    },
+    {
+      "source": "/settle-club/images/hero/t4f-casestudy.webp",
+      "destination": "/settle-club/images/hero/toneflix-casestudy.webp",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/index.html",
+      "destination": "/privacy/",
+      "permanent": true
     }
   ],
-  "rewrites": [
+  "rewrites": [],
+  "headers": [
     {
-      "source": "/sorted/",
-      "destination": "/bharat-app/v2.html"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/toneflix/research-prototype/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

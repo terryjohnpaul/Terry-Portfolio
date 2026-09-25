@@ -201,7 +201,7 @@
     .project-card:hover {
       transform: translateY(-3px);
     }
-    .project-card a {
+    .project-card > a, .project-card > div {
       display: block;
       text-decoration: none;
       color: inherit;
@@ -541,7 +541,7 @@
         <a href="/sorted/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img src="/assets/sw/bharat-app.webp" alt="Sorted — AI super app concept" loading="lazy">
+            <img src="/assets/sw/sorted.webp" alt="Sorted — AI super app concept" loading="lazy">
           </div>
           <div class="project-card-info">
             <div>
@@ -589,7 +589,7 @@
 
       <!-- Glam AR -->
       <div class="project-card" data-type="ai" data-domain="commerce">
-        <a href="#">
+        <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
             <video autoplay muted loop playsinline preload="metadata"><source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/glamar.mp4" type="video/mp4"></video>
@@ -601,12 +601,12 @@
             </div>
             <span class="project-card-tag tag-ar">AR</span>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- fynd.com -->
       <div class="project-card" data-type="ops" data-domain="commerce">
-        <a href="#">
+        <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
             <img src="/assets/sw/fynd.webp" alt="fynd.com — omnichannel commerce platform" loading="lazy">
@@ -618,20 +618,20 @@
             </div>
             <span class="project-card-tag tag-commerce">Commerce</span>
           </div>
-        </a>
+        </div>
       </div>
 
-      <!-- Tip4Fit -->
+      <!-- Toneflix -->
       <div class="project-card" data-type="ops" data-domain="commerce">
-        <a href="#">
+        <a href="/toneflix/">
           <div class="project-card-media">
-            <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
-            <img src="/assets/sw/tip4fit.webp" alt="Tip4Fit — fitness app" loading="lazy">
+            <div class="card-cursor-pill"><span>View Case Study</span></div>
+            <img alt="Toneflix — fitness app" loading="lazy" src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" width="1200" height="800" data-full-src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" srcset="/toneflix/assets/optimised/toneflix-640-2af7dc7b1e20706d.webp 640w, /toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp 1200w" sizes="(max-width: 768px) 100vw, 80vw">
           </div>
           <div class="project-card-info">
             <div>
-              <div class="project-card-title">Tip4Fit</div>
-              <div class="project-card-desc">Fitness app connecting users with certified trainers for guided workouts.</div>
+              <div class="project-card-title">Toneflix</div>
+              <div class="project-card-desc">Fitness app concept connecting workouts, nutrition and progress.</div>
             </div>
             <span class="project-card-tag tag-fitness">Fitness</span>
           </div>
@@ -640,7 +640,7 @@
 
       <!-- Studio OS -->
       <div class="project-card" data-type="ops" data-domain="operations">
-        <a href="#">
+        <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
             <img src="/assets/sw/studio-s.webp" alt="Studio OS — studio operations platform" loading="lazy">
@@ -652,7 +652,7 @@
             </div>
             <span class="project-card-tag tag-saas">SaaS</span>
           </div>
-        </a>
+        </div>
       </div>
 
     </div>

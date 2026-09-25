@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toneflix Research Prototype</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Tokens ── */
+:root {
+  --bg: #1A1A1A;
+  --bg-card: #252525;
+  --bg-card-alt: #2A2A2A;
+  --coral: #FF5E39;
+  --coral-dark: #C74A2D;
+  --white: #ffffff;
+  --text-primary: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.65);
+  --text-ghost: rgba(255,255,255,0.40);
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  --transition: 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ── Base ── */
+body { font-family: var(--font); background: var(--bg); color: var(--text-primary); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: var(--coral); text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+img { max-width: 100%; display: block; }
+
+/* ── Skip link ── */
+.skip-link { position: absolute; left: -9999px; top: 0; background: var(--coral); color: var(--white); padding: 8px 16px; z-index: 1000; font-size: 14px; }
+.skip-link:focus { left: 0; }
+
+/* ── Prototype banner ── */
+.proto-banner { background: #332200; color: #FFB800; text-align: center; padding: 8px 16px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; position: sticky; top: 0; z-index: 100; }
+
+/* ── Container ── */
+.container { max-width: 430px; margin: 0 auto; padding: 0 20px; min-height: 100vh; min-height: 100dvh; }
+
+/* ── Screen management ── */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ── Onboarding ── */
+.ob-header { padding: 40px 0 24px; }
+.ob-step-indicator { display: flex; gap: 6px; margin-bottom: 24px; }
+.ob-step-dot { height: 3px; flex: 1; background: var(--border-strong); border-radius: 2px; transition: background var(--transition); }
+.ob-step-dot.filled { background: var(--coral); }
+.ob-label { font-size: 12px; color: var(--text-ghost); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.ob-title { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+.ob-subtitle { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 32px; }
+
+.ob-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.ob-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); cursor: pointer; transition: border-color var(--transition), background var(--transition); min-height: 52px; background: transparent; color: var(--text-primary); font-family: var(--font); font-size: 15px; text-align: left; width: 100%; }
+.ob-option:hover { border-color: rgba(255,255,255,0.25); background: var(--bg-card); }
+.ob-option.selected { border-color: var(--coral); background: rgba(255,94,57,0.08); }
+.ob-option-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-strong); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color var(--transition); }
+.ob-option.selected .ob-option-radio { border-color: var(--coral); }
+.ob-option.selected .ob-option-radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+
+.ob-why { margin-top: 16px; padding: 14px 16px; background: var(--bg-card); border-radius: var(--radius-sm); border-left: 3px solid var(--coral); }
+.ob-why-label { font-size: 11px; color: var(--text-ghost); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.ob-why-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+.ob-optional { margin: 24px 0; padding: 16px; border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); }
+.ob-optional-badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-ghost); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+.ob-optional-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.ob-optional-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+.ob-actions { display: flex; gap: 12px; padding: 24px 0 40px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 100px; font-family: var(--font); font-size: 15px; font-weight: 500; cursor: pointer; transition: background var(--transition), transform 0.1s ease; border: none; min-height: 48px; min-width: 48px; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--coral); color: var(--white); flex: 1; }
+.btn-primary:hover { background: #e85330; }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-strong); }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.25); color: var(--text-primary); }
+.ob-edit-note { font-size: 12px; color: var(--text-ghost); text-align: center; margin-top: 8px; }
+
+/* ── Dashboard ── */
+.dash-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 16px; }
+.dash-greeting { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.dash-goal-badge { font-size: 11px; color: var(--coral); border: 1px solid rgba(255,94,57,0.3); padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; }
+.dash-edit-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-ghost); background: none; border: 1px solid var(--border); padding: 6px 12px; border-radius: 100px; cursor: pointer; font-family: var(--font); min-height: 44px; min-width: 44px; transition: color var(--transition), border-color var(--transition); }
+.dash-edit-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
+
+.dash-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; }
+.dash-card--primary { border-color: rgba(255,94,57,0.2); }
+.dash-card-label { font-size: 11px; color: var(--text-ghost); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.dash-card-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.dash-card-body { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+.dash-card-meta { font-size: 12px; color: var(--text-ghost); margin-top: 8px; }
+
+.dash-progress { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; margin: 12px 0 8px; overflow: hidden; }
+.dash-progress-fill { height: 100%; background: var(--coral); border-radius: 3px; transition: width 0.4s ease; }
+
+.dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+.dash-reco { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.dash-reco-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
+.dash-reco-tag--organic { color: var(--coral); background: rgba(255,94,57,0.1); }
+.dash-reco-tag--sponsored { color: #FFB800; background: rgba(255,184,0,0.1); }
+.dash-reco-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.dash-reco-body { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.dash-reco-source { font-size: 11px; color: var(--text-ghost); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+.dash-missing { background: var(--bg-card); border: 1px dashed var(--border-strong); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; text-align: center; }
+.dash-missing-text { font-size: 13px; color: var(--text-ghost); line-height: 1.5; }
+.dash-missing-action { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--coral); cursor: pointer; }
+
+.dash-observation { background: rgba(255,184,0,0.06); border: 1px solid rgba(255,184,0,0.15); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.dash-observation-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: #FFB800; margin-bottom: 6px; }
+.dash-observation-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ── Permissions ── */
+.perm-section { padding: 24px 0; }
+.perm-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+.perm-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); min-height: 52px; }
+.perm-item:last-child { border-bottom: none; }
+.perm-item-left { flex: 1; }
+.perm-item-label { font-size: 14px; font-weight: 500; }
+.perm-item-desc { font-size: 12px; color: var(--text-ghost); margin-top: 2px; }
+.perm-btn { font-size: 12px; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--border-strong); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: var(--font); min-height: 44px; min-width: 44px; transition: all var(--transition); }
+.perm-btn:hover { border-color: var(--coral); color: var(--coral); }
+.perm-btn--danger { border-color: rgba(255,70,70,0.3); color: rgba(255,70,70,0.8); }
+.perm-btn--danger:hover { border-color: #FF4646; color: #FF4646; }
+.perm-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-ghost); background: none; border: none; cursor: pointer; font-family: var(--font); padding: 12px 0; min-height: 44px; }
+.perm-back:hover { color: var(--text-primary); }
+
+/* ── Facilitator panel ── */
+.facilitator { position: fixed; bottom: 0; left: 0; right: 0; background: #0a0a0a; border-top: 2px solid #FFB800; padding: 12px 20px 20px; z-index: 200; }
+.facilitator-label { font-size: 10px; color: #FFB800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.facilitator-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.facilitator-btn { font-size: 12px; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,184,0,0.3); background: transparent; color: #FFB800; cursor: pointer; font-family: var(--font); min-height: 36px; transition: all var(--transition); }
+.facilitator-btn:hover { background: rgba(255,184,0,0.1); }
+.facilitator-btn.fac-active { background: rgba(255,184,0,0.15); border-color: #FFB800; }
+.facilitator-section { margin-bottom: 8px; }
+.facilitator-section-label { font-size: 9px; color: rgba(255,184,0,0.5); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+/* ── Responsive ── */
+@media (min-width: 768px) {
+  .container { max-width: 430px; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="proto-banner" role="status">Prototype data — not real</div>
+
+<div class="container" id="main" role="main">
+
+<!-- ═══════ ONBOARDING STEP 1: GOAL ═══════ -->
+<div class="screen active" id="ob-goal" role="region" aria-label="Onboarding: select your goal">
+  <div class="ob-header">
+    <div class="ob-step-indicator" role="group" aria-label="Onboarding progress">
+      <div class="ob-step-dot filled" aria-label="Step 1 of 3, current"></div>
+      <div class="ob-step-dot" aria-label="Step 2 of 3"></div>
+      <div class="ob-step-dot" aria-label="Step 3 of 3"></div>
+    </div>
+    <p class="ob-label">Step 1 of 3</p>
+    <h1 class="ob-title">What is your primary fitness goal?</h1>
+    <p class="ob-subtitle">This shapes your dashboard layout and training recommendations.</p>
+  </div>
+  <div class="ob-options" role="radiogroup" aria-label="Fitness goal">
+    <button class="ob-option" role="radio" aria-checked="false" data-value="strength" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Build strength
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="weight-loss" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Lose weight
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="endurance" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Improve endurance
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="flexibility" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Increase flexibility
+    </button>
+  </div>
+  <div class="ob-why">
+    <p class="ob-why-label">Why we ask</p>
+    <p class="ob-why-text">Your goal determines which information appears first on your dashboard and which training programmes are recommended. You can change it at any time from your profile.</p>
+  </div>
+  <div class="ob-actions">
+    <button class="btn btn-primary" id="ob-goal-next" disabled onclick="goTo('ob-level')">Continue</button>
+  </div>
+</div>
+
+<!-- ═══════ ONBOARDING STEP 2: EXPERIENCE ═══════ -->
+<div class="screen" id="ob-level" role="region" aria-label="Onboarding: select experience level">
+  <div class="ob-header">
+    <div class="ob-step-indicator" role="group" aria-label="Onboarding progress">
+      <div class="ob-step-dot filled" aria-label="Step 1 of 3, complete"></div>
+      <div class="ob-step-dot filled" aria-label="Step 2 of 3, current"></div>
+      <div class="ob-step-dot" aria-label="Step 3 of 3"></div>
+    </div>
+    <p class="ob-label">Step 2 of 3</p>
+    <h2 class="ob-title">How would you describe your experience?</h2>
+    <p class="ob-subtitle">This sets the starting difficulty for recommended programmes.</p>
+  </div>
+  <div class="ob-options" role="radiogroup" aria-label="Experience level">
+    <button class="ob-option" role="radio" aria-checked="false" data-value="beginner" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Beginner — new to structured training
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="intermediate" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Intermediate — training regularly for 6+ months
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="advanced" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Advanced — structured training for 2+ years
+    </button>
+  </div>
+  <div class="ob-why">
+    <p class="ob-why-label">Why we ask</p>
+    <p class="ob-why-text">Beginner programmes include form guidance and longer rest periods. Advanced programmes assume familiarity with compound movements and progressive overload.</p>
+  </div>
+  <div class="ob-actions">
+    <button class="btn btn-secondary" onclick="goTo('ob-goal')">Back</button>
+    <button class="btn btn-primary" id="ob-level-next" disabled onclick="goTo('ob-training')">Continue</button>
+  </div>
+</div>
+
+<!-- ═══════ ONBOARDING STEP 3: TRAINING PREFERENCE ═══════ -->
+<div class="screen" id="ob-training" role="region" aria-label="Onboarding: select training preference">
+  <div class="ob-header">
+    <div class="ob-step-indicator" role="group" aria-label="Onboarding progress">
+      <div class="ob-step-dot filled" aria-label="Step 1 of 3, complete"></div>
+      <div class="ob-step-dot filled" aria-label="Step 2 of 3, complete"></div>
+      <div class="ob-step-dot filled" aria-label="Step 3 of 3, current"></div>
+    </div>
+    <p class="ob-label">Step 3 of 3</p>
+    <h2 class="ob-title">Where do you prefer to train?</h2>
+    <p class="ob-subtitle">This personalises your first recommended programme.</p>
+  </div>
+  <div class="ob-options" role="radiogroup" aria-label="Training preference">
+    <button class="ob-option" role="radio" aria-checked="false" data-value="gym" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Gym
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="home" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Home
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="outdoor" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Outdoor
+    </button>
+    <button class="ob-option" role="radio" aria-checked="false" data-value="mixed" onclick="selectOption(this)">
+      <span class="ob-option-radio" aria-hidden="true"></span>
+      Mixed
+    </button>
+  </div>
+  <div class="ob-why">
+    <p class="ob-why-label">Why we ask</p>
+    <p class="ob-why-text">Gym programmes assume access to equipment. Home programmes use bodyweight and minimal kit. You can change this any time.</p>
+  </div>
+
+  <div class="ob-optional">
+    <span class="ob-optional-badge">Optional</span>
+    <p class="ob-optional-title">Body information</p>
+    <p class="ob-optional-desc">Adding height, weight and age helps track progress over time. This is not required to use the app. You can add it later from your profile.</p>
+  </div>
+
+  <div class="ob-actions">
+    <button class="btn btn-secondary" onclick="goTo('ob-level')">Back</button>
+    <button class="btn btn-secondary" onclick="goTo('dashboard')">Skip</button>
+    <button class="btn btn-primary" id="ob-training-next" disabled onclick="goTo('dashboard')">Complete setup</button>
+  </div>
+  <p class="ob-edit-note">You can change all of these answers from your profile at any time.</p>
+</div>
+
+<!-- ═══════ DASHBOARD ═══════ -->
+<div class="screen" id="dashboard" role="region" aria-label="Dashboard" style="padding-bottom:200px">
+  <div class="dash-header">
+    <div>
+      <p class="dash-greeting">Good morning</p>
+      <span class="dash-goal-badge" id="dash-goal-label">Strength</span>
+    </div>
+    <button class="dash-edit-btn" onclick="goTo('permissions')" aria-label="Edit goals and preferences">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 3h6M2 8h12M2 13h8"/></svg>
+      Settings
+    </button>
+  </div>
+
+  <!-- VARIANT A: ACTIVITY-FIRST -->
+  <div class="dash-variant" id="variant-a">
+    <div class="dash-card dash-card--primary" id="card-session">
+      <p class="dash-card-label">Today's session</p>
+      <p class="dash-card-title">Upper Body Strength — Day 3</p>
+      <p class="dash-card-body">Bench press, overhead press, rows. 45 min estimated.</p>
+      <p class="dash-card-meta">Based on your 4-week strength programme</p>
+    </div>
+    <div class="dash-card" id="card-schedule">
+      <p class="dash-card-label">This week</p>
+      <p class="dash-card-body">3 of 4 sessions completed. Rest day tomorrow.</p>
+      <div class="dash-progress"><div class="dash-progress-fill" style="width:75%"></div></div>
+      <p class="dash-card-meta">75% weekly target</p>
+    </div>
+    <div class="dash-row">
+      <div class="dash-card" id="card-nutrition-summary">
+        <p class="dash-card-label">Nutrition</p>
+        <p class="dash-card-title">1,840 kcal</p>
+        <p class="dash-card-body">of 2,200 target</p>
+        <p class="dash-card-meta">Protein: 142g / 160g</p>
+      </div>
+      <div class="dash-card" id="card-activity">
+        <p class="dash-card-label">Activity</p>
+        <p class="dash-card-title">8,420</p>
+        <p class="dash-card-body">steps today</p>
+        <p class="dash-card-meta">Sleep: 7h 20m</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: GOAL-FIRST -->
+  <div class="dash-variant" id="variant-b" style="display:none">
+    <div class="dash-card dash-card--primary">
+      <p class="dash-card-label">Your goal</p>
+      <p class="dash-card-title">Build strength</p>
+      <div class="dash-progress"><div class="dash-progress-fill" style="width:65%"></div></div>
+      <p class="dash-card-body">65% towards your 12-week target. Bench press +8kg since week 1.</p>
+      <p class="dash-card-meta">Based on logged sessions and progressive overload</p>
+    </div>
+    <div class="dash-card">
+      <p class="dash-card-label">Weekly trend</p>
+      <p class="dash-card-body">Training volume up 12% this week. Nutrition consistent with target.</p>
+    </div>
+    <div class="dash-row">
+      <div class="dash-card">
+        <p class="dash-card-label">Training</p>
+        <p class="dash-card-title">3 / 4</p>
+        <p class="dash-card-body">sessions this week</p>
+      </div>
+      <div class="dash-card">
+        <p class="dash-card-label">Nutrition</p>
+        <p class="dash-card-title">1,840</p>
+        <p class="dash-card-body">kcal today</p>
+        <p class="dash-card-meta">Protein: 142g / 160g</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: INSIGHT-FIRST -->
+  <div class="dash-variant" id="variant-c" style="display:none">
+    <div class="dash-card dash-card--primary">
+      <p class="dash-card-label">Insight</p>
+      <p class="dash-card-title">Your protein intake increased 20% this week</p>
+      <p class="dash-card-body">Your training volume also increased. Logging suggests the two may be connected — higher training weeks tend to coincide with higher protein intake in your history.</p>
+      <p class="dash-card-meta">Based on 6 weeks of logged training and nutrition data</p>
+    </div>
+    <div class="dash-row">
+      <div class="dash-card">
+        <p class="dash-card-label">Contributing data</p>
+        <p class="dash-card-body">3 sessions logged this week. Average protein: 148g/day vs 123g/day last week.</p>
+      </div>
+      <div class="dash-card">
+        <p class="dash-card-label">Relationship</p>
+        <p class="dash-card-body">In weeks with 3+ sessions, your average protein is 18% higher than in 2-session weeks.</p>
+      </div>
+    </div>
+    <div class="dash-card">
+      <p class="dash-card-label">Suggested action</p>
+      <p class="dash-card-body">Your next session is Upper Body Strength — Day 3. Estimated 45 min.</p>
+    </div>
+  </div>
+
+  <!-- MISSING-DATA STATES (hidden by default) -->
+  <div id="missing-nutrition" style="display:none">
+    <div class="dash-missing">
+      <p class="dash-missing-text">Log your first meal to see nutrition alongside training.</p>
+      <span class="dash-missing-action">Add a meal</span>
+    </div>
+  </div>
+  <div id="missing-wearable" style="display:none">
+    <!-- Activity section simply hidden; prompt in settings -->
+  </div>
+  <div id="missing-newuser" style="display:none">
+    <div class="dash-card dash-card--primary">
+      <p class="dash-card-label">Welcome</p>
+      <p class="dash-card-title">Your goal: Build strength</p>
+      <p class="dash-card-body">Start your first recommended workout to begin tracking progress.</p>
+    </div>
+    <div class="dash-missing">
+      <p class="dash-missing-text">Complete your first week to see progress trends here.</p>
+    </div>
+  </div>
+  <div id="missing-conflict" style="display:none">
+    <div class="dash-observation">
+      <p class="dash-observation-label">Observation</p>
+      <p class="dash-observation-text">Your intake has exceeded your target for 5 days. Your logged protein is below your target this week. You may want to review your nutrition settings.</p>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div id="reco-section">
+    <div class="dash-reco">
+      <span class="dash-reco-tag dash-reco-tag--organic">Suggested for you</span>
+      <p class="dash-reco-title">Creatine Monohydrate — 500g</p>
+      <p class="dash-reco-body">Supports strength and power output during high-intensity training.</p>
+      <p class="dash-reco-source">Suggested because your goal is strength and you completed 3 sessions this week.</p>
+    </div>
+    <div class="dash-reco">
+      <span class="dash-reco-tag dash-reco-tag--sponsored">Sponsored</span>
+      <p class="dash-reco-title">FitFuel Protein Bar — 12 pack</p>
+      <p class="dash-reco-body">High-protein snack for training days. 22g protein per bar.</p>
+      <p class="dash-reco-source">This is a paid placement. The advertiser pays to appear here. It was not selected based on your data.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ PERMISSIONS ═══════ -->
+<div class="screen" id="permissions" role="region" aria-label="Privacy and permissions">
+  <div style="padding:24px 0">
+    <button class="perm-back" onclick="goTo('dashboard')" aria-label="Back to dashboard">&larr; Back to dashboard</button>
+    <h2 class="perm-title">Your data and permissions</h2>
+
+    <div class="perm-section">
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">View data used</p>
+          <p class="perm-item-desc">See what information shapes your recommendations</p>
+        </div>
+        <button class="perm-btn" aria-label="View your data">View</button>
+      </div>
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">Change preferences</p>
+          <p class="perm-item-desc">Update your goal, experience level or training preference</p>
+        </div>
+        <button class="perm-btn" aria-label="Change your preferences">Edit</button>
+      </div>
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">Professional access</p>
+          <p class="perm-item-desc">No professionals have access to your information</p>
+        </div>
+        <button class="perm-btn" aria-label="Manage professional access">Manage</button>
+      </div>
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">Hide a recommendation</p>
+          <p class="perm-item-desc">Remove a suggestion and tell us why</p>
+        </div>
+        <button class="perm-btn" aria-label="Hide a recommendation">Hide</button>
+      </div>
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">Report a concern</p>
+          <p class="perm-item-desc">Flag unsafe advice, content or a professional</p>
+        </div>
+        <button class="perm-btn" aria-label="Report a concern">Report</button>
+      </div>
+      <div class="perm-item">
+        <div class="perm-item-left">
+          <p class="perm-item-label">Export or delete data</p>
+          <p class="perm-item-desc">Download your data or request complete deletion</p>
+        </div>
+        <button class="perm-btn perm-btn--danger" aria-label="Export or delete your data">Manage</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- ═══════ FACILITATOR PANEL ═══════ -->
+<div class="facilitator" id="facilitator-panel" role="region" aria-label="Facilitator controls — not visible to participants">
+  <p class="facilitator-label">Facilitator controls</p>
+
+  <div class="facilitator-section">
+    <p class="facilitator-section-label">Screen</p>
+    <div class="facilitator-row">
+      <button class="facilitator-btn" onclick="goTo('ob-goal')">Onboarding</button>
+      <button class="facilitator-btn fac-active" onclick="goTo('dashboard')" id="fac-dash-btn">Dashboard</button>
+      <button class="facilitator-btn" onclick="goTo('permissions')">Permissions</button>
+    </div>
+  </div>
+
+  <div class="facilitator-section">
+    <p class="facilitator-section-label">Dashboard variant</p>
+    <div class="facilitator-row">
+      <button class="facilitator-btn fac-active" id="fac-va" onclick="switchVariant('a')">A: Activity</button>
+      <button class="facilitator-btn" id="fac-vb" onclick="switchVariant('b')">B: Goal</button>
+      <button class="facilitator-btn" id="fac-vc" onclick="switchVariant('c')">C: Insight</button>
+    </div>
+  </div>
+
+  <div class="facilitator-section">
+    <p class="facilitator-section-label">Missing-data states</p>
+    <div class="facilitator-row">
+      <button class="facilitator-btn" id="fac-mn" onclick="toggleMissing('nutrition')">No nutrition</button>
+      <button class="facilitator-btn" id="fac-mw" onclick="toggleMissing('wearable')">No wearable</button>
+      <button class="facilitator-btn" id="fac-mu" onclick="toggleMissing('newuser')">New user</button>
+      <button class="facilitator-btn" id="fac-mc" onclick="toggleMissing('conflict')">Conflict</button>
+      <button class="facilitator-btn" onclick="resetMissing()">Reset all</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Screen navigation
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+    var target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      target.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+    // Show/hide facilitator
+    var fac = document.getElementById('facilitator-panel');
+    if (fac) fac.style.display = (id === 'ob-goal' || id === 'ob-level' || id === 'ob-training') ? 'none' : 'block';
+  }
+  window.goTo = goTo;
+
+  // Option selection
+  function selectOption(btn) {
+    var group = btn.parentElement;
+    group.querySelectorAll('.ob-option').forEach(function (o) {
+      o.classList.remove('selected');
+      o.setAttribute('aria-checked', 'false');
+    });
+    btn.classList.add('selected');
+    btn.setAttribute('aria-checked', 'true');
+    // Enable next button
+    var screen = btn.closest('.screen');
+    var next = screen.querySelector('.btn-primary');
+    if (next) next.disabled = false;
+  }
+  window.selectOption = selectOption;
+
+  // Dashboard variant switching
+  var currentVariant = 'a';
+  function switchVariant(v) {
+    currentVariant = v;
+    document.querySelectorAll('.dash-variant').forEach(function (d) { d.style.display = 'none'; });
+    var target = document.getElementById('variant-' + v);
+    if (target) target.style.display = 'block';
+    // Facilitator active state
+    ['a', 'b', 'c'].forEach(function (x) {
+      var btn = document.getElementById('fac-v' + x);
+      if (btn) btn.classList.toggle('fac-active', x === v);
+    });
+  }
+  window.switchVariant = switchVariant;
+
+  // Missing-data state toggles
+  var missingStates = { nutrition: false, wearable: false, newuser: false, conflict: false };
+
+  function toggleMissing(key) {
+    missingStates[key] = !missingStates[key];
+    applyMissing();
+    var btn = document.getElementById('fac-m' + key[0]);
+    if (btn) btn.classList.toggle('fac-active', missingStates[key]);
+  }
+  window.toggleMissing = toggleMissing;
+
+  function resetMissing() {
+    Object.keys(missingStates).forEach(function (k) { missingStates[k] = false; });
+    applyMissing();
+    ['n', 'w', 'u', 'c'].forEach(function (c) {
+      var btn = document.getElementById('fac-m' + c);
+      if (btn) btn.classList.remove('fac-active');
+    });
+  }
+  window.resetMissing = resetMissing;
+
+  function applyMissing() {
+    // Nutrition
+    var nutritionCard = document.getElementById('card-nutrition-summary');
+    var missingNutrition = document.getElementById('missing-nutrition');
+    if (nutritionCard) nutritionCard.closest('.dash-row').style.display = missingStates.nutrition ? 'none' : '';
+    if (missingNutrition) missingNutrition.style.display = missingStates.nutrition ? 'block' : 'none';
+
+    // Wearable — hide activity card
+    var activityCard = document.getElementById('card-activity');
+    if (activityCard) activityCard.style.display = missingStates.wearable ? 'none' : '';
+
+    // New user — replace main content
+    var variants = document.querySelectorAll('.dash-variant');
+    var newuserBlock = document.getElementById('missing-newuser');
+    var recoSection = document.getElementById('reco-section');
+    if (missingStates.newuser) {
+      variants.forEach(function (v) { v.style.display = 'none'; });
+      if (newuserBlock) newuserBlock.style.display = 'block';
+      if (recoSection) recoSection.style.display = 'none';
+    } else {
+      switchVariant(currentVariant);
+      if (newuserBlock) newuserBlock.style.display = 'none';
+      if (recoSection) recoSection.style.display = '';
+    }
+
+    // Conflict
+    var conflictBlock = document.getElementById('missing-conflict');
+    if (conflictBlock) conflictBlock.style.display = missingStates.conflict ? 'block' : 'none';
+  }
+
+  // Hide facilitator initially (onboarding shown first)
+  var fac = document.getElementById('facilitator-panel');
+  if (fac) fac.style.display = 'none';
+})();
+</script>
+</body>
+</html>

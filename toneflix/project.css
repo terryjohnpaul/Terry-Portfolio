@@ -1,0 +1,172 @@
+/* Toneflix artwork has different proportions from Sorted's photographic breaks. */
+.toneflix-artwork { min-height: 0; }
+.toneflix-artwork img { height: auto; }
+.toneflix-artwork-pair .split-asset__panel { min-height: 0; }
+.toneflix-artwork-pair img { height: auto; }
+
+/* App context: diagram only. */
+#cs-app-map { max-width: 1600px; margin: 0 auto; padding: 3em 4% 6em; }
+.app-map__diagram { width: 88%; max-width: 1100px; margin-inline: auto; }
+#cs-app-map img { display: block; width: 100%; height: auto; margin-inline: auto; }
+@media (max-width: 640px) {
+  #cs-app-map { padding: 2em 5% 3em; }
+}
+
+/* Feature case-study narratives reuses the existing responsive screen gallery. */
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) .feature-story { max-width: 36em; margin-bottom: 2em; }
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) .feature-story__label { margin-top: 1.8em; }
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) .feature-story__context,
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) .feature-source {
+  font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+  font-size: 0.65em;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) .feature-story__context { margin-top: 1.5em; }
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+:is(#cs-milestones, #cs-sleep-insights, #cs-weigh-in-routine, #cs-nutrition-routine) a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+
+/* Clear hierarchy between narrative headings, reading text and gallery metadata. */
+.flow-problem__label,
+.flow-decision__label {
+  font-size: 0.65em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  color: var(--charcoal);
+  margin-bottom: 0.75em;
+}
+.flow-problem__body,
+.flow-decision__body {
+  line-height: 1.6;
+}
+.flow-problem__body + .flow-problem__label {
+  margin-top: 2em !important;
+}
+.flow-strip-label {
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+.flow-num { opacity: 0.16; }
+/* Opening context stays close to the problem statement. */
+.cs-hero-title { margin-bottom: 0.65em; }
+.cs-hero-intro {
+  max-width: 42em;
+  margin-bottom: 2em;
+  font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif;
+  font-size: 0.78em;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.cs-hero-meta { font-size: 0.9em; }
+
+/* Flow headings read naturally at every gallery width. */
+.flow-title {
+  text-transform: none;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-align: left;
+  text-wrap: balance;
+  margin-bottom: 0.85em;
+}
+
+/* A focused, interactive explanation of the fictional fitness data. */
+.data-story { padding: 5em 8%; max-width: 1440px; margin: auto; font-family: 'Helvetica Now Display', Helvetica, Arial, sans-serif; color: var(--charcoal); }
+.data-story__intro { max-width: 740px; margin-bottom: 48px; }
+.data-story h2 { font-size: clamp(28px, 3vw, 44px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+.data-story__intro > p:last-child, .data-story__notes p, .data-story__missing p { font-size: 16px; line-height: 1.65; color: #666; }
+.data-story__layout { display: grid; grid-template-columns: minmax(300px, 390px) minmax(0, 1fr); gap: 72px; align-items: center; }
+.data-demo { background: #111; color: #f4f4f4; padding: 24px; border-radius: 24px; font-size: 13px; box-shadow: 0 16px 40px #00000010; }
+.data-demo__top, .data-demo__period { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.data-demo__top { margin-bottom: 28px; font-size: 14px; }
+.data-marker { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 25px; height: 25px; border-radius: 50%; background: #ed8736; color: #171717; font-size: 11px; font-weight: 700; }
+.data-demo__metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.data-demo__metrics > div { display: flex; flex-direction: column; gap: 7px; }
+.data-demo__metrics span { font-size: 11px; color: #bcbcbc; }
+.data-demo__metrics strong { font-size: 29px; font-weight: 500; }
+.data-demo__metrics small { font-size: 13px; color: #bcbcbc; }
+.data-demo__period { font-size: 12px; }
+.data-demo__chart { margin-top: 12px; }
+.data-demo__chart svg { width: 100%; display: block; }
+.data-demo__legend { display: flex; flex-wrap: wrap; gap: 16px; color: #ccc; font-size: 10px; }
+.data-demo__legend span:first-child { color: #f4a467; }
+.data-demo__hint { font-size: 12px; margin: 24px 0 12px; color: #bcbcbc; }
+.data-demo__days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.data-demo button, .data-demo input { font: inherit; }
+.data-demo__days button { padding: 0; min-height: 44px; background: #242424; color: #ccc; border: 1px solid transparent; border-radius: 20px; font-size: 10px; cursor: pointer; }
+.data-demo__days button[aria-pressed="true"] { background: #ed8736; color: #111; }
+.data-demo__edit { margin-top: 20px; background: #222; border-radius: 12px; padding: 16px; }
+.data-demo__edit strong { font-size: 12px; font-weight: 500; }
+.data-demo__edit p { font-size: 11px; color: #ccc; line-height: 1.5; margin: 12px 0; }
+.data-demo__edit label { font-size: 11px; display: block; margin: 16px 0 8px; }
+.data-demo__input { display: flex; gap: 8px; }
+.data-demo__input input { width: 85px; min-width: 0; background: #111; color: white; border: 1px solid #777; border-radius: 8px; padding: 10px; }
+.data-demo__input button { flex: 1; min-height: 44px; border: 0; border-radius: 24px; background: #ed8736; color: #171717; font-size: 12px; cursor: pointer; }
+.data-demo__edit p:empty { display: none; }
+.data-demo__calculation { margin-top: 20px; }
+.data-demo__calculation summary { min-height: 44px; cursor: pointer; font-size: 12px; }
+.data-demo__calculation .data-marker { margin-left: 8px; }
+.data-demo__calculation p { color: #ccc; line-height: 1.6; font-size: 12px; margin: 8px 0 16px; }
+.data-demo__reset { background: none; color: #ccc; border: 0; text-decoration: underline; text-underline-offset: 4px; min-height: 44px; cursor: pointer; }
+.data-demo :is(button, input, summary):focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.data-story__notes { list-style: none; padding: 0; margin: 0; display: grid; gap: 32px; }
+.data-story__notes li { display: flex; align-items: flex-start; gap: 18px; }
+.data-story__number { color: #a34908; font-size: 13px; font-weight: 700; padding-top: 4px; }
+.data-story h3 { font-size: 21px; font-weight: 500; line-height: 1.3; margin: 0 0 10px; letter-spacing: -0.02em; }
+.data-story__missing { display: grid; grid-template-columns: minmax(300px,390px) minmax(0,1fr); gap: 72px; margin-top: 56px; padding-top: 40px; border-top: 1px solid #e5e5e5; align-items: center; }
+.data-story__missing > div > p + p { margin-top: 12px; }
+.data-missing-card { background: #1d1d1d; color: #eee; border-radius: 16px; padding: 24px; }
+.data-missing-card > span { color: #bcbcbc; font-size: 12px; }
+.data-missing-card > strong { display: block; font-size: 21px; font-weight: 500; margin: 12px 0 20px; }
+.data-missing-card__sequence { display: flex; justify-content: space-around; color: #ed8736; }
+.data-missing-card__sequence span { text-align: center; }
+.data-missing-card__sequence small { display: block; font-size: 11px; color: #bbb; margin: 8px 0 16px; }
+.data-missing-card__gap { color: #bbb; }
+.data-story .data-missing-card p { font-size: 12px; color: #bbb; }
+.data-story__disclosure { font-size: 12px; color: #777; line-height: 1.6; margin-top: 32px; }
+@media (max-width: 800px) {
+ .data-story { padding: 4em 6%; }
+ .data-story__layout, .data-story__missing { grid-template-columns: 1fr; gap: 32px; }
+ .data-demo, .data-missing-card { width: 100%; max-width: 390px; justify-self: center; box-sizing: border-box; }
+ .data-story__intro { margin-bottom: 32px; }
+}
+
+/* Production interaction safeguards; desktop composition stays unchanged. */
+[hidden] { display: none !important; }
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible { outline: 3px solid #1b6dc1; outline-offset: 4px; }
+.lb { padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); box-sizing: border-box; }
+.lb__close, .lb__nav { min-width: 44px; min-height: 44px; }
+.lb__img-wrap img { max-height: 72dvh; max-width: 84vw; object-fit: contain; }
+.cs-bottom-nav { bottom: max(16px, env(safe-area-inset-bottom)); max-width: calc(100vw - 24px); }
+.footer-right [data-privacy-settings] { color: inherit; background: transparent; border: 0; padding: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+.footer-right { flex-wrap: wrap; }
+@media (max-width: 1024px) {
+ .flow-problem__body, .flow-decision__body, .body-copy, .cs-hero-intro { font-size: 14px; }
+ .flow-problem__label, .flow-decision__label, .flow-strip-label, .flow-status, .cs-hero-meta .mono-text { font-size: 12px; }
+}
+@media (max-width: 480px) {
+ .lb__flow { max-width: 75%; font-size: 12px; }
+ .lb__caption { max-width: 80%; font-size: 12px; }
+ .cs-nav-item { min-height: 44px; }
+ .vs-table { display: block; overflow-x: auto; }
+}
+.cs-hero-eyebrow { color: #737373; opacity: 1; }
+.vs-table th:last-child { color: #a43d20; }
+#cs-accessibility .phase.evaluate { color: #171717; }
+#cs-accessibility .phase.evaluate :is(.kicker,.phase-copy,.phase-note) { color: #171717; opacity: 1; }
+#cs-accessibility .weeks span { color: #737373; }
+.cs-bottom-nav { background: rgba(40,40,40,0.96); }
+.cs-nav-item { color: #eee; }
+.cs-nav-item.is-active { background: #fff; color: #343434; border-radius: 100px; }
+.footer-right [data-privacy-settings] { color: #b8b8b8; min-height: 44px; }
+
+.cs-nav-item.is-active span { color: #343434; }

@@ -2030,7 +2030,16 @@ body {
 }
 
 /* Fix 4: Card states narrative rows */
+.cs-card-row > div { flex: 1; }
+
 @media (max-width: 991px) {
+  /* Keep the wide state diagram inside its own scroll container. */
+  .system-section, .velocity-section { width: 100%; min-width: 0; }
+  .system-inner, .velocity-inner { width: 100%; min-width: 0; }
+  .gantt { overflow-x: auto; }
+  .gantt-grid { min-width: 58em; }
+  .system-inner .context-left,
+  .system-inner .context-right { width: 100%; }
   .cs-card-row { flex-wrap: wrap; }
   .cs-card-row > div { flex: none; width: calc(33.33% - 0.5px); }
 }
@@ -2685,31 +2694,31 @@ input:-webkit-autofill:active  {
     <!-- Row 1: Lifecycle states -->
     <div style="margin:4em 0 1.2em;"><span class="mono-text is-faded">Lifecycle states</span></div>
     <div class="cs-card-row" style="display:flex;gap:0;align-items:stretch;">
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">01</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-default.webp" alt="Default card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Default</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Active account with available limit and next EMI due. The baseline layout every other state inherits from.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">02</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-spend.webp" alt="Spend card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Spend</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Fully approved. CTA shifts to "Start Spending". The user is ready to transact.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;background:rgba(245,158,11,0.04);">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;background:rgba(245,158,11,0.04);">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">03</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-overdue.webp" alt="Overdue card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Overdue</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Red banner with days past due. Amount turns red. Limit stays visible so users know what's at stake.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;background:rgba(239,68,68,0.04);">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;background:rgba(239,68,68,0.04);">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">04</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-unavailable.webp" alt="Unavailable card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Unavailable</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Lender can't offer credit. Card stays instead of vanishing. Shows "No Limit" and explains why.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);background:rgba(52,52,52,0.04);">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);background:rgba(52,52,52,0.04);">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">05</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-refresh.webp" alt="Loading card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Loading</p>
@@ -2720,31 +2729,31 @@ input:-webkit-autofill:active  {
     <!-- Row 2: KYC funnel + edge cases -->
     <div style="margin:4em 0 1.2em;"><span class="mono-text is-faded">KYC funnel + edge cases</span></div>
     <div class="cs-card-row" style="display:flex;gap:0;align-items:stretch;">
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">06</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-optional-lender.webp" alt="KYC Pending card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">KYC Pending</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Lender matched, KYC not started. Shows the limit they can unlock to motivate completion.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">07</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-digilocker.webp" alt="DigiLocker card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">DigiLocker</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">First KYC step. CTA says "Connect to DigiLocker". Same card, only the action changes.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">08</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-selfie.webp" alt="Selfie card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Selfie</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Second KYC step. "Capture your Selfie" replaces DigiLocker CTA. Limit stays the same throughout.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);border-right:none;">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">09</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-esign.webp" alt="E-Sign card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">E-Sign</p>
         <p style="font-size:0.8em;color:var(--text-secondary);line-height:1.45;">Final KYC step. Label changes to "Approved Limit". One tap to activate.</p>
       </div>
-      <div style="flex:1;padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);">
+      <div style="padding:2em 1.4em;border:1px solid rgba(52,52,52,0.06);">
         <div style="font-size:2.4em;font-weight:800;color:var(--charcoal);opacity:0.06;line-height:1;margin-bottom:0.6em;" aria-hidden="true">10</div>
         <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/decisions/card-transactions.webp" alt="Transactions card" style="width:70%;display:block;margin:0 auto 1.4em;" loading="lazy">
         <p class="mono-text is-faded" style="margin-bottom:0.4em;">Transactions</p>
@@ -3076,14 +3085,14 @@ input:-webkit-autofill:active  {
 </div>
 </main>
 <section class="display-text-section sb"><div class="vert-flex"><h4 class="serif-subheading is-lower is-small">More from the portfolio</h4><h2 class="heading2 is-innovate is-dark">Keep<br>Exploring</h2></div></section><section class="featured-section" style="width:100vw;margin-left:calc(-50vw + 50%);">
-  <a href="/#featured-works" class="hover-scramble-container" style="text-decoration:none;color:inherit;">
+  <a href="/toneflix/" class="hover-scramble-container" style="text-decoration:none;color:inherit;">
     <div class="image-overlay-case"></div>
-    <img src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/settle-club/t4f-casestudy.webp" alt="Tips4Fit fitness app" class="case-image" style="object-fit:cover;object-position:center center;" loading="lazy">
+    <img alt="Toneflix fitness app" class="case-image" style="object-fit:cover;object-position:center center;" loading="lazy" src="/toneflix/assets/optimised/toneflix-casestudy-1920-5bb573cf29725db6.webp" width="1920" height="1280" data-full-src="/toneflix/assets/optimised/toneflix-casestudy-1920-5bb573cf29725db6.webp" srcset="/toneflix/assets/optimised/toneflix-casestudy-640-8d89652de9b4e891.webp 640w, /toneflix/assets/optimised/toneflix-casestudy-1280-d48f496a9d719cf1.webp 1280w, /toneflix/assets/optimised/toneflix-casestudy-1920-5bb573cf29725db6.webp 1920w" sizes="(max-width: 768px) 100vw, 80vw">
     <div class="case-info">
-      <h4 class="heading4">Tips4Fit</h4>
+      <h4 class="heading4">Toneflix</h4>
       <div>
-        <p class="mono-text hover-target">Fitness app for personalised workouts</p>
-        <p class="mono-text hover-target">tips4fit.com</p>
+        <p class="mono-text hover-target">Fitness app concept for connected routines</p>
+        <p class="mono-text hover-target">Toneflix</p>
       </div>
     </div>
   </a>

@@ -1,0 +1,91 @@
+/* Approved roadmap preview, scoped to the accessibility section. */
+
+
+#cs-accessibility, #cs-accessibility *{box-sizing: border-box;}
+#cs-accessibility{margin: 0px; font-family: "Helvetica Now Display", Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); background: #fff;}
+#cs-accessibility p,#cs-accessibility h1,#cs-accessibility h2,#cs-accessibility h3{margin: 0px;}
+
+
+
+
+
+
+
+
+#cs-accessibility{max-width: 1600px; margin: auto; padding: 256px 4% 112px;}
+#cs-accessibility .section-heading{display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 44px;}
+#cs-accessibility .eyebrow,#cs-accessibility .kicker{font-size: 10px; text-transform: uppercase; letter-spacing: 0.035em; line-height: 1.5;}
+#cs-accessibility .eyebrow{color: rgb(102, 102, 102); margin-bottom: 14px;}
+#cs-accessibility .section-heading h2{font-size: clamp(32px, 3.5vw, 52px); font-weight: 500; line-height: 1.06; letter-spacing: -0.04em; max-width: 19ch;}
+#cs-accessibility .context{max-width: 47ch; font-size: 16px; line-height: 1.6; color: rgb(101, 101, 101);}
+#cs-accessibility .disclosure{border-top: none; padding: 18px 0px 32px; font-size: 13px; line-height: 1.6; color: rgb(102, 102, 102); max-width: 100ch;}
+#cs-accessibility .disclosure strong{color: rgb(51, 51, 51); font-weight: 500;}
+#cs-accessibility .phases{display: grid; grid-template-columns: repeat(6, minmax(0px, 1fr)); gap: 8px;}
+#cs-accessibility .phase{color: rgb(52, 52, 52); padding: 20px 17px; border-radius: 5px; display: flex; flex-direction: column; min-width: 0px; min-height: 270px;}
+#cs-accessibility .brief{background: rgb(255, 255, 255);}
+#cs-accessibility .research{background: rgb(198, 183, 232);}
+#cs-accessibility .define{background: rgb(248, 223, 78);}
+#cs-accessibility .design{background: rgb(242, 170, 56);}
+#cs-accessibility .prototype{background: rgb(237, 130, 62);}
+#cs-accessibility .evaluate{background: rgb(233, 104, 54);}
+#cs-accessibility .phase h3{font-size: clamp(22px, 2.15vw, 32px); font-weight: 500; letter-spacing: -0.035em; margin: 10px 0px 24px;}
+#cs-accessibility .phase-copy{font-size: 14px; line-height: 1.5; max-width: 24ch;}
+#cs-accessibility .phase-note{margin-top: auto; padding-top: 32px; font-size: 11px; line-height: 1.4;}
+
+
+#cs-accessibility .timeline-heading{margin-top: 48px; display: flex; justify-content: space-between; gap: 20px; font-size: 12px; margin-bottom: 20px; color: rgb(102, 102, 102);}
+#cs-accessibility .timeline-heading strong{color: rgb(51, 51, 51); font-weight: 500;}
+#cs-accessibility .calendar{margin-left: 104px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px;}
+#cs-accessibility .month strong{display: block; text-align: center; font-size: 12px; font-weight: 400; padding: 8px 0px; border: 1px solid rgb(222, 222, 219); border-radius: 3px;}
+#cs-accessibility .weeks{display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; font-size: 9px; color: rgb(136, 136, 136); margin-top: 12px;}
+#cs-accessibility .timeline-row{display: grid; grid-template-columns: 104px 1fr; align-items: center; min-height: 32px;}
+#cs-accessibility .row-label{font-size: 12px; color: rgb(96, 96, 96);}
+#cs-accessibility .track{display: grid; grid-template-columns: repeat(16, minmax(0px, 1fr)); background: repeating-linear-gradient(to right, rgb(222, 222, 219) 0px, rgb(222, 222, 219) 1px, transparent 1px, transparent 6.25%); padding: 5px 0px;}
+#cs-accessibility .bar{grid-column: var(--start)/span var(--span); height: 21px; border-radius: 4px; margin-right: 5px; font-size: 10px; line-height: 21px; text-align: center; overflow: hidden; color: transparent; border: 1px solid rgba(0, 0, 0, 0.035);}
+#cs-accessibility .schedule-note{font-size: 12px; line-height: 1.6; color: rgb(119, 119, 119); margin: 20px 0px 0px 104px; max-width: 78ch;}
+#cs-accessibility .details{max-width: 960px; margin: 88px auto 0px;}
+#cs-accessibility .detail-right{width: 100%;}
+#cs-accessibility .requirement-group{display: grid; grid-template-columns: 210px minmax(0px, 1fr); column-gap: 32px; padding: 22px 0px 26px; border-top: none;}
+#cs-accessibility .requirement-group h3{font-size: 18px; font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; max-width: 17ch; margin: 0px;}
+#cs-accessibility .requirement-group ul{list-style: none; padding: 0px; margin: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; align-content: start;}
+#cs-accessibility .requirement-group li{font-size: 13px; line-height: 1.5; color: rgb(112, 112, 112); position: relative; padding-left: 18px;}
+#cs-accessibility .requirement-group li::before{content: "–"; position: absolute; left: 0px; color: rgb(153, 153, 153);}
+#cs-accessibility .requirement-group p{grid-column: 2; margin-top: 24px; font-size: 13px; line-height: 1.6; color: rgb(119, 119, 119); max-width: 78ch;}
+#cs-accessibility .requirement-group:last-child li{padding-left: 0px;}
+#cs-accessibility .requirement-group:last-child li::before{content: none;}
+#cs-accessibility .requirement-group li strong{display: block; font-size: 12px; font-weight: 500; color: rgb(96, 96, 96); margin-bottom: 8px;}
+#cs-accessibility .closing{margin: 36px auto 0px; border-top: none; padding-top: 24px; max-width: 960px; font-size: 14px; line-height: 1.7; color: rgb(102, 102, 102);}
+
+@media (max-width: 1100px){#cs-accessibility .phases{grid-template-columns: repeat(3, 1fr);}
+#cs-accessibility .phase{min-height: 230px;}
+#cs-accessibility .phase h3{font-size: 30px;}
+#cs-accessibility .requirement-group{column-gap: 32px; grid-template-columns: minmax(160px, 0.7fr) minmax(0px, 2fr);}
+#cs-accessibility .requirement-group ul{gap: 14px 24px;}
+#cs-accessibility .section-heading{align-items: start;}}
+@media (max-width: 640px){
+
+
+#cs-accessibility{padding: 160px 24px 80px;}
+#cs-accessibility .section-heading{display: block; margin-bottom: 28px;}
+#cs-accessibility .context{margin-top: 24px;}
+#cs-accessibility .phases{grid-template-columns: repeat(2, minmax(0px, 1fr));}
+#cs-accessibility .phase{padding: 16px 12px; min-height: 260px;}
+#cs-accessibility .phase h3{font-size: 25px;}
+#cs-accessibility .phase-copy{font-size: 13px;}
+#cs-accessibility .kicker{font-size: 8px;}
+#cs-accessibility .phase-note{font-size: 10px;}
+
+#cs-accessibility .timeline-heading{display: block; line-height: 1.8;}
+#cs-accessibility .timeline-heading span{display: block;}
+#cs-accessibility .calendar{margin-left: 0px; gap: 4px;}
+#cs-accessibility .month strong{font-size: 9px;}
+#cs-accessibility .weeks{font-size: 8px;}
+#cs-accessibility .timeline-row{grid-template-columns: 1fr; margin-bottom: 8px;}
+#cs-accessibility .row-label{font-size: 10px; margin-bottom: 4px;}
+#cs-accessibility .schedule-note{margin-left: 0px;}
+#cs-accessibility .details{margin-top: 64px;}
+#cs-accessibility .requirement-group{display: block; padding: 22px 0px 26px;}
+#cs-accessibility .requirement-group h3{font-size: 18px; max-width: none; margin-bottom: 20px;}
+#cs-accessibility .requirement-group ul{grid-template-columns: 1fr; gap: 14px;}
+#cs-accessibility .requirement-group p{margin-top: 24px;}
+#cs-accessibility .closing{margin-top: 40px;}}

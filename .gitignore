@@ -11,3 +11,16 @@ video_assets/
 pixelbin/assets/app/originals/
 pixelbin/assets/app/app-lottie-split.json
 pixelbin/assets/app/app-lottie-hero-rtl.json
+
+# Local backups and generated output (keep source pages and research versioned)
+*.backup*
+*.test-backup
+*.merged
+*.old-local
+*.live
+index-backup*.html
+*-before-revert.html
+*-pre-remediation.html
+test-results/
+playwright-report/
+archive/

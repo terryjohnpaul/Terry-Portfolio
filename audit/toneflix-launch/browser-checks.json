@@ -1,0 +1,212 @@
+[
+  {
+    "browser": "chromium",
+    "width": 320,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "width": 375,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "width": 1440,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "chromium",
+    "lightbox": {
+      "locked": true,
+      "stopped": true,
+      "focused": "lbClose"
+    },
+    "closed": true,
+    "focusReturned": true
+  },
+  {
+    "browser": "chromium",
+    "reduced": {
+      "lenis": false,
+      "calls": [
+        {
+          "behavior": "instant"
+        }
+      ]
+    }
+  },
+  {
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "count": 11
+      }
+    ]
+  },
+  {
+    "browser": "chromium",
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "width": 375,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "width": 1440,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "webkit",
+    "lightbox": {
+      "locked": true,
+      "stopped": true,
+      "focused": "lbClose"
+    },
+    "closed": true,
+    "focusReturned": true
+  },
+  {
+    "browser": "webkit",
+    "reduced": {
+      "lenis": false,
+      "calls": [
+        {
+          "behavior": "instant"
+        }
+      ]
+    }
+  },
+  {
+    "browser": "webkit",
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "width": 320,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "width": 375,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "width": 390,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "width": 768,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "width": 1024,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "width": 1440,
+    "overflow": false,
+    "h1": 1,
+    "lenis": true
+  },
+  {
+    "browser": "firefox",
+    "lightbox": {
+      "locked": true,
+      "stopped": true,
+      "focused": "lbClose"
+    },
+    "closed": true,
+    "focusReturned": true
+  },
+  {
+    "browser": "firefox",
+    "reduced": {
+      "lenis": false,
+      "calls": [
+        {
+          "behavior": "instant"
+        }
+      ]
+    }
+  },
+  {
+    "browser": "firefox",
+    "errors": []
+  }
+]

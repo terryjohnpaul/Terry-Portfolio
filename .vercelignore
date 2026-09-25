@@ -27,7 +27,7 @@ gradient-bg.png
 Image_slight.png
 magic-canvas-casestudy-banner.png
 model-handbag.png
-"Mockuuups iPhone 16 mockup in a woman's hand with concrete backdrop.webp"
+Mockuuups iPhone 16 mockup in a woman's hand with concrete backdrop.webp
 
 # Non-production pages
 kaily-*.html
@@ -44,3 +44,58 @@ checkout-casestudy-banner.png
 .vercel
 docs/
 icons/
+
+# Work in progress: enable only as part of an explicit launch
+fynd-studio/
+our-work-standalone/
+
+# Drafts, research and local backups must never be published
+**/*.md
+*.backup*
+*.test-backup
+*.merged
+*.old-local
+*.live
+index-backup*.html
+**/*-options.html
+**/*-before-revert.html
+**/*-pre-remediation.html
+pixelbin/closing-option-*.html
+pixelbin/constraint-option-*.html
+pixelbin/clarity-*.html
+pixelbin/principles-animated.html
+pixelbin/principles-stacked.html
+pixelbin/flow-strip.html
+pixelbin/home-icebreaker.html
+pixelbin/docs/
+sorted/v2.html
+swadesh/v2.html
+og-generator.html
+test-results/
+playwright-report/
+archive/
+scripts/
+.github/
+.git/
+.mcp.json
+.DS_Store
+
+# SEO review evidence is local; these case studies remain in progress
+audit/
+pixelbin/batch-editor/
+pixelbin/desktop-studio/
+pixelbin/utility-tools/
+pixelbin/video-editor/
+
+# Toneflix launch: retain only the case study and linked client-only demo.
+toneflix/accessibility-options.html
+toneflix/assets/preview/index.html
+toneflix/dataflow-options.html
+toneflix/primary-opportunity-options.html
+toneflix/principles-options.html
+toneflix/profile-options.html
+toneflix/v2-before-revert.html
+toneflix/v2-pre-remediation.html
+toneflix/design-assets/
+toneflix/research/
+toneflix/assets/food/

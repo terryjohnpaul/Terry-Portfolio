@@ -126,3 +126,7 @@ toneflix/assets/food/
 /assets/home-v1/projects-3e52d9bc2533.js
 /assets/home-v1/projects-587347c53928.js
 /assets/home-v1/projects-c7ff559e6d05.js
+
+# GitHub release documentation
+release-notes/
+release-manifest.json

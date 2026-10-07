@@ -1,0 +1,40 @@
+{
+  "baselineDeployment": "dpl_7Jh91TrMBDkAg9ZaUao5PUHCJWq6",
+  "baselineGitCommit": "35d7655",
+  "baselineFiles": 1437,
+  "unchanged": 1433,
+  "changed": [
+    {
+      "file": ".vercelignore",
+      "before": "e7d634b13a212cd8ec166d631098da2a36166a28",
+      "after": "c9972752e0a08596fa59ce078b25e12fe0de0014"
+    },
+    {
+      "file": "our-work-portfolio.css",
+      "before": "3ad3083c53c05d39fc8fd38da67371edc4889bcb",
+      "after": "77ebeabdfdde1ce8335bb7d86c1ceac20b855bb2"
+    },
+    {
+      "file": "our-work-portfolio.js",
+      "before": "2da2293cfb09167df8048bf7d30fa9ec364aa13c",
+      "after": "970d2849ec6539f11de22f2a3aac74e83b98867b"
+    },
+    {
+      "file": "index.html",
+      "before": "d099edf01da2422cc6929854ec109552dec71233",
+      "after": "e43ff58faacc617062f9d1e0489cd9cdeac0aaf5"
+    }
+  ],
+  "newAssets": [
+    {
+      "file": "assets/home-v1/projects-c750538ef373.css",
+      "sha256": "c750538ef37356e336aa7876257ba62e8dd3afa7752379ff4a874ac30c8f76e3",
+      "bytes": 14003
+    },
+    {
+      "file": "assets/home-v1/projects-348073df94e5.js",
+      "sha256": "348073df94e524c435e662b43a96c97b3d220fc27aa4bf33db6cd7e62c4c50fa",
+      "bytes": 13927
+    }
+  ]
+}

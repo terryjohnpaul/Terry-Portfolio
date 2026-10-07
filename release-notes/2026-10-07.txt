@@ -1,0 +1,40 @@
+The homepage now gives visitors a reliable way to get in touch, introduces Terry John in a more personal voice, and keeps Selected work from overlapping the capabilities section during scrolling.
+
+## Changes since the previous live deployment
+
+### Headline and personal introduction
+- Replaced “Products that shipped. Research to production.” with “I design things that are easy to use. It takes more drafts than you’d think.”
+- Adjusted headline sizing to fit desktop, tablet and mobile widths.
+- Replaced the closing sales and UK-relocation paragraph with a personal introduction beginning “Hi, I am Terry John.” The introduction sits on its own line and the remaining copy uses balanced wrapping.
+
+### Contact experience
+- Both “Get in touch” buttons open a Gmail compose window in a new tab, addressed to terryjohnpaul20@gmail.com with the subject “Let's connect, Terry John”. The visible button labels remain unchanged.
+- Added a copy-email control for visitors who use another email provider, with a checkmark and “Copied” confirmation.
+- If clipboard permission is unavailable, select the address and show manual-copy guidance rather than claiming success.
+- Aligned the two footer actions on one row with matching heights; they stack on narrow screens.
+- Moved “Taking on projects · Open to permanent roles” below the actions.
+
+### Footer and project browsing
+- Moved Privacy and Cookie preferences beside the social links and matched their typography, colour and hover treatment.
+- Removed the redundant case-study navigation row and divider from the footer.
+- Removed the negative full-viewport margin that pulled the Selected work narrative into the preceding capabilities section.
+- Replaced text-heavy video preview controls with circular glass-style play/pause icons, retaining accessible labels, keyboard control and 44px touch targets.
+- Published new content-hashed project CSS and JavaScript so returning visitors receive the updated controls.
+
+## Release scope
+
+Baseline: Vercel deployment `dpl_7Jh91TrMBDkAg9ZaUao5PUHCJWq6`.
+
+The baseline commit records all 1,437 previously published files after verifying their hashes. The following release commit contains the homepage changes and release documentation. Other public pages, case studies, routes, consent logic and hosted media are unchanged from that baseline.
+
+The proposed crisper headline alternatives were not applied. The Swale/Swadesh video replacement is not included because the intended video has not been confirmed.
+
+## Validation
+
+- Public-page references, assets, sitemap, redirects, identity and draft exclusions.
+- Desktop and mobile layouts, normal and reduced-motion behavior.
+- Section boundaries while scrolling down and back up.
+- Gmail compose destinations and subjects, copy-email feedback and permission fallback, cookie settings, video play/pause and keyboard operation.
+- Preview verification followed by production smoke checks.
+
+Gmail requires the visitor to have or sign into a Google account. Copy email remains available for other mail services.

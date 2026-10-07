@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+<script>if(location.hash==='#featured-works')document.documentElement.classList.add('project-entry');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terry John Paul | Senior Product Designer | AI, Fintech & Commerce</title>
   <meta name="description" content="Senior Product Designer at Fynd. Shipped AI products used by 5.3M people, BNPL payment systems, and design systems across fintech, AI, and commerce. Open to senior roles in the UK.">
@@ -108,10 +109,8 @@
   <link rel="dns-prefetch" href="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev">
 
   <!-- Font preloads — critical weights only -->
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/HelveticaNowDisplay-Regular.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/HelveticaNowDisplay-Medium.woff2">
+  <script>if(!document.documentElement.classList.contains('project-entry')){var fontHint=document.createElement('link');fontHint.rel='preload';fontHint.as='font';fontHint.type='font/woff2';fontHint.crossOrigin='anonymous';fontHint.href='/fonts/HelveticaNowDisplay-Regular.woff2';document.head.appendChild(fontHint);}</script>
+  <script>if(!document.documentElement.classList.contains('project-entry')){var fontHint=document.createElement('link');fontHint.rel='preload';fontHint.as='font';fontHint.type='font/woff2';fontHint.crossOrigin='anonymous';fontHint.href='/fonts/HelveticaNowDisplay-Medium.woff2';document.head.appendChild(fontHint);}</script>
 
   <!-- Microsoft Clarity -->
   
@@ -1571,11 +1570,13 @@
 
     /* ============================================================
        PAGE LOADER
-       Full-screen white overlay shown until the hero video has
-       buffered enough to play (canplaythrough event).
-       Falls back to auto-dismiss after 5 s on slow connections.
+       Nonblocking legacy overlay, hidden even when scripts fail.
     ============================================================ */
     #page-loader {
+      display: none !important;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
       position: fixed;
       inset: 0;
       z-index: 99999;
@@ -1844,6 +1845,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
 <link rel="stylesheet" href="/assets/css/privacy-controls.css?v=1">
 <script src="/assets/js/privacy-controls.js?v=1" defer data-clarity data-vercel-analytics></script>
+<link rel="stylesheet" href="/assets/home-v1/projects-302d7bf18dc4.css">
+<link rel="preload" as="image" href="/assets/work-v1/pixelbin-cover-884dd85d8039.webp" imagesrcset="/assets/home-v1/pixelbin-cover-400-611fa3036863.webp 400w, /assets/work-v1/pixelbin-cover-884dd85d8039.webp 1260w" imagesizes="(min-width:1194px) 55vw, 90vw" fetchpriority="high">
+<style>#featured-works { scroll-margin-top: 88px; } #featured-works img[data-deferred-image]:not(.is-loaded) {visibility:hidden;}</style>
+<style>html.project-entry body * {font-family:Arial,Helvetica,sans-serif!important;} html.project-entry .h-reg,html.project-entry .h-ital,html.project-entry .framer-Wf1ok .framer-1mxg5yk .framer-text,html.project-entry .framer-Wf1ok .framer-1bbu8uk .framer-text {font-family:Georgia,serif!important;}</style>
 </head>
 
 <body>
@@ -1958,8 +1963,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
     </div>
 
     <div id="hero-media">
-      <video muted loop playsinline preload="metadata" poster="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero-poster.webp" aria-label="Product design showreel featuring interface animations and interaction details">
-        <source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero_Video_2_1080p.mp4" type="video/mp4" />
+      <video muted loop playsinline preload="none" poster="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero-poster.webp" aria-label="Product design showreel featuring interface animations and interaction details">
+        <source data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/hero_Video_2_1080p.mp4" type="video/mp4" />
       </video>
 
     </div>
@@ -2043,8 +2048,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
   </section>
 
   <!-- ── Selected Work (new scroll-linked section) ── -->
-  <link rel="stylesheet" href="our-work-portfolio.css">
-  <div style="background:#fff;position:relative;z-index:30;padding-top:clamp(200px, 40vh, 500px)">
+
+  <div style="background:#fff;position:relative;z-index:30;padding-top:clamp(64px, 12vh, 160px)">
 <section id="featured-works" aria-label="Selected work">
   <div data-ref-container class="pb-16 md:pb-40">
     <div class="grid grid-cols-8 gap-x-2 md:grid-cols-16">
@@ -2138,16 +2143,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <a href="/pixelbin/" class="flex flex-col gap-y-3 md:cursor-none" aria-label="View PixelBin case study">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label">View Case Study</span></div>
-                <div data-ref-featured-project-media-portrait="pixelbin" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="pixelbin">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="pixelbin/assets/mc/magic-canvas-frames.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
-                <div data-ref-featured-project-media-landscape="pixelbin" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="pixelbin">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="pixelbin/assets/mc/magic-canvas-frames.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
+                <div data-media-mirror-id="pixelbin" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm">
+<img class="project-poster absolute inset-0 h-full w-full object-cover" src="/assets/work-v1/pixelbin-cover-884dd85d8039.webp" srcset="/assets/home-v1/pixelbin-cover-400-611fa3036863.webp 400w, /assets/work-v1/pixelbin-cover-884dd85d8039.webp 1260w" sizes="(min-width:1194px) 55vw, 90vw" width="1260" height="730" alt="PixelBin — AI platform" decoding="async" loading="eager" fetchpriority="high">
+<video muted loop playsinline preload="none" data-src="/assets/work-v1/magic-canvas-faststart-fa3a43a969c6.mp4" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" tabindex="-1"></video>
+</div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2164,16 +2163,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <a href="/swadesh/" class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Swadesh case study">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label">View Case Study</span></div>
-                <div data-ref-featured-project-media-portrait="swadesh" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="swadesh">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="assets/sw/swadesh.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
-                <div data-ref-featured-project-media-landscape="swadesh" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="swadesh">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="assets/sw/swadesh.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
+                <div data-media-mirror-id="swadesh" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm">
+<img data-deferred-image class="project-poster absolute inset-0 h-full w-full object-cover" data-src="/assets/work-v1/poster-1-1280-702424312a81.webp"  width="1280" height="720" alt="Swadesh — design system" decoding="async" loading="lazy"><noscript><img class="project-poster absolute inset-0 h-full w-full object-cover" src="/assets/work-v1/poster-1-1280-702424312a81.webp"  width="1280" height="720" alt="Swadesh — design system" decoding="async" loading="lazy"></noscript>
+<video muted loop playsinline preload="none" data-src="/assets/work-v1/swadesh-cb23f6ac3da1.mp4" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" tabindex="-1"></video>
+</div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2190,12 +2183,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <a href="/sorted/" class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Sorted case study">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label">View Case Study</span></div>
-                <div data-ref-featured-project-media-portrait="sorted" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="sorted"><img src="assets/sw/sorted.webp" alt="Sorted — AI super app concept" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
-                <div data-ref-featured-project-media-landscape="sorted" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="sorted"><img src="assets/sw/sorted.webp" alt="Sorted — AI super app concept" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
+                <div data-media-mirror-id="sorted" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm"><img data-deferred-image data-src="/assets/work-v1/sorted-original-69e212d2d05b.webp" data-srcset="/assets/work-v1/sorted-400-0ce08d51e977.webp 400w, /assets/work-v1/sorted-original-69e212d2d05b.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="900" alt="Sorted — AI super app concept" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"><noscript><img src="/assets/work-v1/sorted-original-69e212d2d05b.webp" srcset="/assets/work-v1/sorted-400-0ce08d51e977.webp 400w, /assets/work-v1/sorted-original-69e212d2d05b.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="900" alt="Sorted — AI super app concept" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"></noscript></div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2212,12 +2200,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <a href="/settle-club/" class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Settle Club case study">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label">View Case Study</span></div>
-                <div data-ref-featured-project-media-portrait="settle-club" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="settle-club"><img src="assets/sw/settle-club.webp" alt="Settle Club — BNPL app for first-time borrowers" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
-                <div data-ref-featured-project-media-landscape="settle-club" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="settle-club"><img src="assets/sw/settle-club.webp" alt="Settle Club — BNPL app for first-time borrowers" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
+                <div data-media-mirror-id="settle-club" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm"><img data-deferred-image data-src="/assets/work-v1/settle-club-original-3c22bb948576.webp" data-srcset="/assets/work-v1/settle-club-original-3c22bb948576.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="800" alt="Settle Club — BNPL app for first-time borrowers" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"><noscript><img src="/assets/work-v1/settle-club-original-3c22bb948576.webp" srcset="/assets/work-v1/settle-club-original-3c22bb948576.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="800" alt="Settle Club — BNPL app for first-time borrowers" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"></noscript></div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2234,16 +2217,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <div class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Glam AR project">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label is-disabled">Documentation in Progress</span></div>
-                <div data-ref-featured-project-media-portrait="glam-ar" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="glam-ar">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/glamar.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
-                <div data-ref-featured-project-media-landscape="glam-ar" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="glam-ar">
-                    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover" preload="metadata"><source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/glamar.mp4" type="video/mp4"></video>
-                  </div>
-                </div>
+                <div data-media-mirror-id="glam-ar" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm">
+<img data-deferred-image class="project-poster absolute inset-0 h-full w-full object-cover" data-src="/assets/work-v1/poster-2-1280-674203767691.webp"  width="1280" height="720" alt="Glam AR — AR cosmetics" decoding="async" loading="lazy"><noscript><img class="project-poster absolute inset-0 h-full w-full object-cover" src="/assets/work-v1/poster-2-1280-674203767691.webp"  width="1280" height="720" alt="Glam AR — AR cosmetics" decoding="async" loading="lazy"></noscript>
+<video muted loop playsinline preload="none" data-src="/assets/work-v1/glamar-5c451e3233b7.mp4" class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" tabindex="-1"></video>
+</div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2261,14 +2238,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <div class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Studio S project">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label is-disabled">Documentation in Progress</span></div>
-                <div data-ref-featured-project-media-portrait="studio-s" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <!-- portrait media: swap this image when ready -->
-                  <div data-media-mirror-id="studio-s"><img src="assets/sw/studio-s.webp" alt="Studio S — studio operations platform" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
-                <div data-ref-featured-project-media-landscape="studio-s" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <!-- landscape media: swap this image when ready -->
-                  <div data-media-mirror-id="studio-s"><img src="assets/sw/studio-s.webp" alt="Studio S — studio operations platform" class="absolute inset-0 h-full w-full object-cover" style="color:transparent"></div>
-                </div>
+                <div data-media-mirror-id="studio-s" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm"><img data-deferred-image data-src="/assets/work-v1/studio-s-original-aeb3a7076c81.webp" data-srcset="/assets/work-v1/studio-s-400-7c7c61c11ee1.webp 400w, /assets/work-v1/studio-s-720-dfacd3e8ddec.webp 720w, /assets/work-v1/studio-s-original-aeb3a7076c81.webp 2000w" sizes="(min-width:1194px) 55vw, 90vw" width="2000" height="1139" alt="Studio S — studio operations platform" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"><noscript><img src="/assets/work-v1/studio-s-original-aeb3a7076c81.webp" srcset="/assets/work-v1/studio-s-400-7c7c61c11ee1.webp 400w, /assets/work-v1/studio-s-720-dfacd3e8ddec.webp 720w, /assets/work-v1/studio-s-original-aeb3a7076c81.webp 2000w" sizes="(min-width:1194px) 55vw, 90vw" width="2000" height="1139" alt="Studio S — studio operations platform" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"></noscript></div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2284,12 +2254,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             <a href="/toneflix/" class="flex flex-col gap-y-3 md:cursor-none" aria-label="View Toneflix case study">
               <div class="relative aspect-[4/3] sm:aspect-[16/9] card-media-wrap">
                 <div class="card-cursor"><span class="card-cursor-label">View Case Study</span></div>
-                <div data-ref-featured-project-media-portrait="toneflix" class="relative aspect-[4/3] overflow-hidden rounded-sm sm:hidden">
-                  <div data-media-mirror-id="toneflix"><img alt="Toneflix — fitness app concept" class="absolute inset-0 h-full w-full object-cover" style="color:transparent" loading="lazy" src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" width="1200" height="800" data-full-src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" srcset="/toneflix/assets/optimised/toneflix-640-2af7dc7b1e20706d.webp 640w, /toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp 1200w" sizes="(max-width: 768px) 100vw, 80vw"></div>
-                </div>
-                <div data-ref-featured-project-media-landscape="toneflix" class="relative hidden aspect-[16/9] overflow-hidden rounded-md sm:block">
-                  <div data-media-mirror-id="toneflix"><img alt="Toneflix — fitness app concept" class="absolute inset-0 h-full w-full object-cover" style="color:transparent" loading="lazy" src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" width="1200" height="800" data-full-src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" srcset="/toneflix/assets/optimised/toneflix-640-2af7dc7b1e20706d.webp 640w, /toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp 1200w" sizes="(max-width: 768px) 100vw, 80vw"></div>
-                </div>
+                <div data-media-mirror-id="toneflix" class="relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-sm"><img data-deferred-image data-src="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp" data-srcset="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="800" alt="Toneflix — fitness app concept" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"><noscript><img src="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp" srcset="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp 1200w" sizes="(min-width:1194px) 55vw, 90vw" width="1200" height="800" alt="Toneflix — fitness app concept" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover"></noscript></div>
               </div>
               <div class="relative pt-[2px] pb-1 md:hidden">
                 <div class="pr-5">
@@ -2318,62 +2283,13 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 </section>
 
   </div>
-  <script src="our-work-portfolio.js"></script>
+  <script src="/assets/home-v1/projects-bf425f1dbb1c.js" defer></script>
 
   <script>
-    /* ── PAGE LOADER — dismiss when hero video first frame plays ── */
+    /* Content is available immediately; decorative video never gates entry. */
     (function () {
-      var loader    = document.getElementById('page-loader');
-      var fill      = document.getElementById('loader-progress');
-      var heroVideo = document.querySelector('#hero-media video');
-
-      if (!loader) return;
-
-      if (typeof lenis !== 'undefined' && lenis) lenis.stop();
-      document.body.style.overflow = 'hidden';
-
-      var dismissed = false;
-      var pct = 0;
-      var tick = setInterval(function () {
-        pct = Math.min(pct + (Math.random() * 10 + 2), 85);
-        if (fill) fill.style.width = pct + '%';
-        if (pct >= 85) clearInterval(tick);
-      }, 200);
-
-      function dismiss() {
-        if (dismissed) return;
-        dismissed = true;
-        clearInterval(tick);
-        clearTimeout(fallback);
-        if (fill) fill.style.width = '100%';
-        setTimeout(function () {
-          loader.classList.add('is-hidden');
-          document.body.style.overflow = '';
-          if (typeof lenis !== 'undefined' && lenis) lenis.start();
-        }, 300);
-      }
-
-      if (heroVideo) {
-        if (heroVideo.autoplay || !heroVideo.paused || heroVideo.readyState >= 4) {
-          if (!heroVideo.paused || heroVideo.readyState >= 4) {
-            dismiss();
-          } else {
-            heroVideo.addEventListener('playing', dismiss, { once: true });
-            heroVideo.addEventListener('canplaythrough', function () {
-              setTimeout(dismiss, 400);
-            }, { once: true });
-          }
-        } else {
-          dismiss();
-          window.addEventListener('scroll', function() {
-            heroVideo.play().catch(function(){});
-          }, { once: true, passive: true });
-        }
-      } else {
-        setTimeout(dismiss, 800);
-      }
-
-      var fallback = setTimeout(dismiss, 5000);
+      var loader = document.getElementById('page-loader');
+      if (loader) loader.classList.add('is-hidden');
     })();
   </script>
 
@@ -2442,11 +2358,11 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
     <div class="capabilities-frame-border">
       <div class="capabilities-filmstrip" id="capabilities-filmstrip">
         <img class="capabilities-filmstrip-image" src="/assets/Strategy.webp" alt="Product Strategy" loading="lazy">
-        <video class="capabilities-filmstrip-image" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI%20product%20design.mp4" muted loop playsinline preload="none" aria-label="AI product design work sample"></video>
-        <video class="capabilities-filmstrip-image" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Design_system.mp4" muted loop playsinline preload="none" aria-label="Design system components in use"></video>
-        <video class="capabilities-filmstrip-image" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Ecommerce_Swadesh.mp4" muted loop playsinline preload="none" aria-label="E-commerce platform interface walkthrough"></video>
-        <video class="capabilities-filmstrip-image" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Stakeholder_720p.mp4" muted loop playsinline preload="none" aria-label="Stakeholder delivery and leadership process"></video>
-        <video class="capabilities-filmstrip-image" src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film_720p.mp4" muted loop playsinline preload="none" aria-label="AI-generated short film excerpt"></video>
+        <video class="capabilities-filmstrip-image" data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI%20product%20design.mp4" data-poster="/assets/home-v1/capability-ai-product-design-06ac2c44f574.webp" muted loop playsinline preload="none" aria-label="AI product design work sample"></video>
+        <video class="capabilities-filmstrip-image" data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Design_system.mp4" data-poster="/assets/home-v1/capability-design-system-e79cd1966570.webp" muted loop playsinline preload="none" aria-label="Design system components in use"></video>
+        <video class="capabilities-filmstrip-image" data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Ecommerce_Swadesh.mp4" data-poster="/assets/home-v1/capability-ecommerce-swadesh-a04a1dd8286c.webp" muted loop playsinline preload="none" aria-label="E-commerce platform interface walkthrough"></video>
+        <video class="capabilities-filmstrip-image" data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/Stakeholder_720p.mp4" data-poster="/assets/home-v1/capability-stakeholder-25dcaa45c1b0.webp" muted loop playsinline preload="none" aria-label="Stakeholder delivery and leadership process"></video>
+        <video class="capabilities-filmstrip-image" data-src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/AI-Film_720p.mp4" data-poster="/assets/home-v1/capability-ai-film-a1ef1bb4ab05.webp" muted loop playsinline preload="none" aria-label="AI-generated short film excerpt"></video>
       </div>
     </div>
   </div>
@@ -2458,30 +2374,157 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
   <!-- ============================================================
        GSAP 3.12.5 + ScrollTrigger (CDN, version-pinned)
   ============================================================ -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous"></script>
+  <script src="/assets/home-v1/gsap-3.12.5-28033e449a31.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="/assets/home-v1/ScrollTrigger-3.12.5-ad33c2df9ada.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+  <script src="/assets/home-v1/lenis-1.1.18-0bf174d39b9a.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous"></script>
 
   <script>
     /* ============================================================
        GLOBAL LENIS — single instance, synced with ScrollTrigger
     ============================================================ */
-    var lenis = new Lenis();
-    lenis.on('scroll', ScrollTrigger.update);
-    var lenisRaf = function (time) { lenis.raf(time * 1000); };
-    gsap.ticker.add(lenisRaf);
-    gsap.ticker.lagSmoothing(0);
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.ticker.remove(lenisRaf);
-      lenis.destroy();
-      lenis = null;
+    var lenis = null;
+    var lenisRaf;
+    if (typeof Lenis !== 'undefined' && typeof gsap !== 'undefined' &&
+        typeof ScrollTrigger !== 'undefined' &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.registerPlugin(ScrollTrigger);
+      lenis = new Lenis();
+      lenis.on('scroll', ScrollTrigger.update);
+      lenisRaf = function (time) { if (lenis) lenis.raf(time * 1000); };
+      gsap.ticker.add(lenisRaf);
+      gsap.ticker.lagSmoothing(0);
     }
 
     /* Shared smooth-scroll helper — Lenis when available, native fallback */
     function smoothScrollTo(target) {
-      if (typeof lenis !== 'undefined' && lenis) lenis.scrollTo(target);
-      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!target) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (target.id === 'featured-works' && window.location.hash !== '#featured-works') {
+        history.pushState(null, '', '#featured-works');
+      }
+      if (typeof lenis !== 'undefined' && lenis) {
+        lenis.scrollTo(target, { offset: -80, immediate: reduced });
+      } else {
+        window.scrollTo({ top: Math.max(0, window.scrollY + target.getBoundingClientRect().top - 80),
+          behavior: reduced ? 'instant' : 'smooth' });
+      }
+    }
+
+    /* Shared decorative media policy; featured projects own their own controls. */
+    var adjacentMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var adjacentConnection = navigator.connection;
+    var adjacentPageHidden = false;
+    function adjacentAllowed() {
+      return !adjacentPageHidden && !document.hidden && !adjacentMotion.matches &&
+        !(adjacentConnection && adjacentConnection.saveData);
+    }
+    function adjacentVisible(el) {
+      if (!el) return false;
+      var r = el.getBoundingClientRect();
+      if (!(r.width > 0 && r.height > 0 && r.bottom > 0 && r.right > 0 &&
+            r.top < window.innerHeight && r.left < window.innerWidth)) return false;
+      for (var node = el; node && node.nodeType === 1; node = node.parentElement) {
+        var style = getComputedStyle(node);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) < 0.1) return false;
+      }
+      return true;
+    }
+    function adjacentVideo(video, wanted) {
+      if (!video) return;
+      wanted = !!wanted && adjacentAllowed() && adjacentVisible(video);
+      video._adjacentWanted = wanted;
+      if (!wanted) { video.pause(); video._adjacentAttempted = false; return; }
+      if (video._adjacentPending || !video.paused || video._adjacentAttempted) return;
+      var changed = false;
+      [video].concat(Array.from(video.querySelectorAll('source'))).forEach(function (source) {
+        if (source.dataset.src) {
+          source.src = source.dataset.src; delete source.dataset.src; changed = true;
+        }
+      });
+      if (changed) video.load();
+      video._adjacentPending = true;
+      video._adjacentAttempted = true;
+      var attempt;
+      try { attempt = video.play(); } catch (error) { attempt = Promise.reject(error); }
+      Promise.resolve(attempt).then(function () {
+        video._adjacentPending = false;
+        if (!video._adjacentWanted || !adjacentAllowed() || !adjacentVisible(video)) video.pause();
+      }, function (error) {
+        video._adjacentPending = false;
+        if (error && error.name === 'AbortError') video._adjacentAttempted = false;
+      });
+    }
+    function adjacentWatch(sync) {
+      document.addEventListener('visibilitychange', sync);
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
+      window.addEventListener('pagehide', function () { adjacentPageHidden = true; sync(); });
+      window.addEventListener('pageshow', function () { adjacentPageHidden = false; sync(); });
+      if (adjacentMotion.addEventListener) adjacentMotion.addEventListener('change', sync);
+      if (adjacentConnection && adjacentConnection.addEventListener) adjacentConnection.addEventListener('change', sync);
+    }
+
+    /* Poster completion precedes the first hero media request. A deep link must
+       first leave the hero before it is eligible on a later return visit. */
+    (function () {
+      var video = document.querySelector('#hero-media video');
+      if (!video) return;
+      var posterReady = false;
+      var projectPoster = document.querySelector('[data-project-id="pixelbin"] img.project-poster');
+      // Cached failures may predate these listeners; complete + a real source
+      // distinguishes a failed fetch from an image whose source is not set yet.
+      var projectPosterFailed = !!(projectPoster && projectPoster.complete &&
+        projectPoster.naturalWidth === 0 && (projectPoster.currentSrc || projectPoster.getAttribute('src')));
+      function projectPosterSettled() {
+        return !projectPoster || projectPosterFailed ||
+          (projectPoster.complete && projectPoster.naturalWidth > 0);
+      }
+      var hashBlocked = !!window.location.hash && window.location.hash !== '#hero';
+      function syncHeroVideo() {
+        var visible = adjacentVisible(video);
+        if (!visible) hashBlocked = false;
+        adjacentVideo(video, posterReady && projectPosterSettled() && !hashBlocked && visible);
+      }
+      if (projectPoster) {
+        projectPoster.addEventListener('load', function () {
+          projectPosterFailed = false;
+          syncHeroVideo();
+        });
+        projectPoster.addEventListener('error', function () {
+          projectPosterFailed = true;
+          syncHeroVideo();
+        });
+      }
+      adjacentWatch(syncHeroVideo);
+      if (typeof IntersectionObserver !== 'undefined') {
+        var observer = new IntersectionObserver(syncHeroVideo);
+        observer.observe(video);
+      }
+      var poster = new Image();
+      poster.onload = function () {
+        var decoded = poster.decode ? poster.decode() : Promise.resolve();
+        Promise.resolve(decoded).catch(function () {}).then(function () {
+          posterReady = poster.naturalWidth > 0;
+          requestAnimationFrame(syncHeroVideo);
+        });
+      };
+      // A failed/missing poster leaves the hero static, never blocks content.
+      if (video.poster) poster.src = video.poster;
+      syncHeroVideo();
+    })();
+
+    function syncMusicVideos() {
+      var audio = document.getElementById('music-audio');
+      ['music-video', 'mobile-music-video'].forEach(function (id) {
+        adjacentVideo(document.getElementById(id), audio && !audio.paused);
+      });
+    }
+    adjacentWatch(syncMusicVideos);
+    var adjacentMusicAudio = document.getElementById('music-audio');
+    if (adjacentMusicAudio) {
+      ['play', 'pause', 'ended'].forEach(function (event) {
+        adjacentMusicAudio.addEventListener(event, syncMusicVideos);
+      });
     }
   </script>
 
@@ -2503,7 +2546,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
          PLUGIN REGISTRATION
       ---------------------------------------------------------- */
 
-      gsap.registerPlugin(ScrollTrigger);
+      const heroAnimationAvailable = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+      if (heroAnimationAvailable) gsap.registerPlugin(ScrollTrigger);
 
 
       /* ----------------------------------------------------------
@@ -2521,17 +2565,18 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
          mobile (calc(100vw - 32px)) breakpoints without hardcoding.
       ---------------------------------------------------------- */
 
-      const initRect = card.getBoundingClientRect();
+      const initRect = card ? card.getBoundingClientRect() : { width: 0, height: 0 };
       const FROM_W = initRect.width;
       const FROM_H = initRect.height;
 
       /* ── Skip GSAP hero animation on mobile (parallax + expansion only) ── */
       const isMobile = window.innerWidth <= 768;
 
-      if (!isMobile) {
+      if (!isMobile && hero && card && heroAnimationAvailable &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+          !(navigator.connection && navigator.connection.saveData)) {
 
-      var heroVid = card.querySelector('video');
-      if (heroVid) { heroVid.preload = 'auto'; heroVid.autoplay = true; heroVid.play().catch(function(){}); }
+      /* Hero playback belongs exclusively to the poster/visibility lifecycle. */
 
       /* ----------------------------------------------------------
          FEATURE DETECTION
@@ -2683,7 +2728,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
       /* ----------------------------------------------------------
          SCROLL TRIGGER
-         - Pins #hero for 200vh of scroll travel.
+         - Pins #hero for 150vh of scroll travel; timeline proportions are unchanged.
          - scrub: 1 adds ~1s cinematic lag (not instant).
          - end() is a function → recalculates on window resize.
          - onUpdate drives the parallax gate (bidirectional).
@@ -2693,7 +2738,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
       ScrollTrigger.create({
         trigger: hero,
         start: 'top top',
-        end: () => '+=' + (window.innerHeight * 2),
+        end: () => '+=' + (window.innerHeight * 1.5),
         pin: true,
         scrub: 1,
         animation: expansionTl,
@@ -2865,8 +2910,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
           mobileMusicBtn.addEventListener('click', function () {
             if (audio.paused) {
               audio.play().catch(function () {});
-              if (siteVideo) siteVideo.play().catch(function () {});
-              if (mobileSiteVideo) mobileSiteVideo.play().catch(function () {});
+              syncMusicVideos();
               mobileMusicBtn.classList.add('playing');
             } else {
               audio.pause();
@@ -2911,17 +2955,28 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
       let activeCapabilityIndex = 0;
       var filmstripVideos = filmstripEl.querySelectorAll('video');
-      var filmstripPlaying = false;
-      function playFilmstripVideos() {
-        if (filmstripPlaying) return;
-        filmstripPlaying = true;
-        filmstripVideos.forEach(function(v) { v.play().catch(function(){}); });
+      function syncFilmstripVideos() {
+        var selected = filmstripEl.children[activeCapabilityIndex];
+        var frameVisible = adjacentVisible(kltFrame);
+        var frameRect = kltFrame.getBoundingClientRect();
+        filmstripVideos.forEach(function (video) {
+          var r = video.getBoundingClientRect();
+          var inFrame = Math.min(r.bottom, frameRect.bottom) > Math.max(r.top, frameRect.top) &&
+            Math.min(r.right, frameRect.right) > Math.max(r.left, frameRect.left);
+          var selectedVisible = frameVisible && video === selected && inFrame;
+          // Still preview is useful even when motion or data-saving policy blocks video.
+          if (selectedVisible && video.dataset.poster && adjacentVisible(video)) {
+            video.poster = video.dataset.poster;
+            delete video.dataset.poster;
+          }
+          adjacentVideo(video, selectedVisible);
+        });
       }
       function pauseFilmstripVideos() {
-        if (!filmstripPlaying) return;
-        filmstripPlaying = false;
-        filmstripVideos.forEach(function(v) { v.pause(); });
+        filmstripVideos.forEach(function (video) { adjacentVideo(video, false); });
       }
+      adjacentWatch(syncFilmstripVideos);
+      kltFrame.addEventListener('transitionend', syncFilmstripVideos);
 
       /* Showcase section reference — used for RAF-driven frame exit */
       const darkSection = document.getElementById('showcase');
@@ -2978,7 +3033,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
         if (!inExitZone) {
           const frameOn = rect.top < midVH && rect.bottom >= midVH;
           kltFrame.classList.toggle('is-visible', frameOn);
-          if (frameOn) playFilmstripVideos(); else pauseFilmstripVideos();
+          if (!frameOn) pauseFilmstripVideos();
           if (!frameOn) capabilityCursorEl.classList.remove('cursor--visible');
         }
 
@@ -3015,6 +3070,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
         }
         setActiveCapability(activeCardIndex);
         capabilityRows.forEach((t, i) => t.classList.toggle('is-past', i < activeCardIndex));
+        syncFilmstripVideos();
       }
 
       let _kltY = -1, _capRafId = null;
@@ -3027,6 +3083,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
         if (!_capRafId) _capRafId = requestAnimationFrame(capabilityAnimationLoop);
       }, { passive: true });
       onCapabilityScroll();
+      window.addEventListener('resize', onCapabilityScroll, { passive: true });
 
 
       /* Custom "+" cursor */
@@ -3138,17 +3195,15 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
           if (c.type === 'video') {
             var v = document.createElement('video');
-            v.src = c.src; v.autoplay = true; v.muted = true;
+            v.dataset.src = c.src; v.autoplay = false; v.muted = true;
+            v.setAttribute('aria-hidden', 'true');
             v.loop = true; v.playsInline = true;
             v.setAttribute('playsinline', '');
             v.setAttribute('preload', 'none');
-            v.addEventListener('canplay', (function (vid) {
-              return function () { vid.play().catch(function () {}); };
-            })(v));
             card.appendChild(v);
           } else {
             var img = document.createElement('img');
-            img.src = c.src; img.alt = c.name;
+            img.dataset.src = c.src; img.alt = c.name;
             img.loading = 'lazy'; img.decoding = 'async';
             card.appendChild(img);
           }
@@ -3181,7 +3236,54 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
       var showcaseMouseTargetY  = 0, showcaseMouseLerpY = 0;
       var showcaseAnimFrame  = null;
       var showcaseActive = false;
-      var showcaseVideos = null; /* cached NodeList — populated once on first play */
+      var showcaseVideos = document.querySelectorAll('#showcase-canvas video');
+      var showcaseMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var showcaseConnection = navigator.connection;
+      var showcaseOpacity = 0;
+      function showcaseMotionAllowed() {
+        return !showcaseMotion.matches && !(showcaseConnection && showcaseConnection.saveData);
+      }
+      function syncShowcaseVideos() {
+        showcaseVideos.forEach(function (v) {
+          var allowed = showcaseActive && showcaseOpacity >= 0.1 && !document.hidden && showcaseMotionAllowed();
+          if (allowed) {
+            var rect = v.getBoundingClientRect();
+            allowed = rect.width > 0 && rect.height > 0 && rect.bottom > 0 &&
+              rect.right > 0 && rect.top < window.innerHeight && rect.left < window.innerWidth && adjacentVisible(v);
+          }
+          v._showcaseWanted = allowed;
+          if (!allowed) { v.pause(); v._showcaseAttempted = false; return; }
+          if (!v.hasAttribute('src')) { v.src = v.dataset.src; }
+          if (v.paused && !v._showcasePending && !v._showcaseAttempted) {
+            v._showcasePending = true;
+            v._showcaseAttempted = true;
+            var pending = v.play();
+            Promise.resolve(pending).catch(function () {}).then(function () {
+              v._showcasePending = false;
+              if (!v._showcaseWanted || document.hidden || !showcaseMotionAllowed()) v.pause();
+            });
+          }
+        });
+      }
+      function syncShowcaseImages() {
+        if (!showcaseActive || showcaseOpacity <= 0 || document.hidden) return;
+        showcaseGridEl.querySelectorAll('img[data-src]').forEach(function (img) {
+          if (!adjacentVisible(img)) return;
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        });
+      }
+      function syncShowcaseLifecycle() {
+        syncShowcaseImages();
+        syncShowcaseVideos();
+        var animate = showcaseActive && !document.hidden && showcaseMotionAllowed();
+        if (animate && !showcaseAnimFrame) showcaseAnimFrame = requestAnimationFrame(showcaseTick);
+        if (!animate && showcaseAnimFrame) {
+          cancelAnimationFrame(showcaseAnimFrame); showcaseAnimFrame = null;
+        }
+      }
+      if (showcaseMotion.addEventListener) showcaseMotion.addEventListener('change', syncShowcaseLifecycle);
+      if (showcaseConnection && showcaseConnection.addEventListener) showcaseConnection.addEventListener('change', syncShowcaseLifecycle);
 
       /* ── Horizontal wheel → X pan (passive — doesn't block GSAP scroll) ── */
       window.addEventListener('wheel', function (e) {
@@ -3204,6 +3306,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
       /* ── RAF tick ───────────────────────────────────────────── */
       function showcaseTick() {
+        showcaseAnimFrame = null;
+        if (!showcaseActive || document.hidden || !showcaseMotionAllowed()) return;
         /* Mobile: auto-pan slowly so the canvas drifts without interaction */
         if (showcaseIsTouch) {
           showcaseRawX += 0.25;
@@ -3222,6 +3326,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
         showcaseGridEl.style.transform =
           'translate(' + (px - wX) + 'px, ' + (py - wY) + 'px)';
+        syncShowcaseImages();
+        syncShowcaseVideos();
         showcaseAnimFrame = requestAnimationFrame(showcaseTick);
       }
 
@@ -3236,36 +3342,26 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
         document.getElementById('showcase-ui'),
       ];
 
-      /* ── Lifecycle — opacity is scrub-driven (no tweens here) ── */
+      /* Lifecycle: section visibility AND individual card visibility gate playback. */
       function startShowcase() {
-        if (showcaseActive) return;
         showcaseActive = true;
-        if (!showcaseAnimFrame) { showcaseAnimFrame = requestAnimationFrame(showcaseTick); }
-        if (!showcaseVideos) showcaseVideos = document.querySelectorAll('#showcase-canvas video');
-        showcaseVideos.forEach(function (v) { v.play().catch(function () {}); });
+        syncShowcaseLifecycle();
       }
-
       function stopShowcase() {
-        if (!showcaseActive) return;
         showcaseActive = false;
+        showcaseOpacity = 0;
         showcaseMouseTargetX = 0; showcaseMouseTargetY = 0;
         showcaseElements.forEach(function (el) { if (el) el.style.opacity = '0'; });
-        cancelAnimationFrame(showcaseAnimFrame);
-        showcaseAnimFrame = null;
+        syncShowcaseLifecycle();
       }
-
-      /* ── Pause/resume flora RAF when tab is hidden ──────────── */
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-          if (showcaseAnimFrame) { cancelAnimationFrame(showcaseAnimFrame); showcaseAnimFrame = null; }
-        } else if (showcaseActive) {
-          if (!showcaseAnimFrame) { showcaseAnimFrame = requestAnimationFrame(showcaseTick); }
-        }
-      });
+      document.addEventListener('visibilitychange', syncShowcaseLifecycle);
+      window.addEventListener('pagehide', stopShowcase);
+      window.addEventListener('resize', syncShowcaseLifecycle, { passive: true });
 
       /* ── ScrollTrigger setup ────────────────────────────────── */
       var darkSect = document.getElementById('showcase');
-      if (darkSect && typeof gsap !== 'undefined') {
+      if (darkSect && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
         /* 1. Body background: white → black
               Anchored to showcase section so the transition
@@ -3297,19 +3393,32 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
             /* Fade in over first 8%, hold, fade out over last 8% */
             var fadeIn  = Math.min(1, self.progress / 0.08);
             var fadeOut = self.progress >= 0.92 ? Math.max(0, 1 - (self.progress - 0.92) / 0.08) : 1;
-            var op = fadeIn * fadeOut;
+            var op = self.isActive ? fadeIn * fadeOut : 0;
+            showcaseOpacity = op;
+            showcaseActive = self.isActive;
             showcaseElements.forEach(function (el) { if (el) el.style.opacity = op; });
+            syncShowcaseLifecycle();
             showcaseRawY = self.progress * TILE_H * 0.8;
           },
         });
 
       }
 
-      /* ── Video unblock on first interaction ─────────────────── */
-      document.addEventListener('pointerdown', function () {
-        if (!showcaseVideos) showcaseVideos = document.querySelectorAll('#showcase-canvas video');
-        showcaseVideos.forEach(function (v) { v.play().catch(function () {}); });
-      }, { once: true });
+      /* Native section visibility fallback when either animation dependency fails. */
+      function syncShowcaseFallback() {
+        if (!darkSect) return;
+        var rect = darkSect.getBoundingClientRect();
+        if (rect.top <= 0 && rect.bottom > 0) {
+          showcaseOpacity = 1;
+          showcaseElements.forEach(function (el) { if (el) el.style.opacity = '1'; });
+          startShowcase();
+        } else stopShowcase();
+      }
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        window.addEventListener('scroll', syncShowcaseFallback, { passive: true });
+        window.addEventListener('resize', syncShowcaseFallback, { passive: true });
+        syncShowcaseFallback();
+      }
 
     })();
   </script>
@@ -3355,7 +3464,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
         var ctx = canvas.getContext('2d');
         var imgReal = new Image();
         imgReal.crossOrigin = 'anonymous';
-        imgReal.src = '/assets/footer_profile_real.webp';
+        /* Reveal bitmap is hydrated only when the CTA approaches the viewport. */
 
         var mouseX = -999, mouseY = -999;
         var lerpX = -999, lerpY = -999;
@@ -3385,7 +3494,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
           ctx.clearRect(0, 0, w, h);
 
-          if (currentRadius > 0.5 && imgReal.complete) {
+          if (currentRadius > 0.5 && imgReal.complete && imgReal.naturalWidth > 0) {
             ctx.save();
             ctx.beginPath();
             ctx.arc(lerpX, lerpY, currentRadius * 1.8, 0, Math.PI * 2);
@@ -3413,7 +3522,37 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
           }
         }
 
-        imgReal.onload = function () { resizeCanvas(); };
+        imgReal.onload = function () {
+          resizeCanvas();
+          if (isHovering) {
+            if (raf) cancelAnimationFrame(raf);
+            draw();
+          }
+        };
+        var revealObserver;
+        var revealRequested = false;
+        function loadRevealImage() {
+          if (revealRequested) return;
+          revealRequested = true;
+          if (revealObserver) revealObserver.disconnect();
+          window.removeEventListener('scroll', checkRevealDistance);
+          window.removeEventListener('resize', checkRevealDistance);
+          imgReal.src = '/assets/footer_profile_real.webp';
+        }
+        function checkRevealDistance() {
+          var rect = ctaSect.getBoundingClientRect();
+          if (rect.top <= window.innerHeight + 300 && rect.bottom >= -300) loadRevealImage();
+        }
+        if (typeof IntersectionObserver !== 'undefined') {
+          revealObserver = new IntersectionObserver(function (entries) {
+            if (entries.some(function (entry) { return entry.isIntersecting; })) loadRevealImage();
+          }, { rootMargin: '300px' });
+          revealObserver.observe(ctaSect);
+        } else {
+          window.addEventListener('scroll', checkRevealDistance, { passive: true });
+          window.addEventListener('resize', checkRevealDistance, { passive: true });
+          checkRevealDistance();
+        }
         window.addEventListener('resize', function () {
           if (!wrap.isConnected) return;
           resizeCanvas();
@@ -3482,7 +3621,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
           audio.play().catch(function () {
             btn.classList.remove('playing');
           });
-          video.play().catch(function () {});
+          syncMusicVideos();
         } else {
           audio.pause();
           video.pause();
@@ -3539,11 +3678,11 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,[data-fra
 
     <!-- Terminal Widget -->
   <link rel="stylesheet" href="/terminal/terminal.css" media="print" onload="this.media='all'">
-  <script src="/terminal/terminal-knowledge.js" defer></script>
-  <script src="/terminal/terminal.js" defer></script>
+  <script>(function(){function start(){var knowledge=document.createElement('script');knowledge.src='/terminal/terminal-knowledge.js';knowledge.onload=knowledge.onerror=function(){var widget=document.createElement('script');widget.src='/terminal/terminal.js';document.body.appendChild(widget);};document.body.appendChild(knowledge);}if(document.documentElement.classList.contains('project-entry'))document.addEventListener('home:critical-ready',start,{once:true});else start();})();</script>
 
   <!-- Vercel Web Analytics -->
   
+<script>(function(){if(!document.documentElement.classList.contains('project-entry'))return;var image=document.querySelector('[data-project-id="pixelbin"] img');function release(){Promise.resolve(image&&image.decode?image.decode():undefined).catch(function(){}).then(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('project-entry');document.dispatchEvent(new Event('home:critical-ready'));});});}if(image&&image.complete)release();else if(image){image.addEventListener('load',release,{once:true});image.addEventListener('error',release,{once:true});}else release();})();</script>
 </body>
 
 </html>

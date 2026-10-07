@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://terryjohn.me/work/">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
+  <link rel="preload" as="image" href="/assets/work-v1/pixelbin-cover-884dd85d8039.webp" fetchpriority="high">
   <!-- Fonts -->
   <style>
     @font-face { font-family:'Helvetica Now Display'; src:url('/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'); font-weight:300; font-style:normal; font-display:swap; }
@@ -388,8 +389,8 @@
       letter-spacing: -1.2px; line-height: 1;
       text-align: center; margin-bottom: 40px;
     }
-    .cta-heading .h-reg { font-family: 'Redaction 10 Regular', Georgia, serif; }
-    .cta-heading .h-ital { font-family: 'Redaction 50 Italic', Georgia, serif; font-style: italic; }
+    .footer-fonts-ready .cta-heading .h-reg { font-family: 'Redaction 10 Regular', Georgia, serif; }
+    .footer-fonts-ready .cta-heading .h-ital { font-family: 'Redaction 50 Italic', Georgia, serif; font-style: italic; }
     .cta-content { text-align: center; max-width: 560px; padding: 0 48px; }
     .cta-label {
       font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
@@ -443,6 +444,18 @@
       .footer-cta-btn { font-size: 1.6rem; padding: 16px 40px; }
     }
   </style>
+<style>
+    .project-card-media .card-video { position:absolute; inset:0; opacity:0; pointer-events:none; }
+    .project-card-media .card-video.has-frame { opacity:1; }
+    .project-card-media .deferred-image { visibility:hidden; }
+    .project-card-media .deferred-image.is-loaded { visibility:visible; }
+    .video-toggle { position:absolute; top:12px; right:12px; z-index:3; padding:8px 12px; border:1px solid #ddd; border-radius:999px; background:rgba(255,255,255,.94); color:#111; font:12px var(--font-display); cursor:pointer; }
+    .video-toggle:focus-visible { outline:2px solid #111; outline-offset:3px; }
+    .video-toggle:disabled { cursor:default; }
+    .cta-heading { font-family:Georgia,serif; }
+    @media(prefers-reduced-motion:reduce) { .project-card,.card-cursor-pill { transition:none; } }
+  </style>
+<noscript><style>.project-card-media .deferred-image { display:none; }</style></noscript>
 </head>
 <body>
 
@@ -490,7 +503,7 @@
         <a href="/pixelbin/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <video autoplay muted loop playsinline preload="metadata"><source src="/pixelbin/assets/mc/magic-canvas-frames.mp4" type="video/mp4"></video>
+            <img src="/assets/work-v1/pixelbin-cover-884dd85d8039.webp" srcset="/assets/work-v1/pixelbin-cover-884dd85d8039.webp 1260w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1260" height="730" decoding="async" alt="PixelBin — AI image and video platform" loading="eager" fetchpriority="high" data-critical><video class="card-video" data-src="/assets/work-v1/magic-canvas-faststart-fa3a43a969c6.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           </div>
           <div class="project-card-info">
             <div>
@@ -507,7 +520,7 @@
         <a href="/pixelbin/pixelbin-app/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img src="/pixelbin/assets/app/app-fullbleed-hero.webp" alt="PixelBin App — mobile AI image editor" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/app-fullbleed-hero-720-32858c72124f.webp" data-srcset="/assets/work-v1/app-fullbleed-hero-400-af20fb5880c4.webp 400w, /assets/work-v1/app-fullbleed-hero-720-32858c72124f.webp 720w, /assets/work-v1/app-fullbleed-hero-1280-56b73a0acef1.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="484" decoding="async" alt="PixelBin App — mobile AI image editor" loading="eager" data-opening-secondary><noscript><img src="/assets/work-v1/app-fullbleed-hero-720-32858c72124f.webp" srcset="/assets/work-v1/app-fullbleed-hero-400-af20fb5880c4.webp 400w, /assets/work-v1/app-fullbleed-hero-720-32858c72124f.webp 720w, /assets/work-v1/app-fullbleed-hero-1280-56b73a0acef1.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="484" decoding="async" alt="PixelBin App — mobile AI image editor" loading="eager" data-opening-secondary></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -524,7 +537,7 @@
         <a href="/pixelbin/magic-canvas/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img src="/pixelbin/assets/mc/mc-canvas-left.webp" alt="Magic Canvas — generative AI canvas" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/mc-canvas-left-720-7ccfcba4981f.webp" data-srcset="/assets/work-v1/mc-canvas-left-400-2139436cab02.webp 400w, /assets/work-v1/mc-canvas-left-720-7ccfcba4981f.webp 720w, /assets/work-v1/mc-canvas-left-original-7d2c97966b6b.webp 2560w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="660" decoding="async" alt="Magic Canvas — generative AI canvas" loading="lazy"><noscript><img src="/assets/work-v1/mc-canvas-left-720-7ccfcba4981f.webp" srcset="/assets/work-v1/mc-canvas-left-400-2139436cab02.webp 400w, /assets/work-v1/mc-canvas-left-720-7ccfcba4981f.webp 720w, /assets/work-v1/mc-canvas-left-original-7d2c97966b6b.webp 2560w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="660" decoding="async" alt="Magic Canvas — generative AI canvas" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -541,7 +554,7 @@
         <a href="/sorted/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img src="/assets/sw/sorted.webp" alt="Sorted — AI super app concept" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/sorted-original-69e212d2d05b.webp" data-srcset="/assets/work-v1/sorted-400-0ce08d51e977.webp 400w, /assets/work-v1/sorted-original-69e212d2d05b.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="900" decoding="async" alt="Sorted — AI super app concept" loading="lazy"><noscript><img src="/assets/work-v1/sorted-original-69e212d2d05b.webp" srcset="/assets/work-v1/sorted-400-0ce08d51e977.webp 400w, /assets/work-v1/sorted-original-69e212d2d05b.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="900" decoding="async" alt="Sorted — AI super app concept" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -558,7 +571,7 @@
         <a href="/swadesh/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <video autoplay muted loop playsinline preload="metadata"><source src="/assets/sw/swadesh.mp4" type="video/mp4"></video>
+            <img class="deferred-image" data-src="/assets/work-v1/poster-1-720-fb9c3c192b7f.webp" data-srcset="/assets/work-v1/poster-1-400-35bc5d68dea6.webp 400w, /assets/work-v1/poster-1-720-fb9c3c192b7f.webp 720w, /assets/work-v1/poster-1-1280-702424312a81.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="405" decoding="async" alt="Swadesh — commerce platform" loading="lazy"><noscript><img src="/assets/work-v1/poster-1-720-fb9c3c192b7f.webp" srcset="/assets/work-v1/poster-1-400-35bc5d68dea6.webp 400w, /assets/work-v1/poster-1-720-fb9c3c192b7f.webp 720w, /assets/work-v1/poster-1-1280-702424312a81.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="405" decoding="async" alt="Swadesh — commerce platform" loading="lazy"></noscript><video class="card-video" data-src="/assets/work-v1/swadesh-cb23f6ac3da1.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           </div>
           <div class="project-card-info">
             <div>
@@ -575,7 +588,7 @@
         <a href="/settle-club/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img src="/assets/sw/settle-club.webp" alt="Settle Club — BNPL for first-time borrowers" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/settle-club-original-3c22bb948576.webp" data-srcset="/assets/work-v1/settle-club-original-3c22bb948576.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="800" decoding="async" alt="Settle Club — BNPL for first-time borrowers" loading="lazy"><noscript><img src="/assets/work-v1/settle-club-original-3c22bb948576.webp" srcset="/assets/work-v1/settle-club-original-3c22bb948576.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="800" decoding="async" alt="Settle Club — BNPL for first-time borrowers" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -592,7 +605,7 @@
         <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
-            <video autoplay muted loop playsinline preload="metadata"><source src="https://pub-d98009c8eb7448a387f7f2d0a543ab76.r2.dev/glamar.mp4" type="video/mp4"></video>
+            <img class="deferred-image" data-src="/assets/work-v1/poster-2-720-746e5a1d5923.webp" data-srcset="/assets/work-v1/poster-2-400-ccc707842d6e.webp 400w, /assets/work-v1/poster-2-720-746e5a1d5923.webp 720w, /assets/work-v1/poster-2-1280-674203767691.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="405" decoding="async" alt="Glam AR — augmented reality" loading="lazy"><noscript><img src="/assets/work-v1/poster-2-720-746e5a1d5923.webp" srcset="/assets/work-v1/poster-2-400-ccc707842d6e.webp 400w, /assets/work-v1/poster-2-720-746e5a1d5923.webp 720w, /assets/work-v1/poster-2-1280-674203767691.webp 1280w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="405" decoding="async" alt="Glam AR — augmented reality" loading="lazy"></noscript><video class="card-video" data-src="/assets/work-v1/glamar-5c451e3233b7.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           </div>
           <div class="project-card-info">
             <div>
@@ -609,7 +622,7 @@
         <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
-            <img src="/assets/sw/fynd.webp" alt="fynd.com — omnichannel commerce platform" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/fynd-original-792974db49df.webp" data-srcset="/assets/work-v1/fynd-400-578a6eb7adf9.webp 400w, /assets/work-v1/fynd-original-792974db49df.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="900" decoding="async" alt="fynd.com — omnichannel commerce platform" loading="lazy"><noscript><img src="/assets/work-v1/fynd-original-792974db49df.webp" srcset="/assets/work-v1/fynd-400-578a6eb7adf9.webp 400w, /assets/work-v1/fynd-original-792974db49df.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="900" decoding="async" alt="fynd.com — omnichannel commerce platform" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -626,7 +639,7 @@
         <a href="/toneflix/">
           <div class="project-card-media">
             <div class="card-cursor-pill"><span>View Case Study</span></div>
-            <img alt="Toneflix — fitness app" loading="lazy" src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" width="1200" height="800" data-full-src="/toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp" srcset="/toneflix/assets/optimised/toneflix-640-2af7dc7b1e20706d.webp 640w, /toneflix/assets/optimised/toneflix-1200-192fc6d749dff5d1.webp 1200w" sizes="(max-width: 768px) 100vw, 80vw">
+            <img class="deferred-image" data-src="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp" data-srcset="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="800" decoding="async" alt="Toneflix — fitness app" loading="lazy"><noscript><img src="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp" srcset="/assets/work-v1/toneflix-1200-192fc6d749dff5d1-original-192fc6d749df.webp 1200w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="1200" height="800" decoding="async" alt="Toneflix — fitness app" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -643,7 +656,7 @@
         <div>
           <div class="project-card-media">
             <div class="card-cursor-pill"><span class="is-disabled">Documentation in Progress</span></div>
-            <img src="/assets/sw/studio-s.webp" alt="Studio OS — studio operations platform" loading="lazy">
+            <img class="deferred-image" data-src="/assets/work-v1/studio-s-720-dfacd3e8ddec.webp" data-srcset="/assets/work-v1/studio-s-400-7c7c61c11ee1.webp 400w, /assets/work-v1/studio-s-720-dfacd3e8ddec.webp 720w, /assets/work-v1/studio-s-original-aeb3a7076c81.webp 2000w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="410" decoding="async" alt="Studio OS — studio operations platform" loading="lazy"><noscript><img src="/assets/work-v1/studio-s-720-dfacd3e8ddec.webp" srcset="/assets/work-v1/studio-s-400-7c7c61c11ee1.webp 400w, /assets/work-v1/studio-s-720-dfacd3e8ddec.webp 720w, /assets/work-v1/studio-s-original-aeb3a7076c81.webp 2000w" sizes="(max-width: 768px) calc(100vw - clamp(48px, 10vw, 144px)), (max-width: 1400px) calc(50vw - clamp(24px, 5vw, 72px) - 16px), 612px" width="720" height="410" decoding="async" alt="Studio OS — studio operations platform" loading="lazy"></noscript>
           </div>
           <div class="project-card-info">
             <div>
@@ -666,8 +679,8 @@
     </h2>
     <div class="cta-content">
       <div class="cta-reveal-wrap">
-        <img class="cta-reveal-image" src="/assets/footer_profile.webp" alt="Terry John Paul — illustration" loading="lazy">
-        <img class="cta-photo-image" id="cta-photo" src="/assets/footer_profile_real.webp" alt="Terry John Paul — photo" loading="lazy">
+        <img class="cta-reveal-image" src="/assets/work-v1/footer_profile-original-ef4cdfa7f21b.webp" alt="Terry John Paul — illustration" loading="lazy">
+        <img class="cta-photo-image" id="cta-photo" src="/assets/work-v1/footer_profile_real-original-4a7d5b86c35f.webp" alt="Terry John Paul — photo" loading="lazy">
       </div>
       <p class="cta-description">Good. Let's talk about what you're building. I'm Terry — a Senior Product Designer. I work with founders on products where the design is the hard part. AI tools. Commerce platforms. Fintech at speed. Pre-launch or mid-scale, moving fast. That's the work I take on. Also considering the right permanent role in the UK — happy to relocate, visa sponsorship is straightforward.</p>
       <p class="cta-label">Taking on projects · Open to permanent roles</p>
@@ -725,14 +738,17 @@
       var type = document.getElementById('project-filter').value;
       var domain = document.getElementById('domain-filter').value;
       document.querySelectorAll('#project-grid .project-card').forEach(function (card) {
+        clearTimeout(card._filterTimer);
         var matchType = type === 'all' || card.getAttribute('data-type') === type;
         var matchDomain = domain === 'all' || card.getAttribute('data-domain') === domain;
         if (matchType && matchDomain) {
           card.classList.remove('fade-out');
-          setTimeout(function () { card.style.display = ''; }, 10);
+          card.style.display = '';
+          document.dispatchEvent(new Event('work:filter'));
         } else {
           card.classList.add('fade-out');
-          setTimeout(function () { card.style.display = 'none'; }, 280);
+          document.dispatchEvent(new Event('work:filter'));
+          card._filterTimer = setTimeout(function () { card.style.display = 'none'; document.dispatchEvent(new Event('work:filter')); }, 280);
         }
       });
     }
@@ -800,5 +816,6 @@
       });
     })();
   </script>
+<script src="/assets/work-v1/media-7853ba2cdd73.js" defer></script>
 </body>
 </html>

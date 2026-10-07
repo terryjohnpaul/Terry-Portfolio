@@ -99,3 +99,30 @@ toneflix/v2-pre-remediation.html
 toneflix/design-assets/
 toneflix/research/
 toneflix/assets/food/
+
+# Work-performance generated candidates excluded from deployment
+/assets/work-v1/app-fullbleed-hero-original-94d64cf28ec3.webp
+/assets/work-v1/footer_profile-400-4ef315f00d38.webp
+/assets/work-v1/footer_profile_real-400-1b4e6c874c8e.webp
+/assets/work-v1/fynd-720-6e1812f46b23.webp
+/assets/work-v1/glamar-source.mp4
+/assets/work-v1/mc-canvas-left-1280-ad2aa1172d72.webp
+/assets/work-v1/media-0500a92d1307.js
+/assets/work-v1/media-4ca9190eb17d.js
+/assets/work-v1/media-b2b32ee05358.js
+/assets/work-v1/poster-0-1280-186fdbe02dbd.webp
+/assets/work-v1/poster-0-400-8e0a188a740d.webp
+/assets/work-v1/poster-0-720-95f5b49c4be3.webp
+/assets/work-v1/settle-club-400-3d1d4c32fdea.webp
+/assets/work-v1/settle-club-720-0ffaa57d6b98.webp
+/assets/work-v1/sorted-720-173de1513f4a.webp
+/assets/work-v1/studio-s-1280-86f9837bb4ea.webp
+/assets/work-v1/toneflix-1200-192fc6d749dff5d1-400-da20d763d57b.webp
+/assets/work-v1/toneflix-1200-192fc6d749dff5d1-720-94f6ac892f17.webp
+
+# Homepage unused generated assets
+/assets/home-v1/projects-0bd189fd2467.js
+/assets/home-v1/projects-2b5f0876bed3.js
+/assets/home-v1/projects-3e52d9bc2533.js
+/assets/home-v1/projects-587347c53928.js
+/assets/home-v1/projects-c7ff559e6d05.js

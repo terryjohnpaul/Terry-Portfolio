@@ -52,7 +52,13 @@ const report = { base, scenarios: [], passed: false };
         await copy.click(); assert.equal(await page.evaluate(()=>getSelection().toString()),'terryjohnpaul20@gmail.com'); assert(await page.locator('.cta-email-copy').getAttribute('data-copy-error')!==null);
         assert.equal(await page.locator('.footer-case-studies').count(),0);
         assert.equal(await page.locator('.footer-right a[href="/privacy/"]').count(),1);
-        await page.locator('.footer-right [data-privacy-settings]').click(); assert(await page.locator('.privacy-dialog').evaluate(d=>d.open)); await page.keyboard.press('Escape');
+        await page.locator('.footer-right [data-privacy-settings]').click(); assert(await page.locator('.privacy-dialog').evaluate(d=>d.open));
+        assert.equal(await page.locator('.privacy-dialog h2').evaluate(el=>getComputedStyle(el).cursor),'auto');
+        for(const selector of ['.privacy-close','.privacy-option span','.privacy-option input','[data-choice=save]','.privacy-policy a']) assert.equal(await page.locator('.privacy-dialog '+selector).evaluate(el=>getComputedStyle(el).cursor),'pointer');
+        assert.equal(await page.locator('.privacy-dialog').evaluate(el=>getComputedStyle(el,'::backdrop').cursor),'auto');
+        assert.equal(await page.locator('#site-cursor').evaluate(el=>getComputedStyle(el).visibility),'hidden');
+        await page.keyboard.press('Escape');
+        assert.notEqual(await page.locator('#site-cursor').evaluate(el=>getComputedStyle(el).visibility),'hidden');
         async function scroll(top) { await page.evaluate(top=>{if(window.lenis)window.lenis.scrollTo(top,{immediate:true});else scrollTo({top,behavior:'instant'});},top); await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))); }
         const start=await page.locator('.capability-row').last().evaluate(el=>scrollY+el.getBoundingClientRect().top-200);
         for(const offset of [0,200,400,600,800,1000,1200,1000,800,600,400,200,0]) {

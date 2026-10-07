@@ -6,6 +6,10 @@
 .privacy-banner strong{font-weight:500;color:#282828}
 .privacy-dialog{width:min(480px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;overflow:auto}
 .privacy-dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(4px)}
+/* Native dialogs sit above page-level custom cursors in the browser's top layer. */
+.privacy-dialog,.privacy-dialog::before,.privacy-dialog::after,.privacy-dialog::backdrop,.privacy-dialog *,.privacy-dialog *::before,.privacy-dialog *::after{cursor:auto!important}
+.privacy-dialog :is(button,a,label,input[type=checkbox]),.privacy-dialog :is(button,a,label) *{cursor:pointer!important}
+body:has(.privacy-dialog[open]) #site-cursor{visibility:hidden!important}
 .privacy-dialog .privacy-heading-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}
 .privacy-dialog h2{font-family:inherit;font-size:22px;font-weight:500;line-height:1.2;letter-spacing:-.5px;margin:0;color:#222}
 .privacy-dialog .privacy-close{flex:none;display:grid;place-items:center;width:44px;height:44px;padding:0;margin:-10px -10px -10px 0;border:0;border-radius:50%;background:transparent;color:#555;font:26px/1 Arial,sans-serif;cursor:pointer}

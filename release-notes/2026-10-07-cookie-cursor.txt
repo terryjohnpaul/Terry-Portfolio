@@ -1,0 +1,14 @@
+Fixes the missing mouse cursor when Cookie preferences is open.
+
+The homepage hides the system cursor and draws a custom cursor in the page. Native modal dialogs render in the browser's top layer, above that custom cursor, leaving visitors without a visible pointer.
+
+- Restore the native cursor within the privacy dialog and its backdrop.
+- Show a pointer over buttons, links, the analytics checkbox and its full label.
+- Hide the page's custom cursor while the modal is open; restore it on close.
+- Extend the homepage regression check to cover modal cursor styles and restoration.
+
+This is a scoped shared-CSS fix. Consent choices, analytics loading and privacy text are unchanged.
+
+Previous production deployment: `dpl_E9yLVLejq37pRkF5QgyiuAnHWz1k`.
+
+Validation: Chromium and WebKit, desktop and mobile, on the homepage, About and Toneflix pages; checkbox interaction, saving, close button, Escape and cursor restoration. Public-page checks and preview verification are required before promotion.
